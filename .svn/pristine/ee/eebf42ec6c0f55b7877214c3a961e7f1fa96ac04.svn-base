@@ -1,0 +1,144 @@
+<div ng-controller="scheduleTaskFormController" ng-init="getInitScheduleTaskData()">
+	<form class="form-horizontal" name="scheduleTaskForm" id="scheduleTaskForm"
+		ddd-Form-Validate novalidate style="padding-top: 10px">
+		<!-- 文件选择 -->
+		<fieldSet ng-switch="executeType">
+			<legend class="legend">
+				<span class="legend-title">执行文件 </span>
+				<select ng-model="executeType" class="input-sm">
+					<option value="file" ng-selected="executeType == 'file'">服务器文件</option>
+					<option value="class" ng-selected="executeType == 'class'">执行类</option>
+				</select>
+			</legend>
+
+			<!-- dom上删除或新增 -->
+			<div class="form-group" ng-switch-when="file">
+				<label class="col-md-2 control-label required" for="scheduleTaskPath"> 文件路径</label>
+				<div class="col-md-9">
+					<input type="text" class="form-control" ng-model="scheduleTask.scheduleTaskPath" id="scheduleTaskPath" required/>
+				<label class="radio-inline">
+					<input id="exe" value="exe" type="radio" name="optionsRadios" ng-model='scheduleTask.fileType' checked="checked" /> exe
+				</label>
+				<label class="radio-inline">
+					<input id="bat" value="bat" type="radio" name="optionsRadios" ng-model='scheduleTask.fileType'> bat
+				</label>
+				</div>
+			</div>
+			<div class="form-group " ng-switch-when="class">
+				<label class="control-label  col-md-2" for="scheduleTaskPath"> 类路径</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="scheduleTaskPath" ng-model="scheduleTask.scheduleTaskPath" placeholder="精确到方法，需传参" required/>
+				</div>
+			</div>
+		</fieldSet>
+
+		<!-- 配置项 -->
+		<fieldSet ng-switch="scheduleTask.scheduledTaskType">
+			<legend class="legend">
+				<span class="legend-title">基础配置</span>
+			</legend>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="startTime"> 执行起点</label>
+				<div class="col-md-8">
+					<!-- <input ddatepicker="{format:'yyyy-mm-dd hh:ii:ss'}" ng-model="scheduleTask.startTime" /> -->
+					<input ddatepicker="{format:'yyyy-mm-dd hh:ii:ss'}" class="form-control"
+								ng-model="scheduleTask.startTime" placeholder='执行起点' required>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="endTime"> 结束时间 </label>
+				<div class="col-md-8">
+					<!-- 					<input id="endTime" type="datetime-local" class="form-control" -->
+					<!-- 						ng-model="scheduleTask.endTime" /> -->
+					<!-- <input ddatepicker="{format:'yyyy-mm-dd hh:ii:ss'}" ng-model="scheduleTask.endTime" /> -->
+					<input ddatepicker="{format:'yyyy-mm-dd hh:ii:ss'}" class="form-control"
+								ng-model="scheduleTask.endTime" placeholder='结束时间' required>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label"> 执行类型</label>
+				<div class="col-md-8">
+					<dselect class="form-control" code-type-key="scheduledTaskType" ng-model="scheduleTask.scheduledTaskType" selectname="scheduledTaskType"></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state"> 状态</label>
+				<div class="col-md-8">
+					<select id="state" class="form-control" ng-model="scheduleTask.state">
+						<option value="启用" ng-selected="scheduleTask.state === '启用'">启用</option>
+						<option value="停用" ng-selected="scheduleTask.state === '停用'">停用</option>
+					</select>
+				</div>
+			</div>
+
+			<!-- 间次执行 -->
+			<div class="form-group col-md-6" ng-switch-when="period">
+				<label class="col-md-4 control-label" for="period"> 执行间隔</label>
+				<div class="col-md-4">
+					<input type="number" class=form-control ng-model="scheduleTask.period" id="period" />
+				</div>
+				<div class="col-md-4">
+					<dselect class="form-control" code-type-key="periodUnit" ng-model="scheduleTask.periodUnit" selectname="scheduledTaskType"></dselect>
+				</div>
+			</div>
+
+			<div class="form-group col-md-6" ng-switch-when="everyMonth" ng-show="scheduleTask.scheduledTaskType === 'everyMonth'">
+				<label class="col-md-4 control-label" for="dayOfMonth"> 日期</label>
+				<div class="col-md-8">
+					<input type="number" class="form-control" ng-model="scheduleTask.dayOfMonth" id="dayOfMonth" />
+				</div>
+			</div>
+			<div class="form-group col-md-6" ng-switch-when="everyWeek" ng-show="scheduleTask.scheduledTaskType === 'everyWeek'">
+				<label class="col-md-4 control-label" for="dayOfWeek"> 星期</label>
+				<div class="col-md-8">
+					<input type="number" class="form-control" ng-model="scheduleTask.dayOfWeek" id="dayOfWeek" />
+				</div>
+			</div>
+
+
+		</fieldSet>
+
+		<!-- 基本信息 -->
+		<fieldSet disabled>
+			<!-- <legend class="legend">
+				<span class="legend-title">基础信息</span>
+			</legend> -->
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="lastStartTime"> 上次启动时间</label>
+				<div class="col-md-8">
+					<input id="lastStartTime" type="datetime-local" class="form-control" ng-model="scheduleTask.lastStartTime" />
+					<!-- <ddatepicker class="form-control" ng-model="scheduleTask.lastStartTime"
+						id="lastStartTime"></ddatepicker> -->
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="nextStartTime"> 下次启动时间</label>
+				<div class="col-md-8">
+					<input id="nextStartTime" type="datetime-local" class="form-control" ng-model="scheduleTask.nextStartTime" />
+					<!-- <ddatepicker class="form-control" ng-model="scheduleTask.scheduleTask.nextStartTime"
+						id="nextStartTime"></ddatepicker> -->
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="executeResult"> 执行结果</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="scheduleTask.executeResult" name="executeResult" />
+				</div>
+			</div>
+		</fieldSet>
+		
+		<!-- 按钮组 -->
+		<div class="form-group">
+			<div class="btn-group formBtnGroup topRight col-md-offset-2">
+				<button ng-disabled="scheduleTaskForm.$invalid" class="btn btn-sm "
+					ng-click="saveScheduleTask(scheduleTask)">保存</button>
+				<button ng-disabled="scheduleTaskForm.$invalid" class="btn btn-sm  "
+					ng-show="showSaveAndAddButton"
+					ng-click="saveAndAddScheduleTask(scheduleTask)">保存并新增</button>
+				<button class="btn btn-sm" ng-click="back()">取消</button>
+			</div>
+		</div>	
+	</form>
+</div>

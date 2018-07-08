@@ -1,0 +1,308 @@
+
+<style>
+.grid {
+	min-height: 300px;
+}
+
+.operateBtn {
+	cursor: pointer;
+	transition: all .5s;
+	-moz-transition: all .5s; /* Firefox 4 */
+	-webkit-transition: all .5s; /* Safari 和 Chrome */
+	-o-transition: all .5s;
+}
+
+.operateBtn:hover {
+	transition: all .5s;
+	-moz-transition: all .5s; /* Firefox 4 */
+	-webkit-transition: all .5s; /* Safari 和 Chrome */
+	-o-transition: all .5s;
+}
+
+.deleteBtn:hover {
+	transform: rotate(180deg);
+	color: rgb(189, 45, 48);
+}
+
+.tablecell {
+	
+}
+
+.tablecell:hover {
+	background-color: rgb(235, 242, 249);
+}
+
+.tablecell:hover .turnBtn {
+	transform: translate(10px);
+}
+
+a:focus {
+	outline: none;
+}
+
+.oprateUl {
+	list-style: none;
+}
+
+.oprateUl li {
+	float: left;
+}
+
+.btn-group .btn {
+	margin: 0 3px;
+}
+</style>
+<div ng-controller="modelFormController" ng-init="getInitModelData()">
+	<form class="form-horizontal" name="modelForm"
+		ddd-form-validate="{ blurTrig: true}" novalidate>
+		<!-- <div class="col-md-12" style="margin-bottom:10px">
+			<diV class="pull-right btn-group">
+				<button class="btn btn-md" type="button"
+					ng-disabled="modelForm.$invalid" ng-click="saveModel(model)">保存
+				</button>
+				<button class="btn btn-md" type="button"
+					ng-disabled="modelForm.$invalid" ng-click="submitModel()" ng-if="model.modelEnglishName!='BaseModel'">提交</button>
+				<button class="btn btn-md" type="button"
+					ng-click="cancel()">取消</button>
+			</div>
+		</div> -->
+		<div class="btn-group formBtnGroup Right">
+			<button class="btn btn-sm" ng-click="saveModel(model)"
+				ng-disabled="modelForm.$invalid">保存</button>
+			<button class="btn btn-sm" ng-click="submitModel()"
+				ng-if="model.modelEnglishName!='BaseModel'"
+				ng-disabled="modelForm.$invalid">提交</button>
+			<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+		</div>
+		<fieldset>
+			<legend class="legend">
+				模型配置
+			</legend>
+
+			<div class="panel-group" id="accordion" role="tablist"
+				aria-multiselectable="true">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion"
+								data-target="#collapseOne" aria-expanded="true"
+								aria-controls="collapseOne"> 模型基本信息 </a>
+						</h4>
+
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							<div id="baseInfo" class="row">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" for="modelType">
+										模型类别</label>
+									<div class="col-md-8">
+										<dreference reference-id="modelType"
+											list-view-key='modelTypeList' ng-model='model.modelType'
+											show-model-filed='typeName' multi-select=false>
+										</dreference>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" for="modelName">
+										模型名称</label>
+									<div class="col-md-8">
+										<input type="text" class="form-control"
+											ng-model="model.modelName"
+											pattern="[\u2E80-\u9FFF]{1}([a-zA-Z0-9]|_|[\u2E80-\u9FFF]){0,19}$" required>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" for="modelEnglishName">
+										模型英文名称</label>
+									<div class="col-md-8">
+										<input ng-if="operate=='edit'" type="text"
+											class="form-control" ng-model="model.modelEnglishName"
+											ng-readonly="true"> <input ng-if="operate=='add'"
+											type="text" class="form-control"
+											ng-model="model.modelEnglishName" required
+											pattern="^[a-zA-Z]{1}([a-zA-Z0-9]|_){0,19}$">
+									</div>
+								</div>
+								<div class="form-group col-md-6"
+									ng-if="model.modelEnglishName!='BaseModel'">
+									<label class="col-md-4 control-label" for="processId">
+										流程标识</label>
+									<div class="col-md-8">
+										<select class="form-control" ng-model="model.processKey"
+											ng-options="w.KEY_ as w.NAME_ for w in workflowProcesses">
+											<option value="">-- 请选择 --</option>
+										</select>
+									</div>
+
+								</div>
+								<div class="form-group col-md-6"
+									ng-if="operate == 'edit'&&model.modelEnglishName!='BaseModel'">
+									<label class="col-md-4 control-label" for="modelForm">
+										表单名称</label>
+									<div class="col-md-8">
+										<!-- <input type="text" class="form-control" ng-model="model.modelForm"> -->
+										<dreference reference-id="dynamicFormList" name="modelForm"
+											list-view-key='dynamicFormList' ng-model='model.modelForm'
+											use-show-filed="true" show-model-filed='dynamicFormKey'
+											multi-select="false">
+									</div>
+								</div>
+								<div class="form-group col-md-6" ng-if="operate == 'add'">
+									<label class="col-md-4 control-label" for="modelForm">&ensp;</label>
+									<div class="col-md-8">
+										<label
+											style="display: block; width: 100%; height: 34px; padding: 6px 12px; line-height: 1.42857143; background-color: #fff;"
+											for="modelForm">&ensp;</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingTwo">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" data-target="#collapseTwo"
+								aria-expanded="false" aria-controls="collapseTwo"> 父模型项 </a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingTwo">
+						<div class="panel-body">
+							<div class="col-md-6 pull-right" style="margin: 10px 0;">
+								<div>
+									<label class="col-md-4 control-label">选择父模型</label>
+									<dreference reference-id="modelRefrence" class="col-md-8"
+										list-view-key='modelList' ng-model='model.parentModel'
+										init-filter="initFilter" 
+										display-only="{{(model && model.parentModel && $stateParams.operate=='edit')}}"
+										show-model-filed='modelName' multi-select=false>
+									</dreference>
+								</div>
+							</div>
+							<div id="parent" class="row">
+								<div class="col-md-12">
+									<div ui-grid="noteditGridOptions" ui-grid-edit class="grid"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingThree">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" data-target="#collapseThree"
+								aria-expanded="false" aria-controls="collapseThree"> 当前模型项 </a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingThree">
+						<div class="panel-body">
+							<div style="margin: 10px 0;">
+								<diV class="btn-group">
+									<a class="btn" ng-click="addModelItem()">新增模型项</a>&nbsp; <a
+										class="btn" ng-click="previewForm()">预览表单</a>
+								</div>
+								<div class="col-md-6 pull-right">
+									<label class="control-label col-md-4">复制模型项</label>
+									<dreference reference-id="modelItemRefrence" class="col-md-8"
+										init-filter="initFilter" list-view-key='modelItemList'
+										ng-model='copyModelItems' show-model-filed='modelItemName'
+										multi-select=true> </dreference>
+								</div>
+							</div>
+							<div id="current" class="row">
+								<div class="col-md-12">
+									<div ui-grid="editGridOptions" ui-grid-edit class="grid"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default"
+					ng-if="model.modelEnglishName!='BaseModel'">
+					<div class="panel-heading" role="tab" id="headingFour">
+						<h4 class="panel-title">
+							<a class="collapsed" role="button" data-toggle="collapse"
+								data-parent="#accordion" data-target="#collapseFour"
+								aria-expanded="false" aria-controls="collapseFour"> 联合唯一设置 </a>
+						</h4>
+					</div>
+					<div id="collapseFour" class="panel-collapse collapse in"
+						role="tabpanel" aria-labelledby="headingFour">
+						<div class="panel-body">
+							<div class="col-md-12">
+								<div class="col-md-4">
+									<ul class="list-group" style="height: 300px; overflow: auto">
+										<li class="list-group-item tablecell" style="cursor: pointer"
+											ng-click="addToWatiUnion(modelItem,$index)"
+											ng-repeat="modelItem in model.modelItems | filter:notSelectItemFilter">
+											{{modelItem.modelItemName}} <a
+											class="pull-right operateBtn turnBtn"> <i
+												class="glyphicon glyphicon-circle-arrow-right"></i>
+										</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-4">
+									<input ng-model="waitUnion.name"><a class="btn"
+										ng-click="completeUnion()">组合</a> <a class="btn"
+										ng-click="clearWatiUnion()">清空</a>
+									<ul class="list-group" style="height: 300px; overflow: auto">
+										<li class="list-group-item tablecell"
+											ng-repeat="modelItem in waitUnion.modelItems track by $index">
+											{{modelItem.modelItemName}} <a
+											ng-click="deleteWaitUnion(modelItem,$index)"
+											class="pull-right operateBtn deleteBtn"> <i
+												class="glyphicon glyphicon-remove"></i>
+										</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-md-4">
+									<ul class="list-group" style="height: 300px; overflow: auto">
+										<uib-accordion close-others="true">
+										<li class="list-group-item"
+											ng-repeat=" jointUnique in model.jointUnique"><uib-accordion-group
+												is-open="jointUnique.isOpen"> <uib-accordion-heading>
+											<i class="glyphicon "
+												ng-class="{'glyphicon-menu-up': jointUnique.isOpen, 'glyphicon-menu-down': !jointUnique.isOpen}"></i>
+											{{jointUnique.name}}
+											<ul class="pull-right oprateUl">
+												<li><a
+													ng-click="rebuildJointUnique(jointUnique,$index)"> <i
+														class=" glyphicon glyphicon-plus-sign"></i>
+												</a></li>
+												<li>|</li>
+												<li><a ng-click="deleteJointUnique(jointUnique,$index)">
+														<i class="glyphicon glyphicon-trash"></i>
+												</a></li>
+											</ul>
+											</uib-accordion-heading>
+											<ul class="list-group" style="margin: -15px">
+												<li class="list-group-item tablecell"
+													ng-repeat="modelItem in jointUnique.modelItems">
+													{{modelItem.modelItemName}} <a
+													ng-click="deleteJointUnionItems(jointUnique.modelItems,$index)"
+													class="pull-right operateBtn deleteBtn"> <i
+														class="glyphicon glyphicon-remove"></i>
+												</a>
+												</li>
+											</ul>
+											</uib-accordion-group></li>
+										</uib-accordion>
+									</ul>
+								</div>
+							</div>
+							<!-- </uib-accordion-group> </uib-accordion> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</form>
+</div>

@@ -1,0 +1,75 @@
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.inputCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.operatorCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.operateDate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.orgId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.remark}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCode">附件编码
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.attachmentCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="courseDesignName">课程设计名称
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.courseDesignName}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="progressStage">目前进度阶段
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.progressStage}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuId">学生编号
+				</label>
+				<div class="col-md-8">
+					<span>{{stuCourseProgress.stuId}}</span>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+</form>

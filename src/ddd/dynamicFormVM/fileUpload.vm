@@ -1,0 +1,6 @@
+#if($!{dataResource.get('isEdit')}=='是')
+	
+	<dfileupload associate-form-id="modelData.EId" associate-form-name="$!{dataResource.get('bindEntity')}"></dfileupload>
+#else
+	<dfileupload display="display" associate-form-id="modelData.EId" associate-form-name="$!{dataResource.get('bindEntity')}"></dfileupload>
+#end

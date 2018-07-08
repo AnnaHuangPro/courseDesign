@@ -1,0 +1,35 @@
+<form ng-init="init()" class="form-horizontal">
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="systemConfigTypeName">参数类型名
+				</label>
+				<div class="col-md-8" style="line-height: 40px;">
+					<span>{{systemConfigType.systemConfigTypeName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="systemConfigTypeCode">参数类型编码
+				</label>
+				<div class="col-md-8" style="line-height: 40px;">
+					<span>{{systemConfigType.systemConfigTypeCode}}</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="remark">备注 </label>
+			<div class="col-md-8" style="line-height: 40px;">
+				<span>{{systemConfigType.remark}}</span>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回"
+						ng-click="cancelOperate()" />
+				</div>
+			</div>
+	</fieldset>
+</form>

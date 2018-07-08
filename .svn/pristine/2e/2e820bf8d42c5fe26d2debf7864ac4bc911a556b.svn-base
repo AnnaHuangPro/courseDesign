@@ -1,0 +1,92 @@
+angular.module('modelFileModule', [])
+.controller('modelFileFormController',['$rootScope','$scope','ModelFileService','$state','angularPermission','$stateParams',
+function($rootScope,$scope,ModelFileService,$state,angularPermission,$stateParams){
+	$scope.showSaveAndAddButton = $stateParams.operate == 'add' ?true:false;
+	$scope.operate = $stateParams.operate;
+	$scope.id = $stateParams.id;
+
+	$scope.getInitModelFileData = function()
+	{
+		if($stateParams.operate=='edit')
+		{
+			$scope.getModelFileDetail();
+		}
+	}
+	
+	$scope.getModelFileDetail = function()
+	{
+		ModelFileService.findModelFileById($scope.id,sucesscb,errorcb);
+
+		function sucesscb(data)
+		{
+			$scope.modelFile = data;
+		};
+
+		function errorcb(error)
+		{
+			$rootScope.openErrorDialog(error);
+		};
+	};
+	
+	$scope.saveModelFile = function(modelFile)
+	{
+		if($scope.operate=='add')
+		{
+			$scope.addModelFile(modelFile,true);
+		}
+		else if($scope.operate=='edit')
+		{
+			$scope.updateModelFile(modelFile);
+		}
+	}
+	
+	$scope.saveAndAddModelFile = function(modelFile)
+	{
+		$scope.addModelFile(modelFile,false);
+	}	
+	$scope.addModelFile = function(modelFile,needColseTab)
+	{   
+		ModelFileService.saveModelFile({modelFile:modelFile},sucesscb,errorcb);
+
+		function sucesscb()
+		{
+			if(needColseTab){
+				refreshGrid();
+				$scope.back();	
+			}
+			else
+				$scope.modelFile=null;
+		}
+		function errorcb(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+	}
+	$scope.updateModelFile = function(modelFile)
+	{
+		ModelFileService.updateModelFile({modelFile:modelFile},sucesscb,errorcb);
+	
+		function sucesscb()
+		{
+			refreshGrid();
+			$scope.back();	
+		}
+		function errorcb(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+	};
+	
+//	$scope.refreshGrid = function(){
+//		var controller = $rootScope.getController('modelFileListGrid' , 'ddatagrid');
+//		if(controller){
+//			controller.refreshCurrent();
+//		}
+//	}
+	function refreshGrid(){
+		$scope.refreshGrid("modelFileListGrid");
+	}
+	$scope.back = function() {
+		$scope.turnToTab(true,"modelFileList","main.list.modelFile.modelFileList")
+	}
+}]);

@@ -1,0 +1,65 @@
+<div ng-controller="entityPropertyDefineFormController">
+	<div class="row" ng-init="getInitEntityPropertyDefineData()">
+		<form class="form-horizontal" name="entityPropertyDefineForm" novalidate >
+			<div class="row rowddd"></div>
+				<div class="form-group">
+					<div class="col-md-10">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-disabled="entityPropertyDefineForm.$invalid" ng-click="saveEntityPropertyDefine(propertiesDefine)">
+						<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ng-disabled="entityPropertyDefineForm.$invalid" ng-click="saveAndAddEntityPropertyDefine(propertiesDefine)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="back()"/>
+					</div>
+				</div>
+			<table class="table table-condensed">
+				<thead class="row">
+					<th class="col-md-2">实体</th>
+					<th class="col-md-2">字段名</th>
+					<th class="col-md-2">类型</th>
+					<th class="col-md-2">唯一码</th>
+					<th class="col-md-2">默认值</th>
+					<th class="col-md-1">顺序</th>
+					<th class="col-md-1" ng-if="operate=='add'">删除</th>
+				</thead>
+				<tbody>
+					<tr  ng-repeat="propertyDefine in propertiesDefine" >
+						<th class="span2">
+							<div >
+								<dselect class="form-control"code-type-key='institutionKey' ng-model='propertyDefine.entity'></dselect>
+							</div>
+						</th>
+						<th class="span2">
+							<div >
+								<input type="text" class="form-control" ng-model="propertyDefine.name">
+							</div>
+						</th>
+						<th class="span2">
+							<div  >
+								<dselect class="form-control"code-type-key='dataTypeKey'  ng-model='propertyDefine.type'></dselect>
+							</div>
+						</th>
+						<th class="span2">
+							<div  >
+								<input type="text" class="form-control" ng-enable="propertyDefine.type==one2one||propertyDefine.type==codeTable" ng-model="propertyDefine.uniqueCode">
+							</div>
+						</th>
+						<th class="span2">
+<!-- 						附加字段的默认值，需要根据不同的字段类型进行不同的渲染 -->
+							<div ng-switch on="propertyDefine.type">
+								<input ng-switch-default    value=""  type="text" class="form-control" ng-model="propertyDefine.defaultValue">
+								<input ng-switch-when="String" value="" type="text" class="form-control" ng-model="propertyDefine.defaultValue">
+								<input ng-switch-when="date" value="" type="text" class="form-control" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',skin:'twoer'})" onchange="" ng-model="propertyDefine.defaultValue"/>
+								<input ng-switch-when="one2one" value="" type="text" class="form-control" ng-model="propertyDefine.defaultValue">
+							</div>
+						</th>
+						<th class="span1">
+							<input type="number" class="form-control" ng-model="propertyDefine.sort"/>
+						</th>
+						<th class="span1" ng-if="operate=='add'">
+							<i class='glyphicon glyphicon-remove' ng-click="deleteProperty(propertyDefine)" style="margin-top:10px;panding:0"></i>
+						</th>
+					</tr>
+				</tbody>
+			</table>
+			<button ng-if="operate=='add'"  type="button" class="btn btn-success" ng-click="addOneProperty()">新增一个附加字段</button>			
+		</form>
+	</div>
+</div>

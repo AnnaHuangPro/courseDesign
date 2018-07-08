@@ -1,0 +1,10 @@
+
+#cell-content{
+	height: 35px;
+    border-bottom: 1px solid #c5c5c5;
+}
+.isOnClick{
+	background-color: #dff5ff;
+	font-weight: bold;
+   	text-shadow: none;
+}

@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-12">
+			<div class="btn-group formBtnGroup">
+				<dpagination class="pull-left" grid-name="reportViewListGrid"></dpagination>
+				<a class="btn " ng-click="addReportView()"
+					ng-if="hasPermission('reportView_add')"><i
+					class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+					class="btn" ng-click="refreshGrid()"><i
+					class='glyphicon glyphicon-refresh'></i>刷新</a>
+			</div>
+			<dcolumnfilter class="pull-right" grid-name="reportViewListGrid"/>
+		</div>
+		<ddatagrid 
+			id="reportViewListGrid"
+		 	isoperation-column=true 
+		 	class="col-md-12"
+		 	name="reportViewListGrid"
+			operation-columns='operationColumns'
+			operation-bar-buttons='operationBarButtons'
+			list-view-key='reportview'> </ddatagrid>
+	</div>
+

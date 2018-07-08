@@ -1,0 +1,107 @@
+
+<div class="modal-header">
+	<a class="close" href="javscript:void(0)" ng-click="cancelClick()">×</a>
+	<h4 class="modal-title">
+		<span class="glyphicon glyphicon-edit"></span>模型项
+	</h4>
+</div>
+<div class="modal-body">
+	<div ng-init="modelItemFromInit()">
+		<div class="row">
+			<ng-form class="form-horizontal" name="modelItemForm"
+				novalidate>
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="modelItemEnglishName">英文名称:</label>
+					<div class="col-md-8">
+						<span ng-if="operate=='edit'"> <input type="text"
+							class="form-control" name="modelItemEnglishName"
+							ng-model="modelItem.modelItemEnglishName" ng-readonly="true">
+						</span> <span ng-if="operate=='add'"> <input type="text"
+							class="form-control" name="modelItemEnglishName" required
+							pattern="^[a-zA-Z]{1}([a-zA-Z0-9]|_){0,19}$" ng-model="modelItem.modelItemEnglishName">
+						</span>
+					</div>
+				</div>
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="modelItemName">中文名称:</label>
+					<div class="col-md-8">
+						<input type="text" class="form-control"
+							ng-model="modelItem.modelItemName"
+							pattern="[\u2E80-\u9FFF]{1}([a-zA-Z0-9]|_|[\u2E80-\u9FFF]){0,19}$"
+							 required
+							>
+					</div>
+				</div>
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="datatype">数据类型:</label>
+					<div class="col-md-4">
+						<input type="text" ng-model="modelItem.datatypeDesc"
+							ng-value="modelItem.datatypeDesc=datatype.descName?datatype.descName:modelItem.datatypeDesc"
+							ng-disabled="true" class="form-control"> <input type="text"
+							ng-model="modelItem.datatype"
+							ng-value="modelItem.datatype=datatype.dataType?datatype.dataType:modelItem.datatype" required
+							ng-hide="true">
+					</div>
+					<div class="col-md-4">
+						<dreference reference-id="dataTypeRefrence"
+							list-view-key='modelDataTypeList' ng-model='datatype'
+							show-model-filed='descName' multi-select=false> </dreference>
+					</div>
+				</div>
+				<input type="text" ng-model="modelItem.dynamicFormKey"
+					ng-value="modelItem.dynamicFormKey=datatype.dynamicFormKey?datatype.dynamicFormKey:modelItem.dynamicFormKey"
+					ng-hide="true"> <input type="text"
+					ng-model="modelItem.javatype"
+					ng-value="modelItem.javatype=datatype.javaType?datatype.javaType:modelItem.javatype"
+					ng-hide="true"> <input type="text"
+					ng-model="modelItem.textSize"
+					ng-value="modelItem.textSize=datatype.dataSize?datatype.dataSize:modelItem.textSize"
+					ng-hide="true"> <input type="text"
+					ng-model="modelItem.relatedParameters.dataType"
+					ng-value="modelItem.relatedParameters.dataType=modelItem.datatype"
+					ng-hide="true"> <input type="text"
+					ng-model="modelItem.relatedParameters.component"
+					ng-value="modelItem.relatedParameters.component=datatype.type?datatype.type:modelItem.relatedParameters.component"
+					ng-hide="true">
+				<form-priview dynamic-form-key="modelItem.dynamicFormKey"
+					model-data="modelItem.relatedParameters" remove-load-icon="true"> 
+				</form-priview>
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="displayIndex">排序:</label>
+					<div class="col-md-8">
+						<input type="number" class="form-control" ng-model="modelItem.displayIndex" />
+					</div>
+				</div> 
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="isProcess">是否流程变量:</label>
+					<div class="col-md-8">
+						<div class="radio-inline ng-scope">	
+							<label class="ng-binding">
+								<input type="radio" ng-model="modelItem.isProcess" value="是" />是
+							</label>
+						</div>
+						<div class="radio-inline ng-scope">	
+							<label class="ng-binding">
+								<input type="radio" ng-model="modelItem.isProcess" value="否"/>否
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-group form-content  col-md-12">
+					<label class="col-md-3 control-label" for="remark">备注:</label>
+					<div class="col-md-8">
+						<textarea  class="form-control" style="height:100px"
+							ng-model="modelItem.remark"></textarea>
+					</div>
+				</div>
+
+			</ng-form>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<div class='btn-group btn-group-md'>
+		<button class="btn btn-primary" type="button"  ng-click="ensureClick()" ng-disabled="modelItemForm.$invalid">确定</button>
+		<button class="btn btn-default" type="button" ng-click="cancelClick()">取消</button>
+	</div>
+</div>

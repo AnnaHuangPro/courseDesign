@@ -1,0 +1,122 @@
+<form ng-init="init()" class="form-horizontal"
+	name="studentForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveStudent(false)"
+			ng-disabled="studentForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveStudent(true)"
+			ng-disabled="studentForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuName">
+					   					学生登录账号:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuName"
+						placeholder='学生登录账号' class="form-control"
+						ng-model="student.stuName" name="stuName"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuRealName">
+										真实姓名:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuRealName"
+						placeholder='真实姓名' class="form-control"
+						ng-model="student.stuRealName" name="stuRealName"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuGender">
+										学生性别:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuGender"
+						placeholder='学生性别' class="form-control"
+						ng-model="student.stuGender" name="stuGender"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuAge">
+										学生年龄:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="stuAge"
+						placeholder='学生年龄' class="form-control"
+						ng-model="student.stuAge" name="stuAge"
+						max="65535"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuPhone">
+										学生联系方式:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuPhone"
+						placeholder='学生联系方式' class="form-control"
+						ng-model="student.stuPhone" name="stuPhone"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuEmail">
+										学生邮件地址:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuEmail"
+						placeholder='学生邮件地址' class="form-control"
+						ng-model="student.stuEmail" name="stuEmail"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuMajor">
+										专业信息:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="stuMajor"
+						placeholder='专业信息' class="form-control"
+						ng-model="student.stuMajor" name="stuMajor"
+						max="65535"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label form-margin" for="organization">
+				学生所属学校
+			</label>
+			<div class="col-md-8">
+				<dreference multi-select=false id="organization"
+							list-view-key='organizationList'
+							ng-model='student.organization' show-model-filed='name'
+							placeholder='所属学校' class="form-control"></dreference>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

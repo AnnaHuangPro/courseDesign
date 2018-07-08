@@ -1,0 +1,58 @@
+<div ng-controller="memberGroupMgtFormController">
+	<div class="row" ng-init="getInitMemberProjectionData()">
+		<form class="col-md-12 form-horizontal" name="memberProjectionForm"
+			novalidate>
+			<fieldset>
+				<legend>成员分配</legend>
+				<div class="form-group col-md-12">
+					<div class="panel">
+						<div class="panel-headding"
+							style="background-color: rgb(245, 245, 245); min-height: 0; padding: 0;">
+							<div class="row">
+							
+								<div class="col-md-6">
+									<label class="col-md-2 control-label" for="member"> 会员:
+									</label>
+									<div class="col-md-8">
+										<dreference class="form-control" reference-id="member"
+												list-view-key='memberReference' ng-model='member'
+												show-model-filed='name' name="member" 
+												ng-show="operate != 'edit'"></dreference> 
+										<dreferencedisplay display-model='member' display-field='name' ng-show="operate == 'edit'"></dreferencedisplay>
+									</div>
+								</div>
+								
+								<div class=" col-md-6 pull-right">
+									<label class="col-md-4 control-label" for="memberType">选择会员类别：
+									</label>
+									<div class="col-md-8">
+										<dreference class="form-control" id="memberTypes" reference-id="memberTypes" multi-select="true"
+											list-view-key='memberTypeReference' ng-model='memberTypes'
+											show-model-filed='typeName' name="memberType"></dreference>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-body">
+							<ul style="list-style: none">
+								<li style="float: left; margin-right: 10px;"
+									ng-repeat="memberType in memberTypes"
+									ng-click="memberTypes.splice($index,1)"><a
+									class="btn btn-default">{{memberType.typeName}}<i
+										class=" glyphicon glyphicon-remove"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button ng-disabled="memberProjectionForm.$invalid" class="btn btn-sm" ng-click="saveMemberProjection()">保存</button>
+					<button class="btn btn-sm" ng-click="back()">返回</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
+

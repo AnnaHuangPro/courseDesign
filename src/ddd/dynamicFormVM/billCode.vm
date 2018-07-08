@@ -1,0 +1,1 @@
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>

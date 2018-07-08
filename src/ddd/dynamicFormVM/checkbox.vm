@@ -1,0 +1,35 @@
+#set($index=0)
+#if($!{dataResource.get('isEdit')}=='是')
+<div ng-init="$!dataResource.get('bundle')={}">
+#foreach($option in $dataResource.get('dataSource'))
+	#set($index=$index + 1)
+	<div #if($!dataResource.get('orientation') == '横排')
+			class="checkbox-inline ng-scope"
+		#else
+			class="checkbox ng-scope"
+		#end>	
+		<label class="ng-binding">
+			<input type="checkbox" ng-model="modelData.$!{dataResource.get('bundle')}.option${index}" ng-true-value="'$option.get("value")'" name="$!{dataResource.get('bundle')}"
+			#if($option.get('isDefaultValue')=='true') ng-checked="true" #end/>$option.get('name')
+		</label>
+	</div>
+#end　
+</div>
+#else
+<div ng-init="$!dataResource.get('bundle')={}" class="form-control-static">
+#foreach($option in $dataResource.get('dataSource'))
+	#set($index=$index + 1)
+	<div #if($!dataResource.get('orientation') == '横排')
+			class="checkbox-inline ng-scope"
+		#else
+			class="checkbox ng-scope"
+		#end>	
+		<label class="ng-binding">
+			<input type="checkbox" ng-disabled="true" ng-model="modelData.$!{dataResource.get('bundle')}.option${index}" ng-true-value="'$option.get("value")'" name="$!{dataResource.get('bundle')}"
+			#if($option.get('isDefaultValue')=='true') ng-checked="true" #end/>$option.get('name')
+		</label>
+	</div>
+#end　
+</div>
+#end 
+

@@ -1,0 +1,42 @@
+<style>
+.btnValidate{
+    cursor: pointer !important;
+}
+.btnInValidate{
+	background-color: #d2d2d2 !important;
+    cursor: not-allowed !important;
+}
+</style>
+<div ng-model="reportFormModel" style="margin-top:10px;padding-top: 10px;background-color: white;" ng-controller="reportFormModelController">
+	<div id="dynamicForm" ng-show="dynamicForm">
+		<form-priview name="dynamicform" model-data="params" dynamic-form-key="dynamicForm"></form-priview>
+	</div>
+	<div id="search" class="row">
+		<div class="col-md-3 col-md-offset-8" style="padding-bottom: 13px;">
+			<input type="button" class="btn btn-primary" value="刷新"  ng-if="!withChart" ng-click="search()">
+			<input type="button" class="btn btn-primary" value="刷新"  ng-if="withChart" ng-click="excel2HtmlWithChart()">
+			<input type="button" class="btn btn-primary" ng-show="isPagenation == '是'" value="导出当前" ng-click="exportExcel()">
+			<input type="button" class="btn btn-primary" value="导出全部" ng-click="exportExcel('false')">
+		</div>
+	</div>
+	<div class="row">
+		<div ng-show="isPagenation == '是'" class="col-md-3 col-md-offset-8" style="padding-right: 0;">
+			<select ng-model="pageSizeStr">
+					<option value="-100">全部</option>
+					<option value="10">10</option>
+					<option value="20">20</option>
+					<option value="50">50</option>
+					<option value="100">100</option>
+			</select>
+			<input class="btn btn-primary" type="button" ng-class="{btnValidate:preV == true ,btnInValidate :preV == false}" value="上一页" ng-click="change('P')">
+			<span>{{currentPage}}</span>
+			<span>/</span>
+			<span>{{totalPage}}</span>
+			<input class="btn btn-primary"  type="button" ng-class="{btnValidate:nexV == true ,btnInValidate :nexV == false}" value="下一页" ng-click="change('N')">
+		</div>
+		<div class="col-md-2 col-md-offset-8" style="padding-left: 0;padding-top: 10px;">
+			<span style="font-weight:bold;padding-left: 15px;font-size:14px;">共计 {{totalCount}} 条</span>
+		</div>
+	</div>
+	<div compile="res"></div>
+</div>

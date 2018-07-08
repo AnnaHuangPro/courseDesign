@@ -1,0 +1,4 @@
+<div class="input-group date form_datetime no-padding">
+	<input class="form-control input-group-addon"  type="text">
+	<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+</div>

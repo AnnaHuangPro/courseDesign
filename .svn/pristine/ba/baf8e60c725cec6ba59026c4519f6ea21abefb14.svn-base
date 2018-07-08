@@ -1,0 +1,379 @@
+
+<ul class="nav nav-list accordion-group">
+	<li class="nav-header"><i class="icon-plus icon-white"></i>表单设计</li>
+	<li style="display: none;" class="boxes mute" id="elmComm">
+		
+		<!-- 文本框  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">文本框</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">文本框</label>
+					<div class="col-md-10">
+						<input type="text"
+							config="{holderType:'input',type:'input',showInfo:'',title:'文本框',bundle:'',validation:'',nullable:'否',authority:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否',bindVal:''}"
+							class="form-control deplugins" deplugins="text" />
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 多行文本  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="alert-info">提示</a></li>
+						<li class=""><a href="#" rel="alert-error">错误</a></li>
+						<li class=""><a href="#" rel="alert-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">多行文本</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-sm-2 control-label deplugins-orgname">多行文本</label>
+					<div class="col-sm-10">
+						<textarea rows="5"
+							config="{holderType:'textarea',type:'textArea',defaultValue:'',title:'多行文本',nullable:'是',bundle:'',authority:'',col1:'',col2:'',placeholder:'',isEdit:'',isHide:'否',bindVal:''}"
+							class="form-control deplugins" deplugins="textarea" ></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 日期控件  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">日期</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-sm-2 control-label deplugins-orgname">日期</label>
+					<div class="col-sm-10">
+						<input type="date"
+							config="{holderType:'input',type:'datetime',defaultValue:'',title:'日期',bundle:'',format:'0',nullable:'',authority:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否',bindVal:''}"
+							class="form-control deplugins" deplugins="datetime" ></input>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 选择框  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">选择框</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">选择框:</label>
+					<div class="col-md-10">
+						<choose class="form-control deplugins" config="{holderType:'choose',type:'radio',orientation:'横排',title:'选择框',bundle:'',dataSource:'',nullable:'',authority:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否',bindVal:''}" deplugins="choose" >
+							<div>
+								<label style="display:inline;"><input type="radio" name="option" value="选项一" />选项一</label>
+								<label style="display:inline;"><input type="radio" name="option" value="选项二" />选项二</label>
+							</div>
+						</choose>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 下拉框  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">下拉框</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">下拉框</label>
+					<div class="col-md-10">
+						<select type="text"
+							config="{holderType:'select',type:'',defaultValue:'',title:'下拉框',bundle:'',validation:'',authority:'',col1:'',col2:'',foreignKeyView:'',isEdit:'',placeholder:'',isHide:'否',bindVal:'',placeholder:''}"
+							class="form-control deplugins" deplugins="select">
+							<option >选项一</option>
+							<option >选项二</option>
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 上传 -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">上传控件</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">上传控件</label>
+					<div class="col-md-10">
+						<input type="file"
+							config="{holderType:'input',type:'fileUpload',title:'',bundle:'',fileType:'',authority:'',col1:'',col2:'',bindEntity:'',isEdit:'',placeholder:'',isHide:'否',imgWidth:'',imgHeight:'',limitWidth:'',limitHeight:'',limitType:'',limitSizeM:'',limitSizeK:'',limitSizeB:''}"
+							class="form-control deplugins" deplugins="upload" />
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 子表  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">子表</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">子表</label>
+					<div class="col-md-10">
+						<table style="width:220px"
+							config="{holderType:'table',type:'subTable',title:'子表',bundle:'',validation:'',authority:'',eachPageSize:'10',displayFields:'',joinTableName:'',subModelEnglishName:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否'}"
+							class="form-control deplugins table table-bordered table-hover" deplugins="subtable" >
+							<tr ><th>列名1</th><th>列名2</th></tr>
+							<tr ><td>数据1</td><td>数据2</td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 自动编码  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">自动编码</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">自动编码</label>
+					<div class="col-md-10">
+						<input type="text"
+							config="{holderType:'input',type:'billCode',title:'自动编码',bundle:'',nullable:'否',authority:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否',bindVal:'',billCodeTypeName:'',billCodeRule:'',variables:'',seqences:'',entityName:''}"
+							class="form-control deplugins" deplugins="billCode" />
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- 操作提示 -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">操作提示</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">操作提示</label>
+					<div class="col-md-10">
+						<table style="width:220px;"
+							config="{holderType:'table',type:'operateTips',title:'操作提示',col1:'',col2:'',showInfo:''}"
+							class="form-control deplugins table table-bordered table-hover" deplugins="operateTips" >
+							<tr ><td>此操作用于...</td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- 流程变量 -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">流程变量</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">流程变量</label>
+					<div class="col-md-10">
+						<table style="width:220px;"
+							config="{holderType:'table',type:'processVariable',title:'流程变量',bundle:'',col1:'',col2:''}"
+							class="form-control deplugins table table-bordered table-hover" deplugins="processVariable" >
+							<tr ><td>流程变量值</td></tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- 模板文件上传  -->
+		<div class="box box-element ui-draggable">
+			<a href="#close" class="remove label label-important"><i
+				class="icon-remove icon-white"></i>删除</a> <span class="drag label"><i
+				class="icon-move"></i>拖动</span> <span class="configuration">
+				<button type="button" class="btn btn-mini"
+					data-target="#editorModal" role="button" data-toggle="modal">编辑</button>
+				<span class="btn-group"> <a
+					class="btn btn-mini dropdown-toggle" data-toggle="dropdown"
+					href="#">标记 <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li class="active"><a href="#" rel="">默认</a></li>
+						<li class=""><a href="#" rel="muted">禁用</a></li>
+						<li class=""><a href="#" rel="text-warning">警告</a></li>
+						<li class=""><a href="#" rel="text-error">错误</a></li>
+						<li class=""><a href="#" rel="text-info">提示</a></li>
+						<li class=""><a href="#" rel="text-success">成功</a></li>
+					</ul>
+			</span>
+			</span>
+			<div class="preview">模板文件上传</div>
+			<div class="view">
+				<div class="form-group">
+					<label class="col-md-2 control-label deplugins-orgname">模板文件上传</label>
+					<div class="col-md-10">
+						<input type="file"
+							config="{holderType:'input',type:'fileTemploadUpload',showInfo:'',title:'模板文件上传',bundle:'',nullable:'否',authority:'',col1:'',col2:'',isEdit:'',placeholder:'',isHide:'否',bindVal:''}"
+							class="form-control deplugins" deplugins="fileTemploadUpload" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</li>
+</ul>

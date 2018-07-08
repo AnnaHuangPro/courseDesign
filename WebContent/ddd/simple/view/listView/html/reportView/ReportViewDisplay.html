@@ -1,0 +1,8 @@
+<div ng-controller="reportViewDisplayController" ng-init="getDisplayInitData()">
+	<div ng-if="displayListViewKey">
+		<ddatagrid isoperation-column=true
+			operation-columns='operationColumns'
+			operation-bar-buttons='operationBarButtons'
+			list-view-key='{{displayListViewKey}}'> </ddatagrid>
+	</div>
+</div>

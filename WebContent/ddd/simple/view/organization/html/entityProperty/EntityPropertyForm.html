@@ -1,0 +1,91 @@
+<div ng-controller="entityPropertyFormController">
+	<div class="row" ng-init="getInitEntityPropertyData()">
+		<form class=" form-horizontal" name="entityPropertyForm" novalidate >
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode"> 输入码</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.inputCode">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode"> 操作人编码</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.operatorCode">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate"> 操作日期</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.operateDate">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId"> 单位主键</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.orgId">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 备注</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.remark">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entity"> 实体</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.entity">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entityId"> 实体ID</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.entityId">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 字段名</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.name">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="numberValue"> 数字值</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.numberValue">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="StringValue"> 字符值</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.StringValue">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type"> 字段类型</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="entityProperty.type">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-10 btn-group formBtnGroup topRight col-md-offset-2 ">
+				   	<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-disabled="entityPropertyForm.$invalid" ng-click="saveEntityProperty(entityProperty)">
+					<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ng-disabled="entityPropertyForm.$invalid" ng-click="saveAndAddEntityProperty(entityProperty)">
+					<input class="btn btn-primary" type="button" value="返回" ng-click="back()"/>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

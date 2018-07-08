@@ -1,0 +1,20 @@
+<div class="row">
+<div class="col-md-12">
+	<div class="btn-dcolumnfilter btn-group formBtnGroup">
+		<dpagination class="pull-left" grid-name="moduleListGrid"></dpagination>
+		<button class="btn " ng-click="addModule()"
+			ng-if="hasPermission('module_add')">
+			<i class='glyphicon glyphicon-plus-sign'></i>新增
+		</button>
+	</div>
+	<dcolumnfilter grid-name="moduleListGrid" class="btn-dcolumnfilter pull-right" />
+</div>
+<div class="btn-group formBtnGroup pull-right gridBtnGroup"></div>
+
+<ddatagrid class="col-md-12" id="moduleListGrid"
+	name="moduleListGrid" show-grid-only="true"
+	operation-columns='operationColumns'
+	operation-bar-buttons='operationBarButtons'
+	list-view-key="module"> 
+</ddatagrid>
+</div>

@@ -1,0 +1,121 @@
+angular.module('permissionModule', [])
+.controller('permissionFormController',['$rootScope','$scope','PermissionService','$state','angularPermission','$stateParams','dialogs',
+function($rootScope,$scope,PermissionService,$state,angularPermission,$stateParams,dialogs) {
+	$scope.showSaveAndAddButton = $stateParams.operate == 'add' ?true:false;
+	$scope.operate = $stateParams.operate;
+	$scope.id = $stateParams.id;
+	
+	$scope.create = function() {
+		$scope.permission = {};
+		//设置默认值
+	}
+	
+	$scope.init = function() {
+		if($stateParams.operate=='edit') {
+			$scope.findPermission();
+		}
+		else if($stateParams.operate=='add') {
+			$scope.create(); 
+		}
+		else {
+			dialogs.error("错误","操作类型 "+$scope.operate+" 在当前请求中无效");
+		}
+	}
+	
+	$scope.findPermission = function() {
+		$rootScope.app.asynchroMask.mask("加载中。。。。。");
+		PermissionService.findPermissionById($scope.id,sucessCB,errorCB);
+
+		function sucessCB(data)	{
+			$rootScope.app.asynchroMask.unmask();
+			$scope.permission = data;
+		};
+
+		function errorCB(error)	{
+			$rootScope.app.asynchroMask.unmask();
+			$rootScope.openErrorDialog(error);
+		}
+	};
+	
+	$scope.savePermission = function(isNeedNew) {
+		if($scope.operate=='add') {
+			$scope.addPermission($scope.permission,isNeedNew);
+		}
+		else if($scope.operate=='edit')	{
+			$scope.updatePermission($scope.permission,isNeedNew);
+		}
+	}
+	
+	
+	$scope.addPermission = function(permission,isNeedNew) {   
+		
+		if(angularPermission.hasPermission('permission_add')) {
+			$rootScope.app.asynchroMask.mask("加载中。。。。。");
+			PermissionService.savePermission(permission,sucessCB,errorCB);
+		}
+		else {
+			dialogs.error("错误","操作: 新增  未被授权，请联系管理人员");
+		}
+		function sucessCB()	{
+			$rootScope.app.asynchroMask.unmask();
+			if(isNeedNew){
+				$scope.operate='add';
+				$scope.create();
+			}
+			else {
+				refreshGrid();
+				$scope.back();	
+			}
+			
+		}
+		function errorCB(error)	{
+			$rootScope.app.asynchroMask.unmask();
+			$rootScope.openErrorDialog(error);
+		}
+	}
+	$scope.updatePermission = function(permission,isNeedNew) {
+		
+		if(angularPermission.hasPermission('permission_edit')) {
+			$rootScope.app.asynchroMask.mask("加载中。。。。。");
+			PermissionService.updatePermission(permission,sucessCB,errorCB);
+		}
+		else {
+			dialogs.error("错误","操作: 编辑  未被授权，请联系管理人员");
+		}
+		function sucessCB()	{
+			$rootScope.app.asynchroMask.unmask();			
+			if(isNeedNew) {
+				$scope.operate='add';
+				$scope.create();
+			}
+			//处理一些默认值
+			else {
+				refreshGrid();
+				$scope.back();	
+			}			
+		}
+		function errorCB(error)	{
+			$rootScope.app.asynchroMask.unmask();
+			$rootScope.openErrorDialog(error);
+		}
+	};
+	
+//	$scope.cancel = function() {
+//		$scope.refreshGrid();
+//		$rootScope.closeOperateTab();
+//		$state.go('main.list.permission.permissionList');
+//	}
+//	
+//	$scope.refreshGrid = function() {
+//		var controller = $rootScope.getController('permissionListGrid' , 'ddatagrid');
+//		if(controller) {
+//			controller.refreshCurrent();
+//		}
+//	}
+	function refreshGrid(){
+		$scope.refreshGrid("permissionListGrid");
+	}
+	$scope.back = function() {
+		$scope.turnToTab(true,"permissionList","main.list.permission.permissionList")
+	}
+}]);

@@ -1,0 +1,17 @@
+<div class="modal-header">
+ 	<span class="btn btn-success" style="margin-right: 15px" ng-click="done()">确定</span> 
+	<span class="btn btn-success"  ng-click="cancel()">取消</span>
+	<dcolumnfilter grid-name="dreferenceDdatagrid" class="col-md-6 pull-right" />
+</div>
+
+<div class="modal-body clearFix">
+		<ddatagrid
+		id="dreferenceDdatagrid"
+		name="dreferenceDdatagrid"
+		multi-select="{{data.multiSelect}}"
+		style="width:500px;heigth:500x" 
+		init-filter="{{data.initFilter}}"
+		fit-window="false" id="dreferenceDdatagrid" 
+		list-view-key={{data.listViewKey}}
+		fitWindow="false"></ddatagrid>
+</div>

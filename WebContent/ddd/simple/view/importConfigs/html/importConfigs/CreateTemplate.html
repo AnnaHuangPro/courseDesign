@@ -1,0 +1,27 @@
+<div class="row">
+	<form class="form-horizontal" name="importConfigsForm"
+		novalidate>
+		<div class="row rowddd"></div>
+		
+		<div class="form-group col-md-12">
+			<label class="col-md-12" for="moduleFile"> 后台包名:</label>
+			<div class="col-md-12">
+				<input type="text" class="form-control"
+							ng-model="packageName" name="packageName" required />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-10">
+				<input class="btn btn-success col-md-offset-2" type="button"
+					value="确定" type="submit"
+					ng-click="createTemplateSure(packageName)"> <input
+					class="btn btn-primary" type="button" value="返回"
+					ng-click="closeDialog()" />
+			</div>
+		</div>
+	</form>
+</div>
+
+
+

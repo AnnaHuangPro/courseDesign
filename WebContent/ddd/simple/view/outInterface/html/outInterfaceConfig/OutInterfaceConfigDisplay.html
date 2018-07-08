@@ -1,0 +1,102 @@
+<div ng-controller="outInterfaceConfigDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.orgId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="configName">名字 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.configName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="connectInfo">数据库链接 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.connectInfo}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="outQuerySql">源库查询语句 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.outQuerySql}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="localQuerySql">目标库查询语句 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.localQuerySql}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="localUpdateSql">目标库更新语句 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.localUpdateSql}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="outUpdateSql">更新外部语句 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.outUpdateSql}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="specialParam">特殊参数 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.specialParam}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="excuteInterfaceBean">处理类 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.excuteInterfaceBean}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">启用状态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.state}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="isImport">是否是导入 </label>
+				<div class="col-md-8 value-display">
+					<span>{{outInterfaceConfig.isImport}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

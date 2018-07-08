@@ -1,0 +1,33 @@
+<div ng-controller="operatorDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="col-md-11 form-horizontal">
+			<legend class="legend" data-toggle="collapse" href="">
+				<span class="legend-title">基础信息</span>
+			</legend>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employee">关联职员 </label>
+				<div class="col-md-8 value-display">
+					<span>{{operator.employee.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">操作员名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{operator.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="code">操作员编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{operator.code}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-sm col-md-1" type="button" value="返回"
+						ng-click="closeOperateTab()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

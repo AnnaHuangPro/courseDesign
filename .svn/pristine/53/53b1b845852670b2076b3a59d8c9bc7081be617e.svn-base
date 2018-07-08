@@ -1,0 +1,35 @@
+<form ng-init="init()" class="form-horizontal" name="dataSourceTypeForm"
+	ddd-form-validate="{ blurValidate: true}" novalidate role="form">
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label form-margin required"
+				for="dataSourceTypeName"> 数据源类型名称 </label>
+			<div class="col-md-8">
+				<input type="text" id="dataSourceTypeName" placeholder='数据源类型名称'
+					class="form-control" ng-model="dataSourceType.dataSourceTypeName"
+					name="dataSourceTypeName" maxlength="250" required />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label form-margin required"
+				for="dataSourceTypeCode"> 数据源类型编码 </label>
+			<div class="col-md-8">
+				<input type="text" id="dataSourceTypeCode" placeholder='数据源类型编码'
+					class="form-control" ng-model="dataSourceType.dataSourceTypeCode"
+					name="dataSourceTypeCode" maxlength="250" required />
+			</div>
+		</div>
+	</fieldset>
+	<div class="form-group">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2">
+			<button ng-disabled="dataSourceTypeForm.$invalid" class="btn btn-sm "
+				ng-click="saveDataSourceType(false)"">保存</button>
+			<button ng-disabled="dataSourceTypeForm.$invalid" class="btn btn-sm"
+				ng-show="showSaveAndAddButton" ng-click="saveDataSourceType(true)">保存并新增</button>
+			<button class="btn btn-sm" ng-click="closeOperateTab()">取消</button>
+		</div>
+	</div>
+</form>

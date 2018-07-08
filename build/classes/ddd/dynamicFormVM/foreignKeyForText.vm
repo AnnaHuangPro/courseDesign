@@ -1,0 +1,23 @@
+#if($!{dataResource.get('isEdit')}=='是')
+<dreference id="$!dataResource.get('dataSource')" 
+		list-view-key="$!dataResource.get('dataSource')" 
+		ng-model="modelData.$!{dataResource.get('bundle')}" 
+		name="$!{dataResource.get('bundle')}" 
+		
+#if($!{dataResource.get('foreignKeyView')})
+		show-model-filed="$!dataResource.get('foreignKeyView')" 
+		bind-field="$!dataResource.get('foreignKeyView')" 
+#else
+		show-model-filed="EId" 
+		bind-field="EId"
+#end
+		#if($!{dataResource.get('nullable')}=="是")
+			 required="required"
+		#end
+		placeholder="$!{dataResource.get('placeholder')}"
+		use-show-filed="true"
+		multi-select="true"
+></dreference>
+#else
+	<span>{{modelData.$!dataResource.get('bundle')}}</span>
+#end

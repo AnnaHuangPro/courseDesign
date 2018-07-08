@@ -1,0 +1,48 @@
+<div class="row">
+	<form class="form-horizontal" name="ddd3TestForm" role="form">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2" style="padding-top: 15px;">
+		</div>
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#baseInfo"
+				style="cursor: pointer">
+				<i class="glyphicon glyphicon-edit"></i>&nbsp;根据多张表生成实体
+			</legend>
+			<div id="baseInfo" class="row collapse in">
+				<table class="table table-condensed">
+					<thead class="row">
+						<th class="col-md-9 text-center">完整类名</th>
+						<th class="col-md-2 text-center">表别名</th>
+						<th class="col-md-1">删除</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="tab in tabs">
+							<th class="text-center">
+								<input type="text" class="form-control"
+									ng-model="tab.className">
+							</th>
+							<th class="text-center">
+								<input type="text" class="form-control" 
+								ng-model="tab.alias">
+							</th>
+							<th class="span1"><i class='glyphicon glyphicon-remove'
+								ng-click="deleteTab(tab)"></i></th>
+						</tr>
+					</tbody>
+				</table>
+				<button type="button" class="btn btn-success"
+			ng-click="addTab()">新增</button>
+				<textarea class="form-control" rows="10" cols="" ng-model="result"></textarea>
+				<input class="btn btn-primary" type="button" value="生成" ng-click="generate()" />
+			</div>
+		</fieldset>
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#introduce"
+				style="cursor: pointer">
+				<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+			</legend>
+			<div id="introduce" class="row collapse in">
+				<dddintroduce id="introduceId" type="type"></dddintroduce>
+			</div>
+		</fieldset>
+	</form>
+</div>

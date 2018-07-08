@@ -1,0 +1,59 @@
+{
+    "codetables": [
+        {
+            "code": "文件类型",
+            "codeTable": [
+                {
+                    "code": "报表",
+                    "name": "报表",
+                    "operateDate": "2016-12-23 15:27:54",
+                    "operatorCode": "admin",
+                    "value": "报表"
+                }
+            ],
+            "codeTypeKey": "modelFileType",
+            "name": "文件类型",
+            "operateDate": "2016-12-23 15:27:40",
+            "operatorCode": "admin"
+        },
+        {
+            "code": "是否分页",
+            "codeTable": [
+                {
+                    "code": "是",
+                    "name": "是",
+                    "operateDate": "2016-12-25 14:46:36",
+                    "operatorCode": "admin",
+                    "value": "是"
+                },
+                {
+                    "code": "否",
+                    "name": "否",
+                    "operateDate": "2016-12-25 14:46:47",
+                    "operatorCode": "admin",
+                    "value": "否"
+                }
+            ],
+            "codeTypeKey": "isPagenation",
+            "name": "是否分页",
+            "operateDate": "2016-12-25 14:46:23",
+            "operatorCode": "admin"
+        }
+    ],
+    "systemconfigs": [
+        {
+            "operateDate": "2016-12-23 15:25:50",
+            "operatorCode": "admin",
+            "orgId": 2,
+            "systemConfigKey": "galleryPath",
+            "systemConfigValue": "D:\\upload\\OA"
+        },
+        {
+            "operateDate": "2016-12-23 15:26:50",
+            "operatorCode": "admin",
+            "orgId": 2,
+            "systemConfigKey": "reportPermissionModule",
+            "systemConfigValue": "000100480001"
+        }
+    ]
+}

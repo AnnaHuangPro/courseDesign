@@ -1,0 +1,27 @@
+#合并路由时框架路径
+ddd3Path=D:\\angular\\workspace\\DDD3\\
+#合并路由时本系统路径
+applicationPath=D:\\angular\\workspace\\DDD3\\
+dataInitSoucePath=D:\\angular\\workspace\\DDD3\\src\\ddd\\base\\dataInit\\source\\
+#生成表结构时的前缀
+shortCode=DD
+#生成代码时的包名
+basePackage=ddd.simple
+#生成代码时webRoot根目录
+webRoot=WebContent\\
+charset_UTF8=UTF-8
+charset_ISO=ISO-8859-1
+#数据库类型，mysql,oracle,sqlserver
+dataBase=mysql
+#多服务器时服务器Id
+serverId = app1
+#自己定义ID缓存数量
+primaryKeyCachedSize = 100
+#自己定义ID段大小
+primaryKeySegmentSize = 1000
+#异常日志目录
+logPath=d:/DDDException/
+#是否开发模式
+isDeveloping =true
+#动态表单的模板路径
+dynamicFormVMPath = D:/angular/tomcat7/webapps/DDD3/WEB-INF/classes/ddd/dynamicFormVM/

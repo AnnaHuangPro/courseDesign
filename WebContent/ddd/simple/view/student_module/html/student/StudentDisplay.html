@@ -1,0 +1,138 @@
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码
+				</label>
+				<div class="col-md-8">
+					<span>{{student.inputCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码
+				</label>
+				<div class="col-md-8">
+					<span>{{student.operatorCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期
+				</label>
+				<div class="col-md-8">
+					<span>{{student.operateDate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键
+				</label>
+				<div class="col-md-8">
+					<span>{{student.orgId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8">
+					<span>{{student.remark}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCode">附件编码
+				</label>
+				<div class="col-md-8">
+					<span>{{student.attachmentCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuId">学生编号
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuName">学生登录账号
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuName}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuPwd">学生登录密码
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuPwd}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="thrRealName">真实姓名
+				</label>
+				<div class="col-md-8">
+					<span>{{student.thrRealName}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuGender">学生性别
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuGender}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuAge">学生年龄
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuAge}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuPhone">学生联系方式
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuPhone}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuEmail">学生邮件地址
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuEmail}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="stuMajor">专业信息
+				</label>
+				<div class="col-md-8">
+					<span>{{student.stuMajor}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="creatTime">创建时间
+				</label>
+				<div class="col-md-8">
+					<span>{{student.creatTime}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="updateTime">更新时间
+				</label>
+				<div class="col-md-8">
+					<span>{{student.updateTime}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">学生账号状态
+				</label>
+				<div class="col-md-8">
+					<span>{{student.state}}</span>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+</form>

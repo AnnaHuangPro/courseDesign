@@ -1,0 +1,96 @@
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.inputCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.operatorCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.operateDate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.orgId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.remark}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCode">附件编码
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.attachmentCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_code">招领登记编码
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_code}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_owner">拾主姓名
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_owner}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_time">登记时间
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_time}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_detime">拾到物品时间
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_detime}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_where">拾物地点
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_where}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="zldj_detail">物品摘要
+				</label>
+				<div class="col-md-8">
+					<span>{{zldj.zldj_detail}}</span>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+</form>

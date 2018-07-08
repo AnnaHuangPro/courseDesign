@@ -1,0 +1,25 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+		<dpagination class="pull-left" grid-name="operatorListGrid"></dpagination>
+				<a class="btn " ng-click="addOperator()"
+					ng-if="hasPermission('operator_add')">
+					<i class='glyphicon glyphicon-plus-sign'></i>新增</a>
+				<a class="btn" ng-click="assignRoles()" 
+					ng-if="hasPermission('operator_add')">
+					<i class='glyphicon glyphicon-edit'></i>角色复制</a>
+				<a class="btn" ng-click="refreshGrid()">
+					<i class='glyphicon glyphicon-refresh'></i>刷新</a>
+			</div>
+			<dcolumnfilter class="pull-right" grid-name="operatorListGrid"/>
+	</div>
+		<ddatagrid 
+			class="col-md-12"
+			name="operatorListGrid"
+			id="operatorListGrid"
+			operation-column-width='245'
+			isoperation-column=true
+			operation-columns='operationColumns'
+			operation-bar-buttons='operationBarButtons' 
+			list-view-key="operator"></ddatagrid>
+</div>

@@ -1,0 +1,136 @@
+<form ng-init="init()" class="form-horizontal"
+	name="userForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveUser(false)"
+			ng-disabled="userForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveUser(true)"
+			ng-disabled="userForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						 			  						 						 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark">
+										备注:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="remark"
+						placeholder='' class="form-control"
+						ng-model="user.remark" name="remark"
+														maxlength="8000"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="attachmentCode">
+										附件编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="attachmentCode"
+						placeholder='' class="form-control"
+						ng-model="user.attachmentCode" name="attachmentCode"
+														maxlength="255"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="userName">
+					   					用户名:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="userName"
+						placeholder='用户名' class="form-control"
+						ng-model="user.userName" name="userName"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="passWord">
+					   					密码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="passWord"
+						placeholder='密码' class="form-control"
+						ng-model="user.passWord" name="passWord"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="phone">
+					   					联系方式:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="phone"
+						placeholder='联系方式' class="form-control"
+						ng-model="user.phone" name="phone"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="email">
+					   					邮箱:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="email"
+						placeholder='邮箱' class="form-control"
+						ng-model="user.email" name="email"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="gender">
+										性别:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="gender"
+						placeholder='性别' class="form-control"
+						ng-model="user.gender" name="gender"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="birthdate">
+										出生日期:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="birthdate"
+						ng-model="user.birthdate" name="birthdate"
+						></input>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="address">
+										地址:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="address"
+						placeholder='地址' class="form-control"
+						ng-model="user.address" name="address"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

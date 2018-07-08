@@ -1,0 +1,78 @@
+<table class="table table-bordered dchannel-table"
+	style="margin: 0px; padding: 0px;">
+	<tbody>
+		<tr>
+			<td class="col-md-2" style="text-align: center;">
+				<span style="font-size: 14px;font-weight: bold;">字段选择</span>
+			</td>
+			<td style="vertical-align: middle;border-left-style: none;">
+			</td>
+			<td class="col-md-10" style="text-align: center;">
+				<span style="font-size: 14px;font-weight: bold;">显示字段(视图中将要显示的列)</span>
+			</td>
+		</tr>
+		<tr class="item-default">
+			<td class="col-md-2">
+				<ul class="nav nav-list">
+					<li ng-repeat="column in columnsInDisplayAttributes"
+						ng-dblclick='addToDisplayAttributes(column)'><label>{{column.columnValue}}</label></li>
+				</ul>
+			</td>
+			<td style="vertical-align: middle;">
+				<button type="button" class="btn btn-default btn-small"
+					id="btn_select_all_area" ng-click="addAllToDisplayAttributes()">
+					<span class="glyphicon glyphicon-forward"></span>
+				</button>
+				<button type="button" class="btn btn-default btn-small"
+					id="btn_remove_all_area"
+					ng-click='removeAllFromDisplayAttributes()'>
+					<span class="glyphicon glyphicon-backward"></span>
+				</button>
+			</td>
+			<td class="col-md-10" style="vertical-align: top;">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>字段名称</th>
+							<th>显示名称</th>
+							<th>显示顺序</th>
+							<th>显示宽度</th>
+							<th>显示格式</th>
+							<th>对齐方式</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="displayAttribute in displayAttributes">
+							<th>{{displayAttribute.attributeName}}</th>
+							<th><input type='text'
+								ng-model='displayAttribute.attributeValue' style="width: 120px;"></th>
+							<th><div>
+									<i class='glyphicon glyphicon-chevron-up'
+										ng-click="raiseIndex(displayAttributes,displayAttribute)"></i>
+									<i class='glyphicon glyphicon-chevron-down'
+										ng-click="subtractIndex(displayAttributes,displayAttribute)"></i>
+								</div></th>
+							<th><input type='text' ng-model='displayAttribute.width'
+								style="width: 55px;"></th>
+							<th><select ng-model="displayAttribute.showType"
+								style="width: 65px; height: 27px;"
+								ng-options="type.value as type.text for type in displayAttribute.types">
+									<option style="display: none;" value=""></option>
+							</select></th>
+							<th><select ng-model="displayAttribute.align"
+								style="height: 27px;">
+									<option style="display: none;" value=""></option>
+									<option value="left">左对齐</option>
+									<option value="right">右对齐</option>
+									<option value="center">居中对齐</option>
+							</select></th>
+							<th><i class='glyphicon glyphicon-remove'
+								ng-click="exchangeObject(displayAttribute,displayAttributes,columnsInDisplayAttributes,true)"></i></th>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>

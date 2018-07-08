@@ -1,0 +1,62 @@
+<div ng-controller="reportTestFormController">
+	<div class="row" ng-init="getInitReportTestData()">
+		<form class="col-md-12 form-horizontal" name="reportTestForm"
+			novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button"
+						value="保存" type="submit" ng-disabled="reportTestForm.$invalid"
+						ng-click="saveReportTest(reportTest)"> <input
+						class="btn btn-success" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton"
+						ng-disabled="reportTestForm.$invalid"
+						ng-click="saveAndAddReportTest(reportTest)"> <input
+						class="btn btn-primary" type="button" value="取消"
+						ng-click="closeOperateTab()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportName"> 名称:</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportTest.reportName" name="reportName" />
+				</div>
+			</div>			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportType"> 类型:
+				</label>
+				<div class="col-md-8">
+					<dselect class="form-control"code-type-key='reportFormType'  ng-model="reportTest.reportType" name="reportType" ></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportKey"> Key:</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportTest.reportKey" name="reportKey" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 备注: </label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportTest.remark" name="remark" />
+				</div>
+			</div>
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dynamicFormkey">
+					动态表单: </label>
+				<div class="col-md-8">
+				<dreference class="form-control" reference-id="reportTestForm"
+						list-view-key='dynamicFormList' ng-model='reportTest.dynamicForm'
+						show-model-filed='reportTest.dynamicForm.dynamicFormName'> </dreference>
+				</div>
+			</div>
+			
+
+			<dfileupload associate-form-id="reportTest.eId"   associate-form-name="reportTest.reportName"></dfileupload>
+		</form>
+	</div>
+</div>

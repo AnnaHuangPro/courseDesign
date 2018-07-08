@@ -1,0 +1,40 @@
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($EntityNameAllLow="${entityClass.className.toLowerCase()}")
+#set($extension=".html") #set($fileName="${EntityNameUp}Display")
+#set($index = ${entityClass.packageName.lastIndexOf(".")} + 1)
+#set($simplePackage=${entityClass.packageName.substring($index)})
+#set($outputFile="${htmlAndjsCodeGenPath}${simplePackage}/html/${EntityNameLow}/${fileName}${extension}")
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+			#foreach($fieldName in $entityClass.classColumnInfos.keySet())
+			#set($columnInfo=${entityClass.classColumnInfos.get($fieldName)})
+			#if(${columnInfo.id}) #elseif(${columnInfo.getType()} ==
+			${columnInfo.getColumnTypeOne2one()})
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="${fieldName}.name">
+					${columnInfo.label}:</label>
+				<div class="col-md-8">
+					<span>{{${EntityNameLow}.${fieldName}.name}}</span>
+				</div>
+			</div>
+			#elseif(${columnInfo.getType()} ==
+			${columnInfo.getColumnTypeOne2many()}) #else
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="${fieldName}">${columnInfo.label}
+				</label>
+				<div class="col-md-8">
+					<span>{{${EntityNameLow}.${fieldName}}}</span>
+				</div>
+			</div>
+			#end #end
+		</div>
+	</fieldset>
+</form>

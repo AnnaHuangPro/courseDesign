@@ -1,0 +1,84 @@
+<style>
+.btn-group .btn {
+	margin: 0 3px;
+}
+</style>
+<form ng-controller="modelDataTypeFormController"
+	ng-init="getInitModelDataTypeData()" class="form-horizontal"
+	name="modelDataTypeForm" ddd-Form-Validate novalidate>
+
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">模型项数据类型配置</span>
+		</legend>
+
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="dataType"> 控件类型 </label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.dataType" name="dataType" required/>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="type"> vm文件名</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.type" name="type" required/>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="javaType"> Java类型</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.javaType" name="javaType" required />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="dataSize"> 长度</label>
+			<div class="col-md-8">
+				<input type="number" class="form-control"
+					ng-model="modelDataType.dataSize" name="dataSize" required/>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="descName"> 中文名称 </label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.descName" name="chinaName" required/>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="dynamicFormKey">
+				动态表单</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.dynamicFormKey" name="dynamicFormKey" required/>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="defaultValue"> 默认值</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.defaultValue" name="defualtValue" />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="remark"> 备注</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="modelDataType.remark" name="remark" />
+			</div>
+		</div>
+	</fieldset>
+	<div class="form-group">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2">
+			<button class="btn btn-sm"
+				ng-click="saveModelDataType(modelDataType)"
+				ng-disabled="modelDataTypeForm.$invalid">保存</button>
+			<button class="btn btn-sm"
+				ng-click="saveModelDataType(modelDataType)"
+				ng-disabled="modelDataTypeForm.$invalid">保存并新增</button>
+			<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="" />
+    <link rel="icon" href="../brain.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../brain.ico" type="image/x-icon" />
+  
+  	<link rel="stylesheet" href="js/fullcalendar/fullcalendar.min.css">
+  	
+    <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="js/bootstrap-datetimepicker/2012/css/bootstrap-datetimepicker.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-default.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-plain.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog.min.css">
+  	
+    <link rel="stylesheet" type="text/css" href="js/uigrid/3.0.7/ui-grid.min.css">
+    <link rel="stylesheet" href="js/ueditor/themes/default/css/ueditor.min.css" type="text/css">
+    <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2.css" type="text/css">
+   	<link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select.css" type="text/css">
+    <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2-bootstrap.css" type="text/css">
+	
+	<link rel="stylesheet" href="js/dialog-service/5.2.9/dialogs.min.css"/>
+	<link rel="stylesheet" href="js/codemirror/lib/codemirror.css"/>
+	<link rel="stylesheet" href="js/codemirror/theme/eclipse.css">
+	<link rel="stylesheet" href="js/codemirror/addon/hint/show-hint.css" />
+    
+    <link rel="stylesheet" href="js/newMenu/w2ui-1.4.3.css">
+	<link rel="stylesheet" href="style/css/index.css" >
+	
+	<script type="text/javascript" src="js/jquery/2.1.4/jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="js/moment/2.10.6/moment.js"></script>
+	<script type="text/javascript" src="compents/scrollUp/scrollUp.js"></script>
+    <!--dddinclude start /WebContent/ddd/extends/html/index_sub1.html -->
+	<script type="text/javascript">
+		document.title="DDD3信息开平台";
+	</script>
+	<!--dddinclude end /WebContent/ddd/extends/html/index_sub1.html -->
+    <script data-main="js/base/main.js" src="js/requirejs/2.1.20/require.min.js"></script>
+</head>
+<body>
+<div ui-view class="container-fluid"></div>
+</body>
+</html>

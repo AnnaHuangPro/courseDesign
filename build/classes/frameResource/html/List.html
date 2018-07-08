@@ -1,0 +1,25 @@
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($EntityNameAllLow="${entityClass.className.toLowerCase()}")
+#set($extension=".html") #set($fileName="${EntityNameUp}List")
+#set($index = ${entityClass.packageName.lastIndexOf(".")} + 1)
+#set($simplePackage=${entityClass.packageName.substring($index)})
+#set($outputFile="${htmlAndjsCodeGenPath}${simplePackage}/html/${EntityNameLow}/${fileName}${extension}")
+<div class="row">
+	<div class="col-md-6 pull-left">
+		<button class="btn " ng-click="add${EntityNameUp}()"
+			ng-if="hasPermission('${EntityNameLow}_add')">
+			<i class='glyphicon glyphicon-plus-sign'></i>新增
+		</button>
+		<button class="btn " ng-click="refreshGrid()">
+			<i class='glyphicon glyphicon-refresh'></i>刷新
+		</button>
+	</div>
+	<dcolumnfilter class="col-md-6 pull-left"
+		grid-name="${EntityNameLow}ListGrid" />
+	<ddatagrid class="col-md-12" id="${EntityNameLow}ListGrid"
+		name="${EntityNameLow}ListGrid" show-grid-only="true"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="${EntityNameLow}List"> </ddatagrid>
+</div>

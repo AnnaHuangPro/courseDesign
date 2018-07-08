@@ -1,0 +1,78 @@
+<div class="row">
+	<div  class="col-sm-2" ng-show="(!(showGridOnly == 'true')) && viewTreeConditions.length>0" style="padding-right: 0px;">
+		<select ng-model="selectViewTree" class=" col-md-12" ng-change="selectViewTreeSelect()" ng-options="viewTreeCondition.viewTreeName for viewTreeCondition in viewTreeConditions"></select>
+		<viewtree view-tree-key='selectViewTreeKey' ></viewtree>
+	</div>
+	<div  ng-class="{true: 'col-sm-10', false: 'col-sm-12'}[viewTreeConditions.length>0]">
+		<div ng-show="!(showGridOnly == 'true')" class="panel panel-default noBottom bacColorPanel col-sm-12">
+			<div class="panel-body " style="padding: 10px 0px;">
+				<form class="form-horizontal">
+					<div class="row">
+						<div class="col-sm-12">
+							
+							<div class="form-group col-sm-6 noBottom">
+								<div class="col-sm-4" style="text-align: right;">
+									<select ng-model="selected" class="form-control" style="border-color: #aeaeae !important; color:#333333" ng-options="displayAttribute.attributeValue for displayAttribute in attributes">
+								 		<option value="">--请选择--</option>
+								 	</select>
+								</div>
+								 <div class="col-sm-6">
+								 	<input ng-model="fileterText" class="form-control"  style="border-color: #aeaeae !important;color:#333333" ng-keyup="keyup($event)"/></span>
+								 </div>
+								 <div  class="col-sm-12">
+									<form-priview name="dynamicform" datas="dynamicFormParams" dynamic-form-key="dynamicFormKey" ></form-priview>
+								</div>
+							</div>
+						
+							<div class="form-group col-sm-6 noBottom"
+								ng-repeat="searchCondition in searchConditions">
+								<div>
+									<label class="col-sm-5 control-label"
+										for="{{searchCondition.columnName}}">
+										{{searchCondition.displayName}}</label>
+								</div>
+								<div class="col-sm-7 noBottom" ng-switch="searchCondition.displayType">
+									<input class="form-control" type="text" ng-keyup="keyup($event)"
+										id="{{searchCondition.columnName}}" ng-switch-when="INPUT"
+										ng-model="searchCondition.columnValue" /> <select
+										class="form-control" id="{{searchCondition.columnName}}"
+										ng-switch-when="SELECT" ng-model="searchCondition.columnValue"></select>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div stickup ng-show="!(showGridOnly == 'true')" class="col-sm-12" style="padding-top: 10px;padding-bottom: 10px;padding-left:0px;border-left: 1px solid #ddd;border-right: 1px solid #ddd;">
+						<div class="btn-toolbar" gridToolBar="tag" role="toolbar">
+							<div class="btn-group">
+								<a ng-click="searchDataByConditions()" class="btn btn-primary">
+									<i class='{{"glyphicon glyphicon-search"}}'></i>查询
+								</a>
+							</div>
+							<div class="btn-group">
+								<a ng-click="cleanSearchConditions()" class="btn btn-primary">
+									<i class='{{"glyphicon glyphicon-minus-sign"}}'></i>清空
+								</a>
+							</div>
+							<div class="btn-group"
+								ng-repeat="operationBarButton in operationBarButtons">
+								<a ng-click="operationBarButtonClick($index)" ng-if="getPermission(operationBarButton.permission)"
+									class="btn btn-primary {{operationBarButton.buttonClass}}"><i
+									class='{{operationBarButton.icon}}'></i>{{operationBarButton.label}}
+								</a>
+							</div>
+							<div class="btn-group" ng-if="batchDeleteFun!=null">
+								<a class="btn btn-primary" ng-click="batchDeleteRows()"><i
+									class='glyphicon glyphicon-remove'></i>删除</a>
+							</div>
+							<div class="btn-group">
+								<a class="btn btn-success" ng-click="refresh()"><i
+									class='glyphicon glyphicon-refresh'></i>刷新</a>
+							</div>
+						</div>
+		</div>
+		<div  class="grid gridStyle col-sm-12"   ng-style="gridStyles"  ui-grid="gridOptionsComplex" ui-grid-move-columns ui-grid-pinning ui-grid-edit ui-grid-resize-columns ng-if="columns" ui-grid-selection ui-grid-pagination ui-grid-grouping  external-scopes="$scope"></div>
+	</div>
+</div>

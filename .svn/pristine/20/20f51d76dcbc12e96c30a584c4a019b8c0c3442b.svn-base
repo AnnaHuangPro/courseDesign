@@ -1,0 +1,63 @@
+<div ng-controller="attachmentGroupItemFormController">
+	<div class="row" ng-init="getInitAttachmentGroupItemData()">
+		<form class="form-horizontal" name="attachmentGroupItemForm" ddd-form-validate="{ blurValidate: true}" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-click="saveAttachmentGroupItem(attachmentGroupItem)">
+					<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show="showSaveAndAddButton" ng-click="saveAndAddAttachmentGroupItem(attachmentGroupItem)">
+					<input class="btn btn-primary" type="button" value="返回" ng-click="back()" />
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 标题</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="attachmentGroupItem.name" name="name" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="groupItemCode"> 编码</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="attachmentGroupItem.groupItemCode" name="groupItemCode" pattern="(\d+(.)?)+\d*" placeholder="请输入编码，如：1.1" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fileType"> 是否允许上传附件</label>
+				<div class="col-md-8">
+					<dselect class="form-control" code-type-key='boolean' ng-model='attachmentGroupItem.enable'></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="minFiles"> 最小上传的文档数量</label>
+				<div class="col-md-8">
+					<input type="number" class="form-control" ng-model="attachmentGroupItem.minFiles" name="minFiles" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="maxFiles"> 最大上传的文档数量</label>
+				<div class="col-md-8">
+					<input type="number" class="form-control" ng-model="attachmentGroupItem.maxFiles" name="maxFiles" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fileType"> 上传的文档类型</label>
+				<div class="col-md-8">
+					<dselect class="form-control" code-type-key='fileType' ng-model='attachmentGroupItem.fileType'></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachementGroupTemplate"> 文档组</label>
+				<div class="col-md-8">
+					<dreference reference-id="attachmentGroupItemFormattachementGroupTemplate" list-view-key='attachmentGroupTemplateReference' ng-model='attachmentGroupItem.attachementGroupTemplate' show-model-filed='name' name="attachementGroupTemplate" required="required"></dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="remark"> 备注</label>
+				<div class="col-md-10">
+					<textarea type="text" class="form-control" ng-model="attachmentGroupItem.remark" name="remark"></textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

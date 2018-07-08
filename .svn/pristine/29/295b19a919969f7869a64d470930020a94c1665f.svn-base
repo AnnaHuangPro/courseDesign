@@ -1,0 +1,26 @@
+#set($packageName=${entityClass.packageName.replace(".entity.", ".service.")})
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($className="${entityClass.className}Service")
+#set($src="src/")
+#set($extension=".java")
+#set($path=${entityClass.getClazz().getPackage().getName().replace(".entity.", ".service.").replace(".", "/")})
+#set($outputFile="${src}${path}/${className}${extension}")
+package ${packageName};
+
+import ddd.base.persistence.EntitySet;
+import ddd.simple.service.base.BaseServiceInterface;
+import ${entityClass.getClazz().getName()};
+
+public interface ${className} extends BaseServiceInterface {
+	public ${EntityNameUp} save${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) ;
+	
+	public int delete${EntityNameUp}(Long ${EntityNameLow}Id) ;
+	
+	public ${EntityNameUp} update${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) ;
+	
+	public ${EntityNameUp} find${EntityNameUp}ById(Long ${EntityNameLow}Id) ;
+	
+	public EntitySet<${EntityNameUp}> findAll${EntityNameUp}() ;
+ 
+}

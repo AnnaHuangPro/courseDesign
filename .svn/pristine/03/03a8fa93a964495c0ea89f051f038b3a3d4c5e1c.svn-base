@@ -1,0 +1,13 @@
+<div style="position:relative">
+    <input 
+     style="opacity:0;
+            filter:alpha(opacity=0);
+            cursor:pointer;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 9;
+            height:100%" 
+     type="file">
+        <a class="btn">导入</a>
+</div>

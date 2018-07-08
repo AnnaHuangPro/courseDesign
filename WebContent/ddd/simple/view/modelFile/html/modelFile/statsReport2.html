@@ -1,0 +1,11 @@
+<div  style="margin-top:10px" >
+	<table style="margin-bottom:20px"class="table-striped table-bordered col-md-12 table-hover table-condensed" ng-repeat="reportForm in reportFormsChart">
+		<tr>
+			<th>报表类型 : {{reportForm.name}}</th>
+		</tr>
+		<tr ng-repeat="modelFile in reportForm.modelFiles">
+<!-- 			<td ng-click="preview(modelFile.modelKey,modelFile.withChart,modelFile.dynamicKey)"><a href="javascript:void(0)">{{modelFile.name}}({{modelFile.operateDate.substr(0,10)}})</a></td> -->
+				<td ng-click="preview(modelFile.modelKey,modelFile.withChart,modelFile.dynamicKey)"><a href="javascript:void(0)">{{modelFile.name}}</a></td>
+		</tr>
+	</table>
+</div>

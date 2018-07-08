@@ -1,0 +1,45 @@
+
+/* 指令样式 uploadImag */
+.dddUploadImg .check {
+	border: 2px solid rgb(46, 128, 220);
+}
+
+.dddUploadImg .uncheck {
+	border: 2px solid white;
+}
+
+.dddUploadImg .imgLi {
+	float: left;
+	margin: 10px 10px;
+	padding: 3px 3px;
+	width: 130px;
+	height: 145px;
+	position: relative;
+	cursor: pointer;
+}
+
+.dddUploadImg .imgLi:hover {
+	border: 2px solid rgb(46, 128, 220);
+}
+
+.dddUploadImg .imgLi .checkSpan {
+	background-color: white;
+	width: 18px;
+	height: 20px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	border-right: 2px solid rgb(46, 128, 220);
+	border-bottom: 2px solid rgb(46, 128, 220);
+}
+
+.dddUploadImg .menuUl {
+	list-style: none;
+	float: left;
+	padding:0;
+}
+
+.menuUl li {
+	float: left;
+	margin: 0 10px;
+}

@@ -1,0 +1,247 @@
+define(['app'],function(app){
+	
+	app.controller('editPasswordCtr',['$scope','$state','$rootScope','modifyAccountService','ManMgtService','angularPermission','VipLoginService','dialogs',
+	           function($scope,$state,$rootScope,modifyAccountService,ManMgtService,angularPermission,VipLoginService,dialogs){
+		$scope.codeUrl="/CMS/Member/validateCode";
+		//从后台获取验证码图片
+		$scope.createCode = function()
+		{
+		  var random =  Math.random()*10;
+		  $scope.validateCode = "";
+		  $scope.codeUrl="/CMS/Member/validateCode?random="+random;
+		}
+		$scope.editPassword = function(){
+			ManMgtService.returnValidate($scope.validateCode,sucesscb,errorcb);
+			function sucesscb(data)
+			{
+				if(data['result']==true)
+				{
+					goEditPassword();
+				}
+				else
+				{
+					dialogs.error('失败',"验证码错误",{size:'sm'});
+					$scope.validateCode="";
+					$scope.createCode();
+				}
+			}
+			function errorcb()
+			{
+				alert("请求失败");
+			}
+		}
+		function goEditPassword(){
+			
+			var oldPassword = hex_md5($scope.user.oldPassword);
+			var newPassword = hex_md5($scope.user.newPassword);
+			modifyAccountService.editPassword(oldPassword,newPassword,sucesscb,errorcb);
+	        function sucesscb(data)
+	        {
+	        	if(data.editPasswordSuccess == true)
+	        	{
+	        		$rootScope.app.notify("修改成功!请重新登陆");
+	        		function successcb(){}
+	        		function errorcb(){}
+	        		VipLoginService.vipLoginOut(successcb,errorcb);
+	        		//sessionStorage.removeItem("vipLogin");
+	        		angularPermission.removeVipLogin();
+	        		$state.go("login");
+	        	}
+	        	else{
+	        		alert('修改失败!');
+	        	}
+	        }
+	        function errorcb()
+	        {
+	        	$rootScope.openErrorDialog(error);
+	        }
+		}
+		
+		$scope.$watch("user.newPassword", function(newVal,oldVal) {
+			if(newVal != oldVal && newVal != undefined){
+				var wordReg = /[a-zA-Z]+/;
+				var numReg = /\d+/;	
+				var charReg = /([@|\\|/|~|+|-| |\|_|]+)/;
+				var charLength = newVal.length;
+				if(newVal=="" || charLength==0){
+					initBar();
+				}
+				else{
+					$scope.turnTrue = true;
+					var wordRegTest = wordReg.test(newVal);
+					var numRegTest = numReg.test(newVal);
+					var charTest = charReg.test(newVal);
+				    if((wordRegTest&&charLength >= 6) || (numRegTest&&charLength >= 6) ||  (charTest&&charLength >= 6)){    
+				    	$scope.myProBar1 = {'background-color':'#D9534F'};
+				    	$scope.myProBar2={'background-color':'#FFFFFF'};
+						$scope.myProBar3={'background-color':'#FFFFFF'};
+				    	$scope.passwordLevel = "低";
+				    }
+				    if((((wordRegTest && numRegTest)||(charTest && numRegTest)||(wordRegTest && charTest)) && charLength >= 8) || charLength >= 18){
+				    	$scope.myProBar1 = {'background-color':'#FFFF00'};
+				    	$scope.myProBar2={'background-color':'#FFFF00'};
+						$scope.myProBar3={'background-color':'#FFFFFF'};
+				    	$scope.passwordLevel = "中"
+				    }
+				    if(wordRegTest && numRegTest && charTest && charLength >= 10 && charLength <= 20){
+				    	$scope.myProBar1={'background-color':'#23D229'};
+				    	$scope.myProBar2={'background-color':'#23D229'};
+						$scope.myProBar3={'background-color':'#23D229'};
+						$scope.passwordLevel = "高"
+				    }
+				}
+			}
+		});
+		
+		$scope.init = function(){
+			$scope.user = {
+					onlyCode : '',
+					oldPassword : '',
+					newPassword : '',
+					surePassword : ''
+			}
+			$scope.validateCode = '';
+			initBar();
+		}
+		function initBar(){
+			$scope.myProBar1={'background-color':'#FFFFFF'};
+			$scope.myProBar2={'background-color':'#FFFFFF'};
+			$scope.myProBar3={'background-color':'#FFFFFF'};
+		}
+		
+		$scope.isSure = function(ngModelCtr){
+			if($scope.user.newPassword && $scope.user.surePassword && $scope.user.surePassword == $scope.user.newPassword){
+				ngModelCtr.$setValidity("isSure",true);
+				return true;
+			}
+			else{
+				ngModelCtr.$setValidity("isSure",false);
+				return false;
+			}
+		}
+		
+	}]);
+});define(['app'],function(app){
+	
+	app.controller('editPasswordCtr',['$scope','$state','$rootScope','modifyAccountService','ManMgtService','angularPermission','VipLoginService','dialogs',
+	           function($scope,$state,$rootScope,modifyAccountService,ManMgtService,angularPermission,VipLoginService,dialogs){
+		$scope.codeUrl="/CMS/Member/validateCode";
+		//从后台获取验证码图片
+		$scope.createCode = function()
+		{
+		  var random =  Math.random()*10;
+		  $scope.validateCode = "";
+		  $scope.codeUrl="/CMS/Member/validateCode?random="+random;
+		}
+		$scope.editPassword = function(){
+			ManMgtService.returnValidate($scope.validateCode,sucesscb,errorcb);
+			function sucesscb(data)
+			{
+				if(data['result']==true)
+				{
+					goEditPassword();
+				}
+				else
+				{
+					dialogs.error('失败',"验证码错误",{size:'sm'});
+					$scope.validateCode="";
+					$scope.createCode();
+				}
+			}
+			function errorcb()
+			{
+				alert("请求失败");
+			}
+		}
+		function goEditPassword(){
+			
+			var oldPassword = hex_md5($scope.user.oldPassword);
+			var newPassword = hex_md5($scope.user.newPassword);
+			modifyAccountService.editPassword(oldPassword,newPassword,sucesscb,errorcb);
+	        function sucesscb(data)
+	        {
+	        	if(data.editPasswordSuccess == true)
+	        	{
+	        		$rootScope.app.notify("修改成功!请重新登陆");
+	        		function successcb(){}
+	        		function errorcb(){}
+	        		VipLoginService.vipLoginOut(successcb,errorcb);
+	        		//sessionStorage.removeItem("vipLogin");
+	        		angularPermission.removeVipLogin();
+	        		$state.go("login");
+	        	}
+	        	else{
+	        		alert('修改失败!');
+	        	}
+	        }
+	        function errorcb()
+	        {
+	        	$rootScope.openErrorDialog(error);
+	        }
+		}
+		
+		$scope.$watch("user.newPassword", function(newVal,oldVal) {
+			if(newVal != oldVal && newVal != undefined){
+				var wordReg = /[a-zA-Z]+/;
+				var numReg = /\d+/;	
+				var charReg = /([@|\\|/|~|+|-| |\|_|]+)/;
+				var charLength = newVal.length;
+				if(newVal=="" || charLength==0){
+					initBar();
+				}
+				else{
+					$scope.turnTrue = true;
+					var wordRegTest = wordReg.test(newVal);
+					var numRegTest = numReg.test(newVal);
+					var charTest = charReg.test(newVal);
+				    if((wordRegTest&&charLength >= 6) || (numRegTest&&charLength >= 6) ||  (charTest&&charLength >= 6)){    
+				    	$scope.myProBar1 = {'background-color':'#D9534F'};
+				    	$scope.myProBar2={'background-color':'#FFFFFF'};
+						$scope.myProBar3={'background-color':'#FFFFFF'};
+				    	$scope.passwordLevel = "低";
+				    }
+				    if((((wordRegTest && numRegTest)||(charTest && numRegTest)||(wordRegTest && charTest)) && charLength >= 8) || charLength >= 18){
+				    	$scope.myProBar1 = {'background-color':'#FFFF00'};
+				    	$scope.myProBar2={'background-color':'#FFFF00'};
+						$scope.myProBar3={'background-color':'#FFFFFF'};
+				    	$scope.passwordLevel = "中"
+				    }
+				    if(wordRegTest && numRegTest && charTest && charLength >= 10 && charLength <= 20){
+				    	$scope.myProBar1={'background-color':'#23D229'};
+				    	$scope.myProBar2={'background-color':'#23D229'};
+						$scope.myProBar3={'background-color':'#23D229'};
+						$scope.passwordLevel = "高"
+				    }
+				}
+			}
+		});
+		
+		$scope.init = function(){
+			$scope.user = {
+					onlyCode : '',
+					oldPassword : '',
+					newPassword : '',
+					surePassword : ''
+			}
+			$scope.validateCode = '';
+			initBar();
+		}
+		function initBar(){
+			$scope.myProBar1={'background-color':'#FFFFFF'};
+			$scope.myProBar2={'background-color':'#FFFFFF'};
+			$scope.myProBar3={'background-color':'#FFFFFF'};
+		}
+		
+		$scope.isSure = function(ngModelCtr){
+			if($scope.user.newPassword && $scope.user.surePassword && $scope.user.surePassword == $scope.user.newPassword){
+				ngModelCtr.$setValidity("isSure",true);
+				return true;
+			}
+			else{
+				ngModelCtr.$setValidity("isSure",false);
+				return false;
+			}
+		}
+		
+	}]);
+});

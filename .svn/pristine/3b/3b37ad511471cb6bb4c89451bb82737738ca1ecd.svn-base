@@ -1,0 +1,76 @@
+<style>
+#topTab ul {
+	border-bottom: 1px solid #C31504;
+}
+
+#topTab ul li {
+	cursor: pointer !important;
+}
+
+#topTab ul li:hover {
+	background-color: rgb(245, 245, 245);
+}
+
+#topTab ul li:hover a {
+	background-color: rgb(245, 245, 245);
+}
+
+#topTab ul li:hover .removeBtn {
+	display: inline;
+	transition: all 1s;
+	-moz-transition: all 1s; /* Firefox 4 */
+	-webkit-transition: all 1s; /* Safari 和 Chrome */
+	-o-transition: all 1s;
+}
+
+#topTab ul li:hover .removeBtn:hover {
+	color: #C31504;
+	transform:rotate(360deg);
+	transition: all 1s;
+	-moz-transition: all 1s; /* Firefox 4 */
+	-webkit-transition: all 1s; /* Safari 和 Chrome */
+	-o-transition: all 1s;
+}
+
+#topTab ul li:hover .removeBtn .glyphicon-remove {
+	font-size: 12px;
+}
+
+#topTab ul li .removeBtn {
+	display: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#topTab ul li a {
+	border: none;
+	cursor: pointer !important;
+}
+
+#topTab ul li.active {
+	border-bottom: 5px solid #C31504;
+}
+</style>
+
+<div id="rightTab">
+	<uib-tabset id="topTab" tabPlacement="bottom"> 
+		<uib-tab ng-repeat="tab in tabs" data-target="menu-{{index}}"
+			active="tab.active" context-menu target='a'
+			ng-init='model=[{name:"查看"},{name:"刷新"},{name:"点击"}]'> 
+				<tab-heading>
+					<label>{{tab.name}} </label>
+					<a style="margin-bottom: 0px;" href="javascript:void(0)" class="removeBtn"> <i
+						class='glyphicon glyphicon-remove' ng-click="closeTabByEId(tab.eId)"></i>
+					</a> 
+				</tab-heading>
+				 <tab-content>
+					<div style="margin-top: 20px" ui-view="{{tab.eId}}"></div>
+				</tab-content> 
+		</uib-tab> 
+	</uib-tabset>
+</div>
+<!-- <div sytle="margin:13px 0">
+	<img src="vip/asset/tabIcon.png" style="margin-right:8px">ddd
+</div> -->
+<div ui-view></div>

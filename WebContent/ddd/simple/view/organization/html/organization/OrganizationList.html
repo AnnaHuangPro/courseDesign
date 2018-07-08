@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+		<dpagination class="pull-left" grid-name="organizationListGrid"></dpagination>
+			<button class="btn " ng-click="addOrganization()"
+				ng-if="hasPermission('organization_add')">
+				<i class='glyphicon glyphicon-plus-sign'></i>新增
+			</button>
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="organizationListGrid" />
+	</div>
+	<ddatagrid class="col-md-12"
+		id="organizationListGrid"
+		name="organizationListGrid" 
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="organizationList"> 
+	</ddatagrid>
+</div>
+

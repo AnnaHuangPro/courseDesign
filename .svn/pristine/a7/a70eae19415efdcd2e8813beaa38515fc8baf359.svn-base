@@ -1,0 +1,17 @@
+<div class="row">
+	<form class="form-horizontal" name="importConfigsForm">
+		<div class="row rowddd"></div>
+		<div class="form-group col-md-12">
+			<dfileupload associate-form-id="importConfigs.eId" num-limit="importConfigs.limit" prompt="请上传需导入的文件" 
+				associate-form-name="importConfigs.importConfigKey" automatic-code=true></dfileupload>
+		</div>
+		<div class="form-group">
+			<div class="col-md-10">
+				<input class="btn btn-success col-md-offset-2" type="button" value="确定" type="submit" ng-click="addImportConfigs(importConfigs)">
+			</div>
+		</div>
+	</form>
+</div>
+
+
+

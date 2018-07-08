@@ -1,0 +1,104 @@
+<div ng-controller="billCodeFormController">
+	<div class="row" ng-init="getInitBillCodeData()">
+		<form class="form-horizontal col-md-12" name="billCodeForm"
+			ddd-form-validate="{ blurValidate: true}" novalidate>
+			
+			<div class="form-group col-md-12">
+				<legend class="legend" data-toggle="collapse" href="">
+					<span class="legend-title">基础信息</span>
+				</legend>
+			</div>
+			<div class="row rowddd"></div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label required" for="billCodeTypeName">
+					  编码类型名称
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.billCodeTypeName" name="billCodeTypeName"
+						required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label required" for="billCodeRule"> 编码规则
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.billCodeRule" name="billCodeRule" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="variables"> 变量</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.variables" name="variables" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="seqences"> 序列号变量
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.seqences" name="seqences" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entityName"> 实体名称
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.entityName" name="entityName" />
+				</div>
+			</div>		
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fieldName"> 属性名称
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.fieldName" name="fieldName" placeholder="使用编码规则的实体的属性名称" />
+				</div>
+			</div>		
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="tableName"> 表名
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.tableName" name="tableName" />
+				</div>
+			</div>		
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="columnName"> 字段名称
+				</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="billCode.columnName" name="columnName" placeholder="" />
+				</div>
+			</div>					
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="remark"> 备注</label>
+				<div class="col-md-10">
+					<textarea type="text" class="form-control defined-textarea" ng-model="billCode.remark"
+						name="remark" ></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<input class="btn btn-sm col-md-offset-2" type="button"
+						ng-disabled="billCodeForm.$invalid" value="保存" type="submit" ng-click="saveBillCode(billCode)">
+					<input class="btn btn-sm" type="button" value="保存并新增"
+						type="submit" ng-show="showSaveAndAddButton"
+						ng-click="saveAndAddBillCode(billCode)" ng-disabled="billCodeForm.$invalid"> <input
+						class="btn btn-sm" type="button" value="返回"
+						ng-click="back()" />
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<alert class="col-md-12">
+					编码的规则中包含常量、变量、序列号变量三种元素组成,每种元素可以多次出现，例如：N-${学院编号,3,0}-$[学生序列号,5,0],学院编号是变量，在生成编码时提供，3 是在编码中的长度，0 是指如果长度不足3位，用0在左边填充。学生序列号是序列号变量，在每个学院都会独立编号"
+					内置：当前年，当前年两位，当前月，当前日，当前星期，当前年天数，当前小时，当前分，当前秒，当前毫秒，当前相对时间 
+				</alert>
+			</div>				
+		</form>
+	</div>
+</div>

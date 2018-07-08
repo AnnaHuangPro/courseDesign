@@ -1,0 +1,5 @@
+#if($!{dataResource.get('isEdit')}=='是')
+<div class="ueditor" ng-model="modelData.$!{dataResource.get('bundle')}"></div>
+#else
+<p class="form-control-static" ng-init="trustAsHtml('$!dataResource.get('bundle')')" ng-bind-html="modelDataDisplay.$!dataResource.get('bundle')"></p>
+#end

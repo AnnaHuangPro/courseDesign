@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+    <div class="col-md-{{col2}}">
+   		<img alt="ueditor富文本编辑器" src="js/angular-form-builder/components/uedior.png" width="100%" height="100%">
+    	<p class='help-block'>{{description}}</p>
+    	</div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>

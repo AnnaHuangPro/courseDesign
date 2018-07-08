@@ -1,0 +1,22 @@
+#set($index = ${entityClass.packageName.lastIndexOf(".")} + 1)
+#set($simplePackage=${entityClass.packageName.substring($index)})
+#set($simplePackageUp="${entityClass.packageName.substring($index).substring(0,1).toUpperCase()}${entityClass.packageName.substring($index).substring(1)}")
+#set($extension=".html")
+#set($fileName="${simplePackageUp}Module")
+#set($outputFile="${htmlAndjsCodeGenPath}${simplePackage}/html/${fileName}${extension}")
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+<div ng-init="showGrid=1">
+	 <ul class="nav nav-tabs">
+		<li ng-class="{active: showGrid == 1}">
+		<a ng-click="showGrid=1" data-toggle="tab">${entityClass.entityInfo.label}管理</a>
+		</li>
+	</ul>
+	<div class="row">
+		<div class="col-md-12 col-xs-12 col-sm-12">
+				<div ng-if="showGrid==1">
+					<div ng-include="'view/${simplePackageUp}/html/${EntityNameLow}/${EntityNameUp}List.html'"style="border: 1px solid #dddddd;border-top: none;"></div>
+				</div>
+		</div>
+	</div> 
+</div>

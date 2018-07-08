@@ -1,0 +1,423 @@
+angular.module('welcomeModule', [])
+ /* dddinclude start WebContent\ddd\extends\portletsMeger\megerJS.js */
+.controller(	"ddd3portletController",["$rootScope","$scope","$state",function($rootScope, $scope,$state) {
+			$scope.buttons = [
+			                  {label:"单位管理",icon:"glyphicon glyphicon-user",state:"main.list.organization.organizationListRoute"},
+			                  {label:"模块管理",icon:"glyphicon glyphicon-th",state:"main.list.module.moduleListRoute"},
+			                  {label:"视图管理",icon:"glyphicon glyphicon-book",state:"main.list.reportView.reportViewListRoute"}
+			 ];
+			$scope.go = function(state){
+				$state.go(state);
+			}
+}])
+.controller('taskListController',['$rootScope','$scope','TaskService','$state','angularPermission',
+                                         '$stateParams','ngDialog',function($rootScope,$scope,TaskService,$state,angularPermission,
+                                        		 $stateParams,ngDialog){
+
+    $scope.taskList=[];
+    $scope.pageSize = 4;
+    $scope.currentPage = 1;
+    $scope.startPage = 0;
+   	$scope.name = $stateParams.name;
+   	
+    //初始化表单
+	$scope.initTaskList = function()
+	{   
+		$scope.isDisplay = $scope.name=='待办任务'?true:false;
+		if($scope.name == '待办任务')
+		{
+			TaskService.findNonHandleTaskList($scope.startPage,$scope.pageSize,$scope.getTasks,$scope.errorOperate);
+		}
+		else if($scope.name == '已办任务')
+		{
+			TaskService.findOperatedTaskList($scope.startPage,$scope.pageSize,$scope.getTasks,$scope.errorOperate);
+		}
+		else if($scope.name == '已完成任务')
+		{
+			TaskService.findCompletedTaskList($scope.startPage,$scope.pageSize,$scope.getTasks,$scope.errorOperate);
+		}
+		else if($scope.name == '我的提交任务')
+		{
+			TaskService.findOwnerTaskList($scope.startPage,$scope.pageSize,$scope.getTasks,$scope.errorOperate);
+		}
+	}
+	/*--------------分页--------------*/
+	$scope.getTasks = function(data)
+	{
+		$scope.taskList = data.result;
+		$scope.totalItems = data.totalItems;
+		angular.forEach($scope.taskList, function(item,index,items){
+			item.isShow = item.assignee == undefined?true:false;
+		});
+		console.log($scope.taskList);
+	}
+	
+	$scope.pageChanged = function () 
+	{
+        $scope.startPage = ($scope.currentPage-1) * $scope.pageSize;
+		$scope.initTaskList();
+    };
+    /*--------------分页--------------*/
+
+    $scope.claimAtQueued = function(taskId)
+    {
+    	$scope.successOperate = function(){
+    		$scope.initTaskList();
+    	}
+    	
+    	TaskService.claimAtQueued(taskId,$scope.successOperate,$scope.errorOperate);
+    }
+    
+    //获取任务详细信息
+	$scope.findTaskDetail = function(taskId)
+	{ 
+		$state.go('main.list.workflow.taskFormRoute',{taskId:taskId,name:$scope.name});
+	}
+	
+	//查看流程历史
+	$scope.displayProcessHistory = function(taskId,processInstanceId){
+		$state.go("main.list.workflow.processHistoryRoute",{taskId:taskId,processInstanceId:processInstanceId,name:$scope.name});
+	}
+	
+	$scope.errorOperate = function(error){
+   		$rootScope.openErrorDialog(error);
+   	}
+	
+}])
+.controller(	"reportController",["$rootScope","$scope","$state","ModelFileService",function($rootScope, $scope,$state,ModelFileService) {
+	
+	function successCB(data){
+		$scope.reports = data;
+	}
+	function errorCB(error){
+		
+	}
+	ModelFileService.findAllModelFile(successCB,errorCB);
+	$scope.go = function(key){
+		$state.go('main.list.reportFormPreview.previewRoute',{modelFileKey:key});
+	}
+	$scope.more = function(){
+		$state.go('main.list.modelFile.modelFileListRoute');
+	}
+}])
+
+.controller('calendarController',['$rootScope','$scope','TaskManageService','uiCalendarConfig','$compile','ngDialog','$state',
+function($rootScope,$scope,TaskManageService,uiCalendarConfig,$compile,ngDialog,$state){
+	var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $scope.events = [];
+    //查找所有的任务
+    var success = function(data){
+    	$scope.allEvents = data;
+    	for(var i =0;i<data.length;i++){
+    		eventData = {
+    				id:data[i].eId,
+					title: data[i].name,
+					//start: new moment(data[i].startDate),
+					//end: new moment(data[i].endDate)
+				};
+    		$('#calendar').fullCalendar('renderEvent', eventData, true);
+    	}
+    }
+    var faild = function(data){
+    	alert(data.toString());
+    };
+    TaskManageService.findAllTaskUnDealed(success,faild);
+    
+
+    /*$scope.calEventsExt = {
+       color: '#f00',
+       textColor: 'yellow',
+       events: [ 
+        ]
+    };*/
+    $scope.getEventById = function(id){
+    	for(var i =0;i<$scope.allEvents.length;i++){
+    		if($scope.allEvents[i].eId == id){
+    			return $scope.allEvents[i];
+    		}
+    	}
+    	return null;
+    }
+    
+    /* alert on eventClick */
+    $scope.alertOnEventClick = function( date, jsEvent, view){
+    	var event = $scope.getEventById(date.id);
+    	$scope.selectedEvent = event;
+    	 $scope.dialogId = ngDialog.open({
+         		templateUrl:'simple/view/main/html/main/calendarDisplay.html',
+         		showClose:false,
+         		scope:$scope,
+         }).id;
+    	console.log(event);
+    };
+    $scope.taskDeal = function(){
+    	 $state.go($scope.selectedEvent.route);
+    	 $scope.selectedEvent.state = "已处理"
+         TaskManageService.updateTaskManage({taskManage:$scope.selectedEvent},function(){},function(){alert("成功")});
+    	 $('#calendar').fullCalendar( 'removeEvents',$scope.selectedEvent.eId);
+    	 $('#calendar').fullCalendar('refetchEvents')
+    	 ngDialog.close($scope.dialogId,"");
+    	
+    }
+    
+    /* 事件拖动日期 */
+     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
+       var currentEvent = $scope.getEventById(event.id);
+       if(event.start){
+    	   currentEvent.startDate = event.start.add(delta.days,'days').format("YYYY-MM-DD HH:mm:ss");
+           if(!event.end){
+        	   currentEvent.endDate = currentEvent.startDate;
+           }else{
+        	   currentEvent.endDate = event.end.add(delta.days,'days').format("YYYY-MM-DD HH:mm:ss");
+           }
+           TaskManageService.updateTaskManage({taskManage:currentEvent},function(){},function(){alert("成功")});
+       }
+    };
+    /* 事件调整时间 */
+    $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
+    	var currentEvent = $scope.getEventById(event.id);
+        if(event.start){
+     	   currentEvent.startDate = event.start.add(delta.days,'ms').format("YYYY-MM-DD HH:mm:ss");
+            if(!event.end){
+         	   currentEvent.endDate = currentEvent.startDate;
+            }else{
+         	   currentEvent.endDate = event.end.add(delta.days,'ms').format("YYYY-MM-DD HH:mm:ss");
+            }
+            TaskManageService.updateTaskManage({taskManage:currentEvent},function(){},function(){alert("成功")});
+        }
+    };
+    //改变视图
+    $scope.changeView = function(view,calendar) {
+      uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
+    };
+    
+    $scope.closeOperateTab = function(){
+    	ngDialog.close($scope.dialogId,"");
+    }
+    
+    $scope.closeOperateTab2 = function(){
+    	ngDialog.close($scope.dialogId2,"");
+    }
+    $scope.saveNewTaskManage = function(newTaskManage){
+    	var success = function(data){
+    		eventData = {
+    				id:data.eId,
+					title: data.name,
+					//start: new moment(data.startDate),
+					//end: new moment(data.endDate)
+				};
+    		$scope.allEvents.push(data);
+    		$('#calendar').fullCalendar('renderEvent', eventData, true);
+    		ngDialog.close($scope.dialogId2,"");
+    	}
+    	newTaskManage.startDate = $scope.newTaskManageStart.format("YYYY-MM-DD HH:mm:ss");
+    	newTaskManage.endDate = $scope.newTaskManageEnd.format("YYYY-MM-DD HH:mm:ss");
+    	TaskManageService.saveTaskManage({taskManage:newTaskManage},success,function(){});
+    }
+    
+    //日历配置
+    $scope.uiConfig = {
+      calendar:{
+        height: 402,
+        width:300,
+        theme:false,
+        editable: true,
+        header:{
+          left: 'title',
+          center: '',
+          right: 'today prev,next'
+        },
+        selectable: true,
+		selectHelper: true,
+		select: function(start, end) {
+			$scope.newTaskManageStart = start;
+			$scope.newTaskManageEnd = end;
+			 $scope.dialogId2 = ngDialog.open({
+	         		templateUrl:'simple/view/main/html/main/calendarForm.html',
+	         		showClose:false,
+	         		scope:$scope,
+	         }).id;
+		},
+        eventLimit: true,
+        eventClick: $scope.alertOnEventClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize,
+        eventRender: $scope.eventRender,
+        viewRender:$scope.flash
+      }
+    };
+
+    $scope.changeLang = function() {
+    	$scope.uiConfig.calendar.dayNames = ["周天", "周一", "周二", "周三", "周四", "周五", "周六"];
+        $scope.uiConfig.calendar.dayNamesShort = ["周天", "周一", "周二", "周三", "周四", "周五", "周六"];
+        $scope.uiConfig.calendar.monthNames = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+        $scope.uiConfig.calendar.monthNamesShort = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+    };
+    $scope.changeLang();
+    $scope.eventSources = [$scope.events];
+}])
+.controller('calendarController',['$rootScope','$scope','TaskManageService','uiCalendarConfig','$compile','ngDialog','$state',
+function($rootScope,$scope,TaskManageService,uiCalendarConfig,$compile,ngDialog,$state){
+	var date = new Date();
+    var d = date.getDate();
+    var m = date.getMonth();
+    var y = date.getFullYear();
+    
+    $scope.events = [];
+    //查找所有的任务
+    var success = function(data){
+    	$scope.allEvents = data;
+    	for(var i =0;i<data.length;i++){
+    		eventData = {
+    				id:data[i].eId,
+					title: data[i].name,
+					//start: new moment(data[i].startDate),
+					//end: new moment(data[i].endDate)
+				};
+    		$('#calendar').fullCalendar('renderEvent', eventData, true);
+    	}
+    }
+    var faild = function(data){
+    	alert(data.toString());
+    };
+    TaskManageService.findAllTaskUnDealed(success,faild);
+    
+
+    /*$scope.calEventsExt = {
+       color: '#f00',
+       textColor: 'yellow',
+       events: [ 
+        ]
+    };*/
+    $scope.getEventById = function(id){
+    	for(var i =0;i<$scope.allEvents.length;i++){
+    		if($scope.allEvents[i].eId == id){
+    			return $scope.allEvents[i];
+    		}
+    	}
+    	return null;
+    }
+    
+    /* alert on eventClick */
+    $scope.alertOnEventClick = function( date, jsEvent, view){
+    	var event = $scope.getEventById(date.id);
+    	$scope.selectedEvent = event;
+    	 $scope.dialogId = ngDialog.open({
+         		templateUrl:'simple/view/main/html/main/calendarDisplay.html',
+         		showClose:false,
+         		scope:$scope,
+         }).id;
+    	console.log(event);
+    };
+    $scope.taskDeal = function(){
+    	 $state.go($scope.selectedEvent.route);
+    	 $scope.selectedEvent.state = "已处理"
+         TaskManageService.updateTaskManage({taskManage:$scope.selectedEvent},function(){},function(){alert("成功")});
+    	 $('#calendar').fullCalendar( 'removeEvents',$scope.selectedEvent.eId);
+    	 $('#calendar').fullCalendar('refetchEvents')
+    	 ngDialog.close($scope.dialogId,"");
+    	
+    }
+    
+    /* 事件拖动日期 */
+     $scope.alertOnDrop = function(event, delta, revertFunc, jsEvent, ui, view){
+       var currentEvent = $scope.getEventById(event.id);
+       if(event.start){
+    	   currentEvent.startDate = event.start.add(delta.days,'days').format("YYYY-MM-DD HH:mm:ss");
+           if(!event.end){
+        	   currentEvent.endDate = currentEvent.startDate;
+           }else{
+        	   currentEvent.endDate = event.end.add(delta.days,'days').format("YYYY-MM-DD HH:mm:ss");
+           }
+           TaskManageService.updateTaskManage({taskManage:currentEvent},function(){},function(){alert("成功")});
+       }
+    };
+    /* 事件调整时间 */
+    $scope.alertOnResize = function(event, delta, revertFunc, jsEvent, ui, view ){
+    	var currentEvent = $scope.getEventById(event.id);
+        if(event.start){
+     	   currentEvent.startDate = event.start.add(delta.days,'ms').format("YYYY-MM-DD HH:mm:ss");
+            if(!event.end){
+         	   currentEvent.endDate = currentEvent.startDate;
+            }else{
+         	   currentEvent.endDate = event.end.add(delta.days,'ms').format("YYYY-MM-DD HH:mm:ss");
+            }
+            TaskManageService.updateTaskManage({taskManage:currentEvent},function(){},function(){alert("成功")});
+        }
+    };
+    //改变视图
+    $scope.changeView = function(view,calendar) {
+      uiCalendarConfig.calendars[calendar].fullCalendar('changeView',view);
+    };
+    
+    $scope.closeOperateTab = function(){
+    	ngDialog.close($scope.dialogId,"");
+    }
+    
+    $scope.closeOperateTab2 = function(){
+    	ngDialog.close($scope.dialogId2,"");
+    }
+    $scope.saveNewTaskManage = function(newTaskManage){
+    	var success = function(data){
+    		eventData = {
+    				id:data.eId,
+					title: data.name,
+					//start: new moment(data.startDate),
+					//end: new moment(data.endDate)
+				};
+    		$scope.allEvents.push(data);
+    		$('#calendar').fullCalendar('renderEvent', eventData, true);
+    		ngDialog.close($scope.dialogId2,"");
+    	}
+    	newTaskManage.startDate = $scope.newTaskManageStart.format("YYYY-MM-DD HH:mm:ss");
+    	newTaskManage.endDate = $scope.newTaskManageEnd.format("YYYY-MM-DD HH:mm:ss");
+    	TaskManageService.saveTaskManage({taskManage:newTaskManage},success,function(){});
+    }
+    
+    //日历配置
+    $scope.uiConfig = {
+      calendar:{
+        height: 402,
+        width:300,
+        theme:false,
+        editable: true,
+        header:{
+          left: 'title',
+          center: '',
+          right: 'today prev,next'
+        },
+        selectable: true,
+		selectHelper: true,
+		select: function(start, end) {
+			$scope.newTaskManageStart = start;
+			$scope.newTaskManageEnd = end;
+			 $scope.dialogId2 = ngDialog.open({
+	         		templateUrl:'simple/view/main/html/main/calendarForm.html',
+	         		showClose:false,
+	         		scope:$scope,
+	         }).id;
+		},
+        eventLimit: true,
+        eventClick: $scope.alertOnEventClick,
+        eventDrop: $scope.alertOnDrop,
+        eventResize: $scope.alertOnResize,
+        eventRender: $scope.eventRender,
+        viewRender:$scope.flash
+      }
+    };
+
+    $scope.changeLang = function() {
+    	$scope.uiConfig.calendar.dayNames = ["周天", "周一", "周二", "周三", "周四", "周五", "周六"];
+        $scope.uiConfig.calendar.dayNamesShort = ["周天", "周一", "周二", "周三", "周四", "周五", "周六"];
+        $scope.uiConfig.calendar.monthNames = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+        $scope.uiConfig.calendar.monthNamesShort = ["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"];
+    };
+    $scope.changeLang();
+    $scope.eventSources = [$scope.events];
+}])
+
+ /* dddinclude end WebContent\ddd\extends\portletsMeger\megerJS.js */

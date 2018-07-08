@@ -1,0 +1,130 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 register_logo">
+			<a href="http://www.cqu.edu.cn/"><img alt="重庆大学新闻网" src="../ddd/vip/asset/cqu.jpg" style="height: 183px;margin: 0 20%;"></a>
+    		<div class="nav-2" style="height: 5px;
+				  background: url(https://passport.baidu.com/static/passpc-account/img/reg/reg_hr_e84a6d3b.png) no-repeat center top;"> 
+				<div class="mod-nav" style="zoom:1;"></div>
+			</div>   
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<h1 class="register_title" style="margin-top:0px;">注册加入新闻网</h1>
+		</div>
+	</div>
+	<div class="row">
+		<form class="form-horizontal" role="form" name="memberForm" ng-init="init()" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group has-feedback">
+				<label class="col-md-4 control-label" for="onlyCode">账户： </label>
+				<div class="col-md-4">
+					<input type="text" class="form-control" ng-model="member.onlyCode"
+						name="onlyCode" placeholder="请输入账号" required/>
+					<div ng-switch on="memberForm.onlyCode.$valid">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true" ng-switch-when="true"></span> <span
+							class="sr-only" ng-switch-when="true">(success)</span> <span
+							class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true" ng-switch-when="false"></span> 
+							<span class="sr-only" ng-switch-when="false">(error)</span>
+					</div>
+				</div>
+			</div>	
+			<div class="form-group has-feedback"
+				ng-class="{false:'has-error',true:'has-success'}[memberForm.password.$valid]">
+				<label for="password" class="control-label col-md-4">密码：</label>
+				<div class="col-md-4">
+					 <div class="input-group" ng-show="!isShowPassword" ng-init="isShowPassword=false">
+		               <input name="password" type="password" class="form-control"
+						placeholder="6-20个字符" ng-maxlength="20" ng-minlength="6"
+						ng-pattern="/^[a-zA-Z|\d|_|@|\\|/|~|+|-| |~|*|]+$/" ng-model="member.password" required>
+		               <div class="input-group-btn">
+		                  <button type="button" class="btn btn-default" ng-click="isShowPassword=!isShowPassword">
+							  <i class="glyphicon glyphicon-eye-open"></i>
+		                  </button>
+		               </div>
+		            </div>
+		            <div class="input-group" ng-show="isShowPassword">
+		               <input name="password" type="text" class="form-control"
+						placeholder="6-20个字符" ng-maxlength="20" ng-minlength="6"
+						ng-pattern="/^[a-zA-Z|\d|_|@|\\|/|~|+|-| |~|*|]+$/" ng-model="member.password" required>
+		               <div class="input-group-btn">
+		                  <button type="button" class="btn btn-default" ng-click="isShowPassword=!isShowPassword">
+							  <i class=" glyphicon glyphicon-eye-close"></i>
+		                  </button>
+		               </div>
+		            </div>
+					<p class="help-block" ng-show="memberForm.password.$error.minlength">
+						密码的长度不能少于 6且大于20</p>
+				</div>
+			</div>
+			<div class="form-group has-success">
+				<label class="control-label col-md-4">密码强度： </label>
+				<div class="col-md-4 ">
+					<div class="progress">
+						<div class=" progress-bar progress-bar-danger"
+							role="progressbar" aria-valuenow="60" aria-valuemin="0"
+							aria-valuemax="100" style="width: 33%;" ng-show="true">
+							<span>低</span>
+						</div>
+						<div class="progress-bar progress-bar-warning"
+							role="progressbar" aria-valuenow="60" aria-valuemin="0"
+							aria-valuemax="100" style="width: 33%;" ng-show="isSecShow">
+							<span>中</span>
+						</div>
+						<div class="progress-bar progress-bar-success"
+							role="progressbar" aria-valuenow="60" aria-valuemin="0"
+							aria-valuemax="100" style="width: 34%;" ng-show="isThrShow">
+							<span>强</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="form-group has-feedback"
+				ng-class="{false:'has-error',true:'has-success'}[memberForm.surePassword.$valid]">
+				<label for="surePassword" class="control-label col-md-4">确认密码：</label>
+				<div class="col-md-4">
+					<input name="surePassword" class="form-control" type="password"
+						placeholder="再次输入密码" ng-maxlength="20" ng-minlength="6" ng-model="member.surePassword" required />
+					<div ng-switch on="memberForm.surePassword.$valid && member.password == member.surePassword">
+						<span class="glyphicon glyphicon-ok form-control-feedback"
+							aria-hidden="true" ng-switch-when="true"></span> <span
+							class="sr-only" ng-switch-when="true">(success)</span> <span
+							class="glyphicon glyphicon-remove form-control-feedback"
+							aria-hidden="true" ng-switch-when="false"></span> <span
+							class="sr-only" ng-switch-when="false">(error)</span>
+					</div>
+					<p class="help-block"
+						ng-show="!isSure(memberForm.surePassword) && memberForm.surePassword.$dirty">两次密码不一样.</p>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="profession"> 验证码： </label>
+				<div class="col-md-2">
+					<input type="text"   class="form-control" ng-model="validateCode"
+						name="code" placeholder="请确认验证码" required/>
+				</div>
+				<div class="col-md-6">
+				<img src="{{codeUrl}}" ng-click="createCode()" />
+				<a href="javascript:void(0)" ng-click="createCode()" style="margin-left: 10px;">看不清楚</a>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4"></label>	
+				<label class="col-md-4">
+					<input type="checkbox" checked="checked" name="agree" ng-model="agree"/>
+					<a href="">我已阅读并同意相关服务条款和隐私政策</a>
+				</label>
+				<label class="col-md-4"></label>
+			</div>
+			<div class="form-group">
+				<div class="col-md-12" style="text-align: center;">
+					<input class="btn btn-success" type="button"
+						value="提交注册" type="submit" ng-disabled="memberForm.$invalid || !agree"
+						ng-click="saveMember(member)" style="height: 47px; width: 370px;"> 
+				</div>
+			</div> 
+		</form>
+	</div>
+</div>

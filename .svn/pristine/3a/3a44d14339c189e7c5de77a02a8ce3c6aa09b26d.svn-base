@@ -1,0 +1,11 @@
+<form ng-controller="modelDataDisplayController"
+	ng-init="getDisplayInitData()"
+	class="form-horizontal" name="modelDataForm"
+	ddd-form-validate novalidate>
+	<legend class="legend">
+		<span class="legend-title">{{model.modelName}}信息</span>
+	</legend>
+	<form-priview dynamic-form-key="formKey" dynamic-form-type="display"
+		model-data="modelData"></form-priview>
+	<dynamicForm datasources="dddDynamicFormObjects"></dynamicForm>
+</form>

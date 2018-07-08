@@ -1,0 +1,14 @@
+<div ng-controller="attachmentGroupTemplateListController">
+	<div class="row">
+		<div class="col-md-12 col-xs-12 col-sm-12">
+			<div>
+				<ddatagrid 
+					id="attachmentGroupTemplateListGrid"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="attachmentGroupTemplateList">
+				</ddatagrid>
+			</div>
+		</div>
+	</div>
+</div>

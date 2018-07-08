@@ -1,0 +1,16 @@
+<div class="modal-header" style="min-height:60px">
+	<dcolumnfilter grid-name="dreferenceDdatagrid" />
+	<div class="btn-group formBtnGroup pull-right gridBtnGroup">
+		<a class="btn" ng-click="done()">确定</a>
+		<a class="btn" ng-click="cancel()" style="margin-left: 1px;">取消</a>
+	</div>
+</div>
+<div class="modal-body clearFix" data-ng-init="setSelectedRows(rows)" style="height:550px;overflow-y:auto;"> 
+	<ddatagrid
+		multi-select="{{data.multiSelect}}" 
+		chooes-objs="data.chooesObjs" default-datas="rows"
+		pager-template="DefultPageTmplate" style="width:500px;heigth:500x" init-filter="{{data.initFilter}}"
+		fit-window="false" id="dreferenceDdatagrid" name="dreferenceDdatagrid"
+		list-view-key={{data.listViewKey}}></ddatagrid>
+</div>
+

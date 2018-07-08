@@ -1,0 +1,325 @@
+
+<style>
+#userManMgt	.roleNameBorder{
+		border-color: white;
+	}
+#userManMgt	.roleNameBackground{
+		background: rgb(236, 240, 241);
+	}
+#userManMgt	.moduleTreePadding{
+		padding-left: 10px;
+	}
+#userManMgt	.viewTree{
+		width: 100%; 
+		overflow: auto;
+	}
+#userManMgt ::-webkit-scrollbar {
+	width: 2px;
+}
+/* Track */
+#userManMgt ::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+/* Handle */
+#userManMgt ::-webkit-scrollbar-thumb {
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	background: rgba(255, 0, 0, 0.8);
+	-webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+#userManMgt ::-webkit-scrollbar-thumb:window-inactive {
+	background: rgba(255, 0, 0, 0.4);
+}
+
+#userManMgt {
+	font-size: 12px;
+	line-height: 12px;
+}
+
+#userManMgt .iconContainer .circleBtn {
+	width: 20px;
+	background: red;
+	height: 20px;
+	border-radius: 18px;
+	border: 2px solid white;
+	position: absolute;
+	top: -10px;
+	right: -10px;
+	font-size: 10px;
+	line-height: 10px;
+	cursor: pointer;
+}
+
+#userManMgt ul {
+	list-style: none;
+}
+
+#userManMgt .panel-body .topBtn {
+	color: #aaa;
+	cursor: pointer;
+}
+
+#userManMgt .selectPanel .panel-body .topBtn .glyphicon {
+	margin-left: 5px;
+	color: #aaa
+}
+
+#userManMgt .unSelectPanel .panel-body .topBtn .glyphicon {
+	margin-right: 5px;
+	color: #aaa;
+	transform: rotate(180deg);
+	-ms-transform: rotate(180deg); /* IE 9 */
+	-webkit-transform: rotate(180deg); /* Safari and Chrome */
+	-o-transform: rotate(180deg); /* Opera */
+	-moz-transform: rotate(180deg);
+}
+
+#userManMgt .unSelectPanel .panel-body {
+	background: #fff8f7;
+	padding-left: 66px;
+	height: 437px;
+	overflow: auto;
+}
+
+#userManMgt .selectPanel .panel-body {
+	background: #ebffeb;
+	height: 437px;
+	overflow: auto;
+}
+
+#userManMgt .selectPanel li {
+	margin-bottom: 34px;
+}
+
+#userManMgt .unSelectPanel li {
+	margin-bottom: 20px;
+}
+
+#userManMgt .unSelectPanel {
+	border-left: none;
+}
+
+#userManMgt .unSelectPanel .iconContainer .circleBtn {
+	padding-left: 1px;
+	background: #60e85d;
+}
+
+#userManMgt .panel {
+	box-shadow: none;
+	border-color: #eee;
+}
+
+#userManMgt .panel-heading {
+	box-shadow: none;
+	border-color: #eee;
+	background: white;
+	color: #888888;
+	text-align: center;
+}
+
+#userManMgt .iconContainer {
+	position: relative;
+	width: 71px;
+	height: 71px;
+	border-radius: 10px;
+	display: inline-block;
+	text-align: center;
+	margin-right: 30px;
+	font-size: 14px;
+}
+
+#userManMgt .selectPanel .iconContainer {
+	background: #1fe6a2;
+	margin: 0 auto;
+	display: block;
+}
+
+#userManMgt .unSelectPanel .iconContainer {
+	background: #ff8e79;
+}
+
+#userManMgt .selectPanel  .tit {
+	display: block;
+	margin: 9px auto;
+	width: 100%;
+	text-align: center;
+}
+
+#userManMgt .iconContainer .icon {
+	line-height: 71px;
+	font-size: 37px;
+}
+
+#userManMgt .iconContainer .glyphicon {
+	color: white;
+}
+
+#userManMgt .tit {
+	font-size: 14px;
+	line-height: 25px;
+	display: inline-block;
+	position:absolute;
+}
+
+#userManMgt .headTit {
+	background: #eee;
+	overflow: hidden;
+	padding-left: 20px;
+	font-size: 13px;
+	color: #666666;
+	font-weight: bold;
+	line-height: 36px;
+	height: 36px;
+	font-size: 13px;
+}
+
+#userManMgt .headTit .btn {
+	height: 30px;
+	margin-top: 3px;
+	padding-top: 0;
+	font-size: 12px;
+	line-height: 30px;
+	padding-left: 11px;
+	border-radius: 5px;
+}
+
+#userManMgt .headTit .btn:first-of-type {
+	background: #ff8e79;
+	border: 1px solid #fd6a4e;
+}
+
+#userManMgt .headTit .btn:last-of-type {
+	background: #1fe6a2;
+	border: 1px solid #10e099;
+}
+
+#userManMgt .headTit .btn .glyphicon {
+	margin-right: 5px;
+	font-size: 16px;
+	vertical-align: text-bottom;
+}
+</style>
+<div ng-controller="assignPermissionsController" id="userManMgt">
+	<div class="row">
+		<div class="col-md-3 col-xs-3 col-sm-3">
+			<div class="panel panel-default roleNameBorder">
+				<div class="panel-heading roleNameBackground">
+					<div class="panel-title">模块树</div>
+				</div>
+				<div class="viewTree">
+					<viewtree view-tree-key='selectViewTreeKey'> <viewtree>
+				</div>
+			</div>
+		</div>		
+<!-- 		<div class="col-md-9 col-xs-9 col-sm-9" style="margin-left: -10px">
+			<div class="panel panel-default roleNameBorder">
+				<div ng-show="showPermissions.length>0"  class="panel panel-default">
+						<div class="panel-heading permisionHead">
+							<span class="Obold">{{role}}</span>&nbsp;/&nbsp;权限列表&nbsp;/&nbsp;{{currentNode.name}}
+							<div class="btn-group pull-right formBtnGroup" role="group" style="margin-top:-1%;">
+							  <button class="btn" ng-click="cancelOperate()"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;查看所有权限点</button>
+							  <button class="btn haCheckedBc" ng-click="saveCurrentChange()"><i class="glyphicon glyphicon-ok-circle"></i>&nbsp;确定</button>
+							  <button class="btn" ng-click="closeOperateTab()"><i class="glyphicon glyphicon-remove-circle"></i>&nbsp;返回</button>
+							</div>
+						</div>
+						<div>
+							<div class = "col-md-4 hasCheckedW">已选</div>
+							<div class = "col-md-8 hasCheckedW">待选</div>
+								<div class = "col-md-4 hasCheckedW hasCheckedHeight haCheckedBc">
+									<div class="col-md-12">
+										<a class="pull-right clearStyle" ng-click="clearAll()" style="text-decoration:none;">&nbsp;清空<span class="glyphicon glyphicon-chevron-right"></span></a>
+									</div>
+									<div class="col-md-12 permisionMargin" ng-repeat="permission in showPermissions" ng-if="permission.isAssigned" style="text-align:left;">
+										<div class="btn-group">
+											<a uib-btn-checkbox ng-model="permission.isAssigned" style="text-decoration:none;" class="fontStyle"> 
+												<img alt="此图片无法展示" src="simple/view/permission/images/checked.png" class="imageHe">&nbsp;&nbsp;&nbsp;{{permission.name}}
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class = "col-md-8 hasCheckedW hasCheckedHeight unCheckedBc">
+									<div class="col-md-12">
+										<a class="pull-left selectStyle" ng-click="selectAll()" style="text-decoration:none;"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;全选</a>
+									</div>
+									<div class="col-md-6 permisionMargin" ng-repeat="permission in showPermissions" ng-if="!permission.isAssigned" style="text-align:left;">
+										<div class="btn-group">
+											<a uib-btn-checkbox ng-model="permission.isAssigned" style="text-decoration:none;" class="fontStyle"> 
+												<img alt="此图片无法展示" src="simple/view/permission/images/unchecked.png" class="imageHe">&nbsp;&nbsp;&nbsp;{{permission.name}}
+											</a>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+			<div class="col-md-9 col-xs-9 col-sm-9" style="margin-left: -20px">
+				<div class="col-md-12" style="padding-right: 0px">
+					<div class=" distributeContainer row" ng-show="showPermissions.length>0">
+						<div class="col-md-12">
+							<div class="headTit">
+								<span class="Obold">{{role}}</span>&nbsp;/&nbsp;权限列表&nbsp;/&nbsp;{{currentNode.name}}
+								<div class="btn-group pull-right formBtnGroup" role="group">
+								  <button class="btn" ng-click="cancelOperate()"><i class="glyphicon glyphicon-eye-open"></i>&nbsp;查看所有权限点</button>
+								  <button class="btn haCheckedBc" ng-click="saveCurrentChange()"><i class="glyphicon glyphicon-ok-circle"></i>&nbsp;确定</button>
+								  <button class="btn" ng-click="closeOperateTab()"><i class="glyphicon glyphicon-remove-circle"></i>&nbsp;返回</button>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4" style="padding-right: 0">
+							<div class="panel panel-default selectPanel">
+								<div class="panel-heading">已选</div>
+								<div class="panel-body">
+									<div class="col-md-12" style="padding-right: 0; color: #aaaaaa">
+										<span class="pull-right topBtn" ng-click="clearAll()">清空<i
+											class="glyphicon glyphicon-share-alt"></i></span>
+									</div>
+									<ul class="col-md-12" style="padding: 22px 0 0 0;">
+										<li ng-repeat="permission in showPermissions | filter : {isAssigned:true}"><span
+											class=" iconContainer"> <span class="circleBtn"
+												ng-click="toggleSelect(permission)"> <i
+													class=" glyphicon glyphicon-minus"></i>
+											</span> <i class="icon "
+												ng-class="{true:permission.icon,false:'glyphicon glyphicon-bishop'}[!!permission.icon]"></i>
+										</span><span class=" tit"> {{permission.name}}</span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-8" style="padding-left: 0">
+							<div class="panel panel-default unSelectPanel">
+								<div class="panel-heading">待选</div>
+								<div class="panel-body">
+									<div class="col-md-12"
+										style="margin-left: -51px; padding-left: 0; color: #aaaaaa">
+										<span class="pull-left topBtn" ng-click="selectAll()"><i
+											class="glyphicon glyphicon-share-alt"></i>全选</span>
+									</div>
+									<ul class="col-md-12"
+										style="padding-left: 0; padding-top: 22px">
+										<li class="col-md-6"
+											ng-repeat="permission in showPermissions | filter : {isAssigned:false}">
+											<span class=" iconContainer"> <span class="circleBtn"
+												ng-click="toggleSelect(permission)"> <i
+													class="glyphicon glyphicon-plus"></i>
+											</span> <i class="icon"
+												ng-class="{true:permissione.icon,false:'glyphicon glyphicon-bishop'}[!!permission.icon]"></i>
+
+										</span> <span class=" tit">{{permission.name}}</span>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+

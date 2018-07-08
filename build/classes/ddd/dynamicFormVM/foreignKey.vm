@@ -1,0 +1,30 @@
+#if($!{dataResource.get('isEdit')}=='是')
+<dreference id="$!dataResource.get('dataSource')" 
+		list-view-key="$!dataResource.get('dataSource')" 
+		ng-model="modelData.$!{dataResource.get('bundle')}" 
+		name="$!{dataResource.get('bundle')}" 
+		bind-field="EId" 
+#if($!{dataResource.get('foreignKeyView')})
+		show-model-filed="$!dataResource.get('foreignKeyView')" 
+#else
+		show-model-filed="EId" 
+#end
+		#if($!{dataResource.get('nullable')}=="是")
+			 required="required"
+		#end
+		placeholder="$!{dataResource.get('placeholder')}"
+multi-select=false></dreference>
+#else
+<dreference id="$!dataResource.get('dataSource')" 
+		display-only="showName"
+		list-view-key="$!dataResource.get('dataSource')" 
+		ng-model="modelData.$!{dataResource.get('bundle')}" 
+		name="$!{dataResource.get('bundle').replaceAll('[.]','')}" 
+		bind-field="EId" 
+#if($!{dataResource.get('foreignKeyView')})
+		show-model-filed="$!dataResource.get('foreignKeyView')" 
+#else
+		show-model-filed="EId" 
+#end
+></dreference>
+#end

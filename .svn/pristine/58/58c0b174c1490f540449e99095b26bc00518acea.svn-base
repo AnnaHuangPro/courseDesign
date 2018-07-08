@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="vip/view/account/css/content.css" />
+
+<div ng-init="initMemberData()">
+	<form class="form-horizontal" rol="form" id="detailInfo_form"
+		name="detailInfo_form">
+		<div class="row rowddd"></div>
+		<div class="col-md-12 profile">
+			<div class="title">详细资料</div>
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for=" bloodType"> 血型:
+				</label>
+				<div class="col-md-4">
+					<select ng-model="member.bloodType" class="form-control"
+						ng-options="bloodType for bloodType in allBloodType">
+						<option value="">--请选择--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="birthday"> 婚姻状况:
+				</label>
+				<div class="col-md-4">
+					<select ng-model="member.maritalStatus" class="form-control"
+						ng-options="maritalStatus for maritalStatus in allMaritalStatus">
+						<option value="">--请选择--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="eduStatus"> 教育程度:
+				</label>
+				<div class="col-md-4">
+					<select ng-model="member.eduStatus" class="form-control"
+						ng-options="eduStatus for eduStatus in allEduStatus">
+						<option value="">--请选择--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="phone"> 联系电话</label>
+				<div class="col-md-6">
+					<input type="text" class="form-control" id="phone"
+						ng-pattern="/^0?(13[0-9]|15[012356789]|18[0236789]|14[57])[0-9]{8}$/"
+						name="phone" ng-model="member.phone" required>
+				</div>
+				<span
+					ng-show="detailInfo_form.phone.$dirty && detailInfo_form.phone.$error.pattern"
+					class="glyphicon glyphicon-exclamation-sign Tip label label-warning">&nbsp;电话格式不对</span> 
+				<span
+					ng-show="detailInfo_form.phone.$dirty && detailInfo_form.phone.$error.required"
+					class="glyphicon glyphicon-exclamation-sign Tip label label-warning">&nbsp;必填项</span>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="likeBooks"> 喜欢的书:
+				</label>
+				<div class="col-md-9">
+					<textarea type="text" class="form-control"
+						ng-model="member.likeBooks" name="likeBooks" id="likeBooks"
+						ng-maxlength="200" style="height: 120px; resize: none;"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-11">
+					<div class="col-md-12">
+						<input class="btn btn-info col-md-offset-10" type="button"
+							value="保存" type="submit" ng-disabled="detailInfo_form.$invalid"
+							ng-click="updateMember(member)">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

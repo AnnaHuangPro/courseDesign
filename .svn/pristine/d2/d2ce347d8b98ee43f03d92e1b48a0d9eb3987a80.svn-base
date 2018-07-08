@@ -1,0 +1,11 @@
+<div class="form-group">
+    <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+    <div class="col-md-{{col2}}">
+	    <input type="text" ng-model="defaultValue" validator-required="{{required}}" validator-group="{{formName}}" id="{{formName+index}}" class="form-control" placeholder="{{placeholder}}"/>
+	    <p class='help-block'>{{description}}</p>
+    </div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>

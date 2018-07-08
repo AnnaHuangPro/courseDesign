@@ -1,0 +1,92 @@
+<div ng-controller="taskManageFormController">
+	<div class="row" ng-init="getInitTaskManageData()">
+		<form class="col-md-12 form-horizontal" name="taskManageForm" novalidate>
+			<div class="row rowddd"></div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employee">
+								职员</label>
+				<div class="col-md-8">
+					<dreference class="form-control" reference-id="taskManageFormemployee"
+						list-view-key='employeeList' ng-model='taskManage.employee'
+						show-model-filed='name' name="employee"
+										></dreference>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="member">
+								会员</label>
+				<div class="col-md-8">
+					<dreference class="form-control" reference-id="taskManageFormmember"
+						list-view-key='memberReference' ng-model='taskManage.member'
+						show-model-filed='name' name="member"
+										></dreference>
+				</div>
+			</div>
+			<ddatepicker class="form-control"  ng-model="taskManage.startDate" ></ddatepicker>
+			<ddatepicker class="form-control"  ng-model="taskManage.endDate" ></ddatepicker>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="describe"> 
+								描述</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="taskManage.taskDescribe" 
+					 name="describe"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 
+								任务名</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="taskManage.name" 
+					 name="name"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="route"> 
+								路由</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="taskManage.route" 
+					 name="route"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state"> 
+								状态</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="taskManage.state" 
+					 name="state"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type"> 
+								类型</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="taskManage.type" 
+					 name="type"
+										/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+					<!-- <div class="col-md-10">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-click="saveTaskManage(taskManage)">
+						<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ng-click="saveAndAddTaskManage(taskManage)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="closeOperateTab()"/>
+					</div> -->
+					
+					<div class="btn-group formBtnGroup topRight col-md-offset-2">
+						<button ng-disabled="taskManageForm.$invalid" class="btn btn-sm "
+							ng-click="saveTaskManage(taskManage)">保存</button>
+						<button ng-disabled="taskManageForm.$invalid" class="btn btn-sm  "
+							ng-show="showSaveAndAddButton"
+							ng-click="saveAndAddTaskManage(taskManage)">保存并新增</button>
+						<button class="btn btn-sm" ng-click="back()">返回</button>
+					</div>
+			</div>
+			
+			</form>
+	</div>
+</div>

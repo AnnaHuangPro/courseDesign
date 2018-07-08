@@ -1,0 +1,284 @@
+angular.module("dddFileUploadApp",[ 'angularFileUpload', 'angular.permission' ])
+		.directive("dfileupload",['AttachmentService','angularPermission',function(AttachmentService,angularPermission) {
+				return {
+					restrict : 'E',
+					scope : {
+						associateFormId : "=",
+						associateFormName : "@",
+						numLimit:'=',
+						noUpload:'@',
+						templateName:'@',
+						associateType : "@",
+						typeOfUploadfile : "@",
+						automaticCode : '@',
+						display:'@',
+						
+						asynUpload:'@'//保存表单实体和上传附件分为两次
+					},
+					controller : function($rootScope, $scope,$http, FileUploader, angularPermission,$q) {
+						
+						if($scope.display==undefined){
+							$scope.display=false;
+						}
+						
+						if(!$scope.asynUpload){
+							$scope.asynUpload = false;
+						}
+						
+						$scope.isEdit=false;
+						$scope.isUpload = false;
+						
+						$scope.showUploadButton = function(){
+							return false;
+						}
+						
+						$scope.createAssociateFormId = function(){
+							if(angularPermission.getLoginUser() && angularPermission.getLoginUser().employee){
+								//时间戳
+								var value  = Date.now();
+								var loginEmpId = angularPermission.getLoginUser().employee.eId;
+								//登录人员
+								value += "-"+loginEmpId;
+								//随机数
+								value += "-"+Math.random();
+								
+								//加密
+								value = hex_md5(value);
+								return value;
+							}else{
+								//
+								alert("登录超时");
+							}
+						}
+						
+						//从外部调用上传附件再调用外部方法
+						this.uploadAllFileAndInvokeFn = function(associateFormId,fn){
+							var defer = $q.defer();
+							this.uploadAllFileInterface(associateFormId).then(function(data){
+								fn(data).$promise.then(function(){
+									defer.resolve("");
+								},function(error){
+									alert("上传附件并调用外部方法出错，上传附件出错，请联系管理员");
+									defer.reject("");
+								})
+							},function(error){
+								alert("上传附件并调用外部方法出错，上传附件出错，请联系管理员");
+								defer.reject("");
+							})
+							return defer;
+						}
+						
+						//从外部调用上传全部按钮
+						this.uploadAllFileInterface = function(associateFormId){
+							
+							if(associateFormId == null || associateFormId == ""){
+								associateFormId = 	$scope.createAssociateFormId();
+							}
+							
+							var defer = $q.defer();
+							
+							$scope.uploader.onSuccessItem = function(fileItem, response, status,headers) {
+								defer.resolve(associateFormId); 
+							};
+							
+							$scope.uploader.onErrorItem = function(fileItem, response, status,headers) {
+								defer.reject('上传文件失败!');  
+							}
+							
+							if($scope.uploader.queue.length == 0){
+								defer.resolve("");
+							}
+							
+							var allUploaded = true;
+							for(var i =0;i<$scope.uploader.queue.length;i++){
+								if($scope.uploader.queue[i].isUploaded){
+	
+								}else{
+									allUploaded = false;
+								}
+							}
+							
+							if(allUploaded){
+								defer.resolve("");
+							}
+							
+							
+							var url = $scope.setUploaderUrl(associateFormId);
+							var files = $scope.uploader.queue;
+							for(var i =0;i<files.length;i++){
+								files[i].url = url;
+							}
+							$scope.uploader.uploadAll();
+							return defer.promise;
+						}
+						
+						
+						
+						//---初始化uploader
+						if($scope.numLimit == undefined || $scope.numLimit== null || $scope.numLimit==0){
+							$scope.numLimit=5;
+						}
+						
+						$scope.uploader = new FileUploader(
+								{
+									queueLimit:$scope.numLimit
+								});
+						$scope.uploader.filters.push({
+							name : 'customFilter',
+							fn : function(item, options) {
+								var size =0;
+								if($scope.attachments){
+									size = $scope.attachments.length;
+								}
+								return (this.queue.length+size) < 5 && item.size/1024/1024<10;
+							}
+						});
+						
+						$scope.uploader.onSuccessItem = function(fileItem, response, status,headers) {
+							
+						};
+						//---初始化uploadee end
+						
+						
+						//设置uploader上传文件url
+						$scope.setUploaderUrl = function(attachmentCode){
+							var url = "../UploadServlet?attachmentCode="+ attachmentCode+ "&"
+							+ "entityName="+ $scope.associateFormName
+							+ "&"+ "uploadPeopleId="+ angularPermission.getLoginUser().employee.eId
+							+ "&" + "associateType="+ $scope.associateType;
+							$scope.uploader.url = url;
+							return url;
+						}
+						$scope.showNoFileTip = function(){
+							var result = true;
+							
+							if($scope.attachments){
+								result &=  $scope.attachments.length == 0;
+							}
+							
+							if($scope.uploader && $scope.uploader.queue){
+								result &= $scope.uploader.queue.length == 0;
+							}
+							return result;
+						}
+						
+						$scope.initFile = function(){
+							
+							$scope.setUploaderUrl($scope.associateFormId);
+							
+							AttachmentService.findAttachmentByForm($scope.associateFormId,$scope.associateFormName,findAttachmentResult,findAttachmentFault);
+						}
+
+						$scope.$watch("associateFormId", function(newValue, oldValue) {
+							if (newValue !== oldValue&& newValue !== undefined) {
+								$scope.initFile();
+							}
+						}, true);
+
+						function findAttachmentResult(data) {
+							var baseImgSrc = "asset/";
+							$scope.attachments = [];
+							for (var i = 0; i < data.length; i++) {
+								var attachment = new Object();
+								attachment.imgSrc = "";
+								attachment.eId = data[i].eId;
+								attachment.attachmentRealName = data[i].attachmentRealName;
+								attachment.uploadTime = data[i].uploadTime;
+								attachment.associateSize = data[i].associateSize;
+								var pictureType = data[i].attachmentRealName;
+
+								var pointIndex = pictureType
+										.lastIndexOf('.');
+								var choosePicture = pictureType
+										.substr(pointIndex + 1,
+												pictureType.length)
+										.toLowerCase();
+								attachment.fileType = choosePicture;
+								if (choosePicture == 'file') {
+									attachment.imgSrc = baseImgSrc
+											+ "file.png";
+								} else if (choosePicture == 'xlsx'
+										|| choosePicture == 'xls') {
+									attachment.imgSrc = baseImgSrc
+											+ "excel.png";
+								} else if (choosePicture == 'ppt') {
+									attachment.imgSrc = baseImgSrc
+											+ "ppt.png";
+								} else if (choosePicture == 'txt') {
+									attachment.imgSrc = baseImgSrc
+											+ "txt.png";
+								} else if (choosePicture == 'zip'
+										|| choosePicture == 'rar') {
+									attachment.imgSrc = baseImgSrc
+											+ "zip.png";
+								} else if (choosePicture == 'doc'
+										|| choosePicture == 'docs') {
+									attachment.imgSrc = baseImgSrc
+											+ "word.png";
+								} else if (choosePicture == 'pdf') {
+									attachment.imgSrc = baseImgSrc
+											+ "pdf.png";
+								} else if (choosePicture == 'jpg'
+										|| choosePicture == 'png'
+										|| choosePicture == 'gif') {
+									attachment.imgSrc = baseImgSrc
+											+ "picture.png";
+								} else {
+									attachment.imgSrc = baseImgSrc
+											+ "nomatch.png";
+								}
+								$scope.isEdit=true;
+								$scope.attachments.push(attachment);
+							}
+						}
+
+						function findAttachmentFault() {
+							alert("加载" + $scope.associateFormName
+									+ "失败");
+						}
+
+						$scope.mouseEnter = function(row,attachment) {
+							$scope.onMouseEnter = row;
+						}
+
+						$scope.mouseLeave = function() {
+							$scope.onMouseEnter = -1;
+						}
+
+						$scope.deleteFile = function(attachment) {
+							AttachmentService.deleteAttachment(attachment.eId, deleteSuccess,deleteFault);
+							$scope.attachments.splice($scope.attachments.indexOf(attachment),1);
+							//AttachmentService.findAttachmentByForm($scope.associateFormId,$scope.associateFormName,findAttachmentResult,findAttachmentFault);
+						}
+
+						function deleteSuccess() {
+							//console.log("删除成功");
+						}
+						function deleteFault() {
+						//	console.log("删除失败");
+						}
+
+						$scope.downLoadFile = function(attachmentId) {
+							window.location.href = "../DownLoadServlet?attachmentId="+ attachmentId;
+						}
+
+						if ($scope.associateFormId > 0) {
+							$scope.initFile();
+						}
+
+					},
+					templateUrl: function (elem, attr) {
+						var templates={
+								"defaultTemplate": "compents/dddfileupload/asset/template.html",
+								"templateUpload":"compents/dddfileupload/asset/templateUpload.html"
+						}
+						
+						if(attr.templateName !=null && attr.templateName != "" && attr.templateName != undefined){
+							 return templates[attr.templateName];
+						}else{
+							return templates.defaultTemplate;
+						}
+					},
+				}
+
+			} ]);

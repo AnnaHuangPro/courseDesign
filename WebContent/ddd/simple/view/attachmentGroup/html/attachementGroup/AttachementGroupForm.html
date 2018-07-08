@@ -1,0 +1,102 @@
+<div ng-controller="attachementGroupFormController">
+	<div class="row" ng-init="getInitAttachementGroupData()">
+		<form class="form-horizontal" name="attachementGroupForm"  ddd-form-validate="{ blurValidate: true}" novalidate >
+			<div class="row rowddd"></div>
+				<div class="form-group">
+					<div class="col-md-10">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-click="saveAttachementGroup(attachementGroup)">
+						<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ng-click="saveAndAddAttachementGroup(attachementGroup)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="back()"/>
+					</div>
+				</div>
+						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode"> 
+								输入码</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.inputCode" 
+					 name="inputCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode"> 
+								操作人编码</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.operatorCode" 
+					 name="operatorCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">
+								操作日期</label>
+				<div class="col-md-8">
+					<ddatepicker class="form-control"  class="form-control" ng-model="attachementGroup.operateDate"  name="operateDate"
+										></ddatepicker>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId"> 
+								单位主键</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.orgId" 
+					 name="orgId"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 
+								备注</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.remark" 
+					 name="remark"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 
+								名称</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.name" 
+					 name="name"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentGroupItemId"> 
+								文档项Id</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.attachmentGroupItemId" 
+					 name="attachmentGroupItemId"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="associateFormId"> 
+								关联表单Id</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.associateFormId" 
+					 name="associateFormId"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="associateFormName"> 
+								关联表单名称</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="attachementGroup.associateFormName" 
+					 name="associateFormName"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCount"> 
+								文件数量</label>
+				<div class="col-md-8">
+					<input type="number"  class="form-control" ng-model="attachementGroup.attachmentCount" name="attachmentCount"
+										/>
+				</div>
+			</div>
+			</form>
+	</div>
+</div>

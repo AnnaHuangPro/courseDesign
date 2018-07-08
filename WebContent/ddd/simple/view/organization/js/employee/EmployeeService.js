@@ -1,0 +1,37 @@
+
+define(['app'], function (app) 
+{
+	app.factory('EmployeeService', function($resource) 
+	{
+		var employeeService = $resource('../Employee/:action', {});
+		employeeService.saveEmployee=function(employee,sucesscb,errorcb)
+		{
+			employeeService.save({action:"saveEmployee"},{employee:employee},sucesscb,errorcb);
+		};
+		
+		employeeService.deleteEmployee=function(employeeId,sucesscb,errorcb)
+		{
+			employeeService.save({action:"deleteEmployee"},employeeId,sucesscb,errorcb);
+		};
+		
+		employeeService.updateEmployee=function(employee,sucesscb,errorcb)
+		{
+			employeeService.save({action:"updateEmployee"},{employee:employee},sucesscb,errorcb);
+		};
+
+        employeeService.findPersonalMessageByEidAndRole=function(employeeId,career,sucesscb,errorcb)
+        {
+            employeeService.get({action:"findPersonalMessageByEidAndRole",employeeId:employeeId,career:career},sucesscb,errorcb);
+        };
+
+		employeeService.findEmployeeById=function(employeeId,sucesscb,errorcb)
+		{
+			employeeService.get({action:"findEmployeeById",employeeId:employeeId},sucesscb,errorcb);
+		};
+		
+		employeeService.findAllEmployee=function(sucesscb,errorcb)
+		{
+			employeeService.query({action:"findAllEmployee"},sucesscb,errorcb);
+		}
+		return employeeService;
+})});

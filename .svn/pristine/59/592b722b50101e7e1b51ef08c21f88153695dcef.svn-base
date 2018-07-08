@@ -1,0 +1,25 @@
+<div class="col-md-6">
+	<div ng-controller="calendarController">
+		<div class="panel panel-default widget"
+			style="padding: 0; margin-bottom: 0px; border-radius: 0">
+			<div class="panel-heading">
+				<span class="glyphicon glyphicon-calendar"></span>日历管理
+			</div>
+			<div class="panel-body"
+				style="padding-top: 3px; padding-bottom: 0px;">
+				<div ui-calendar="uiConfig.calendar" id="calendar"
+					class="calendar col-md-12 " calendar="myCalendar1"
+					ng-model="eventSources"></div>
+				<div class="col-md-12 btn-group"
+					style="margin-top: 0px; border-top-width: 3px; padding-top: 3px;">
+					<button class="btn btn-primary form-buttongroup-margin"
+						ng-click="changeView('agendaDay', 'myCalendar1')">日视图</button>
+					<button class="btn btn-primary form-buttongroup-margin"
+						ng-click="changeView('agendaWeek', 'myCalendar1')">周视图</button>
+					<button class="btn btn-primary"
+						ng-click="changeView('month', 'myCalendar1')">月视图</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

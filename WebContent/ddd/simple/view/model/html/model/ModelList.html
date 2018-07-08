@@ -1,0 +1,16 @@
+<div class="row" ng-controller="modelListController">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="modelListGrid"></dpagination>
+				<a class="btn " ng-click="addModel()" ng-if="hasAddPermission"> 
+					<i class='glyphicon glyphicon-plus-sign'></i>新增
+				</a>
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="modelListGrid" />
+	</div>	
+	<ddatagrid class="col-md-12" name="modelListGrid" id="modelListGrid"
+		name="modelListGrid" isoperation-column=true show-operater-icon=true
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		operation-column-width='170' list-view-key="modelList"> </ddatagrid>
+</div>

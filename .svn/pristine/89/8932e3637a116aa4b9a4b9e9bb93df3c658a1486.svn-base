@@ -1,0 +1,96 @@
+<style type="text/css">
+	.data-updatepw a{
+		color:#ff8e79;
+		padding-left: 50px;
+	}
+	.lable-tip{
+		text-align: right;
+	}
+	
+	.lable-tip .col-md-8{
+		text-align: left;
+	}
+</style>
+<div class="data-bg" ng-init="init()">
+	<!-- <div class="col-md-12">
+		<div class="form-group">
+			<img src="simple/view/personalCenter/images/data-icon.png">
+			<span style="margin-left:25px"> 查看资料</span>
+		</div>
+	</div> -->
+	
+	<legend class="legend" data-toggle="collapse">
+		<span class="legend-title">查看资料</span>
+	</legend>
+	
+	<div class="form-group">
+		<div class="col-md-2">
+			<figure>
+			  <dlogoupload ng-model="uploadLogo" img-width="150" img-height="150" img-url="logoUrl"></dlogoupload>
+			  <p ng-click="modifyPassword()" style="text-align: center;margin-top: 20px;color: #04c;cursor: pointer;">修改密码</p>
+			</figure>
+    	</div>
+		<div class="col-md-10">
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="name"> 姓名</label>
+				<div class="col-md-8"><span ng-bind="employee.name"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="linkTel"> 联系电话</label>
+				<div class="col-md-8"><span ng-bind="employee.linkTel"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="sex"> 性别</label>
+				<div class="col-md-8"><span ng-bind="employee.sex"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="email"> 邮箱</label>
+				<div class="col-md-8"><span ng-bind="employee.email"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="nation"> 民族</label>
+				<div class="col-md-8"><span ng-bind="employee.nation"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="lastedEducationBackground"> 学历</label>
+				<div class="col-md-8"><span ng-bind="employee.lastedEducationBackground"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="birthDate"> 出生日期</label>
+				<div class="col-md-8"><span ng-bind="employee.birthDate.substring(0,10)"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="graduateSchool"> 毕业学校</label>
+				<div class="col-md-8"><span ng-bind="employee.graduateSchool"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="nativePlace"> 籍贯</label>
+				<div class="col-md-8"><span ng-bind="employee.nativePlace"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="politicStatus"> 政治面貌</label>
+				<div class="col-md-8"><span ng-bind="employee.politicStatus"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			    	<label class="col-md-4 data-margin" for="address"> 所在地</label>
+					<div class="col-md-8"><span ng-bind="employee.address"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="address">个人说明</label>
+				<div class="col-md-8"><span ng-bind="employee.remark"></span></div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<div class="col-md-6">
+				<div class="col-md-4"></div>
+				<div class="col-md-8">
+					<button class="btn btn-sm" ng-click="modifyData()"  style="">编辑</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

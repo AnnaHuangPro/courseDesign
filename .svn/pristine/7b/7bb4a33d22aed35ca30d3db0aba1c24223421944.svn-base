@@ -1,0 +1,12 @@
+<form ng-controller="modelDataHistoryDisplayController"
+	ng-init="initData()"
+	class="form-horizontal" name="modelDataForm"
+	ddd-form-validate novalidate>
+	<legend class="legend">
+		<span class="legend-title">{{modelDataHistory.modelName}}信息</span>
+	</legend>
+	<form-priview dynamic-form-key="modelDataHistory.dynamicFormKey" 
+		dynamic-form-type="display"
+		model-data="modelDataHistory.modelData">
+	</form-priview>
+</form>

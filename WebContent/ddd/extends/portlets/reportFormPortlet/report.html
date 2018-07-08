@@ -1,0 +1,21 @@
+	<div class="col-md-6">
+		<div ng-controller="reportController">
+			<div class="panel panel-default "
+				style="padding: 0; border-radius: 0">
+				<div class="panel-heading">
+					<span class="glyphicon glyphicon-bookmark"></span>报表管理 <a
+						style="float: right" ng-click="more()">更多</a>
+				</div>
+				<div class="panel-body" style="height: 190px">
+					<div>
+						<ul>
+							<li ng-repeat="report in reports"><a href="#"
+								ng-click="go(report.modelKey)"> <span>{{report.remark}}</span>
+							</a></li>
+						</ul>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

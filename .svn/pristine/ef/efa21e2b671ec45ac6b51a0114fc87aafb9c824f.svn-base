@@ -1,0 +1,66 @@
+<div ng-controller="memberFormController">
+	<div class="row" ng-init="getInitMemberData()">
+		<form class="form-horizontal" name="memberForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button"
+						value="保存" type="submit" ng-click="saveMember(member)"> <input
+						class="btn btn-success" type="button" value="保存并新增" type="submit"
+						ng-show="showSaveAndAddButton" ng-click="saveAndAddMember(member)">
+					<input class="btn btn-primary" type="button" value="返回"
+						ng-click="back()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="realName"> 会员名称</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="member.name"
+						name="realName"/>
+				</div>
+			</div>
+		<!-- 	required popover
+						popover-show="memberForm.submitted && memberForm.name.$invalid"
+						popover-lable='请输入会员名称' -->
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="password"> 密码</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="member.password"
+						name="password"/>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="sex"> 性别</label>
+				<div class="col-md-8">
+					<label><input type="radio" name="sex" value="男 " ng-model="member.sex">男</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<label><input type="radio" name="sex" value="女" ng-model="member.sex">女</label>
+				</div>
+			</div>
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="phone"> 电话</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="member.phone"
+						name="phone" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="email"> 电子邮件</label>
+				<div class="col-md-8">
+					<input type="email" class="form-control" ng-model="member.email"
+						name="email"/>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="remark"> 备注</label>
+				<div class="col-md-10">
+					<textarea rows="8" class="form-control defined-textarea"
+						ng-model="member.remark" placeholder='补充'>
+					</textarea>
+				</div>
+			</div>
+			<dentityproperties id="memberId" model="propertiesModel" type="memberFields" col-width="6" label-width="4" context-width="8"></dentityproperties>
+		</form>
+	</div>
+</div>

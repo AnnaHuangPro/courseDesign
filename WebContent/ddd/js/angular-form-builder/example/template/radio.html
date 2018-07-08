@@ -1,0 +1,27 @@
+<div class="form-group" ng-if="orientation=='横排'">
+       <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+       <div class="col-md-{{col2}}">
+	       <label class="radio-inline radio-checkbox" ng-repeat="obj in dataSource">
+			  <input type="radio"   ng-checked="obj.isDefaultValue">{{obj.name}}
+			</label>
+	       <p class='help-block'>{{description}}</p>
+       </div>
+</div>
+
+<div class="form-group" ng-if="orientation=='竖排'">
+       <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+       <div class="col-md-{{col2}}">
+			<div class="radio" ng-repeat="obj in dataSource">
+				<label>
+					<input type="radio"   ng-checked="obj.isDefaultValue">{{obj.name}}
+				</label>
+			</div>
+	       <p class='help-block'>{{description}}</p>
+       </div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>
+
+

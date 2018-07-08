@@ -1,0 +1,73 @@
+<form ng-init="init()" class="form-horizontal"
+	name="orderItemForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveOrderItem(false)"
+			ng-disabled="orderItemForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveOrderItem(true)"
+			ng-disabled="orderItemForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						 			  						 						 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark">
+										备注:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="remark"
+						placeholder='' class="form-control"
+						ng-model="orderItem.remark" name="remark"
+														maxlength="8000"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="attachmentCode">
+										附件编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="attachmentCode"
+						placeholder='' class="form-control"
+						ng-model="orderItem.attachmentCode" name="attachmentCode"
+														maxlength="255"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="book">
+										书:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="book"
+						placeholder='书' class="form-control"
+						ng-model="orderItem.book" name="book"
+														maxlength="20"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="order">
+										订单:
+				</label>
+				<div class="col-md-8">
+					<dreference list-view-key='orderReference'
+						ng-model='orderItem.order' show-model-filed='name'
+						name="order"
+												class="form-control"></dreference>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

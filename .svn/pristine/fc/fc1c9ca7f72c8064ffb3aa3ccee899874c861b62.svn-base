@@ -1,0 +1,20 @@
+<form id="modelDataForm" ng-controller="modelDataFormController"
+	ng-init="getInitModelDataData()" class="form-horizontal"
+	name="modelDataForm" novalidate>
+	<legend class="legend">
+		<span class="legend-title">{{model.modelName}}信息</span>
+	</legend>
+	<form-priview name="dynamicform" dynamic-form-key="formKey"
+		model-data="modelData"></form-priview>
+	<dynamicForm datasources="dddDynamicFormObjects"></dynamicForm>
+	<div class="row">
+
+		<div class="btn-group formBtnGroup topRight col-md-offset-2" style="padding-left:17px">
+			<button class="btn btn-sm" ng-click="saveModelData(modelData)"
+				ng-disabled="modelDataForm.$invalid">保存</button>
+			<button class="btn btn-sm" ng-click="submitClick(modelData)"
+				ng-disabled="modelDataForm.$invalid">提交</button>
+			<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+		</div>
+	</div>
+</form>

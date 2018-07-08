@@ -1,0 +1,102 @@
+<form ng-init="init()" class="form-horizontal"
+	name="sendMessageForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveSendMessage(false)"
+			ng-disabled="sendMessageForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveSendMessage(true)"
+			ng-disabled="sendMessageForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						 			  						 						 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark">
+										备注:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="remark"
+						placeholder='' class="form-control"
+						ng-model="sendMessage.remark" name="remark"
+														maxlength="8000"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="attachmentCode">
+										附件编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="attachmentCode"
+						placeholder='' class="form-control"
+						ng-model="sendMessage.attachmentCode" name="attachmentCode"
+														maxlength="255"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="sender">
+					   					发送方:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="sender"
+						placeholder='发送方' class="form-control"
+						ng-model="sendMessage.sender" name="sender"
+						max="65535"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="receiver">
+					   					接收方:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="receiver"
+						placeholder='接收方' class="form-control"
+						ng-model="sendMessage.receiver" name="receiver"
+						max="65535"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="content">
+					   					消息内容:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="content"
+						placeholder='消息内容' class="form-control"
+						ng-model="sendMessage.content" name="content"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="sendTime">
+					   					消息发送时间:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="sendTime"
+						ng-model="sendMessage.sendTime" name="sendTime"
+														required
+							></input>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

@@ -1,0 +1,19 @@
+<div ng-show="{{showTimePicker}}" class="form-group col-md-6">
+	<label class="col-md-4 control-label" for="creatTime">
+		{{timePickerLabel}}: </label>
+	<div class="col-md-8">
+		<timepicker name="{{timeName}}" required ng-model="tempmodel"
+			template-url="compents/timepicker/timepicker.html" hour-step="1"
+			minute-step="1" show-meridian="true"></timepicker>
+	</div>
+</div>
+<div>
+	<div class='input-group'>
+		<input type="text" class="form-control " datepicker-popup="{{format}}"
+			ng-model="tempmodel" is-open="status.opened" ng-required="true"
+			close-text="Close" /> <span type="button" class="input-group-addon"
+			ng-click="open($event)"> <i
+			class="glyphicon glyphicon-calendar"></i>
+		</span>
+	</div>
+</div>

@@ -1,0 +1,53 @@
+<div>
+		<form class=" form-horizontal" name="taskManageForm" novalidate>
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-click="saveNewTaskManage(newTaskManage)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="closeOperateTab2()"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label class="col-md-2 control-label" for="employee">
+								职员</label>
+				<div class="col-md-10">
+					<input type="text"  readOnly="true" class="form-control" ng-model="newTaskManage.employee.name"  name="employee"	/>
+				</div>
+			</div>
+					<div class="form-group">
+				<label class="col-md-2 control-label" for="describe"> 
+								描述</label>
+				<div class="col-md-10">
+					<input type="text"  class="form-control" ng-model="newTaskManage.taskDescribe" 
+					 name="describe"
+										/>
+				</div>
+			</div>
+					<div class="form-group">
+				<label class="col-md-2 control-label" for="name"> 
+								任务名</label>
+				<div class="col-md-10">
+					<input type="text"  class="form-control" ng-model="newTaskManage.name" 
+					 name="name"
+										/>
+				</div>
+			</div>
+					<div class="form-group">
+				<label class="col-md-2 control-label" for="state"> 
+								状态</label>
+				<div class="col-md-10">
+					<input type="text"  class="form-control" ng-model="newTaskManage.state" 
+					 name="state"
+										/>
+				</div>
+			</div>
+					<div class="form-group">
+				<label class="col-md-2 control-label" for="type"> 
+								类型</label>
+				<div class="col-md-10">
+					<input type="text"  class="form-control" ng-model="newTaskManage.type" 
+					 name="type"
+										/>
+				</div>
+			</div>
+			</form>
+</div>

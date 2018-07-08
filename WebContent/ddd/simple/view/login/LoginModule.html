@@ -1,0 +1,49 @@
+<div>
+<div class="row loginContainer">
+	
+	<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-lg-3 col-md-offset-7 loginForm loginForm" style="border-radius: 6px;height: 250px;position: absolute;top: 50%;margin-top: -125px;">
+		<div class="row loginHeader" style="height:15px;border-top-left-radius: 5px;border-top-right-radius: 5px;">
+			
+		</div>
+		<div class="row" style="text-align: center;">
+				<h3 style="margin-top: 10px;">课程设计选题系统登录</h3>
+		</div>
+		<form class="form-horizontal loginBody ">
+			<div ng-show="showLoginForm">
+				<div class="loginInputGroup"> 
+					<div class=" input-group">
+						<span class="iconSelf user"></span> 
+						<input type="text" class="form-control" placeholder="用户名" 	ng-model="operatorCode" required />
+					</div>
+					<div class=" input-group">
+						<span class="iconSelf pw"></span> 
+						<input type="password" class="form-control" placeholder="密码" 	ng-model="operatorPassword" required />
+					</div>
+				</div>
+				
+				<div class="checkbox" style="    padding-bottom: 7px;">
+					<label> <input type="checkbox" ng-model="check"> 记住密码
+					</label> <a class="pull-right">忘记密码</a>
+				</div>
+				<button class="btn btn-lg btn-block loginBtn" ng-keyup="loginConvenient($event)" ng-click="loginCheck()">登录</button>
+			</div>
+			 <div class="input-group" style=" width: 100%;"ng-show="!showLoginForm">
+					<div>
+						<span class="panel_titile">请选择需要登录的单位:</span>
+					</div>
+					<div>
+						<ul  class="all-organization" style="height: 85px;overflow: auto;padding: 0;">
+							<li ng-repeat="org in authorizedOrg" style=" list-style-type: none;">
+								<span ng-keyup="select($event)" class="loginOrganizatin_ordinary" ng-class="{true:'loginOrganizatin_checked',false:'loginOrganizatin_ordinary',undefined:'loginOrganizatin_ordinary',null:'loginOrganizatin_ordinary'}[selectOrcCheck[org.name]]" id={{$index}}  ng-click="selectOrg(org,authorizedOrg)">{{org.name}}</span>
+							</li>
+						</ul>
+					</div>
+				<div >
+					<button style="width: 45%;" class="btn btn-loginin org-back col-md-4" type="button" role="button" ng-click="comeBack()">返回</button>
+					<button style="width: 45%;margin-left: 5%;" class="btn btn-loginin org-enter col-md-4" type="button" role="button" ng-click="loginIn()">进入</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+</div>

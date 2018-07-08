@@ -1,0 +1,47 @@
+log4j.rootLogger=DEBUG,stdout,file
+#配置子logger
+log4j.logger.stdout=DEBUG,stdout
+log4j.logger.debugLog=DEBUG,debug
+log4j.logger.logfile=DEBUG,file
+log4j.logger.sessionLog=DEBUG,session
+log4j.logger.errorLog=DEBUG,error
+
+log4j.category.org.springframework=ERROR
+log4j.category.org.apache=INFO
+log4j.category.com.mchange=INFO
+
+#控制台日志，（不需要记录日志的信息）
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+#指定日志信息的最低输出级别，默认为DEBUG。
+log4j.appender.stdout.Threshold=DEBUG
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss SSS} ->[%t]--[%-5p]--[%c{1}]--%m%n
+#文件日志(普通日志，业务数据)
+log4j.appender.file=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.file.File=d:/angular/DDD3log/fileLog.log
+log4j.appender.file.DatePattern='_'yyyy-MM-dd'.log'
+#指定日志信息的最低输出级别，默认为DEBUG。
+log4j.appender.file.Threshold=DEBUG
+log4j.appender.file.layout=org.apache.log4j.PatternLayout
+log4j.appender.file.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss SSS}-->[%t]--[%-5p]--[%c{1}]--%m%n
+#记录session层信息
+log4j.appender.session=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.session.File=d:/angular/DDD3log/sessionLog.log
+log4j.appender.session.DatePattern='_'yyyy-MM-dd'.log'
+log4j.appender.session.Threshold=DEBUG
+log4j.appender.session.layout=org.apache.log4j.PatternLayout
+log4j.appender.session.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss SSS}-->[%t]--[%-5p]--[%c{1}]--%m%n
+#记录调试信息
+log4j.appender.debug=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.debug.File=d:/angular/DDD3log/debugLog.log
+log4j.appender.debug.DatePattern='_'yyyy-MM-dd'.log'
+log4j.appender.debug.Threshold=DEBUG
+log4j.appender.debug.layout=org.apache.log4j.PatternLayout
+log4j.appender.debug.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss SSS}-->[%t]--[%-5p]--[%c{1}]--%m%n
+#记录所有的错误异常信息
+log4j.appender.error=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.error.File=d:/angular/DDD3log/errorLog.log
+log4j.appender.error.DatePattern='_'yyyy-MM-dd'.log'
+log4j.appender.error.Threshold=DEBUG
+log4j.appender.error.layout=org.apache.log4j.PatternLayout
+log4j.appender.error.layout.ConversionPattern=%-d{yyyy-MM-dd HH:mm:ss SSS}-->[%t]--[%-5p]--[%c{1}]--%m%n

@@ -1,0 +1,52 @@
+<div ng-controller="memberTypeFormController">
+	<div class="row" ng-init="getInitMemberTypeData()">
+		<form class="form-horizontal" name="memberTypeForm" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button"
+						value="保存" type="submit" ng-click="saveMemberType(memberType)">
+					<input class="btn btn-success" type="button" value="保存并新增"
+						type="submit" ng-show="showSaveAndAddButton"
+						ng-click="saveAndAddMemberType(memberType)"> <input
+						class="btn btn-primary" type="button" value="返回"
+						ng-click="back()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeName"> 类别名称</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="memberType.typeName" name="typeName" required popover
+						popover-show="memberTypeForm.submitted && memberTypeForm.typeName.$invalid"
+						popover-lable='请输入类别名称' />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeCade"> 类别编码</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="memberType.typeCade" name="typeCade" required popover
+						popover-show="memberTypeForm.submitted && memberTypeForm.typeCade.$invalid"
+						popover-lable='请输入类别编码' />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="role"> 角色</label>
+				<div class="col-md-8">
+					<dreference class="form-control" reference-id="memberTypeFormrole"
+						list-view-key='roleReference' ng-model='memberType.role'
+						show-model-filed='name' name="role"></dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" for="remark"> 备注</label>
+				<div class="col-md-10">
+					<textarea rows="8" class="form-control defined-textarea"
+						ng-model="memberType.remark" name="remark" placeholder='补充'>
+					</textarea>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

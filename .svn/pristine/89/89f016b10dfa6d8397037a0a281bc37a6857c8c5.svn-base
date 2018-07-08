@@ -1,0 +1,67 @@
+var roleModule = angular.module('roleModule',[]);
+roleModule.controller('roleFormController',['$rootScope','$stateParams','$scope','RoleService','dialogs',function($rootScope,$stateParams,$scope,RoleService,dialogs){
+
+	$scope.initRoleData = function()
+	{
+		if($stateParams.operate != 'add')
+		{
+			function sucessCB(data)
+			{	
+				$scope.role = data;
+			}
+			function errorCB(error)
+			{
+				alert('加载数据失败!');
+			}
+			RoleService.findRoleById($stateParams.id,sucessCB,errorCB);
+		}
+	}
+	
+	$scope.saveRole = function(role)
+	{
+		function sucessCB()
+		{
+			refreshGrid();
+			$scope.back();	
+		}
+		function errorCB(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+		RoleService.saveRole(role,sucessCB,errorCB);
+	}
+	$scope.updateRole = function(role){
+		function sucessCB()
+		{
+			refreshGrid();
+			$scope.back();	
+		}
+		function errorCB(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+		
+		RoleService.updateRole(role,sucessCB,errorCB);
+	}
+	
+	$scope.saveRoleOperate = function(role)
+	{
+		if($scope.roleOperateForm.$invalid){
+			return;
+		}
+		if($stateParams.operate == 'add')
+		{
+			$scope.saveRole(role);
+		}
+		else if($stateParams.operate == 'edit')
+		{
+			$scope.updateRole(role);
+		}
+	}
+	function refreshGrid(){
+		$scope.refreshGrid("roleListGrid");
+	}
+	$scope.back = function() {
+		$scope.turnToTab(true,"roleList","main.list.permission.roleList")
+	}
+}]);

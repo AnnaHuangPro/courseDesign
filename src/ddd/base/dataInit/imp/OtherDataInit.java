@@ -1,0 +1,132 @@
+/**
+* @Title: OhterDataInit.java
+* @Package ddd.base.dataInit.imp
+* @Description: TODO(用一句话描述该文件做什么)
+* @author matao@cqrainbowsoft.com
+* @date 2016年12月25日 下午4:04:38
+* @version V1.0
+*/
+package ddd.base.dataInit.imp;
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
+import org.aspectj.util.FileUtil;
+import org.springframework.web.context.ContextLoaderListener;
+
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import ddd.base.codegenerator.generator.GenerationParameter;
+import ddd.base.dataInit.DataInit;
+import ddd.base.exception.DDDException;
+import ddd.simple.entity.codeTable.CodeType;
+import ddd.simple.entity.organization.Employee;
+import ddd.simple.entity.organization.Organization;
+import ddd.simple.entity.permission.Role;
+import ddd.simple.entity.systemConfig.SystemConfig;
+import ddd.simple.service.codeTable.CodeTypeService;
+import ddd.simple.service.systemConfig.SystemConfigService;
+
+/**
+ * 项目名称：DDD3
+ * 类名称：OhterDataInit
+ * 类描述：   
+ * 创建人：AnotherTen
+ * 创建时间：2016年12月25日 下午4:04:38
+ * 修改人：胡均
+ * 修改时间：2016年12月25日 下午4:04:38
+ * 修改备注：   
+ * @version 1.0
+ * Copyright (c) 2016  DDD
+ */
+public class OtherDataInit  implements DataInit
+{
+
+	private String sourcePath = GenerationParameter.DATAINITSOUCE_PATH+"OtherDataInit.json";
+	SystemConfigService systemConfigService = (SystemConfigService) ContextLoaderListener.getCurrentWebApplicationContext().getBean("systemConfigServiceBean");
+	CodeTypeService codeTypeService = (CodeTypeService) ContextLoaderListener.getCurrentWebApplicationContext().getBean("codeTypeServiceBean");
+	@Override
+	public void init()
+	{
+		try
+		{
+			//String fileContent = FileUtil.readAsString(new File(sourcePath));
+			String fileContent = FileUtils.readFileToString(new File(sourcePath), "utf-8");
+			if(fileContent == null || "".equals(fileContent)){
+				throw new DDDException("初始化组织机构数据错误:"+fileContent+" 文件内容为空");
+			}
+			JSONObject json = JSONObject.parseObject(fileContent);
+			JSONArray codeTables = JSONArray.parseArray(String.valueOf(json.get("codetables")));
+			JSONArray systemconfigs = JSONArray.parseArray(String.valueOf(json.get("systemconfigs")));
+			for(int i = 0 ; i < codeTables.size(); i++){
+				CodeType codeType = JSONObject.parseObject(String.valueOf(codeTables.get(i)),CodeType.class);
+				this.codeTypeService.saveCodeType(codeType);
+			}
+			for(int i = 0 ; i < codeTables.size(); i++){
+				SystemConfig systemconfig = JSONObject.parseObject(String.valueOf(systemconfigs.get(i)),SystemConfig.class);
+				this.systemConfigService.saveSystemConfig(systemconfig);
+			}
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			System.out.println("初始化组织机构数据错误");
+		}
+	
+	}
+
+	/* (非 Javadoc) 
+	* <p>Title: initParam</p> 
+	* <p>Description: </p> 
+	* @param organization
+	* @param role
+	* @param employee 
+	* @see ddd.base.dataInit.DataInit#initParam(ddd.simple.entity.organization.Organization, ddd.simple.entity.permission.Role, ddd.simple.entity.organization.Employee) 
+	*/
+	@Override
+	public void initParam(Organization organization, Role role, Employee employee)
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	/* (非 Javadoc) 
+	* <p>Title: getRole</p> 
+	* <p>Description: </p> 
+	* @return 
+	* @see ddd.base.dataInit.DataInit#getRole() 
+	*/
+	@Override
+	public Role getRole()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (非 Javadoc) 
+	* <p>Title: getOrganization</p> 
+	* <p>Description: </p> 
+	* @return 
+	* @see ddd.base.dataInit.DataInit#getOrganization() 
+	*/
+	@Override
+	public Organization getOrganization()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (非 Javadoc) 
+	* <p>Title: getEmployee</p> 
+	* <p>Description: </p> 
+	* @return 
+	* @see ddd.base.dataInit.DataInit#getEmployee() 
+	*/
+	@Override
+	public Employee getEmployee()
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

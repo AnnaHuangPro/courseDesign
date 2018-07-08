@@ -1,0 +1,106 @@
+<style>
+	.button-group{
+		margin-left: -3px;
+	}
+	.lable-tip{
+		text-align: right;
+		height: 50px;
+		line-height: 33px;	
+	}
+	
+	.lable-tip .col-md-8 , .lable-tip .col-md-10{
+		text-align: left;
+	}
+</style>
+<div class=" data-bg" ng-init="init()">
+	<legend class="legend" data-toggle="collapse" style="cursor:pointer;">
+		<span class="legend-title">编辑资料</span>
+	</legend>
+
+	<div class=" col-md-offset-1 col-md-10 ">
+		<form class="col-md-12 form-horizontal" name="employeeForm" ddd-form-validate="{ blurValidate: true}" novalidate role="form">
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit required" for="name"> 姓名
+				</label>
+				<div class="col-md-8">
+					<input ng-model="employee.name" class="form-control" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit required" for="linkTel"> 联系电话
+				</label>
+				<div class="col-md-8">
+					<input ng-model="employee.linkTel" type="text" ng-pattern="/^[0-9]*$/" class="form-control" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="sex"> 性别</label>
+				<div class="col-md-8">
+					<dselect code-type-key="Gender" class="form-control" id="Gender" ng-model="employee.sex" class="form-control"></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="email"> 邮箱</label>
+				<div class="col-md-8">
+					<input type="email" ng-model="employee.email" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="nation"> 民族</label>
+				<div class="col-md-8">
+					<input ng-model="employee.nation" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="lastedEducationBackground"> 学历</label>
+				<div class="col-md-8">
+					<input ng-model="employee.lastedEducationBackground" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="birthDate"> 出生日期</label>
+				<div class="col-md-8">
+					<input ddatepicker="{format:'yyyy年mm月dd日'}" class="form-control" ng-model="employee.birthDate" placeholder='出生日期'>
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="graduateSchool"> 毕业学校</label>
+				<div class="col-md-8">
+					<input ng-model="employee.graduateSchool" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="nativePlace"> 籍贯</label>
+				<div class="col-md-8">
+					<input ng-model="employee.nativePlace" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="politicStatus"> 政治面貌</label>
+				<div class="col-md-8">
+					<input ng-model="employee.politicStatus" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-form-edit" for="address"> 所在地</label>
+				<div class="col-md-8">
+					<input ng-model="employee.address" class="form-control" />
+				</div>
+			</div>
+			<div class="form-group col-md-12 lable-tip" style="height: 100%;">
+				<label class="col-md-2 data-form-edit" for="remark"> 个人说明</label>
+				<div class="col-md-10">
+					<textarea rows="6" class="form-control defined-textarea" ng-model="employee.remark"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-10 col-md-offset-2">
+					<div class="button-group">
+						<input class="btn btn-sm" ng-click="saveEmployee(false)" ng-disabled="employeeForm.$invalid" type="button" value="保存" type="submit">
+						<input class="btn btn-sm" type="button" ng-click=back() value="取消">
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

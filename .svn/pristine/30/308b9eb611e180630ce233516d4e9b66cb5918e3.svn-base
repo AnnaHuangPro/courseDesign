@@ -1,0 +1,25 @@
+#set($index=9999)
+#set ($imgUrlArray=$imgUrls.get("imgUrlArray"))
+
+#foreach($imgUrl in $imgUrlArray)
+<div id="uploadList_$index" class="upload_append_list"> 
+    <div class="file_bar file_hover"> 
+     <div style="padding:5px;"> 
+      <p class="file_name">$imgUrl.get("imgName")</p>
+      <span class="file_del" data-index="$index" title="删除"></span> 
+     </div> 
+    </div> 
+    <a style="height:100px;width:120px;" href="#" class="thumbnail"> 
+     <div class="uploadImg" style="width:120px"> 
+      <img id="uploadImage_$index" class="upload_image" src="../ShowImgServlet?imgUrl=$imgUrl.get("imgUrl")" style="width:expression(this.width &gt; 120 ? 120px : 
+
+this.width);height:expression(this.height &gt; 100 ? 100: this.height) /&gt;		&lt;/div&gt;	&lt;/a&gt;	
+
+&lt;p id=" uploadprogress_$index"="" />
+      <p></p> 
+      <p id="uploadFailure_$index" class="file_failure">上传失败，请重试</p> 
+      <p id="uploadSuccess_$index" class="file_success" style="display: block;"></p>
+     </div></a>
+</div>
+#set($index=$index + 1)
+#end

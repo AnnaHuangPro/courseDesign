@@ -1,0 +1,18 @@
+<div class="row" ng-controller="dataSourceListController">
+	<div class="col-md-12">
+			<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="dataSourceListGrid"></dpagination>
+				<a class="btn" ng-click="addDataSource()"
+				ng-if="hasPermission('dataSource_add')"><i
+				class='glyphicon glyphicon-plus-sign'></i>新增</a> 
+			</div>
+			<dcolumnfilter class="pull-right" grid-name="dataSourceListGrid"/>
+	</div>
+	<ddatagrid class="col-md-12" isoperation-column=true
+		name="dataSourceListGrid"
+		id="dataSourceListGrid" name="dataSourceListGrid"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationButtons'
+		batch-delete-fun='batchDeleteDataSource' list-view-key='datasource'
+		show-operater-icon=true> </ddatagrid>
+</div>

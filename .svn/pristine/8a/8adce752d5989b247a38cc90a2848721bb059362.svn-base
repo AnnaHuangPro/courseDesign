@@ -1,0 +1,17 @@
+<div class="col-md-12" >
+	<div class="col-md-12">
+		<div class="col-md-12">
+			<label>{{modelName}}模型设计</label>
+		</div>
+		<div class="col-md-12">
+			&nbsp;&nbsp;&nbsp;&nbsp;<a  ng-repeat="modelItem in currentModelItems" ng-click="addDesign(modelItem)" >{{modelItem.item_label}}&nbsp;&nbsp;</a>
+		</div>
+	</div>
+	<div class="row">
+		<form  class="row" method="post" id="saveform" name="saveform" action="">
+		 	<input type="hidden" name="fields" id="fields" value="0">
+			<div id="myFormDesign" type="text/plain" >
+			</div>
+		</form>
+	</div>
+</div>

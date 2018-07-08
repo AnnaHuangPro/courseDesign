@@ -1,0 +1,13 @@
+<div ng-model="reportFormModel" ng-controller="reportFormModelController">
+-----------------------------------------------动态表单----------------------------------------------------<br>
+	<div id="dynamicForm"></div>
+-------------------------------------------------------------------------------------------------------------<br>
+	<div id="search">
+		<input type="text"  id="keyword" value="">
+		<input type="button" value="查询" onclick="search()">
+		<input type="button" value="查询" onclick="search1()">
+	</div>
+----------------------------------------------查询结果-------------------------------------------------------<br>
+	<div id="searchResult" width="100%" height="100%" ></div>
+	<!--  <iframe id="searchResult1" width="100%" height="100%" ></iframe> -->
+</div>

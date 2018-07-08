@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-6 pull-left">
+		<button class="btn " ng-click="addOrderItem()"
+			ng-if="hasPermission('orderItem_add')">
+			<i class='glyphicon glyphicon-plus-sign'></i>新增
+		</button>
+		<button class="btn " ng-click="refreshGrid()">
+			<i class='glyphicon glyphicon-refresh'></i>刷新
+		</button>
+	</div>
+	<dcolumnfilter class="col-md-6 pull-left"
+		grid-name="orderItemListGrid" />
+	<ddatagrid class="col-md-12" id="orderItemListGrid"
+		name="orderItemListGrid" show-grid-only="true"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="orderItemList"> </ddatagrid>
+</div>

@@ -1,0 +1,188 @@
+<!doctype html>
+<html ng-app="app">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>动态表单设计</title>
+  <link rel="icon" href="../dynamicForm.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="../dynamicForm.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap.css">
+  <link rel="stylesheet" href="js/bootstrap-datetimepicker/2012/css/bootstrap-datetimepicker.min.css">
+  <link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-default.min.css">
+  <link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-plain.min.css">
+  <link rel="stylesheet" href="js/ngDialog/css/ngDialog.min.css">
+  <link rel="stylesheet" type="text/css" href="js/uigrid/3.0.7/ui-grid.min.css">
+  <link rel="stylesheet" href="js/ueditor/themes/default/css/ueditor.min.css" type="text/css">
+  <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2.css" type="text/css">
+  <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select.css" type="text/css">
+  <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2-bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="js/dialog-service/5.2.9/dialogs.min.css" />
+  <link rel="stylesheet" href="js/codemirror/lib/codemirror.css" />
+  <link rel="stylesheet" href="js/newMenu/w2ui-1.4.3.css">
+  <link rel="stylesheet" href="style/css/index.css">
+  <link type="text/css" rel="stylesheet" href="js/angular-form-builder/dist/angular-form-builder.css" />
+  <link type="text/css" rel="stylesheet" href="js/angular-form-builder/example/site.css" />
+  <script src="js/jquery/2.1.4/jquery-2.1.4.min.js"></script>
+  <script src="js/angular/1.4.4/angular.js"></script>
+  <script src="compents/resource/angular-resource-xcy.min.js"></script>
+  <script src="js/ui-router/0.2.13/angular-ui-router-xcy.min.js"></script>
+  <script src="js/angular/1.4.4/angular-sanitize.js"></script>
+  <script src="js/angular-file-upload/2.2.0/angular-file-upload.min.js"></script>
+  <script src="js/angular-form-builder/dist/bootstrap.min.js"></script>
+  <script src="js/ui-bootstrap/0.14.3/ui-bootstrap-tpls-0.14.3.min.js"></script>
+  <script src="js/bootstrap-datetimepicker/2012/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="js/bootstrap-datetimepicker/2012/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+  <script src="compents/ddatepicker/DDatePicker.js"></script>
+  <script src="js/angular-ueditor/angular-ueditor.min.js"></script>
+  <script src="js/angular-form-builder/dist/ueditor.config.js"></script>
+  <script src="js/ueditor/ueditor.all.min.js"></script>
+  <script src="js/dialog-service/5.2.9/dialogs.min.js"></script>
+  <script src="compents/dddreference/DddReference.js"></script>
+  <script src="js/angular-form-builder/dist/codeTableService.js"></script>
+  <script src="compents/dddselect/DddSelect.js"></script>
+  <script src="js/base/angular.permission.js"></script>
+  <script src="compents/dddfileupload/DddFileUpload.js"></script>
+  <script src="compents/dddimgupload/DddImgUpload.js"></script>
+  <script src="js/ngDialog/js/ngDialog.min.js"></script>
+  <script src="compents/oneToManyGrid/OneToManyGrid.js"></script>
+  <script src="compents/formDesigner/FormDesigner.js"></script>
+  <script src="simple/view/dynamicForm/js/dynamicForm/DynamicFormService.js"></script>
+  <script src="simple/view/listView/js/ListViewService.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/angular-form-builder.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/angular-validator.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/angular-validator-rules.js"></script>
+  <script type="text/javascript" src="js/ui-select/0.13.2/select.min.js"></script>
+  <!-- datagrid -->
+  <script type="text/javascript" src="simple/view/listView/js/reportView/ReportViewService.js"></script>
+  <script type="text/javascript" src="simple/view/operatorCongfigModel/js/operatorCongfig/OperatorCongfigService.js"></script>
+  <script type="text/javascript" src="js/ngDialog/js/ngDialog.min.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/asynchroMask.js"></script>
+  <script type="text/javascript" src="js/uigrid/3.0.7/ui-grid-xcy.min.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/ViewTreeService.js"></script>
+  <script type="text/javascript" src="compents/viewTree/ViewTree.js"></script>
+  <script type="text/javascript" src="compents/ddatagrid/DDataGrid.js"></script>
+  <!-- 控件js -->
+  <script type="text/javascript" src="js/angular-form-builder/example/popoverTemplate/select/select.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/example/popoverTemplate/radio/radio.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/example/popoverTemplate/checkbox/checkbox.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/dist/previewForm.js"></script>
+  <script type="text/javascript" src="js/angular-form-builder/example/demo.js"></script>
+  <script type="text/javascript" src="simple/view/attachment/AttachmentService.js"></script>
+  <script>
+  function closePopover(_self){
+    	$(_self.parentElement.parentElement).fadeToggle(700);
+    }
+  </script>
+</head>
+
+<body ng-controller="DemoController" class="form-controller">
+  <nav class="navbar nav-style" style="border-radius: 0; background-color: #22262f !important;">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="https://github.com/kelp404/angular-form-builder" target="_blank">
+        <img src="js/angular-form-builder/components/logo1.png" />
+      </a>
+    </div>
+  </nav>
+  <div class="row" style="margin-top:-20px">
+    <div class="col-md-2 left-toobar">
+      <div fb-components></div>
+    </div>
+    <div class="col-md-10 content-style">
+      <div class="col-md-12">
+      <div class="container-background">
+        <uib-tabset vertical="false" type="tabs">
+          <uib-tab heading="构造器">
+          	 <div class="col-md-9" fb-builder="default"></div>
+          	 <div class="col-md-3 form-attr">
+          	 	<div class="control-panle">表单属性</div>
+          	 	<div class="attr-setting">
+          	 		<label>名称&nbsp;&nbsp;</label>
+          	 		<input type="text" class="form-one-attr"/>
+          	 		
+          	 		<!-- <label>布局&nbsp;&nbsp;</label>
+          	 		<select>
+          	 			<option ng-click="selectLayoutStyle('12')">一栏布局</option>
+          	 			<option ng-click="selectLayoutStyle('6')">二栏布局</option>
+          	 			<option ng-click="selectLayoutStyle('4')">三栏布局</option>
+          	 			<option ng-click="selectLayoutStyle('3')">四栏布局</option>
+          	 		</select> -->
+          	 	</div>
+          	 </div>
+          </uib-tab>
+          <uib-tab heading="预览">
+          	<div class="control-panle">
+          	 <div style="line-height:52px;">
+            <div class="btn-group">
+              <button type="button" class="btn btn-danger">布局样式</button>
+              <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="caret"></span>
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a ng-click="selectLayoutStyle('0')">非全局布局</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a ng-click="selectLayoutStyle('12')">一栏布局</a></li>
+                <li><a ng-click="selectLayoutStyle('6')">二栏布局</a></li>
+                <li><a ng-click="selectLayoutStyle('4')">三栏布局</a></li>
+                <li><a ng-click="selectLayoutStyle('3')">四栏布局</a></li>
+              </ul>
+            </div>
+          </div>
+          </div>
+            <form class="form-horizontal col-md-12" style="height:447px;overflow-y:auto;margin-top:20px">
+              <preview-form form-html="formHtml"></preview-form>
+            </form>
+          </uib-tab>
+          <uib-tab heading="代码">
+            <textarea class="form-control" id="mainTextarea" ng-model="formCode"></textarea>
+          </uib-tab>
+          <!-- <div class="row">
+          		<div class="col-md-4"></div>
+          		<div class="col-md-8 pull-right">
+          			<div class="col-md-6">
+          			<dselect list-view-key="dynamicFormReference" ng-model="$parent.$parent.selFDynamicForm" show-name="dynamicFormName" id-filed="EId" placeholder="选择复制表单"></dselect>
+          		</div>
+          <button ng-click="submit()" class="btn btn-primary pull-right">
+           	保存 <span class="glyphicon glyphicon-saved" style="margin-left:5px" aria-hidden="true"></span>
+          </button>
+         		<div class="col-md-6">
+         			<label class="checkbox-inline">
+		            	<input type="checkbox" name="toContainer" ng-model="$parent.$parent.toContainer">复制到容器
+		        	</label>
+		        	<label class="checkbox-inline">
+		            	<input type="checkbox" name="useGlobal" ng-model="useDefaultCopy">拖动复制
+		        	</label>
+         		</div>
+          		</div>
+          </div> -->
+          <div class="col-md-5 pull-right copy-component">
+          		<div class="col-md-7 slect-copy-way">
+          			<label class="checkbox-inline">
+		            	<input type="checkbox" name="toContainer" ng-model="$parent.$parent.toContainer">容器复制
+		        	</label>
+		        	<label class="checkbox-inline">
+		            	<input type="checkbox" name="useGlobal" ng-model="useDefaultCopy">拖动复制
+		        	</label>
+          		</div>
+          		<div class="col-md-5">
+          			<dselect list-view-key="dynamicFormList" ng-model="$parent.$parent.selFDynamicForm" show-name="dynamicFormName" id-filed="EId" placeholder="选择复制表单"></dselect>
+          		</div>
+          </div>
+	          <div class="btn-panle">
+		        	<div class="col-md-6">
+		        		<button type="button" class="submit-btn pull-right" ng-click="submit()">保&nbsp;存</button>
+		        	</div>
+		        </div>
+        </uib-tabset>
+      </div>
+      </div>
+    </div>
+  </div>
+  <!-- <footer class="row">
+    <div class="col-md-2" style="background:#171a20;height:100%"></div>
+  </footer> -->
+  <div id="build-form" ng-show="false"></div>
+</body>
+</html>

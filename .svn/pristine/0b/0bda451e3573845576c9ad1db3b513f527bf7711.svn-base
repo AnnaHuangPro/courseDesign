@@ -1,0 +1,33 @@
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-8">
+		<div class="left-menu">
+			<div class="row">
+
+				<div class="col-md-12 vip_function_menu"
+					ng-init="loadMemberModules()">
+					<accordion close-others="true" class="clearfix"> 
+					<accordion-group
+						ng-repeat="module in modules" ng-class="{in:module.isOpen}"
+						is-open="module.isOpen" is-disabled="false"> 
+						<accordion-heading>
+							<div>
+								<i class="{{module.iconClass}} menu_icon"></i><span
+									class="menu_tit">{{module.name}}</span>
+							</div>
+						</accordion-heading>
+						<div class="row">
+							<div class="col-md-12">
+								<ul class="list-group">
+									<li ng-click="turnRouter(child);"
+										ng-repeat="child in module.children" class="list-group-itme"><a
+										ng-class="{in:child.isIn}">{{child.name}}</a></li>
+								</ul>
+							</div>
+						</accordion-group> </accordion>
+					</div>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,44 @@
+<div ng-controller=reportFormFromController >
+	<div class="row" ng-init="getInitReportFormData()">
+		<form class="col-md-12 form-horizontal" name="reportFormForm" novalidate >
+			<div class="row rowddd"></div>
+				<div class="form-group">
+					<div class="col-md-10">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-disabled="reportFormForm.$invalid" ng-click="saveReportForm(reportForm)">
+						<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ng-disabled="reportFormForm.$invalid" ng-click="saveAndAddReportForm(reportForm)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="back()"/>
+					</div>
+				</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportFormName"> 报表模版名称: </label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportForm.reportFormName">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportFormUrl"> 报表模版路径: </label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportForm.reportFormUrl">
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="reportFormType"> 报表模版类型: </label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="reportForm.reportFormType">
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-2 control-label">模版上传: </label>
+				<div class="col-md-9">
+				<dfileupload associate-form-id="reportForm.eId"
+							 associate-form-name="reportForm.reportFormName"
+							 >
+				</dfileupload>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

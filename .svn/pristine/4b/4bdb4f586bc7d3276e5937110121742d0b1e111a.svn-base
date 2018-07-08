@@ -1,0 +1,4 @@
+<div class="ngdialog-content" style="width:800px;height:auto;min-height:300px">
+	<h3 algin="center">审批历史</h3>
+	<check-option form-id="taskDetailInfo.formId" form-Type="{{taskDetailInfo.formType}}"></check-option>
+</div>

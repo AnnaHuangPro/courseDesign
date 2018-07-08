@@ -1,0 +1,138 @@
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码
+				</label>
+				<div class="col-md-8">
+					<span>{{task.inputCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码
+				</label>
+				<div class="col-md-8">
+					<span>{{task.operatorCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期
+				</label>
+				<div class="col-md-8">
+					<span>{{task.operateDate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键
+				</label>
+				<div class="col-md-8">
+					<span>{{task.orgId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8">
+					<span>{{task.remark}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCode">附件编码
+				</label>
+				<div class="col-md-8">
+					<span>{{task.attachmentCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskId">课题编号
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="teaId">教师编号
+				</label>
+				<div class="col-md-8">
+					<span>{{task.teaId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskTitle">课题标题
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskTitle}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskContent">课题内容
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskContent}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskAim">课题目的
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskAim}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskRequest">课题要求
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskRequest}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskKnowledge">课题必备知识
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskKnowledge}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskFormal">提交形式
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskFormal}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="taskOther">其他
+				</label>
+				<div class="col-md-8">
+					<span>{{task.taskOther}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="creatTime">创建时间
+				</label>
+				<div class="col-md-8">
+					<span>{{task.creatTime}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="updateTime">更新时间
+				</label>
+				<div class="col-md-8">
+					<span>{{task.updateTime}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">课题状态
+				</label>
+				<div class="col-md-8">
+					<span>{{task.state}}</span>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+</form>

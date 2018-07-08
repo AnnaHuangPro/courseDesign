@@ -1,0 +1,90 @@
+<div ng-controller="taskManageDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.orgId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employee.name"> 职员</label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.employee.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="member.name"> 会员</label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.member.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="date">日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.date}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="describe">描述 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.taskDescribe}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">任务名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="route">路由 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.route}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">状态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.state}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type">类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{taskManage.type}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

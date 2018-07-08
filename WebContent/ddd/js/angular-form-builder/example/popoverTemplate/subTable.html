@@ -1,0 +1,97 @@
+<form name="textareaForm" class="form-horizontal clearFix">
+	<div class="centerContent">
+	      <fieldset>
+            <legend class="fb-required">必填项</legend>
+			<div class="form-group form-content">
+				<label class=" col-md-2  control-label">控件名称</label>
+				<div class=" col-md-4">
+					<input type="text" class="form-control" ng-model="label" placeholder="必填项" required/>
+				</div>
+				<label class=" col-md-2  control-label">绑定值</label>
+				<div class=" col-md-4">
+					<input type="text" class="form-control" ng-model="bundle" placeholder="必填项" required>
+				</div>
+		   </div>
+		   <div class="form-group form-content  ">
+				<label class=" col-md-2  control-label">中间表名</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" name="joinTableName" ng-model="joinTableName" title="中间表名称" placeholder="请输中间表名称" required>
+				</div>
+		   </div>
+		</fieldset>
+      <fieldset>
+        <legend>非必填项</legend>
+		<div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">布局样式</label>
+			<div class=" col-md-4">
+				<select ng-model="layoutStyle" class="form-control">
+					<option value="12" ng-selected="true">一栏布局</option>
+					<option value="6">二栏布局</option>
+					<option value="4">三栏布局</option>
+					<option value="3">四栏布局</option>
+				</select>
+			</div>
+			<label class=" col-md-2  control-label">提示信息</label>
+			<div class=" col-md-4">
+				<input type="text" class="form-control" ng-model="placeholder"/>
+			</div>
+		</div>
+		<div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">描述</label>
+			<div class=" col-md-4">
+				<input type="text" class="form-control" ng-model="description">
+			</div>
+			<label class=" col-md-2  control-label">列宽系数</label>
+			<div class=" col-md-2" style="padding-right:2.5px">
+         		<input class="form-control displayInline" type="number" name="col1" min='0' max='12' ng-model="col1" title="两个数之和等于12">
+			</div>
+			<div class=" col-md-2" style="padding-left:2.5px">
+				<input class="form-control displayInline" type="number" name="col2" min='0' max='12' ng-model="col2" title="两个数之和等于12" >
+			</div>
+		</div>	
+	    <div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">显示表达式</label>
+			<div class=" col-md-4">
+				<select ng-model="bindVal" class="form-control displayInline">
+					<option value="不可绑值" ng-selected="true">不可绑值</option>
+					<option value="可绑值">可绑值</option>
+				</select>
+			</div>
+			<span class="glyphicon glyphicon-arrow-right col-md-2 control-span" aria-hidden="true"></span>
+			<div class="col-md-4">
+				<input type="text" class="form-control" ng-model="authority">
+			</div>
+		</div>
+		<div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">可显示列</label>
+			<div class="col-md-10">
+				<textarea class="form-control" name="displayFields" ng-model="displayFields" title="可显示列" placeholder="请输入可显示列，以回车符隔开"></textarea>
+			</div>
+		</div>
+		<div class="form-group form-content">
+			<label class=" col-md-2  control-label">页显示条数</label>
+			<div class=" col-md-10">
+				<input class="form-control" type="number" ng-model="eachPageSize" min='1' placeholder="输入每页显示条数">
+			</div>
+		</div>
+		<div class="form-group form-content">
+	       <label class=" col-md-2  control-label"></label>
+	       <div class="col-md-10">
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="nullable" ng-true-value="'是'" />必填项
+			   </label>
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="isHide" ng-true-value="'是'" />隐藏项
+			   </label>
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="isEdit" ng-true-value="'否'" />不可编辑
+			   </label>
+			</div>
+		</div>	
+		</fieldset>		
+		<div class='btn-group btn-group-md'>
+			<button type="button" class="btn btn-primary" ng-click="popover.save($event)" ng-disabled="textareaForm.$invalid">保存</button>
+			<button type="button" class="btn btn-default" ng-click="popover.cancel($event)">取消</button>
+		</div>
+    </div>
+</form>

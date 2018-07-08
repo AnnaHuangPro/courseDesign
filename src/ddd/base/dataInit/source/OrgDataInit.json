@@ -1,0 +1,28 @@
+{
+	"organization":
+	{
+		"address":"默认地址",
+		"code":"默认编码",
+		"description":"默认描述",
+		"linkTel":"13888888888",
+		"name":"默认单位"
+	},
+	"department":
+	{
+		"address":"默认地址",
+		"code":"默认编码",
+		"faxNumber":"13888888888",
+		"name":"默认部门",
+		"officePhoneNumber":"13888888888",
+		"remark":"默认备注"
+	},
+	"employee":
+	{
+		"birthDate":"2016-12-01 00:00:00",
+		"code":"默认编码",
+		"description":"默认备注",
+		"linkTel":"13888888888",
+		"name":"系统管理员",
+		"sex":"男"
+	}
+}

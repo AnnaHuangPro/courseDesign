@@ -1,0 +1,15 @@
+<div class="row" ng-controller="modelTypeListController">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="modelTypeListGrid"></dpagination>
+			<a class="btn " ng-click="addModelType()"
+				ng-if="hasPermission('modelType_add')"><i
+				class='glyphicon glyphicon-plus-sign'></i>新增</a> <a class="btn"
+				ng-click="refreshGrid()"><i class='glyphicon glyphicon-refresh'></i>刷新</a>
+		</div>
+		<dcolumnfilter class="pull-right"  grid-name="modelTypeListGrid" />
+	</div>
+	<ddatagrid id="modelTypeListGrid" operation-columns='operationColumns'
+		name="modelTypeListGrid" operation-bar-buttons='operationBarButtons'
+		list-view-key="modelTypeList" class="col-md-12"> </ddatagrid>
+</div>

@@ -1,0 +1,82 @@
+<form ng-init="init()" class="form-horizontal"
+	name="courseDesignForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveCourseDesign(false)"
+			ng-disabled="courseDesignForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveCourseDesign(true)"
+			ng-disabled="courseDesignForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+	
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="name">
+					   					课程设计名称:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="name"
+						placeholder='课程设计名称' class="form-control"
+						ng-model="courseDesign.name" name="name"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="startTime">
+					   					课程设计开始时间:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="startTime"
+						ng-model="courseDesign.startTime" name="startTime"
+														required
+							></input>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="endTime">
+					   					课程设计结束时间:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="endTime"
+						ng-model="courseDesign.endTime" name="endTime"
+														required
+							></input>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="teaId">
+					   					老师编号:
+				</label>
+				<div class="col-md-8">
+						<dreference multi-select=false id="teaId"
+										list-view-key='teacherList'
+										ng-model='courseDesign.teaId' show-model-filed='teaRealName'
+										name="parent" placeholder='负责老师' class="form-control"></dreference>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="majorId">
+					   					所属专业:
+				</label>
+				<dreference multi-select=false id="majorId"
+										list-view-key='majorList'
+										ng-model='courseDesign.EId' show-model-filed='majorName'
+										name="parent" placeholder='所属专业' class="form-control"></dreference>
+				</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

@@ -1,0 +1,41 @@
+<div class="co-sm-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">数据源</div>
+            <div class="panel-body">
+                <ul class="text-info">
+                    <li>定义一个数据查询模板,需要通过SQL语句设置查询数据集。</li>
+                    <li>唯一编码：每个数据源输入的编码必须唯一，否则验证会提示重输入！</li>
+                    <li>数据源名称：非空，中文英文数字任意。</li>
+                    <li>SQL语句：设置标准的查询数据集。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+     <div class="co-sm-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">视图</div>
+            <div class="panel-body">
+                <ul class="text-info">
+                    <li>定义了一张可自定义查询条件，显示属性，排列顺序的报表。</li>
+                    <li>显示属性：可自定义显示宽度，显示名称，对齐方式。</li>
+                    <li>查询条件：可自定义数据查询条件，过滤查询结果。</li>
+                    <li>属性类型：本文，数字，日期。</li>
+                    <li>排列顺序：设置结果集的排序次序。</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="co-sm-10">
+        <div class="panel panel-primary">
+            <div class="panel-heading">列元属性</div>
+            <div class="panel-body">
+                <ul class="text-info">
+                    <li>描述查询数据集的每一列属性。</li>
+                    <li>属性名称：最初的英文名。</li>
+                    <li>属性值：设置的中文名称。</li>
+                    <li>属性类型：本文，数字，日期。</li>
+                    <li>注：列元属性在新建数据源时，系统会自动生成，不需要用户自己输入！</li>
+                </ul>
+            </div>
+        </div>
+    </div>

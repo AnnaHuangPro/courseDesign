@@ -1,0 +1,12 @@
+<div ng-controller="codeGeneratorFromController">
+	
+	<label class="control-label">完整类名</label>
+   	<input type="text" class="form-control" placeholder="请输入完整类名" ng-model="className"><br/>
+   	<input type="button" class="btn btn-sm" ng-click="generatorBaseCode()" value="生成基础代码及基础视图">
+   	<input type="button" class="btn btn-sm" ng-click="mergeRoute()" value="合并所有路由">
+   	<br/><br/><br/>
+   	<label class="control-label">实体信息</label>
+   	<textarea class="form-control" rows="10" cols="" placeholder="请输入实体信息" ng-model="classInfo"></textarea><br/>
+	<input type="button" class="btn btn-sm" ng-click="generatorEntity()" value="生成实体">
+	<input type="button" class="btn btn-sm" ng-click="importEntity()" value="导入实体">
+</div>

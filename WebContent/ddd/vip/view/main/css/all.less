@@ -1,0 +1,244 @@
+@charset "utf-8";
+
+@import "zLess/css3";
+@import "zLess/reset";
+@import "zLess/z";
+@import "skin/default";
+
+.reset();
+@navHeight:33px;
+@menuBGcolor: #ffffff;
+@lenght: 51px;
+@baseUrl:"/CMS/ddd/vip";
+
+.clearfix{
+	.clearfix();
+}
+body {
+  background-size:cover;
+  background-image: url("@{baseUrl}/img/vipbg.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  font-family:'Microsoft YaHei';
+}
+.container{
+  width:100%;
+  height:100%;
+}
+#scrollUp {
+	bottom: 20px;
+	right: 90px;
+	background: #47a6d9;
+	color: #fff;
+	font-size: 12px;
+	font-family: sans-serif;
+	text-decoration: none;
+	opacity: 0.6;
+	padding: 10px 20px;
+	border-radius: 16px;	
+	-webkit-border-radius: 16px;
+	-moz-border-radius: 16px;
+	-webkit-transition: background 200ms linear;
+	transition: background 200ms linear;
+	-moz-transition: background 200ms linear;
+	:hover{
+		background: #000;
+	}
+}
+.navbar{
+    width:100%;
+	z-index:2;
+	position: fixed;
+	border-top: 2px solid #fa7d3c;
+	.navbar-header{
+		line-height: @navHeight;
+		margin-left:38px !important;
+		font-size: 16px;
+		color:#b11201;
+		img{
+			margin-right:7px;
+			margin-top:-4px;
+		}
+	}
+	.container-fluid{
+		height:@navHeight;
+		padding-right: 57px;
+		ul li a:hover{
+			color:#F76859;
+			cursor:pointer;
+		}
+	}
+	.container{
+		height:@navHeight;
+	}
+	.navbar-text{
+		color:#828282;
+		margin-top: 0;
+   	 	margin-bottom: 0;
+		.glyphicon{
+			margin-right:8px;
+		}
+	}
+	.iconOperateUl{
+		font-size: 20px;
+		li{
+			margin:0;
+			i:hover{
+				color:#F76859;
+				cursor:pointer;
+			}
+		}
+		.divided{
+			color:#820d00 !important;
+			line-height: @navHeight;
+		}
+		.navbar-link{
+			padding-right:0;
+			color:#820d00 !important;
+		}
+	}
+}
+.vipHead {
+    background-image: url("@{baseUrl}/img/avatarBackground.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    margin: 35px auto 0px;
+    width: 92%;
+    height: 300px;
+    padding: 50px 0px 70px 0px;
+    text-align: center;
+    border-radius: 3px;
+    .nickname {
+        color: white;
+        .name {
+            font-weight: bold;
+            display: inline;
+        }
+        
+        .icon_bed{
+        	.W_icon{
+                display: inline-block;
+			    width: 20px;
+			    height: 19px;
+			    background: url("/CMS/ddd/vip/img/sex.png") no-repeat;
+			    /* border: 1px solid red; */
+			    vertical-align: -2px;
+			    background-size: 100px 100px;
+			    margin-left: -5px;
+		    }
+		   	.icon_man{
+		        background-position: -15px 2px;
+		    }
+		    .icon_woman{
+	    	 	background-position: -35px 2px;
+		    }
+		    .icon_unkonw_sex{
+		    	background-position: 3px 2px;
+    			background-size: 120px 120px;
+		    }
+        }
+    }
+    .introduce{
+    	font-size:12px;
+    	color:#fff;
+    }
+}
+#myCarousel{
+	.item{
+		img{
+			width:100%;
+			height:100%;
+		}
+	}
+}
+.left-menu {
+    margin-left: 19px;
+    font-family: "微软雅黑";
+    .baseSet {
+        background-color: @menuBGcolor;
+        border-radius: 3px;
+        font-size: 14px;
+        padding: 10px 0px 0px 20px;
+        font-weight: bolder;
+    }
+
+    .left-menu-down {
+        margin-top: 20px;
+        .lineDown {
+            border-top: 1px solid #828282;
+            width: 88%;
+        }
+    }
+}
+.rightContent {
+    padding: 15px 15px 100px 15px;
+    margin: 0px 57px 0px 0px;
+    background-color: #ffffff;
+    border-radius: 3px;
+}
+.menuAndContent {
+    margin-top: 50px;
+}
+.extendsMenu{
+    .panel-group{
+        padding-bottom: 26px;
+        background-color: white;
+        border-radius: 3px;
+        padding-top:5px;
+    }
+    .panel{
+        border:0;
+    }
+    .panel-heading{
+        background-color: white;
+        padding: 0 25px;
+        font-size: 14px;
+        color: #444444;
+        border:0;
+        .shrinkingIcon{
+            color:#b11201;
+        }
+        .panel-title{
+                padding: 15px 0;
+                border-bottom: 1px solid #aaaaaa;
+                a:hover{
+                    text-decoration: none;
+                    color:#b11201;
+                }
+                a:link{
+                    text-decoration: none;
+                }
+        }
+        .menu_icon{
+            margin-right: 5px;
+        }
+    }
+    .panel-body{
+        border:0 !important;
+    }
+    .childUl{
+            margin: 0;
+            font-size: 12px;
+            color: #959595;
+            padding: 0px 35px;
+            li{
+                list-style-image: url("@{baseUrl}/img/dot.jpg");
+                cursor:pointer;
+                padding: 12px 0;
+                a{
+                    color: #959595;
+                }
+                a:hover{
+                    text-decoration: none;
+                    color:#b11201;
+                }
+                a:link{
+                    text-decoration: none;
+                }
+                .in{
+                    text-decoration: none;
+                    color:#b11201;
+                }
+            }
+    }
+}

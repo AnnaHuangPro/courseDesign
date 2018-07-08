@@ -1,0 +1,11 @@
+#if($!{dataResource.get('isEdit')}=='是')
+<dselect code-type-key="$!dataResource.get('dataSource')" 
+			ng-model="modelData.$!{dataResource.get('bundle')}" 
+			name="$!{dataResource.get('bundle')}" 
+		#if($!{dataResource.get('nullable')}=="是")
+			required
+		#end
+placeholder="$!{dataResource.get('placeholder')}"></dselect>
+#else
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>
+#end

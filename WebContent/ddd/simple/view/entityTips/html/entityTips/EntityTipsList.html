@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="entityTipsListGrid"/>
+				<div class="pull-right btn-group formBtnGroup">
+					<a class="btn " ng-click="addEntityTips()"
+						ng-if="hasPermission('entityTips_add')"><i
+						class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+						class="btn" ng-click="refreshGrid()"><i
+						class='glyphicon glyphicon-refresh'></i>刷新</a>
+				</div>
+	</div>
+				<ddatagrid 
+					name="entityTipsListGrid"
+					id="entityTipsListGrid"
+					class="col-md-12"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="entityTipsList">
+				</ddatagrid>				
+</div>

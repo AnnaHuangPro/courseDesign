@@ -1,0 +1,76 @@
+<div>
+	<div class="row" ng-init="init()">
+		<form class="form-horizontal" name="externalInterfaceForm"
+			ddd-form-validate="{ blurValidate: true}" novalidate role="form">
+			<div class="btn-group formBtnGroup topRight col-md-offset-2" style="padding-top: 15px;">
+				<input class="btn btn-primary form-buttongroup-margin"
+					ng-click="saveExternalInterface(false)"
+					ng-disabled="externalInterfaceForm.$invalid" type="button"
+					value="保存" type="submit"> <input
+					class="btn btn-primary form-buttongroup-margin"
+					ng-click="saveExternalInterface(true)"
+					ng-disabled="externalInterfaceForm.$invalid" type="button"
+					value="保存并新增" type="submit"> <input class="btn btn-primary"
+					ng-click="back()" type="button" value="返回">
+			</div>
+			<fieldset class="col-md-12 head3">
+				<legend class="legend" data-toggle="collapse" href="#baseInfo"
+					style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+				<div id="baseInfo" class="row collapse in">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label form-margin"
+							for="externalInterfacekey">  
+							唯一标识:
+						</label>
+						<div class="col-md-8">
+							<input type="text" id="externalInterfacekey" placeholder='必须填'
+								class="form-control"
+								ng-model="externalInterface.externalInterfaceKey" name="key"
+								maxlength="50" required />
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label form-margin"
+							for="executeClass">  执行类:
+						</label>
+						<div class="col-md-8">
+							<input type="text" id="executeClass" placeholder='精确到包'
+								class="form-control" ng-model="externalInterface.executeClass"
+								name="executeClass" maxlength="200" required/>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label form-margin" for="remark">
+							备注</label>
+						<div class="col-md-8">
+							<textarea id="remark" placeholder='' cols="50" rows="3"
+								class="form-control" ng-model="externalInterface.remark"
+								name="remark" maxlength="8000"></textarea>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label form-margin" for="configJson">
+							  配置:
+						</label>
+						<div class="col-md-8">
+							<textarea id="configJson" placeholder='json格式' cols="50" rows="3"
+								class="form-control" ng-model="externalInterface.configJson"
+								name="configJson" maxlength="2000" required></textarea>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="col-md-12 head3">
+				<legend class="legend" data-toggle="collapse" href="#introduce"
+					style="cursor: pointer">
+					<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+				</legend>
+				<div id="introduce" class="row collapse in">
+					<dddintroduce id="introduceId" type="type"></dddintroduce>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

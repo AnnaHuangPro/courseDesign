@@ -1,0 +1,35 @@
+<style>
+#navTop .collapse i {
+	padding-top: 14px;
+	font-size: 16px;
+	cursor: pointer;
+}
+</style>
+<nav id="navTop" class="navbar navbar-fixed-top " role="navigation"
+	ng-init="init()">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="navbar-header">
+				<a class="navbar-brand navBrand" style="padding: 0"></a>
+			</div>
+			<div class="col-md-4 col-xs-3">
+				<div class="navbar-collapse collapse">
+					<i class="glyphicon glyphicon-home" ng-click="turnToManual()"></i>
+				</div>
+			</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false"><i class="glyphicon glyphicon-user"></i>{{userName}}
+						<span class="glyphicon glyphicon-menu-down"></span></a>
+					<ul class="dropdown-menu">
+						<li><a
+							href="#/main/list/personalData/modifyPasswordForm/edit">修改密码</a></li>
+						<li><a ng-click="personDataDispaly()">个人中心</a></li>
+						<!-- <li role="separator" class="divider"></li>  -->
+					</ul></li>
+				<li><a class="navOutBtn" ng-click="loginOut()">退出</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>

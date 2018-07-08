@@ -1,0 +1,19 @@
+<div ng-controller="memberGroupListController">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="memberGroupListGrid"/>
+		<div class="pull-right btn-group formBtnGroup">
+			<button class="btn btn-sm" ng-click="addMemberGroup()"
+				ng-if="hasPermission('memberGroup_add')">
+				<i class='glyphicon glyphicon-plus-sign'></i>新增
+			</button>
+			<button class="btn btn-sm" ng-click="refreshGrid()">
+				<i class='glyphicon glyphicon-refresh'></i>刷新
+			</button>
+		</div>
+	</div>
+	<ddatagrid id="memberGroupListGrid"
+		name="memberGroupListGrid"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="memberGroupList"> </ddatagrid>
+</div>

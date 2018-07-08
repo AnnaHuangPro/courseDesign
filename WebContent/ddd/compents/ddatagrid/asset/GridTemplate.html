@@ -1,0 +1,141 @@
+<div class="DDataGridClass">
+<style>
+.DDataGridClass {
+	margin-top: 10px
+}
+
+.DDataGridClass .tree {
+	padding: 0;
+	position: absolute;
+	overflow: scroll;
+	z-index: 10;
+}
+
+.DDataGridClass .gridWrap {
+	padding: 0;
+}
+
+.DDataGridClass .gridWrap .grid {
+}
+
+.DDataGridClass .tree+.gridWrap {
+	padding-left: 5px;
+}
+/* tree上的滚动条的样式   */
+.DDataGridClass .tree::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+	background-color: #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.DDataGridClass  .tree::-webkit-scrollbar-thumb {
+	background-color: rgba(235, 87, 86, .73);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+/* grid上的滚动条的样式   */
+.DDataGridClass .ui-grid-viewport::-webkit-scrollbar {
+	width: 7px;
+	height: 7px;
+	background-color: #fff;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+.DDataGridClass .ui-grid-viewport::-webkit-scrollbar-thumb {
+	background-color: rgba(235, 87, 86, .73);
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* 自定义uigrid */
+.ui-grid-render-container .GridRow:hover div{
+	background-color:rgb(235,242,249) !important;
+}
+.DDataGridClass .cell-class-self {
+	background-color: white !important;
+	border: white !important;
+	border-bottom: 1px solid #ddd !important;
+}
+.DDataGridClass .header-class-self{
+	background-color: #f1f1f1 !important;
+	border:0;
+	padding:0 5px;
+}
+.DDataGridClass .header-class-self:hover{
+	background-color:rgb(226,226,226) !important;
+}
+
+.DDataGridClass .gridBtnGroup{
+	padding-right: 15px;
+}
+
+.DDataGridClass .ui-grid-top-panel{
+	background: #f9fafc !important;
+	font-weight: normal;
+}
+.DDataGridClass .ui-grid-header-cell:last-child .ui-grid-column-resizer.right{
+	border-right: 1px solid transparent;
+}
+
+.DDataGridClass .ui-grid-cell-contents{
+}
+
+.DDataGridClass .ui-grid-row:nth-child(odd) .ui-grid-cell{
+	background-color: #ffffff
+}
+.DDataGridClass .ui-grid-row:nth-child(even) .ui-grid-cell{
+	background-color: #f9fafc;
+}
+
+.DDataGridClass .ui-grid-pinned-container.ui-grid-pinned-container-right .ui-grid-header-cell:first-child{
+    border-left-color: #d4d4d4
+}
+.DDataGridClass .ui-grid-pinned-container.ui-grid-pinned-container-right .ui-grid-cell:first-child{
+	border-left-color: #d4d4d4
+}
+.DDataGridClass .grid-footer{
+	margin-top: -35px;
+}
+.DDataGridClass .gridPagination {
+   float:right
+}
+.DDataGridClass .gridPagination .btn{
+   color: #000000 !important;
+   background-color: #ffffff !important;
+}
+.DDataGridClass .gridPagerCount{
+	float:left;
+	height: 34px;
+    line-height: 34px;
+    margin-left: 15px;
+}
+.DDataGridClass .ui-grid-column-menu-button{
+	display:none;
+}
+
+.DDataGridClass .ui-grid-viewport::-webkit-scrollbar-track-piece{
+	background-color: #fff;
+}
+.DDataGridClass .ui-grid-viewport::-webkit-scrollbar-button{
+	background-color:#fff;
+}
+.modal-body .grid{
+	
+	min-height:500px;	
+}
+</style>
+	<div class="col-md-2 col-sm-2 tree" ng-if="viewTreeConditions.length>0">
+		<select ng-model="selectViewTree" class="col-md-12" ng-change="selectViewTreeSelect(selectViewTree)" ng-options="viewTreeCondition.viewTreeName for viewTreeCondition in viewTreeConditions"></select>
+		<viewtree class="col-md-12" init-Filter="{{initTreeFilter}}"  view-tree-key='selectViewTreeKey'></viewtree>
+	</div>
+	<div class="pull-right gridWrap" ng-class="{true: 'col-sm-10 col-md-10', false: 'col-sm-12 col-md-12'}[viewTreeConditions.length>0]">
+		<div class="grid" ui-grid="gridOptionsComplex" ui-grid-move-columns ui-grid-pinning ui-grid-edit ui-grid-resize-columns ng-if="columns" ui-grid-selection ui-grid-pagination  external-scopes="$scope"></div>
+	</div>
+</div>

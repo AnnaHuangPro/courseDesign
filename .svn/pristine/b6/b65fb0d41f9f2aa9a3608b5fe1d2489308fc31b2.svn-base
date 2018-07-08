@@ -1,0 +1,81 @@
+<div ng-controller="modelFileFormController">
+	<div class="row" ng-init="getInitModelFileData()">
+	
+		<form class="col-md-12 form-horizontal" name="modelFileForm"
+			ddd-form-validate="{ blurValidate: true}" novalidate>
+			<div class="row rowddd"></div>
+				<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label required" for="modelKey">
+					名称 </label>
+				<div class="col-md-10">
+					<input type="text" class="form-control" ng-model="modelFile.name"
+						name="name" required />
+				</div>
+			</div>
+			
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="modelKey">
+					导出文件名</label>
+				<div class="col-md-10">
+				<input type="text" class="form-control" ng-model="modelFile.isDefaultExpName"
+						name="name" placeholder="报表导出文件名"/>
+				</div>
+			</div>
+			
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="withChart">
+					是否带有图表</label>
+				<div class="col-md-10">
+					<dselect class="form-control" selectname="withChart"
+						default-value="false" code-type-key='withChart'
+						ng-model='modelFile.withChart'></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label required" for="modelKey">
+					唯一标识 </label>
+				<div class="col-md-10">
+					<input type="text" class="form-control"
+						ng-model="modelFile.modelKey" name="modelKey" required />
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="type"> 类型</label>
+				<div class="col-md-10">
+					<dselect class="form-control" selectname="type"
+						code-type-key='modelFileType' ng-model='modelFile.type'></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="category"> 类别</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control"
+						ng-model="modelFile.category" name="category" />
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" for="moduleFile"> 模板文件</label>
+				<div class="col-md-10">
+					<dfileupload
+						id="modelfileUpload"  
+						associate-form-id="modelFile.attachmentCode"
+						form-validate="imodelFileForm.$invalid"
+						associate-form-name="modelFileKey"></dfileupload>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button class="btn btn-sm" ng-click="saveModelFile(modelFile)"
+						ng-disabled="modelFileForm.$invalid">保存</button>
+					<button class="btn btn-sm" ng-click="saveModelFile(modelFile)"
+						ng-disabled="modelFileForm.$invalid">保存并新增</button>
+					<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

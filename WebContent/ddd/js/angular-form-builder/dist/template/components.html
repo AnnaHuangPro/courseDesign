@@ -1,0 +1,26 @@
+<div  ng-if="groups.length>1" class="panel-group tab-container" id="accordion" role="tablist" aria-multiselectable="true" style="margin-top:0px">
+  <div class="panel" style="margin-bottom: 0;background-color: inherit;" ng-repeat="group in groups">
+    <div class="panel-heading {{group}}" role="tab" id="headingOne"   ng-click="selectGroup($event,group)">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#{{group}}" aria-expanded="true" aria-controls="{{group}}">
+          <!-- <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span> -->
+          <span style="padding: 0 44px 0 30px;">{{group}}</span>
+          <span class="glyphicon glyphicon-menu-right pull-right {{group}}" aria-hidden="true"></span>
+        </a>
+      </h4>
+    </div>
+    <div id="{{group}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" style="background:#fff !important;">
+      <div class="panel-body tab-body">
+      	 <div class='form-horizontal'>
+      	 	<div class='fb-component' ng-repeat="component in components"  fb-component="component" data-toggle="tooltip" data-placement="top" title="按住左键不放进行拖拽">
+      	 	</div>
+      	 	<!-- <script>
+      	 		(function() {
+      	 			$('[toggle="tooltip"]').tooltip(this);
+      	 		})();
+      	 	</script> -->
+      	 </div>
+      </div>
+    </div>
+  </div>
+</div>

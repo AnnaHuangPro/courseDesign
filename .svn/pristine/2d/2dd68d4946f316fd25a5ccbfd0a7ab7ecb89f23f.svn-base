@@ -1,0 +1,37 @@
+<div class="panel panel-primary" ng-init="viewPermission()">
+	<div class="panel-heading">
+		<div class="panel-title" >查看角色</div>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-12">
+				<form class="form-horizontal" role="form" name="form">
+				<br>
+					<div class="form-group">
+						<label class="col-md-2 control-label">名称</label>
+						<div class="col-md-10">
+							<p class="form-control-static">{{permission.name}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">编码</label>
+						<div class="col-md-10">
+							<p class="form-control-static">{{permission.code}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label">对应模块</label>
+						<div class="col-md-10">
+							<p class="form-control-static">{{permission.module.name}}</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-offset-2 col-md-10">
+						    <a ui-sref="main.list.permission" class="btn btn-primary">取消</a>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

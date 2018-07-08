@@ -1,0 +1,112 @@
+<div ng-controller="reportViewFormController">
+	<form class="form-horizontal" ng-init="initListViewData()">
+
+
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#baseInfo"
+				style="cursor: pointer">
+				<span class="legend-title">视图设置</span>
+			</legend>
+			<div id="baseInfo" class="row collapse in">
+				<div class="col-md-12">
+					<div class="form-group col-md-6">
+						<label class="col-md-5 control-label required" for="dataSourceName">数据源名称</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control"
+								ng-model='dataSource.dataSourceName' id="dataSourceName"
+								placeholder="数据源名称">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-5 control-label required" for="reportViewName">视图名称</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control" id=reportViewName
+								ng-model='reportView.reportViewName' placeholder="名称">
+						</div>
+					</div>
+
+					<div class="form-group col-md-6">
+						<label class="col-md-5 control-label required" for="reportViewKey">唯一编码</label>
+						<div class="col-md-7">
+							<input type="text" class="form-control"
+								ng-model='reportView.reportViewKey' id="reportViewKey"
+								placeholder="唯一识别">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-5 control-label" for="reportViewDesc">视图说明</label>
+						<div class="col-md-7">
+							<input type="text" class=" form-control"
+								ng-model='reportView.reportViewDesc' id="reportViewDesc"
+								placeholder="对应说明" />
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-5 control-label" for="reportViewDesc">显示页数</label>
+						<div class="col-md-7">
+							<select class=" form-control"
+								ng-model='reportView.paginationPageSize' id="paginationPageSize"
+								placeholder="一页显示数据条数">
+								<option ng-selected="10 == reportView.paginationPageSize">10</option>
+								<option ng-selected="20 == reportView.paginationPageSize">20</option>
+								<option ng-selected="50 == reportView.paginationPageSize">50</option>
+								<option ng-selected="100 == reportView.paginationPageSize">100</option>
+								<option ng-selected="1000 == reportView.paginationPageSize">1000</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#baseInfo">
+				<span class="legend-title">试图定义</span>
+			</legend>
+			<div id="introduce" class="form-group col-md-12">
+				<div ng-init="showGrid=1" class="">
+					<div class="col-md-6 text-info pull-right tipsddd"
+						ng-show="showGrid==1||showGrid==2">提示：双击左侧“字段选择”中的字段，能够直接将字段添加到对应的栏位中</div>
+					<ul class="nav nav-pills" style="padding-left: 0px;">
+						<li ng-class="{active: showGrid == 1}"><a
+							ng-click="showGrid=1" data-toggle="tab">显示字段</a></li>
+						<li ng-class="{active: showGrid == 2}"><a
+							ng-click="showGrid=2" data-toggle="tab">排序设置</a></li>
+						<li ng-class="{active: showGrid == 3}"><a
+							ng-click="showGrid=3" data-toggle="tab">高级检索</a></li>
+						<li ng-class="{active: showGrid == 4}"><a
+							ng-click="showGrid=4" data-toggle="tab">选择视图树</a></li>
+					</ul>
+					<div class="row">
+						<div class="col-md-12 col-xs-12 col-md-12">
+							<div ng-show="showGrid==1">
+								<div ng-include
+									src="'simple/view/listView/html/reportView/DisplayAttribute.html' "></div>
+							</div>
+							<div ng-show="showGrid==2">
+								<div ng-include
+									src="'simple/view/listView/html/reportView/OrderCondition.html'"></div>
+							</div>
+							<div ng-show="showGrid==3">
+								<div ng-include
+									src="'simple/view/listView/html/reportView/SearchCondition.html' "></div>
+							</div>
+							<div ng-show="showGrid==4">
+								<div ng-include
+									src="'simple/view/listView/html/reportView/ViewTreeCondition.html' "></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="form-group">
+			<div class="btn-group formBtnGroup topRight col-md-offset-2 ">
+				<button class="btn btn-sm" ng-click="saveEdit(reportView)">保存</button>
+				<button class="btn btn-sm" ng-click="back()">返回</button>
+			</div>
+		</div>
+
+	</form>
+</div>

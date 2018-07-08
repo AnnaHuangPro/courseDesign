@@ -1,0 +1,47 @@
+<form  ng-init="init()"
+	class="form-horizontal" name="form" ddd-form-validate novalidate>
+	<fieldset>
+		<legend class="legend">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div class="form-group">
+			<label class="col-md-2 control-label required">唯一标示</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTree.viewTreeKey" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label required">名称</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTree.viewTreeName" required>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label">备注</label>
+			<div class="col-md-10">
+				<textarea type="text" class="form-control" rows="4" 　placeholder=""
+					ng-model="viewTree.remark"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label">树节点</label>
+			<div class="col-md-10">
+				<a ng-click="alertNodeDialog()"><i class="glyphicon glyphicon-plus"></i></a>
+				<ddatagrid name="treeNodeGrid" style="min-height:100px;"
+					id="treeNodeGrid" operation-columns='operationColumns'
+					list-view-key="treeNodeChoose" no-load-data-by-server='true'>
+				</ddatagrid>
+			</div>
+		</div>
+	</fieldset>
+
+	<div class="form-group">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2">
+			<button ng-disabled="form.$invalid" class="btn btn-sm"
+				ng-click="saveViewTree()">保存</button>
+			<button class="btn btn-sm" ng-click="back()">返回</button>
+		</div>
+	</div>
+</form>

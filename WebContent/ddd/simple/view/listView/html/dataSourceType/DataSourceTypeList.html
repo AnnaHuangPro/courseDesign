@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="dataSourceTypeListGrid"></dpagination>
+			<button class="btn " ng-click="addDataSourceType()"
+				ng-if="hasPermission('dataSourceType_add')">新增</button>
+			<button class="btn" ng-click="refreshGrid()">
+				<i class='glyphicon glyphicon-refresh'></i>刷新
+			</button>
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="dataSourceTypeListGrid" />
+	</div>
+	<ddatagrid class="col-md-12" id="dataSourceTypeListGrid"
+		name="dataSourceTypeListGrid" operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="dataSourceTypeList"> </ddatagrid>
+</div>

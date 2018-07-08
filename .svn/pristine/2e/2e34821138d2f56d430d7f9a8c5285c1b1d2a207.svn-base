@@ -1,0 +1,46 @@
+<table class="table table-bordered dchannel-table"
+	style="margin: 0px; padding: 0px;">
+	<tbody>
+	<tr>
+			<td class="col-md-2" style="text-align: center;">
+				<span style="font-size: 14px;font-weight: bold;">字段选择</span>
+			</td>
+			<td class="col-md-10" style="text-align: center;">
+				<span style="font-size: 14px;font-weight: bold;">排序方式选择(视图中列的排序方式)</span>
+			</td>
+		</tr>
+		<tr class="item-default">
+			<td class="col-md-2">
+				<ul class="nav nav-list">
+					<li ng-repeat="orderConditionColumn in columnsInOrderCondition"
+						ng-dblclick='addToOrderCondition(orderConditionColumn)'><label>{{orderConditionColumn.columnValue}}</label></li>
+				</ul>
+			</td>
+			<td class="col-md-10">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>字段名称</th>
+							<th>排序方式</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="orderCondition in orderConditions">
+							<th>{{orderCondition.columnName}}</th>
+							<th><select ng-model="orderCondition.orderType"
+								style="width: 68px; height: 27px;">
+									<option style="display: none;" value=""></option>
+									<option value="asc">升序</option>
+									<option value="desc">降序</option>
+							</select></th>
+							<th><i class='glyphicon glyphicon-remove'
+								ng-click="exchangeObject(orderCondition,orderConditions,columnsInOrderCondition,true)"></i>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+	</tbody>
+</table>

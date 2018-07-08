@@ -1,0 +1,14 @@
+<div ng-controller="browerErrorPageController">	
+	<div>
+		<img src="simple/view/login/browerErrorPage.png"> 			
+	</div>
+	<div>
+		<img src="simple/view/login/face.png" style="margin-left: 285px; margin-top: -690px">
+	</div>
+	<div style="margin-left:553px; margin-top: -383px; font-style: italic; font-size: 30px;">哎呦!您访问的页面只能在谷歌浏览器浏览。</div>
+	<div>
+		<img src="simple/view/login/google.png"
+			style="position: absolute; right: 422px; bottom: 140px">
+		 <a ng-click="dowloadChrome()" style="text-decoration:underline; position: absolute; font-style: italic; right: 335px; bottom: 156px">google下载</a>
+	</div>
+</div>

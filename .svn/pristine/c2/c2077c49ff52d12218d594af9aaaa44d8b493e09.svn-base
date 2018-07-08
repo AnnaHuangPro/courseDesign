@@ -1,0 +1,79 @@
+define(['app'], function(app) {
+	app.factory('ReportService', function(ngDialog,$timeout,$state) {
+		var reportService = {};
+		reportService.reportDocx = function(params,modelFileKey) {
+			var params = JSON.stringify(params);
+			window.location.href="../ReportForm/generateDocxReportForm?params="+params+"&modelFileKey="+modelFileKey;
+		}
+		reportService.reportPreview = function(modelFileKey){
+			$state.go('main.list.reportFormPreview.previewRoute',{modelFileKey:modelFileKey});
+		}
+		
+		reportService.generateExcel = function(params,modelFileKey){
+			var params = JSON.stringify(params);
+			window.location.href="../ReportForm/generateExcel?params="+params+"&modelFileKey="+modelFileKey;
+//			return $.ajax({
+//				url: '../ReportForm/reportFormPreview',
+//				type: 'post',
+//				dataType:'html',
+//				data:{
+//					modelFileKey:modelFileKey,
+//					ddd:'ddd',
+//					params
+//				},
+//				success:function(data){
+//					return data;
+//				}
+//			})
+		}
+		reportService.generateHtml = function(params,modelFileKey){
+				var params = JSON.stringify(params);
+				return $.ajax({
+					url: '../ReportForm/reportFormPreview',
+					type: 'post',
+					dataType:'html',
+					data:{
+						modelFileKey:modelFileKey,
+						ddd:'ddd',
+						params:params
+					},
+					success:function(data){
+						return data;
+					}
+				})
+		}
+		
+		reportService.getFilterTemplate = function(modelFileKey){
+			return $.ajax({
+				url: '../ReportForm/getFilterTemplate',
+				type: 'post',
+				dataType:'json',
+				data:{
+					modelFileKey:modelFileKey
+				},
+				success:function(data){
+					return data;
+				}
+			})
+	}
+		
+		
+		reportService.excel2HtmlWithChart = function(params,modelFileKey){
+			var params = JSON.stringify(params);
+			return $.ajax({
+				url: '../ReportForm/reportFormPreviewWithChart',
+				type: 'post',
+				dataType:'html',
+				data:{
+					modelFileKey:modelFileKey,
+					ddd:'ddd',
+				},
+				success:function(data){
+					return data;
+				}
+			})
+	}
+		
+		return reportService;
+	})
+});

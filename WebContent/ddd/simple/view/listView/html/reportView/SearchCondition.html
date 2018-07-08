@@ -1,0 +1,83 @@
+<table class="table table-bordered dchannel-table"
+	style="margin: 0px; padding: 0px;">
+	<tbody>
+		<tr class="item-default">
+			<td class="col-md-12">
+				<table class="table table-condensed">
+					<thead>
+						<tr>
+							<th>显示名称</th>
+							<th>参数名称</th>
+							<th>值或参数定义</th>
+							<th>显示顺序</th>
+							<th>删除</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="condition in advancedSearchConditions">
+							<th><input type='text' ng-model='condition.displayName'
+								style="width: 100px; height: 27px;"></th>
+							<th><input type='text' ng-model='condition.paramName'
+								style="width: 100px; height: 27px;"></th>
+							<th><select ng-model="condition.displayType"
+								style="width: 150px; height: 27px;">
+									<option style="display: none;" value=""></option>
+									<option value="INPUT">文本</option>
+									<option value="DOUBLE">小数</option>
+									<option value="INT">整数</option>
+									<option value="SELECT">下拉框</option>
+									<option value="DATE">日期</option>
+									<option value="DATETIME">时间</option>
+									<option value="CODETABLE">码表</option>
+									<option value="REFERENCE">外键</option>
+									
+							</select> 
+							<div ng-if="condition.displayType=='SELECT'">
+								<label>选择项：</label>
+								<textarea ng-model="condition.params.options" class="form-control" style="width:150px;"></textarea>
+							</div>
+							<div ng-if="condition.displayType=='CODETABLE'">
+								<label>码表：</label>
+								<dreference 
+								list-view-key='codeTableList' ng-model='condition.params.codeTableType'  style="width:150px;"
+								show-model-filed='name' name="codeTableType"  placeholder="{{condition.params.codeTableType.name}}" class="form-control"></dreference> 
+							</div>	
+							<div ng-if="condition.displayType=='REFERENCE'">
+								<div>
+									<label class="col-md-4 control-label form-margin" for="listViewKey"> 关联属性</label>
+									<div class="col-md-8">
+										<dreference  list-view-key="reportview" ng-model='condition.params.listViewKey'  style="width:150px;"
+										show-model-filed='reportViewName' bind-Field="reportViewKey" placeholder="{{condition.params.listViewKey.reportViewName}}" class="form-control" name = "listViewKey"></dreference>			
+									</div>
+								</div>
+								<div>
+									<label class="col-md-4 control-label form-margin" for="showModelFiled"> 显示字段： </label>
+									<div class="col-md-8">
+										<input type="text" placeholder='请输入要显示的字段' class="form-control" ng-model="condition.params.showModelFiled"  name="showModelFiled"  style="width:150px;"/>
+									</div>
+								</div>	
+								<div>
+									<label class="col-md-4 control-label form-margin" for="workMode"> 绑定字段： </label>
+									<div class="col-md-8">
+										<input type="text" placeholder='请输入要绑定的字段' class="form-control" ng-model="condition.params.bindField"  name="bindField"  style="width:150px;"/>
+									</div>
+								</div>															
+							</div>													
+							</th>
+							<th><div>
+									<i class='glyphicon glyphicon-chevron-up'
+										ng-click="raiseIndex(advancedSearchConditions,condition)"></i>
+									<i class='glyphicon glyphicon-chevron-down'
+										ng-click="subtractIndex(advancedSearchConditions,condition)"></i>
+								</div></th>
+							<th><i class='glyphicon glyphicon-remove'
+								ng-click="exchangeObject(condition,advancedSearchConditions,columnsInSearchCondition,true)"></i>
+							</th>
+						</tr>
+					</tbody>
+				</table>
+				<button type="button" class="btn btn-success" ng-click="addSearchCondition()">添加条件</button>
+			</td>
+		</tr>
+	</tbody>
+</table>

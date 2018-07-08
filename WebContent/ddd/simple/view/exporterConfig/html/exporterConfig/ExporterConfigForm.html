@@ -1,0 +1,36 @@
+<div ng-controller="exporterConfigFormController">
+	<div class="row" ng-init="getInitExporterConfigData()">
+		<form class="form-horizontal col-md-12" name="exporterConfigForm"  ddd-form-validate="{ blurValidate: true}" novalidate >
+			<legend class="legend" data-toggle="collapse" href="" style="cursor: pointer">
+				<span class="legend-title">基础信息</span>
+			</legend>
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" for="configName">名称</label>
+					<div class="col-md-10">
+						<input type="text"  class="form-control" ng-model="exporterConfig.configName" name="configName" required/>
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" for="config">配置详细</label>
+					<div class="col-md-10">
+						<textarea  name="config" class="form-control" rows="10" cols="" placeholder="请输入配置信息" ng-model="exporterConfig.config" required></textarea>
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" for="remark"> 
+									备注</label>
+					<div class="col-md-10">
+						<input type="text"  class="form-control" ng-model="exporterConfig.remark" 
+						 name="remark"/>
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					   	<input ng-disabled="exporterConfigForm.$invalid" class="btn btn-sm" type="button" value="保存" ng-click="saveExporterConfig(exporterConfig)">
+						<input ng-disabled="exporterConfigForm.$invalid" class="btn btn-sm" type="button" value="保存并新增" ng-click="saveAndAddExporterConfig(exporterConfig)" ng-show ="showSaveAndAddButton">
+						<input class="btn btn-sm" type="button" value="返回" ng-click="back()"/>
+					</div>
+				</div>
+			</form>
+	</div>
+</div>

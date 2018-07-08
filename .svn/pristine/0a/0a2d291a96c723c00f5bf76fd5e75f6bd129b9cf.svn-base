@@ -1,0 +1,78 @@
+<div ng-controller="entityPropertyDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.orgId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entity">实体 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.entity}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entityId">实体ID </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.entityId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">字段名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="numberValue">数字值 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.numberValue}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="StringValue">字符值 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.StringValue}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type">字段类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{entityProperty.type}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

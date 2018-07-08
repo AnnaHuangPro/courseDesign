@@ -1,0 +1,78 @@
+<div ng-controller="scheduleTaskDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="scheduleTaskName">名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.scheduleTaskName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="scheduleTaskPath">文件路径 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.scheduleTaskPath}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fileType">文件类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.fileType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="lastStartTime">上次启动时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.lastStartTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="nextStartTime">下次启动时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.nextStartTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="scheduledTaskType">计划类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.scheduledTaskType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="startTime">启动时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.startTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="period">间隔数值 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.period}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="periodUnit">间隔单位 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.periodUnit}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">状态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.state}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="executeResult">执行结果 </label>
+				<div class="col-md-8 value-display">
+					<span>{{scheduleTask.executeResult}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

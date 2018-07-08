@@ -1,0 +1,99 @@
+<form ng-init="init()" class="form-horizontal"
+	name="courseDesignProgressForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveCourseDesignProgress(false)"
+			ng-disabled="courseDesignProgressForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveCourseDesignProgress(true)"
+			ng-disabled="courseDesignProgressForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+			<span class="legend-title">{{courseDesignProgress.courseDesignName}}</span>
+			 <!-- <div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="attachmentCode">
+										附件编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="attachmentCode"
+						placeholder='' class="form-control"
+						ng-model="courseDesignProgress.attachmentCode" name="attachmentCode"
+														maxlength="255"
+													 />
+				</div>
+			</div> -->
+<!-- 			 <div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="courseDesignName">
+					   					课程设计名称:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="courseDesignName"
+						placeholder='课程设计名称' class="form-control"
+						ng-model="courseDesignProgress.courseDesignName" name="courseDesignName"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div> -->
+			 	<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="progressStage">
+					   					进度阶段:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="progressStage"
+						placeholder='进度阶段' class="form-control"
+						ng-model="courseDesignProgress.progressStage" ng-readonly="ifRead" ng-blur="findStage()" name="progressStage"
+						max="65535" maxlength="250" required  />
+				</div>
+			</div>
+			 	<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stageName">
+					   					进度名称:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stageName"
+						placeholder='进度名称' class="form-control"
+						ng-model="courseDesignProgress.stageName" name="stageName"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stageDescription">
+										进度描述:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stageDescription"
+						placeholder='进度描述' class="form-control"
+						ng-model="courseDesignProgress.stageDescription" name="stageDescription"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark">
+										备注:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="remark"
+						placeholder='' class="form-control"
+						ng-model="courseDesignProgress.remark" name="remark"
+														maxlength="8000" />
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

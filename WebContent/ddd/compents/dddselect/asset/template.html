@@ -1,0 +1,14 @@
+<div ng-disabled="readOnly" class="input-group select2-bootstrap-append" style='padding:0px;border: none;'>
+	<ui-select ng-disabled="readOnly" ng-model="options.selected" theme="select2" class="form-control" ng-disabled="isdisabled" style="border-left-style:none;border-top-style:none;border-bottom-style:none;" > 
+		<ui-select-match placeholder="{{placeholder}}">{{$select.selected[showName]}}</ui-select-match>
+		<ui-select-choices repeat="item in options | filter: $select.search">
+			<span ng-bind="item[showName]"></span> 
+		 </ui-select-choices> 
+	</ui-select>
+
+	<span class="input-group-btn" style='border-right-style:none;border-top-style:none;border-bottom-style:none;'>
+		<i ng-disabled="readOnly"  ng-click="clearn()" class="btn btn-default" style="padding-left:5px;padding-right:6px;">
+			<span class="glyphicon glyphicon-trash" style='font-size:2px;'></span>
+		</i>
+	</span>
+</div>

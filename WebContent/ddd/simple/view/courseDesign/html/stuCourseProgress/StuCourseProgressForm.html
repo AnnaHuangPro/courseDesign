@@ -1,0 +1,66 @@
+<form ng-init="init()" class="form-horizontal"
+	name="stuCourseProgressForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveStuCourseProgress(false)"
+			ng-disabled="stuCourseProgressForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveStuCourseProgress(true)"
+			ng-disabled="stuCourseProgressForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">						  						 			  						 						 	
+			 <div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="courseDesignName">
+					   					课程设计名称:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="courseDesignName"
+						placeholder='课程设计名称' class="form-control"
+						ng-model="stuCourseProgress.courseDesignName" name="courseDesignName"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="progressStage">
+					   					目前进度阶段:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="progressStage"
+						placeholder='目前进度阶段' class="form-control"
+						ng-model="stuCourseProgress.progressStage" name="progressStage"
+						max="65535"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="stuId">
+					   					学生编号:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="stuId"
+						placeholder='学生编号' class="form-control"
+						ng-model="stuCourseProgress.stuId" name="stuId"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

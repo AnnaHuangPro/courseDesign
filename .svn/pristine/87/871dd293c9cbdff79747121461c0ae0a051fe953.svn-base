@@ -1,0 +1,216 @@
+package ddd.simple.service.modelFile.impl;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import ddd.base.exception.DDDException;
+import ddd.base.persistence.EntitySet;
+import ddd.base.util.SpringContextUtil;
+import ddd.simple.dao.modelFile.ModelFileDao;
+import ddd.simple.dao.permission.ModuleDao;
+import ddd.simple.entity.modelFile.ModelFile;
+import ddd.simple.entity.modelFile.StatsReport;
+import ddd.simple.entity.permission.LoginUser;
+import ddd.simple.entity.permission.Module;
+import ddd.simple.entity.permission.Operator;
+import ddd.simple.service.base.BaseService;
+import ddd.simple.service.codeTable.CodeTableService;
+import ddd.simple.service.codeTable.CodeTypeService;
+import ddd.simple.service.modelFile.ModelFileService;
+import ddd.simple.service.systemConfig.SystemConfigService;
+
+@Service
+public class ModelFileServiceBean extends BaseService implements ModelFileService
+{
+
+	@Resource(name="modelFileDaoBean")
+	private ModelFileDao modelFileDao;
+	
+	@Resource(name="codeTypeServiceBean")
+	private CodeTypeService codeTypeService;
+	
+	@Resource(name="codeTableServiceBean")
+	private CodeTableService codeTableService;
+	
+	@Resource(name="moduleDaoBean")
+	private ModuleDao moduleDao ;
+	
+	@Resource(name = "systemConfigServiceBean")
+	private SystemConfigService	systemConfigService;
+	
+	@Override
+	public ModelFile saveModelFile(ModelFile modelFile) 
+	{
+		try {
+			ModelFile result = this.modelFileDao.saveModelFile(modelFile);
+			//如果这个modelFile的类型是报表的话，默认创建一个权限点
+			
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("saveModelFile", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public int deleteModelFile(Long modelFileId) {
+		try {
+			return this.modelFileDao.deleteModelFile(modelFileId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("deleteModelFile", e.getMessage(), e);
+		}
+		
+	}
+
+	@Override
+	public ModelFile updateModelFile(ModelFile modelFile) {
+		try {
+			return this.modelFileDao.updateModelFile(modelFile);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("updateModelFile", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public ModelFile findModelFileById(Long modelFileId) {
+		try {
+			return this.modelFileDao.findModelFileById(modelFileId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findModelFileById", e.getMessage(), e);
+		}
+	}
+	
+	@Override
+	public ModelFile findModelFileByKey(String key) {
+		try {
+			return this.modelFileDao.findModelFileByKey(key);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findModelFileById", e.getMessage(), e);
+		}
+	}
+	
+	public EntitySet<ModelFile> findModelFileByType(String type){
+		try {
+			return this.modelFileDao.findModelFileByType(type);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findModelFileByType", e.getMessage(), e);
+		}
+		
+	}
+	
+	
+	@Override
+	public EntitySet<ModelFile> findAllModelFile() {
+		try{
+			return this.modelFileDao.findAllModelFile();
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findAllModelFile", e.getMessage(), e);
+		}
+	}
+	
+	@Override
+	public EntitySet<ModelFile>  findAllReportForm(Integer count){
+		
+		try{
+			if(count == null || count < 0){
+				count = 5;
+			}
+			
+			String moduleCode = this.systemConfigService.findSystemConfigValueBykey("reportPermissionModule");
+			if (moduleCode == null || moduleCode.equals(""))
+			{
+				moduleCode = "000200110001";
+			}
+			Module module = moduleDao.findModulesByCode(moduleCode);
+			
+			if(module == null){
+				throw new DDDException("在查找报表时出错，没有找到级次编码为"+moduleCode+"的模块，请重新配置reportPermissionModule系统参数，或添加模块");
+			}
+			
+			BaseService bs =(BaseService)SpringContextUtil.getBean("baseService");
+			LoginUser loginUser = bs.getLoginUser();
+			if( loginUser == null){
+				throw new DDDException("获取loginuser出错，当前没有用户登录");
+			}
+			Operator operator = bs.getLoginUser().getLoginOperator();
+			if (operator == null){
+				throw new DDDException("获取当前登录人员出错");
+			}
+			Long loginOperatorId =operator.getEId();
+			
+			String where =  "  permission IN (  " +
+					 "  SELECT DISTINCT  " +
+						 "  p. CODE  " +
+					 " FROM " +
+						 " permission p " +
+					 " LEFT JOIN role_permissions r ON r.permissionEId = p.EId " +
+					 " LEFT JOIN operatorandrole o ON o.roleId = r.roleEId " +
+					 " WHERE " +
+						 " p.moduleId =  " +module.getEId()+
+					 " AND o.operatorId =  " +loginOperatorId+
+				 " ) and rownum <= " +count;
+			return this.modelFileDao.query(where, ModelFile.class);
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findAllModelFile", e.getMessage(), e);
+		}
+		
+	}
+	
+	
+	/**
+	 * 要求模板文件的类型是报表
+	 * 码表中报表的value必须是报表
+	 */
+	@Override
+	public List<StatsReport> getAllReportFormGroupByType(){
+		
+		//Map<String,EntitySet<ModelFile>> result = new HashMap<String,EntitySet<ModelFile>>();
+		List<StatsReport> result = new ArrayList<StatsReport>();
+		
+		//找到所有类型为报表的modelfile
+		EntitySet<ModelFile> allReportModelFile = this.findModelFileByType("报表");
+		if(allReportModelFile == null){
+			return null;
+		}
+		//再根据category对报表进行分类
+		Iterator<ModelFile> ite = allReportModelFile.iterator();
+		while(ite.hasNext()){
+			ModelFile modelFile = ite.next();
+			String category = modelFile.getCategory();
+			StatsReport stats = this.findStatsReportByName(category, result);
+			if(stats == null){
+				stats = new StatsReport();
+				stats.setName(category);
+				stats.addModelFile(modelFile);
+				result.add(stats);
+			}else{
+				stats.addModelFile(modelFile);
+			}
+			
+		}
+		return result;
+	}
+	
+	private StatsReport findStatsReportByName(String name,List<StatsReport> statsReports){
+		for(int i=0;i<statsReports.size();i++){
+			StatsReport statsReport = statsReports.get(i);
+			if(name.equals(statsReport.getName())){
+				return statsReport;
+			}
+		}
+		return null;
+	}
+
+}

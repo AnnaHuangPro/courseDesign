@@ -1,0 +1,103 @@
+angular.module('operatorModule',[])
+.controller('operatorFormController',['$stateParams','$rootScope','$state','$scope','OperatorService','dialogs','$q','$timeout',function($stateParams,$rootScope,$state,$scope,OperatorService,dialogs,$q,$timeout){
+	$scope.initOperatorData = function()
+	{
+		$scope.operate = $stateParams.operate;
+		if($stateParams.operate != 'add')
+		{
+			function sucessCB(data)
+			{			
+				$scope.operator  = data;
+			}
+			function errorCB(error)
+			{
+				alert('加载数据失败!');
+			}
+			OperatorService.findOperatorById($stateParams.id,sucessCB,errorCB);
+		}
+	}
+	$scope.showChangePassWord = function(){
+		$scope.showcp = !$scope.showcp;
+	}
+	
+	$scope.bindNewPassWord = function(){
+		if($stateParams.operate == 'add'){
+			$scope.operator.passWord = hex_md5($scope.operator.passWord);
+		}else{
+			if($scope.newPassWord){
+				$scope.operator.passWord = $scope.newPassWord;
+				$scope.operator.passWord = hex_md5($scope.operator.passWord);
+			}
+		}
+	}
+	
+	$scope.cancelOperate = function(){
+		$rootScope.closeOperateTab();
+		$state.go('main.list.operator.operatorList'); 
+	}
+	$scope.saveOperatorOperate=function(operator){
+		$scope.bindNewPassWord();
+		if($stateParams.operate != 'add'){
+			$scope.updateOperate(operator);
+		}else if($stateParams.operate != 'edit'){
+			$scope.addOperate(operator);
+		}
+	}
+	$scope.addOperate=function(operator){
+		function sucessCB(data)
+		{			
+			alert('添加成功');
+			$scope.$broadcast('refreshCurrentPageData');
+			$scope.cancelOperate();
+		}
+		function errorCB(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+		OperatorService.saveOperator($scope.operator,sucessCB, errorCB);
+	}
+	
+	$scope.updateOperate=function(operator){
+		function sucessCB(data)
+		{			
+			alert('修改成功');
+			$scope.cancelOperate();
+		}
+		function errorCB(error)
+		{
+			$rootScope.openErrorDialog(error);
+		}
+		
+		OperatorService.updateOperator($scope.operator,sucessCB, errorCB);
+	}
+	
+	//wym添加的方法
+	$scope.doesNotExist = function(code){
+		var ab = ['a','b'];
+		if(code){
+			OperatorService.findOperatorByCode(code,sucessCB,errorCB);
+		}
+		
+		function sucessCB(data)
+		{
+			
+			$scope.d = data;
+			
+		}
+		
+		function errorCB(error)
+		{
+			//什么都不用做
+		}
+		return $q(function(resolve,reject){
+				$timeout(function(){
+					if($scope.d){
+						reject();
+					}else{
+						resolve();
+					}
+				},500);
+			});
+	}
+	
+}]);

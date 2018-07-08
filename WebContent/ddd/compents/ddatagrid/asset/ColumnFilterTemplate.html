@@ -1,0 +1,257 @@
+<style>
+.gridSearch .searchBtn {
+	float: left;
+	color: #000000 !important;
+	cursor: pointer;
+	background-color: #ffffff;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+.gridSearch .advancedSearch {
+	border-right: 0;
+	border-radius: 0;
+	position: relative;
+	float: left;
+	cursor: pointer;
+}
+
+.gridSearch .glyphicon {
+	color: #000000;
+}
+
+.gridSearch .filter {
+	width: 100px;
+	z-index: 2;
+	float: left;
+	margin-bottom: 0;
+	position: relative;
+	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+.gridSearch .searchInput {
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+	position: relative;
+	float: left;
+	width: 200px;
+}
+
+.grid-control {
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow
+		ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out
+		.15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.grid-control:focus {
+	border-color: #66afe9;
+	outline: 0;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
+		rgba(102, 175, 233, .6);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px
+		rgba(102, 175, 233, .6);
+}
+
+#advancedSearch .selfPanel .selfPanelHead {
+	border: 1px solid #eee;
+	border-left: 4px solid #40B2D8;
+	border-bottom: none;
+	height: 30px;
+	background: #f7f7f7;
+	line-height: 30px;
+}
+
+#advancedSearch .selfPanel .selfPanelHead .headTitle {
+	font-size: 13.34px;
+	color: #666;
+	padding-left: 8px;
+}
+
+#advancedSearch .selfPanel .selfPanelBody {
+	position: relative;
+	border: 1px solid #eee;
+	border-top: none;
+	margin-bottom: 5px;
+	padding: 15px 30px;
+}
+
+#advancedSearch .selfPanel .slider {
+	overflow-y: auto;
+	width: 100%;
+}
+
+#advancedSearch .selfPanel .slider #clear {
+	clear: both;
+}
+
+#advancedSearch .selfPanel .slider::-webkit-scrollbar {
+	width: 5px;
+}
+
+#advancedSearch .hint {
+	width: 16%;
+	height: 34px;
+	float: left;
+	font-weight: normal;
+	padding-left: 5px;
+	text-align: left;
+}
+
+#advancedSearch .rangeFrom {
+	width: 45%;
+	float: left;
+}
+
+#advancedSearch .rangeLine {
+	width: 6%;
+	height: 17px;
+	border-bottom: 1px solid #bbbbbb;
+	float: left;
+	margin: 0 2%;
+}
+
+#advancedSearch .rangeTo {
+	width: 45%;
+	float: right;
+}
+
+#advancedSearch button.btn-default {
+	color: #333 !important;
+	background-color: #fff !important;
+	border-color: #ccc !important;
+}
+
+#advancedSearch button.btn-default:hover {
+	background-color: rgba(230, 230, 230, .5) !important;
+}
+
+
+</style>
+<div class="gridSearch" ng-show="!defaultSearch&&!advancedExpand">
+	<select style="width: auto" class="filter grid-control"
+		ng-model="selected"
+		ng-options="displayAttribute.attributeValue for displayAttribute in attributes">
+	</select> <input class="searchInput grid-control" ng-model="fileterText"
+		ng-keyup="keyup($event)" />
+
+	<div class="searchBtn grid-control" ng-click="search()"
+		ng-class="{advancedSearch:advancedSearchConditions}">
+		<span class="glyphicon glyphicon glyphicon-search"></span>
+	</div>
+	<div class="searchBtn grid-control " ng-if="advancedSearchConditions"
+		aria-haspopup="true" aria-expanded="false" ng-click="advancedSearch()">
+		<span class="glyphicon glyphicon-align-left"></span>
+	</div>
+</div>
+
+<div id="advancedSearch" ng-if="advancedExpand">
+	<div class="selfPanel">
+		<div class="selfPanelHead">
+			<span class="headTitle">高级检索</span>
+		</div>
+		<div class="selfPanelBody slider">
+			<ng-form class="form-horizontal" name="advancedSearchForm" novalidate>
+			<div class="col-md-6  form-group form-content"
+				ng-repeat="condition in conditions">
+				<label class=" col-md-3 control-label ">{{condition.label}}:</label>
+				<!-- <span class="control-label hint" >{{condition.hint}}</span> -->
+				<div class=" col-md-8" ng-switch=condition.type>
+					<input ng-switch-when="text" type="text" class="form-control"
+						ng-model="condition.value" placeholder="{{condition.hint}}" />
+					<div ng-switch-when="textRange">
+						<input type="text" class="form-control rangeFrom"
+							ng-model="condition.value.from" placeholder="{{condition.hint}}" />
+						<div class="rangeLine"></div>
+						<input type="text" class="form-control rangeTo"
+							ng-model="condition.value.to" placeholder="{{condition.hint}}" />
+					</div>
+					<input ng-switch-when="date" ddatepicker type="text"
+						class="form-control" ng-model="condition.value"
+						placeholder="{{condition.hint}}" />
+					<div ng-switch-when="dateRange">
+						<input ddatepicker type="text" class="form-control rangeFrom"
+							ng-model="condition.value.from" placeholder="{{condition.hint}}" />
+						<div class="rangeLine"></div>
+						<input ddatepicker class="form-control rangeTo"
+							ng-model="condition.value.to" placeholder="{{condition.hint}}" />
+					</div>
+					<dselect ng-switch-when="codeTable"
+						code-table-key="{{condition.codeTableKey}}" class="form-control"
+						ng-model="condition.value" placeholder="{{condition.hint}}" />
+					<dreference ng-switch-when="reference"
+						list-view-key="{{condition.listViewKey}}"
+						show-model-filed='{{condition.showModelFiled}}'
+						bind-field='{{condition.bindField}}' class="form-control"
+						ng-model="condition.value" placeholder="{{condition.hint}}" />
+				</div>
+			</div>
+
+			<div class="col-md-12" style="padding: 0px">
+				<div class='btn-group btn-group-md pull-right'>
+					<button class="btn btn-sm btn-primary" type="button"
+						ng-click="adSearch()" ng-disabled="advancedSearchForm.$invalid">搜索</button>
+					<button class="btn btn-sm btn-default" type="button"
+						ng-click="rest()">清空</button>
+					<button class="btn btn-sm btn-default" type="button"
+						ng-click="cancelClick()">取消</button>
+				</div>
+			</div>
+			</ng-form>
+			<div id="clear"></div>
+		</div>
+	</div>
+</div>
+
+<!-- <div class="col-sm-6 noBottom"
+	ng-repeat="searchCondition in searchConditions">
+	<label class="col-sm-5 control-label"
+		for="{{searchCondition.columnName}}">{{searchCondition.displayName}}</label>
+	<div class="col-sm-7 noBottom" ng-switch="searchCondition.displayType">
+		<input ng-switch-when="INPUT" class="form-control" type="text"
+			name="{{searchCondition.params.columnName}}"
+			ng-model="searchCondition.columnValue" placeholder="请输入字符" /> <input
+			ng-switch-when="INT" class="form-control" type="number"
+			name="{{searchCondition.params.columnName}}"
+			ng-model="searchCondition.columnValue" placeholder="请输入整数" /> <input
+			ng-switch-when="DOUBLE" class="form-control" type="number"
+			name="{{searchCondition.params.columnName}}"
+			ng-model="searchCondition.columnValue" placeholder="请输入小数" /> <select
+			ng-switch-when="SELECT" class="form-control"
+			ng-model="searchCondition.columnValue"
+			name="{{searchCondition.params.columnName}}" placeholder="请输选择"></select>
+		<input ng-switch-when="DATE" ddatepicker class="form-control"
+			ng-model="searchCondition.columnValue"
+			name="{{searchCondition.params.columnName}}" placeholder="请输日期"></input>
+		<input ng-switch-when="DATETIME" ddatepicker class="form-control"
+			ng-model="searchCondition.columnValue"
+			name="{{searchCondition.params.columnName}}" placeholder="请输时间"></input>
+		<dselect ng-switch-when="CODETABLE" class="form-control"
+			code-type-key='{{searchCondition.params.codeTypeKey}}'
+			ng-model='searchCondition.columnValue'
+			name="{{searchCondition.params.columnName}}" placeholder="请输选择"></dselect>
+		<dreference ng-switch-when="REFERENCE"
+			list-view-key='{{searchCondition.params.listViewKey}}'
+			ng-model='searchCondition.columnValue'
+			show-model-filed='{{searchCondition.params.showModelFiled}}'
+			bind-field='{{searchCondition.params.bindField}}' placeholder=""
+			class="form-control" name="{{searchCondition.params.columnName}}"
+			placeholder="请输选择"></dreference>
+	</div>
+</div> -->
+
+

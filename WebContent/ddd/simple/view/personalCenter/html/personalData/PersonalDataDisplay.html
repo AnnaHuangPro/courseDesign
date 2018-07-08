@@ -1,0 +1,180 @@
+<style type="text/css">
+	.data-updatepw a{
+		color:#ff8e79;
+		padding-left: 50px;
+	}
+	.lable-tip{
+		text-align: right;
+	}
+	
+	.lable-tip .col-md-8{
+		text-align: left;
+	}
+</style>
+<div class="data-bg" ng-init="init()">
+	<!-- <div class="col-md-12">
+		<div class="form-group">
+			<img src="simple/view/personalCenter/images/data-icon.png">
+			<span style="margin-left:25px"> 查看资料</span>
+		</div>
+	</div> -->
+	
+	<legend class="legend" data-toggle="collapse">
+		<span class="legend-title">查看资料</span>
+	</legend>
+	
+	<div class="form-group">
+		<div class="col-md-2">
+			<figure>
+			  <dlogoupload ng-model="uploadLogo" img-width="150" img-height="150" img-url="logoUrl"></dlogoupload>
+			  <p ng-click="modifyPassword()" style="text-align: center;margin-top: 20px;color: #04c;cursor: pointer;">修改密码</p>
+			</figure>
+    	</div>
+		<div class="col-md-10" ng-if="isEmployee">
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="name"> 姓名</label>
+				<div class="col-md-8"><span ng-bind="employee.name"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="linkTel"> 联系电话</label>
+				<div class="col-md-8"><span ng-bind="employee.linkTel"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="sex"> 性别</label>
+				<div class="col-md-8"><span ng-bind="employee.sex"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="email"> 邮箱</label>
+				<div class="col-md-8"><span ng-bind="employee.email"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="nation"> 民族</label>
+				<div class="col-md-8"><span ng-bind="employee.nation"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="lastedEducationBackground"> 学历</label>
+				<div class="col-md-8"><span ng-bind="employee.lastedEducationBackground"></span></div>
+			</div>
+				<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="birthDate"> 出生日期</label>
+				<div class="col-md-8"><span ng-bind="employee.birthDate.substring(0,10)"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="graduateSchool"> 毕业学校</label>
+				<div class="col-md-8"><span ng-bind="employee.graduateSchool"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+			  <label class="col-md-4 data-margin" for="politicStatus"> 政治面貌</label>
+				<div class="col-md-8"><span ng-bind="employee.politicStatus"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="address">个人说明</label>
+				<div class="col-md-8"><span ng-bind="employee.remark"></span></div>
+			</div>
+		</div>
+
+		<div class="col-md-10" ng-if="isTeacher">
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="teaRealName"> 姓名</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaRealName"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="teaName"> 登录账号</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaName"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="teaPhone"> 联系电话</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaPhone"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="teaGender"> 性别</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaGender"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="teaEmail"> 邮箱</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaEmail"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="nation"> 民族</label>
+				<div class="col-md-8"><span ng-bind="teacher.nation"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="lastedEducationBackground"> 学历</label>
+				<div class="col-md-8"><span ng-bind="teacher.lastedEducationBackground"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="birthDate"> 出生日期</label>
+				<div class="col-md-8"><span ng-bind="teacher.birthDate.substring(0,10)"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="teaStudy"> 研究方向</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaStudy"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="teaAddress"> 办公地址</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaAddress"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="teaOrganization">教师所属单位</label>
+				<div class="col-md-8"><span ng-bind="teacher.teaOrganization.eId"></span></div>
+			</div>
+		</div>
+
+		<div class="col-md-10" ng-if="isStudent">
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="stuRealName"> 姓名</label>
+				<div class="col-md-8"><span ng-bind="student.stuRealName"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="stuName"> 登录账号</label>
+				<div class="col-md-8"><span ng-bind="student.stuName"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label  class="col-md-4 data-margin " for="stuPhone"> 联系电话</label>
+				<div class="col-md-8"><span ng-bind="student.stuPhone"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="stuGender"> 性别</label>
+				<div class="col-md-8"><span ng-bind="student.stuGender"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="stuEmail"> 邮箱</label>
+				<div class="col-md-8"><span ng-bind="student.stuEmail"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="nation"> 民族</label>
+				<div class="col-md-8"><span ng-bind="student.nation"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="lastedEducationBackground"> 学历</label>
+				<div class="col-md-8"><span ng-bind="student.lastedEducationBackground"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="birthDate"> 出生日期</label>
+				<div class="col-md-8"><span ng-bind="student.birthDate.substring(0,10)"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="graduateSchool"> 毕业学校</label>
+				<div class="col-md-8"><span ng-bind="student.graduateSchool"></span></div>
+			</div>
+			<div class="form-group col-md-6 lable-tip">
+				<label class="col-md-4 data-margin" for="stuMajor"> 所读专业</label>
+				<div class="col-md-8"><span ng-bind="student.stuMajor"></span></div>
+			</div>
+		</div>
+
+
+	</div>
+	
+	<div class="form-group">
+		<div class="col-md-2"></div>
+		<div class="col-md-10">
+			<div class="col-md-6">
+				<div class="col-md-4"></div>
+				<div class="col-md-8">
+					<button class="btn btn-sm" ng-click="modifyData()"  style="">编辑</button>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>

@@ -1,0 +1,13 @@
+<div  class="input-group date form_datetime" style='padding:0px'>
+	<input  ng-disabled="noEnable" placeholder="{{placeholder}}"  type="text" style='height:100%;width:100%;border-style:none;'>
+
+	<span style="background-color:white;border-right: none;border-bottom: none;border-top: none;padding-right:2px;padding-left:2px;" ng-if="!noEnable" class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+	<span class="input-group-btn" style='border-right-style:none;border-top-style:none;border-bottom-style:none;'>
+		<i style="border-bottom: none;border-right:none;padding-left:5px;padding-right:6px;border-top: none; ng-disabled="readOnly""  ng-click="clearn()" class="btn btn-default">
+		
+			<span class="glyphicon glyphicon-trash" style='font-size:2px;'></span>
+		</i>
+	</span>
+</div>
+
+    

@@ -1,0 +1,42 @@
+<div ng-controller="memberTypeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeName">类别名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{memberType.typeName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeCade">类别编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{memberType.typeCade}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="role.name"> 角色</label>
+				<div class="col-md-8 value-display">
+					<span>{{memberType.role.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{memberType.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{memberType.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

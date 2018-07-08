@@ -1,0 +1,14 @@
+<table class="table table-condensed" style="word-break: break-word;">
+		<tr>
+			<th class="col-md-3">节点</th>
+			<th class="col-md-3">审批时间</th>
+			<th class="col-md-3">审批结果</th>
+			<th class="col-md-3">审批人意见</th>
+		</tr>
+		<tr ng-repeat="checkOption in checkOptions">
+			<td>{{checkOption.taskName}}</td>
+			<td>{{checkOption.checkTime}}</td>
+			<td>{{checkOption.checkResult}}</td>
+			<td>{{checkOption.description}}</td>
+		</tr>
+</table>

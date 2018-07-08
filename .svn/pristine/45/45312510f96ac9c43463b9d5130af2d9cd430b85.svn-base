@@ -1,0 +1,9 @@
+<style>
+.pageSize {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    padding:2px !important;
+}
+</style>
+<select style="color: rgb(255, 255, 255);background-color: rgb(255, 142, 121);" class="pageSize grid-control" ng-model="paginationPageSize" ng-options="item for item in paginationPageSizes">
+</select>

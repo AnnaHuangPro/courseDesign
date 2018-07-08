@@ -1,0 +1,12 @@
+.self-grid-tit{
+	background-color: white;
+    text-align: center;
+    border-bottom:1px solid  rgb(211,211,211);
+}
+.self-grid-cell{
+	background-color: white !important;
+    border-bottom: 1px solid rgb(211,211,211);
+}
+.operateCell li a{
+	cursor:pointer;
+}

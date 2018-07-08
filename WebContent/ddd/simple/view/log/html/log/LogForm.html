@@ -1,0 +1,139 @@
+<div ng-controller="logFormController">
+	<div class="row" ng-init="getInitLogData()">
+		<form class="col-md-12 form-horizontal" name="logForm"  ddd-form-validate="{ blurValidate: true}" novalidate >
+			<div class="row rowddd"></div>
+    		<fieldset class="col-md-12 head3">
+    			<legend class="legend" data-toggle="collapse" href="#baseInfo"
+					style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+				<div id="baseInfo" class="row collapse in">
+						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="inputCode"> 
+								输入码</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.inputCode" 
+					 name="inputCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="operatorCode"> 
+								操作人编码</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.operatorCode" 
+					 name="operatorCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="operateDate">
+								操作日期</label>
+				<div class="col-md-8">
+					<input ddatepicker="{format:'yyyy年mm月dd日 hh时mm分mm秒'}" class="form-control"  class="form-control" ng-model="log.operateDate"  name="operateDate"
+										></input>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="orgId"> 
+								单位主键</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.orgId" 
+					 name="orgId"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark"> 
+								操作备注</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.remark" 
+					 name="remark"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="operator"> 
+								操作人员姓名</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.operator" 
+					 name="operator"
+										/>
+				</div>
+			</div>
+			
+			
+				<div class="form-group col-md-6">
+						<label class="col-md-4 control-label form-margin" for="creatTime">
+												操作时间</label>
+						<div class="col-md-8">
+							<input ddatepicker="{format:'yyyy年mm月dd日'}"  class="form-control" id="creatTime" ng-model="log.logDate"  name="creatTime"
+														></input>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="ipAddress"> 
+								操作人员IP</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.ipAddress" 
+					 name="ipAddress"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="logType"> 
+								操作日志类型</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.logType" 
+					 name="logType"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="operationName"> 
+								操作名称</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.operationName" 
+					 name="operationName"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="operationContent"> 
+								操作内容</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.operationContent" 
+					 name="operationContent"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="entityClassName"> 
+								记录该实体的完整类名</label>
+				<div class="col-md-8">
+					<input type="text" placeholder='' class="form-control" ng-model="log.entityClassName" 
+					 name="entityClassName"
+										/>
+				</div>
+			</div>
+					</div>
+			</fieldset>
+			<fieldset class="col-md-12 head3">
+    			<legend class="legend" data-toggle="collapse" href="#introduce"
+					style="cursor: pointer">
+					<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+				</legend>
+				<div id="introduce" class="row collapse in">
+					<dddintroduce id="introduceId" type="type"></dddintroduce>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+	        		<input  class="btn btn-primary form-buttongroup-margin" ng-model="d" uib-btn-radio="'Left'"  type="button" value="保存" type="submit"    ddd-form-submit="saveLog(log)">
+	        		<input  class="btn btn-primary form-buttongroup-margin" ng-model="d" uib-btn-radio="'Middle'"  type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ddd-form-submit="saveAndAddLog(log)"   >
+	        		<input  class="btn btn-primary" uib-btn-radio="'Right'" ng-model="d" type="button" value="返回" ng-click="back()">
+	    		</div>
+    		</div>
+		</form>
+	</div>
+</div>

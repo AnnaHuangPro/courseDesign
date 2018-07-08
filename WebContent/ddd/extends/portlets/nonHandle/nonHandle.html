@@ -1,0 +1,54 @@
+<div class="col-md-6">
+		<div ng-controller='taskListController' class="widget" style="margin-bottom: 0;">
+			<div class="panel panel-default "
+				style="padding: 0; border-radius: 0">
+				<div class="panel-heading">
+					<span class="glyphicon glyphicon-bookmark"></span>常用功能
+				</div>
+				<div class="panel-body widget-content" style="height: 190px">
+					<div class="col-md-12"  ng-init='initTaskList()'>
+						<legend class="legend">
+							<i class="glyphicon glyphicon-edit"></i>&nbsp;{{}}任务列表
+						</legend>
+						<div class="row">
+							<div class="col-md-12 col-xs-12 col-md-12" >
+								<table class="table table-bordered dchannel-table"
+									style="margin: 0px; padding: 0px;">
+									<tbody>
+										<tr class="item-default">
+											<td class="col-md-12">
+												<table class="table table-condensed">
+													<thead>
+														<tr>
+															<th class="col-md-3">操作</th>
+															<th class="col-md-9">任务描述</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr ng-repeat="task in taskList">
+															<th>
+																<div>
+																	<a ng-click='claimAtQueued(task.taskId)' ng-if="isDisplay&&task.isShow">签收任务</a>
+																	<a ng-click='findTaskDetail(task.taskId)' ng-if="isDisplay&&!task.isShow">审批任务	</a>
+																	<a ng-click='findTaskDetail(task.taskId)' ng-if="!isDisplay">查看任务</a>&nbsp;&nbsp;
+																	<a ng-click="displayProcessHistory(task.taskId,task.processInstanceId)">查看历史</a>
+																</div>
+															</th>
+															<th>
+																<div>{{task.description}}</div>
+															</th>
+														</tr>
+													</tbody>
+												</table> 
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>

@@ -1,0 +1,21 @@
+<div class="row" ng-controller="codeTableListController">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="codeTableListGrid"></dpagination>
+				<a class="btn " ng-click="addCodeTable()"
+					ng-if="hasAddPermission">
+					<i class='glyphicon glyphicon-plus-sign'></i>新增</a>
+<!-- 			<button class="btn " ng-click="import()" ng-if="hasAddPermission">导入</button> -->
+<!-- 			<button class="btn" ng-click="refreshGrid()"> -->
+<!-- 				<i class='glyphicon glyphicon-refresh'></i>刷新 -->
+<!-- 			</button> -->
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="codeTableListGrid" />
+	</div>
+
+
+	<ddatagrid class="col-md-12" id="codeTableListGrid" name="codeTableListGrid"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="codeTableList"> </ddatagrid>
+</div>

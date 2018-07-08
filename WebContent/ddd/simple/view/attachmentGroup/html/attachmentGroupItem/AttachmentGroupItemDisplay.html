@@ -1,0 +1,55 @@
+<div ng-controller="attachmentGroupItemDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">标题 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="groupItemCode">编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.groupItemCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="minFiles">最小上传的文档数量 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.minFiles}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="maxFiles">最大上传的文档数量 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.maxFiles}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fileType">上传的文档类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.fileType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachementGroupTemplate.name"> 文档组</label>
+				<div class="col-md-8 value-display">
+					<span>{{attachmentGroupItem.attachementGroupTemplate.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" value="返回" ng-click="closeOperateTab()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

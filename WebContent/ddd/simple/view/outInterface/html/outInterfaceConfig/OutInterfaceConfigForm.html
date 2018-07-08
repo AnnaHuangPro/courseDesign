@@ -1,0 +1,150 @@
+<div ng-controller="outInterfaceConfigFormController">
+	<div class="row" ng-init="getInitOutInterfaceConfigData()">
+		<form class="col-md-12 form-horizontal" name="outInterfaceConfigForm"  ddd-form-validate="{ blurValidate: true}" novalidate >
+			<div class="row rowddd"></div>
+				
+						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode"> 
+								输入码</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.inputCode" 
+					 name="inputCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode"> 
+								操作人编码</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.operatorCode" 
+					 name="operatorCode"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">
+								操作日期</label>
+				<div class="col-md-8">
+					<ddatepicker class="form-control"  class="form-control" ng-model="outInterfaceConfig.operateDate"  name="operateDate"
+										></ddatepicker>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId"> 
+								单位主键</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.orgId" 
+					 name="orgId"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 
+								备注</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.remark" 
+					 name="remark"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="configName"> 
+								名字</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.configName" 
+					 name="configName"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="connectInfo"> 
+								数据库链接</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.connectInfo" 
+					 name="connectInfo"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="outQuerySql"> 
+								源库查询语句</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.outQuerySql" 
+					 name="outQuerySql"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="localQuerySql"> 
+								目标库查询语句</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.localQuerySql" 
+					 name="localQuerySql"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="localUpdateSql"> 
+								目标库更新语句</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.localUpdateSql" 
+					 name="localUpdateSql"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="outUpdateSql"> 
+								更新外部语句</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.outUpdateSql" 
+					 name="outUpdateSql"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="specialParam"> 
+								特殊参数</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.specialParam" 
+					 name="specialParam"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="excuteInterfaceBean"> 
+								处理类</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.excuteInterfaceBean" 
+					 name="excuteInterfaceBean"
+										/>
+				</div>
+			</div>
+					<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state"> 
+								启用状态</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.state" 
+					 name="state"
+										/>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="isImport"> 
+								是否是导入</label>
+				<div class="col-md-8">
+					<input type="text"  class="form-control" ng-model="outInterfaceConfig.isImport" 
+					 name="isImport"
+										/>
+				</div>
+			</div>
+			
+			<div class="form-group">
+					<div class="btn-group formBtnGroup topRight col-md-offset-2">
+				   		<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ddd-form-submit="saveOutInterfaceConfig(outInterfaceConfig)">
+						<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show = "showSaveAndAddButton" ddd-form-submit="saveAndAddOutInterfaceConfig(outInterfaceConfig)">
+						<input class="btn btn-primary" type="button" value="返回" ng-click="back()"/>
+					</div>
+				</div>
+			</form>
+	</div>
+</div>

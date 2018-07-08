@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="codeTableListGrid"></dpagination>
+			<button class="btn " ng-click="addSystemConfigType()"
+				ng-if="hasPermission('systemConfigType_add')">
+				<i class='glyphicon glyphicon-plus-sign'></i>新增
+			</button>
+			<button class="btn " ng-click="refreshGrid()">
+				<i class='glyphicon glyphicon-refresh'></i>刷新
+			</button>
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="systemConfigTypeListGrid" />
+	</div>
+	<ddatagrid class="col-md-12" id="systemConfigTypeListGrid"
+		name="systemConfigTypeListGrid" show-grid-only="true"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="systemConfigTypeList"> </ddatagrid>
+</div>

@@ -1,0 +1,54 @@
+<div ng-controller="logDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operator">操作人员姓名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.operator}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="logDate">操作时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.logDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="ipAddress">操作人员IP </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.ipAddress}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="logType">操作日志类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.logType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operationName">操作名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.operationName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operationContent">操作内容 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.operationContent}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="entityClassName">记录该实体的完整类名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{log.entityClassName}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

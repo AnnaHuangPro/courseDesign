@@ -1,0 +1,58 @@
+<div ng-controller="organizationDisplayController">
+	<div class="row" ng-init="init()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-12">
+				<legend class="legend" data-toggle="collapse" href=""><span class="legend-title">基础信息</span></legend>
+				<hr/>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="code">单位编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.code}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">单位名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="linkTel">联系电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.linkTel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="description">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.description}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="creatTime">创建时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.creatTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="modifyTime">单位地址</label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.address}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="parent.name"> 上级单位</label>
+				<div class="col-md-8 value-display">
+					<span>{{organization.parent.name}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

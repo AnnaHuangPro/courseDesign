@@ -1,0 +1,78 @@
+<form class="form-horizontal" ng-controller="codeTableFormController"
+	ng-init="getInitCodeTableData()"
+	name="codeTableForm" ddd-Form-Validate novalidate>
+
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label required" for="code">
+				码表编码</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" placeholder="" required
+					ng-model="codeTable.code">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="name"> 名称</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" placeholder="将作为显示字段显示在下拉框中"
+					ng-model="codeTable.name">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label required" for="name"> 值</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" placeholder="" required
+					ng-model="codeTable.value">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label required" for="codeType"> 类型</label>
+			<div class="col-md-8">
+				<dreference class="form-control"
+					reference-id="codeTableFormcodeType" list-view-key='codeTypeList'
+					ng-model='codeTable.codeType' show-model-filed='name'>
+				</dreference>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="displayOrder">
+				显示顺序</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="codeTable.displayOrder">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="level"> 等级</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="codeTable.level">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="modifyOrder"> 修改序号</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="codeTable.modifyOrder">
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="tier"> 所处层次</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="codeTable.tier">
+			</div>
+		</div>
+	</fieldset>
+	<div class="form-group">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2">
+			<button ng-disabled="codeTableForm.$invalid" class="btn btn-sm "
+				ng-click="saveCodeTable(codeTable)">保存</button>
+			<button ng-disabled="codeTableForm.$invalid" class="btn btn-sm  "
+				ng-show="showSaveAndAddButton"
+				ng-click="saveAndAddCodeTable(codeTable)">保存并新增</button>
+			<button class="btn btn-sm" ng-click="back()">取消</button>
+		</div>
+	</div>
+</form>

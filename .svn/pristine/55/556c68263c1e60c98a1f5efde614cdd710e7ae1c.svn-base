@@ -1,0 +1,57 @@
+<div class="row" ng-controller="ddd3portletController">
+	<div id="layout" class="col-md-12" style="height:{{dheight}}px"></div>
+</div>
+<!-- <div style="margin-top: 10px;height:100%" id="test1"> -->
+<!-- 	<div > -->
+<!-- 	<div id="layout"></div> -->
+<!-- 	<div class="col-md-6" > -->
+<!-- 		<div class="widget" style="margin-bottom: 0;"> -->
+<!-- 			<div class="panel panel-default " -->
+<!-- 				style="padding: 0; border-radius: 0"> -->
+<!-- 				<div class="panel-heading" style="background-image: none"> -->
+<!-- 					<span class="glyphicon glyphicon-bookmark"></span>常用功能 -->
+<!-- 				</div> -->
+<!-- 				<div class="panel-body widget-content" style="height: 250px"> -->
+<!-- 					<div id="portlet" class="shortcuts"> -->
+<!-- 						<a href="javascript:void(0)" ng-repeat="button in buttons" -->
+<!-- 							ng-click="go(button.state)" -->
+<!-- 							ng-if="hasPermission(button.permission)" class="shortcut" -->
+<!-- 							style="color: black; text-align: center; padding-top: 0px;"> -->
+<!-- 							<span class="shortcut-label" -->
+<!-- 							style="background-color: #4FB0E3; height: 15px; margin-bottom: 8px;"> -->
+<!-- 						</span> <i class="{{button.icon}} shortcut-icon"></i> <span -->
+<!-- 							class="shortcut-label">{{button.label}}</span> -->
+<!-- 						</a> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+<!-- 	<div ng-controller="calendarController"> -->
+<!-- 	<div class="col-md-6" ng-show="false"> -->
+<!-- 		<div class="widget" style="margin-bottom: 0;"> -->
+<!-- 			<div class="panel panel-default " -->
+<!-- 				style="padding: 0; border-radius: 0"> -->
+<!-- 				<div class="panel-heading" style="background-image: none"> -->
+<!-- 					<span class="glyphicon glyphicon-bookmark"></span>日历管理 -->
+<!-- 				</div> -->
+<!-- 				<div class="panel-body widget-content" style="height: 465px"> -->
+<!-- 					  <div ui-calendar="uiConfig.calendar" id="calendar" -->
+<!-- 					class="calendar col-md-12 " calendar="myCalendar" -->
+<!-- 					ng-model="eventSources"></div> -->
+<!-- 				<div class="col-md-12 btn-group" -->
+<!-- 					style="margin-top: 0px; border-top-width: 3px; padding-top: 3px;"> -->
+<!-- 					<button class="btn btn-primary form-buttongroup-margin" -->
+<!-- 						ng-click="changeView('agendaDay', 'myCalendar1')">日视图</button> -->
+<!-- 					<button class="btn btn-primary form-buttongroup-margin" -->
+<!-- 						ng-click="changeView('agendaWeek', 'myCalendar1')">周视图</button> -->
+<!-- 					<button class="btn btn-primary" -->
+<!-- 						ng-click="changeView('month', 'myCalendar1')">月视图</button> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+<!-- </div> -->
+<!-- </div> -->

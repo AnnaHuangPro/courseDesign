@@ -1,0 +1,120 @@
+<style>
+	.roleNameBorder{
+		border-color: white;
+	}
+	.roleNameBackground{
+		background: rgb(236, 240, 241);
+	}
+	.moduleTreePadding{
+		padding-left: 10px;
+	}
+	.viewTree{
+		width: 100%; 
+		overflow: auto;
+	}
+	.permisionHead{
+		background:transparent;
+		border-bottom:solid 1px rgb(221,221,221);
+	}
+	.permisionBtn{
+		position: relative; 
+		top: -6px;
+	}
+	.permosionBtnBc{
+		background-color:rgb(30,230,160);
+	}
+	.hasCheckedW{
+		text-align:center;
+		border:solid 1px rgb(221,221,221)
+	}
+	.hasCheckedHeight{
+		height:400px;
+	}
+	.haCheckedBc{
+		background-color:rgb(255,248,247);
+	}
+	.unCheckedBc{
+		background-color:rgb(235,255,235)
+	}
+	.permisionMargin{
+		margin: 10px 0 10px 0;
+	}
+	.clearStyle{
+		margin-right:5px;
+		color: #999;
+	}
+	.selectStyle{
+		margin-left:5px;
+		color: #999;
+	}
+	.fontStyle{
+		font-size: 14px;
+		font-family:"微软雅黑";
+		color:black;
+	}
+</style>
+
+<div ng-controller="assignRoleController">
+	<div class="row">
+		<div class="col-md-12 col-xs-12 col-sm-12">
+					<div class="panel panel-default" style="border-color: white">
+						<div class="panel panel-heading roleNameBorder"
+							style="background: rgb(236, 240, 241)">
+							操作员名称 : {{operator}}
+						</div>
+					</div>
+		</div>
+		<div class="col-md-3 col-xs-3 col-sm-3 moduleTreePadding">
+			<div class="panel panel-default">
+				<div class="panel-heading roleNameBackground">
+					<div class="panel-title">单位树</div>
+				</div>
+				<div class="viewTree">
+					<viewtree view-tree-key='selectViewTreeKey'> <viewtree>
+				</div>
+			</div>
+		</div>	
+		<div class="col-md-9 col-xs-9 col-sm-9">
+			<div class="panel panel-default" style="border-color: white">
+				<div ng-show="showRoles.length>0"  class="panel panel-default">
+					<div class="panel-heading permisionHead">
+								角色列表 &nbsp;/&nbsp;{{currentNode.name}}
+								<div class="btn-group pull-right permisionBtn" role="group">
+								  <button type="button" class="btn btn-default" style="background-color:rgb(31, 230, 163);" ng-click="cancelOperate()"><span class="glyphicon glyphicon-eye-open"></span>&nbsp;查看所有角色</button>
+								  <button type="button" class="btn btn-default haCheckedBc" ng-click="saveCurrentChange(true)"><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;确定</button>
+								  <button type="button" class="btn btn-default" style="background-color:rgb(31, 230, 163);" ng-click="closeOperateTab()"><span class="glyphicon glyphicon-remove-circle"></span>&nbsp;返回</button>
+								</div>
+					</div>
+					<div class="panel-body permisionMargin">
+						<div class = "col-md-4 hasCheckedW">已选</div>
+							<div class = "col-md-8 hasCheckedW">待选</div>
+								<div class = "col-md-4 hasCheckedW hasCheckedHeight haCheckedBc">
+									<div class="col-md-12">
+										<a class="pull-right clearStyle" ng-click="clearAll()" style="text-decoration:none;">&nbsp;清空<span class="glyphicon glyphicon-chevron-right"></span></a>
+									</div>
+									<div class="col-md-12 permisionMargin" ng-repeat="role in showRoles" ng-if="role.isAssigned" style="text-align:left;">
+										<div class="btn-group">
+											<a uib-btn-checkbox ng-model="role.isAssigned" style="text-decoration:none;" class="fontStyle"> 
+												<img alt="此图片无法展示" src="simple/view/permission/images/checked.png">&nbsp;&nbsp;&nbsp;<span>{{role.name}}</span>
+											</a>
+										</div>
+									</div>
+								</div>
+								<div class = "col-md-8 hasCheckedW hasCheckedHeight unCheckedBc">
+									<div class="col-md-12">
+										<a class="pull-left selectStyle" ng-click="selectAll()" style="text-decoration:none;"><span class="glyphicon glyphicon-chevron-left"></span>&nbsp;全选</a>
+									</div>
+									<div class="col-md-6 permisionMargin" ng-repeat="role in showRoles" ng-if="!role.isAssigned" style="text-align:left;">
+										<div class="btn-group">
+											<a uib-btn-checkbox ng-model="role.isAssigned" style="text-decoration:none;" class="fontStyle"> 
+												<img alt="此图片无法展示" src="simple/view/permission/images/unchecked.png">&nbsp;&nbsp;&nbsp;<span>{{role.name}}</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+			</div>
+		</div>
+	</div>
+</div>

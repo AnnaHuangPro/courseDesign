@@ -1,0 +1,1 @@
+{"route":"main.list.operator.operatorListRoute","name":"操作员管理","permissionMap":[{"operator_display":{"actionPaths":["../Operator/findOperatorById","../Operator/findAllOperator"],"permissionCode":"","permissionName":"查看操作员"}}]}

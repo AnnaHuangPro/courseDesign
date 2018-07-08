@@ -1,0 +1,27 @@
+<div class="form-group">
+    <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+    <div class="col-md-{{col2}}">
+    	<!-- <dselect class="form-control" 
+    		list-view-key='{{dataSource}}' 
+    		ng-model='defaultValue' 
+    		id="{{formName+index}}"  
+    		placeholder="{{placeholder}}"
+	 		validator-required="{{required}}" 
+	 		id-filed="EId" 
+	 		show-name='{{foreignKeyView}}'></dselect> -->
+	 	<div class="input-group">
+		  <input type="text" class="form-control" aria-describedby="basic-addon2">
+		  <span class="input-group-addon" id="basic-addon2" style="background:#fff;">
+			<span class="glyphicon glyphicon-triangle-bottom" style="font-size:2px;"></span>
+		  </span>
+		  <span class="input-group-addon" id="basic-addon2" style="background:#fff;">
+			<span class="glyphicon glyphicon-trash" style="font-size:2px;"></span>
+		  </span>
+		</div>
+        <p class='help-block'>{{description}}</p>
+        </div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>

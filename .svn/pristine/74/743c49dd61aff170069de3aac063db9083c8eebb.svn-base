@@ -1,0 +1,40 @@
+version:1.2.0
+更新内容：
+1、模块：支持任意级模块配置
+2、登陆界面可配置：simple/view/login/asset/LoginForm.json
+3、登录信息存储：用户名密码：localStorage ； 权限、登录信息：sessionStorage
+4、app.js;main.js;angular.permission.js 与框架基础分离
+5、数据源配置simple\view\listView\html\dataSource\DataSourceForm.html 
+   及 树形结构配置ddd\simple\view\tree\html\viewTreeNode\ViewTreeNodeForm.html
+   取消tab支持
+6、动态SQL版本更新
+7、级联查询更新，支持多次级联
+8、基础模块路由：
+	数据源  	main.list.dataSource.dataSourceListRoute
+	视图		main.list.reportView.reportViewListRoute
+	码表		main.list.codeTable.codeTableListRoute
+	码表类型	main.list.codeType.codeTypeListRoute
+	代码生成	main.list.codeGeneratorRoute
+	动态表单	main.list.dynamicForm.dynamicFormListRoute
+	部门		main.list.department.departmentListRoute
+	职员		main.list.employee.employeeListRoute
+	单位		main.list.organization.organizationListRoute
+	模块		main.list.module.moduleListRoute
+	操作员		main.list.operator.operatorListRoute
+	权限点		main.list.permission.permissionListRoute
+	角色		main.list.role.roleListRoute
+	报表		main.list.reportForm.reportFormListRoute
+	系统参数	main.list.systemConfig.systemConfigListRoute
+	树形结构	main.list.viewTree.viewTreeListRoute
+	工作流		
+		代办任务	main.list.workflow.nonHanderTaskListRoute
+		已办任务	main.list.workflow.operatedTaskListRoute
+		已完成任务	main.list.workflow.completedTaskListRoute
+9、外键指令更新
+
+version:1.2.1
+1、模块排序
+2、app.js tab页切换（存在tab页  直接切换显示而不用跳转路由）
+3、视图列显示顺序问题
+4、视图配置-编辑视图-高级检索-显示顺序 调整的问题
+5、表单验证：基本验证：input非空验证、唯一验证、外键、码表验证

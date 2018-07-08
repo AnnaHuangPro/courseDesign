@@ -1,0 +1,17 @@
+ <div ng-controller="subTableController">
+	<div class="row" >
+		<form class="form-horizontal" name="modelDataForm" ddd-form-validate="{ blurTrig: true}" novalidate >
+			<div class="form-group formBtnGroup">
+				<div class="col-md-10 col-md-offset-1 btn-group">
+					<input class="btn btn-primary btn-sm" type="button"
+								 ng-disabled="modelDataForm.$invalid"
+								ng-click="saveModelData(modelData)" value="保存">
+					<input class="btn btn-primary btn-sm" type="button"
+								ng-click="cancelClick()" value="返回">
+				</div>
+			</div>
+ 			<form-priview name="dynamicform" dynamic-form-key="formKey" model-data="modelData" ></form-priview>
+ 		</form>
+ 	</div>
+</div>
+ 

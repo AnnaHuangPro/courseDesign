@@ -1,0 +1,52 @@
+<div>
+		<form class="form-horizontal">
+			<div class="form-group col-md-6">
+				<div class="col-md-offset-2 col-md-10">
+					<button class="btn btn-success" ng-click="taskDeal()">处理</button>
+					<button class="btn btn-primary" ng-click="closeOperateTab()">取消</button>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">任务名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employee.name"> 职员</label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.employee.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="date">开始日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.startDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="date">结束日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.endDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="describe">描述 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.taskDescribe}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="state">状态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.state}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type">类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{selectedEvent.type}}</span>
+				</div>
+			</div>
+		</form>
+</div>

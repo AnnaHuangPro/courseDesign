@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html ng-app="ueditoTextrApp">
+<head>
+    <title>日期</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <meta name="generator" content="www.leipi.org" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+    <![endif]-->
+    <link rel="stylesheet" href="leipi.style.css">
+    <script type="text/javascript" src="../dialogs/internal.js"></script>
+    <script type="text/javascript">
+/* Thank you by  
+http://www.alt-tag.com/blog/2006/02/ie-dom-bugs/ */
+
+
+function createElement(type, name)
+{     
+    var element = null;     
+    try {        
+        element = document.createElement('<'+type+' name="'+name+'">');     
+    } catch (e) {}   
+    if(element==null) {     
+        element = document.createElement(type);     
+        element.name = name;     
+    } 
+    return element;     
+}
+    </script>
+</head>
+<body>
+<div class="content" ng-controller="controller">
+    <table class="table table-bordered table-striped table-hover">
+     <tr>
+        <th><span>控件名称</span><span class="label label-important">*</span></th>
+        <th><span>模型项值</span> </th>
+    </tr>
+    <tr>
+        <td><input type="text" id="orgname" placeholder="必填项" ></td>
+        <td><input type="text" id="orgvalue" placeholder="必填项"></td>
+    </tr>
+    <tr>
+        <th><span>文本框样式</span> </th>
+        <th><span>可见性</span> </th>
+    </tr>
+    <tr>
+        <td>
+	            宽 <input id="orgwidth" type="text" value="40" class="input-small span1" placeholder="auto"/> px
+	            &nbsp;&nbsp;
+	            高 <input id="orgheight" type="text" value="40" class="input-small span1" placeholder="auto"/> px
+        </td>
+        <td>
+        	<label class="checkbox inline"><input id="orghide" type="checkbox"/> 隐藏 </label>
+        </td>
+    </tr>
+    </table>
+</div>
+<script type="text/javascript">
+var oNode = null,thePlugins = 'datepicker';
+/* var resource ;
+ */window.onload = function() {
+    if( UE.plugins[thePlugins].editdom ){
+        oNode = UE.plugins[thePlugins].editdom;
+		var gValue = '';
+		if(oNode.getAttribute('value'))
+			gValue = oNode.getAttribute('value').replace(/&quot;/g,"\"");
+		var gTitle=oNode.getAttribute('title').replace(/&quot;/g,"\""),
+		gWidth=oNode.getAttribute('orgwidth'),
+		gHeight=oNode.getAttribute('orgheight'),
+		gHidden=oNode.getAttribute('orghide');
+		/* var gItemLabel = resource['item_label'];
+		var gTitle = resource['field']; */
+		gValue = gValue==null ? '' : gValue;
+        gTitle = gTitle==null ? '' : gTitle;
+		$G('orgvalue').value = gValue;
+        $G('orgname').value = gTitle;
+        if (gHidden == '1')
+        {
+            $G('orghide').checked = true;
+        }
+       /*  $G('orgfield').value = gField; */
+        $G('orgwidth').value = gWidth;
+        $G('orgheight').value = gHeight;
+       /*  $G('orgtype').value = gType;
+ */ 
+	}
+    else
+	{
+ 	var modelItem = UE.plugins[thePlugins].modelItem;
+ 	if(modelItem)
+ 	{ 
+	    	var gTitle= modelItem.field;
+	    	gTitle = gTitle==null ? '' : gTitle;
+	        $G('orgname').value = gTitle;
+ 	}
+	}
+}
+dialog.oncancel = function () {
+    if( UE.plugins[thePlugins].editdom ) {
+        delete UE.plugins[thePlugins].editdom;
+    }
+    if( UE.plugins[thePlugins].modelItem ) {
+        delete UE.plugins[thePlugins].modelItem;
+    }
+};
+dialog.onok = function (){
+    if($G('orgname').value==''){
+        alert('请输入控件名称');
+        return false;
+    }
+    var gValue=$G('orgvalue').value.replace(/\"/g,"&quot;"),
+    gTitle=$G('orgname').value.replace(/\"/g,"&quot;"),
+    gWidth=$G('orgwidth').value,
+    gHeight=$G('orgheight').value;
+    if( !oNode ) {
+        try {
+        	var modelItem = UE.plugins[thePlugins].modelItem; 
+        	oNode = createElement('input','leipiNewField');
+       		oNode.setAttribute('type','text');
+            oNode.setAttribute('title',gTitle);
+            oNode.setAttribute('value',gValue);
+            oNode.setAttribute('data-provide','datepicker');
+            oNode.setAttribute('data-date-format','yyyy-mm-dd');
+            oNode.setAttribute('name','leipiNewField');
+            oNode.setAttribute('leipiPlugins',thePlugins);
+            oNode.setAttribute('modelId',modelItem['model_id']);
+            oNode.setAttribute('modelItemId',modelItem['modelitem_id']);
+            
+            if ( $G('orghide').checked ) {
+                oNode.setAttribute('orghide',1);
+            } else {
+                oNode.setAttribute('orghide',0);
+            }
+            
+            if( gWidth != '' ) {
+                oNode.style.width = gWidth + 'px';
+            }
+            oNode.setAttribute('orgwidth',gWidth );
+            if( gHeight != '' ) {
+                oNode.style.height = gHeight + 'px';
+            }
+            oNode.setAttribute('orgheight',gHeight );
+     
+            editor.execCommand('insertHtml',oNode.outerHTML);
+        } catch (e) {
+            try {
+                editor.execCommand('error');
+            } catch ( e ) {
+                alert('控件异常，请到 [雷劈网] 反馈或寻求帮助！');
+            }
+            return false;
+        }
+    } else {
+        
+        oNode.setAttribute('title', gTitle);
+        oNode.setAttribute('value', $G('orgvalue').value);
+        if( UE.plugins[thePlugins].editdom ) {
+            delete UE.plugins[thePlugins].editdom;
+        }
+        if( UE.plugins[thePlugins].modelItem ) {
+            delete UE.plugins[thePlugins].modelItem;
+        }
+    }
+};
+</script>
+</body>
+</html>

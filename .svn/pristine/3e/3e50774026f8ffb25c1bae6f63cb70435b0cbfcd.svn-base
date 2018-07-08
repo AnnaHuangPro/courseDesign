@@ -1,0 +1,39 @@
+<div ng-controller="attachmentGroupTemplateFormController">
+	<div class="row" ng-init="getInitAttachmentGroupTemplateData()">
+		<form class="form-horizontal" name="attachmentGroupTemplateForm" ddd-form-validate="{ blurValidate: true}" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button" value="保存" type="submit" ng-click="saveAttachmentGroupTemplate(attachmentGroupTemplate)">
+					<input class="btn btn-success" type="button" value="保存并新增" type="submit" ng-show="showSaveAndAddButton" ng-click="saveAndAddAttachmentGroupTemplate(attachmentGroupTemplate)">
+					<input class="btn btn-primary" type="button" value="返回" ng-click="back()" />
+				</div>
+			</div>
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 模板名</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="attachmentGroupTemplate.name" name="name" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type"> 类型</label>
+				<div class="col-md-8">
+					<dselect class="form-control" code-type-key='category' ng-model='attachmentGroupTemplate.type'></dselect>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="category"> 分类</label>
+				<div class="col-md-8">
+					<dreference class="form-control" reference-id="attachmentGroupTemplateFormcategory" list-view-key='attachmentGroupCategoryList' ng-model='attachmentGroupTemplate.category' show-model-filed='name' name="category"></dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 备注</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="attachmentGroupTemplate.remark" name="remark" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

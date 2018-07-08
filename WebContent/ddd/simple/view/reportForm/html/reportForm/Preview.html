@@ -1,0 +1,19 @@
+<style>
+	div[compile="res"]{
+		overflow: scroll;
+</style>
+<div ng-model="reportFormModel" id="reportPreviewForm" style="margin-top:10px;padding-top: 10px;background-color: white;" ng-controller="reportFormModelController">
+	<!-- <div id="dynamicForm">
+		<form-priview name="dynamicform" model-data="params" dynamic-form-key="dynamicForm"></form-priview>
+	</div> -->
+	<!-- 使用高级检索代替动态表单 -->
+	<div compile="filterTemplate" class=""></div>
+	<div id="search" style="padding-bottom: 10px; padding-left: 15px;">
+		<input type="button" class="btn btn-primary" value="查询" ng-click="search()">
+		<!-- <input type="button" class="btn btn-primary" value="查询"  ng-if="withChart" ng-click="excel2HtmlWithChart()"> -->
+		<input type="button" class="btn btn-primary" value="导出" ng-click="exportExcel()">
+	</div>
+	<div compile="res" style="height: {{resHeight}}px !important;" ng-if="withChart < 3"></div>
+	<!-- 图表展示区域 -->
+	<div compile="chartTemplate" class="chartTemplate" ng-if="withChart > 1" ></div>
+</div>

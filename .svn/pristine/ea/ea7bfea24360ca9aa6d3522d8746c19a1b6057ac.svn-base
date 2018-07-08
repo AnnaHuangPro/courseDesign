@@ -1,0 +1,100 @@
+<style>
+.gridSearch .searchBtn  {
+	float: left;
+	color: #000000 !important;
+	cursor: pointer;
+    background-color: #ffffff;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.gridSearch .glyphicon {
+	color: #000000;
+}
+.gridSearch .filter {
+    width: 100px;
+    z-index: 2;
+    float: left;
+    margin-bottom: 0;
+    position: relative;
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.gridSearch .searchInput {
+   	border-left: 0;
+    border-right: 0;
+    border-radius:0;
+    position: relative;
+    float: left;
+    width: 200px;
+}
+.grid-control{
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.grid-control:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+</style>
+	<div class="gridSearch" ng-show="!defaultSearch">
+		<select style="width:auto" class="filter grid-control" ng-model="selected" ng-options="displayAttribute.attributeValue for displayAttribute in attributes">
+		</select>
+		<input class="searchInput grid-control" ng-model="fileterText" ng-keyup="keyup($event)" />
+		<div class="searchBtn grid-control" ng-click="search()">
+			<span class="glyphicon glyphicon glyphicon-search"></span>
+		</div>
+	</div>
+
+	<div class="col-sm-6 noBottom"
+		ng-repeat="searchCondition in searchConditions">
+		<label class="col-sm-5 control-label"
+			for="{{searchCondition.columnName}}">{{searchCondition.displayName}}</label>
+		<div class="col-sm-7 noBottom" ng-switch="searchCondition.displayType">
+			<input ng-switch-when="INPUT" class="form-control" type="text"
+				name="{{searchCondition.params.columnName}}"
+				ng-model="searchCondition.columnValue" placeholder="请输入字符" /> <input
+				ng-switch-when="INT" class="form-control" type="number"
+				name="{{searchCondition.params.columnName}}"
+				ng-model="searchCondition.columnValue" placeholder="请输入整数" /> <input
+				ng-switch-when="DOUBLE" class="form-control" type="number"
+				name="{{searchCondition.params.columnName}}"
+				ng-model="searchCondition.columnValue" placeholder="请输入小数" /> <select
+				ng-switch-when="SELECT" class="form-control"
+				ng-model="searchCondition.columnValue"
+				name="{{searchCondition.params.columnName}}" placeholder="请输选择"></select>
+			<input ng-switch-when="DATE" ddatepicker class="form-control"
+				ng-model="searchCondition.columnValue"
+				name="{{searchCondition.params.columnName}}" placeholder="请输日期"></input>
+			<input ng-switch-when="DATETIME" ddatepicker class="form-control"
+				ng-model="searchCondition.columnValue"
+				name="{{searchCondition.params.columnName}}" placeholder="请输时间"></input>
+			<dselect ng-switch-when="CODETABLE" class="form-control"
+				code-type-key='{{searchCondition.params.codeTypeKey}}'
+				ng-model='searchCondition.columnValue'
+				name="{{searchCondition.params.columnName}}" placeholder="请输选择"></dselect>
+			<dreference ng-switch-when="REFERENCE"
+				list-view-key='{{searchCondition.params.listViewKey}}'
+				ng-model='searchCondition.columnValue'
+				show-model-filed='{{searchCondition.params.showModelFiled}}'
+				bind-field='{{searchCondition.params.bindField}}' placeholder=""
+				class="form-control" name="{{searchCondition.params.columnName}}"
+				placeholder="请输选择"></dreference>
+		</div>
+	</div>
+
+

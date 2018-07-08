@@ -1,0 +1,71 @@
+
+angular.module('reportFormModel', []).controller(
+		'reportFormModelController',
+		[
+				'ReportFormService',
+				'ReportService',
+				'$rootScope',
+				'$scope',
+				'$state',
+				'$stateParams','angularPermission','$timeout',
+				function(ReportFormService,ReportService, $rootScope, $scope,
+						$state, $stateParams,angularPermission,$timeout) {
+					$scope.withChart = $stateParams.withChart=="true"?true:false;
+					$scope.dynamicForm = $stateParams.dynamicForm;
+					$scope.modelFileKey = $stateParams.modelFileKey;
+					var dynamicKey = $stateParams.dynamicKey;
+					$scope.html = "";
+					$scope.params = {};
+					$scope.exportExcel = function(){
+						$scope.paramsAdd({"yz":"已租","nz":"拟租","yl":"预留","kz":"空置","zd":"整栋","ld":"楼栋","lc":"楼层","ch":"策划","gztc":"跟踪投产","qy":"签约","tcyy":"投产运营","gzcq":"跟踪洽谈","dzsw":"电子商务","hlwjr":"互联网金融","xxss":"信息搜索","ydyx":"移动游戏","kgtc":"开工投产"});
+						ReportService.generateExcel($scope.params,$scope.modelFileKey);
+					}
+					
+					$scope.show = function(){
+						return sessionStorage.getItem("operatorCode") =="admin";
+					}
+					
+					$scope.excel2HtmlWithChart = function(){
+						$scope.paramsAdd({"count":"4","qt":"其他","ch":"策划","gztc":"跟踪投产","qy":"签约","tcyy":"投产运营","gzcq":"跟踪洽谈","dzsw":"电子商务","hlwjr":"互联网金融","xxss":"信息搜索","ydyx":"移动游戏","kgtc":"开工投产"});
+						ReportService.excel2HtmlWithChart($scope.params,$scope.modelFileKey).promise().then(function(data){
+							$scope.res = data;
+							$scope.$apply(function(){
+								 
+							});
+						});
+					}
+					
+					$scope.search = function(){
+						$scope.paramsAdd({"count":"4","qt":"其他","yz":"已租","nz":"拟租","yl":"预留","kz":"空置","zd":"整栋","ld":"楼栋","lc":"楼层","ch":"策划","gztc":"跟踪投产","qy":"签约","tcyy":"投产运营","gzcq":"跟踪洽谈","dzsw":"电子商务","hlwjr":"互联网金融","xxss":"信息搜索","ydyx":"移动游戏","kgtc":"开工投产"});
+						ReportService.generateHtml($scope.params,$scope.modelFileKey).promise().then(function(data){
+							$scope.res = data;
+							$scope.$apply(function(){
+								 
+							});
+						});
+					}
+					
+					$scope.paramsAdd = function(params)
+					{
+						for(var param in params){
+							$scope.params[param]=params[param];
+						}
+					}
+					
+					$timeout(function(){ 
+						if($scope.modelFileKey){
+							if($scope.withChart == true)
+							{
+								$scope.excel2HtmlWithChart();
+							}
+							else
+							{
+								$scope.search();
+							}
+						}
+					},100);
+					$scope.priviewInit = function()
+					{
+					}
+					
+				} ]);

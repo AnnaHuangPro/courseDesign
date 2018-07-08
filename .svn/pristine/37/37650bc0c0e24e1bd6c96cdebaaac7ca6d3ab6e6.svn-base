@@ -1,0 +1,45 @@
+<div class="col-md-12 taskList" ng-controller='taskListController' ng-init='initTaskList()'>
+	<legend class="legend">
+		<i class="glyphicon glyphicon-edit"></i>&nbsp;{{}}任务列表
+	</legend>
+	<div class="row">
+		<div class="col-md-12 col-xs-12 col-md-12" >
+			<table class="table table-bordered dchannel-table"
+				style="margin: 0px; padding: 0px;">
+				<tbody>
+					<tr class="item-default">
+						<td class="col-md-12" style="padding-top: 0;">
+							<table class="table table-condensed" ng-class="{'taskList_welcome':hasTask}">
+								<tbody>
+									<tr ng-if="hasTask" ng-repeat="task in taskList" class="task tr_border_bottom">
+										<th class="task_head">
+											<div style="cursor:pointer">
+												<a ng-click='findTaskDetail(task)' style="font-weight:normal">{{formatTitle(task.description)}}</a>
+											</div>
+										</th>
+										<th class="th_time">
+											<div class="portal_time" align="right">{{formatCreateTime(task.description)}}</div>
+										</th>
+									</tr>
+									<tr ng-if="!hasTask">
+										<th style="text-align:center;border:none">
+											<span style="font-size:25px; color:grey">暂无待办任务</span>
+										</th>
+									</tr>
+								</tbody>
+							</table> 
+							<pagination style="margin-top:10px" total-items="totalItems" 
+								ng-model="currentPage"
+								max-size="maxSize" 
+								boundary-links="true" 
+								rotate="false"
+								items-per-page="pageSize" 
+								ng-change="pageChanged()">
+							</pagination>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

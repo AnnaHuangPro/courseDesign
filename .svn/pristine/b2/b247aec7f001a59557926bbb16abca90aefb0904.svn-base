@@ -1,0 +1,15 @@
+方法：angularPermission.getLoginUser()
+vip=>loginUser:{
+  			currentOrganization : {eId:long},
+  			groups : [
+  					  {eId:long}
+  					  ...
+  					],
+  			loginVip : {
+  					eId:long,
+  					name:string,
+  					password:string},
+  			userName : string,
+  			userPermissionsCode : [string,string,..]
+  		}
+

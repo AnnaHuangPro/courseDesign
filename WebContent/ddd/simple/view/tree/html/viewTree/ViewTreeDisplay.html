@@ -1,0 +1,60 @@
+<div>
+	<div class="row" ng-init="init()">
+		<form class="form-horizontal">
+			<fieldset class="col-md-12 head3">
+    			<legend class="legend" data-toggle="collapse" href="#baseInfo" style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+				<div id="baseInfo" class="row collapse in">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.orgId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="viewTreeName">名称 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.viewTreeName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="viewTreeKey">唯一标示 </label>
+				<div class="col-md-8">
+					<span>{{viewTree.viewTreeKey}}</span>
+				</div>
+			</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="closeOperateTab()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

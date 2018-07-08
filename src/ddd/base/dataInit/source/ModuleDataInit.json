@@ -1,0 +1,4962 @@
+{
+	"modules":
+[
+    {
+        "code": "0001",
+        "displayIndex": 999,
+        "isInUse": "是",
+        "moduleType": "是",
+        "name": "系统设置",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": ""
+    },
+    {
+        "code": "00010011",
+        "displayIndex": 9900,
+        "iconClass": "glyphicon glyphicon-lock",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "权限管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": ""
+    },
+    {
+        "code": "00010003",
+        "displayIndex": 9800,
+        "iconClass": "glyphicon glyphicon-th",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "模块管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010004",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "系统参数",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010007",
+        "displayIndex": 9500,
+        "iconClass": "glyphicon glyphicon-plane",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "代码生成",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010009",
+        "displayIndex": 9600,
+        "iconClass": "glyphicon glyphicon-edit",
+        "moduleType": "否",
+        "name": "视图管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010019",
+        "iconClass": "glyphicon glyphicon-book",
+        "moduleType": "否",
+        "name": "系统参数",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010028",
+        "displayIndex": 9300,
+        "iconClass": "glyphicon glyphicon-road",
+        "moduleType": "否",
+        "name": "工作流管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": "main.list.workFlow.workFlowList"
+    },
+    {
+        "code": "00010029",
+        "displayIndex": 9200,
+        "iconClass": "glyphicon glyphicon-list-alt",
+        "moduleType": "否",
+        "name": "动态表单管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010030",
+        "displayIndex": 100000,
+        "iconClass": "glyphicon glyphicon-user",
+        "moduleType": "否",
+        "name": "组织机构管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010038",
+        "displayIndex": 9400,
+        "iconClass": "glyphicon glyphicon-cog",
+        "moduleType": "否",
+        "name": "配置管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010042",
+        "displayIndex": 9100,
+        "iconClass": "glyphicon glyphicon-time",
+        "moduleType": "否",
+        "name": "计划任务管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": []
+    },
+    {
+        "code": "00010048",
+        "displayIndex": 9100,
+        "iconClass": "glyphicon glyphicon-th-list",
+        "moduleType": "否",
+        "name": "统计报表",
+        "operateDate": "2016-03-28 12:00:10",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": []
+    },
+    {
+        "code": "00010052",
+        "displayIndex": 9700,
+        "iconClass": "glyphicon glyphicon-book",
+        "moduleType": "否",
+        "name": "码表管理",
+        "operateDate": "2016-12-08 10:05:52",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": []
+    },
+    {
+        "code": "000100030001",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "功能模块管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "module_add",
+                "name": "新增模块",
+                "newEntity": false
+            },
+            {
+                "code": "module_delete",
+                "name": "删除模块",
+                "newEntity": false
+            },
+            {
+                "code": "module_edit",
+                "name": "编辑模块",
+                "newEntity": false
+            },
+            {
+                "code": "module_view",
+                "name": "查看模块",
+                "newEntity": false
+            },
+            {
+                "code": "module_display",
+                "name": "查看模块",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.module.moduleList"
+    },
+    {
+        "code": "000100110001",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "角色管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "role_add",
+                "name": "新增角色",
+                "newEntity": false
+            },
+            {
+                "code": "role_delete",
+                "name": "删除角色",
+                "newEntity": false
+            },
+            {
+                "code": "role_edit",
+                "name": "编辑角色",
+                "newEntity": false
+            },
+            {
+                "code": "role_view",
+                "name": "查看角色",
+                "newEntity": false
+            },
+            {
+                "code": "role_assginPermission",
+                "name": "分配权限点",
+                "newEntity": false
+            },
+            {
+                "code": "role_display",
+                "name": "查看角色",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.role.roleList"
+    },
+    {
+        "code": "000100110002",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "操作员管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "operator_add",
+                "name": "新增操作员",
+                "newEntity": false
+            },
+            {
+                "code": "operator_delete",
+                "name": "删除操作员",
+                "newEntity": false
+            },
+            {
+                "code": "operator_edit",
+                "name": "编辑操作员",
+                "newEntity": false
+            },
+            {
+                "code": "operator_view",
+                "name": "查看操作员",
+                "newEntity": false
+            },
+            {
+                "code": "operator_assginRole",
+                "name": "分配角色",
+                "newEntity": false
+            },
+            {
+                "code": "operator_display",
+                "name": "查看操作员",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.operator.operatorList"
+    },
+    {
+        "code": "000100110003",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "权限点管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "permission_add",
+                "name": "新增权限点",
+                "newEntity": false
+            },
+            {
+                "code": "permission_delete",
+                "name": "删除权限点",
+                "newEntity": false
+            },
+            {
+                "code": "permission_edit",
+                "name": "编辑权限点",
+                "newEntity": false
+            },
+            {
+                "code": "permission_view",
+                "name": "查看权限点",
+                "newEntity": false
+            },
+            {
+                "code": "permission_display",
+                "name": "查看权限",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.permission.permissionList"
+    },
+    {
+        "code": "000100070001",
+        "displayIndex": 888,
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "代码生成",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "codeGenerator",
+                "name": "代码生成",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.codeGenerator.codeGeneratorForm"
+    },
+    {
+        "code": "000100090004",
+        "iconClass": "",
+        "moduleType": "否",
+        "name": "数据源管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "dataSource_addListView",
+                "name": "新增视图",
+                "newEntity": false
+            },
+            {
+                "code": "dataSource_add",
+                "name": "新增数据源",
+                "operateDate": "2016-03-13 09:41:12",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "dataSource_delete",
+                "name": "删除数据源",
+                "operateDate": "2016-03-13 09:41:33",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "dataSource_edit",
+                "name": "编辑数据源",
+                "operateDate": "2016-03-13 09:49:34",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "dataSource_display",
+                "name": "查看数据源",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.dataSource.dataSourceList"
+    },
+    {
+        "code": "000100090002",
+        "iconClass": "",
+        "moduleType": "否",
+        "name": "视图管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "reportview_display",
+                "name": "查看视图",
+                "newEntity": false
+            },
+            {
+                "code": "listView_edit",
+                "name": "编辑视图",
+                "newEntity": false
+            },
+            {
+                "code": "listView_delete",
+                "name": "删除视图",
+                "newEntity": false
+            },
+            {
+                "code": "listView_copy",
+                "name": "复制视图",
+                "newEntity": false
+            },
+            {
+                "code": "listView_addDataSource",
+                "name": "新增数据源",
+                "operateDate": "2016-03-13 09:56:12",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "reportView_add",
+                "name": "新增视图",
+                "newEntity": false
+            },
+            {
+                "code": "reportView_delete",
+                "name": "删除视图",
+                "newEntity": false
+            },
+            {
+                "code": "reportView_edit",
+                "name": "编辑视图",
+                "newEntity": false
+            },
+            {
+                "code": "reportView_display",
+                "name": "查看视图",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.reportView.reportViewList"
+    },
+    {
+        "code": "000100380003",
+        "moduleType": "否",
+        "name": "系统参数管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "systemConfig_add",
+                "name": "新增系统参数",
+                "newEntity": false
+            },
+            {
+                "code": "systemConfig_delete",
+                "name": "删除系统参数",
+                "newEntity": false
+            },
+            {
+                "code": "systemConfig_edit",
+                "name": "编辑系统参数",
+                "newEntity": false
+            },
+            {
+                "code": "systemConfig_display",
+                "name": "查看系统参数",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.systemConfig.systemConfigList"
+    },
+    {
+        "code": "000100290001",
+        "moduleType": "否",
+        "name": "动态表单设计",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "dynamicForm_add",
+                "name": "新增动态表单",
+                "newEntity": false
+            },
+            {
+                "code": "dynamicForm_edit",
+                "name": "编辑动态表单",
+                "newEntity": false
+            },
+            {
+                "code": "dynamicForm_delete",
+                "name": "删除动态表单",
+                "newEntity": false
+            },
+            {
+                "code": "dynamicForm_degin",
+                "name": "设计表单",
+                "newEntity": false
+            },
+            {
+                "code": "dynamicForm_display",
+                "name": "查看动态表单",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.dynamicForm.dynamicFormList"
+    },
+    {
+        "code": "000100090003",
+        "moduleType": "否",
+        "name": "树形结构管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "viewTree_add",
+                "name": "新增",
+                "newEntity": false
+            },
+            {
+                "code": "viewTree_edit",
+                "name": "编辑",
+                "newEntity": false
+            },
+            {
+                "code": "viewTree_delete",
+                "name": "删除",
+                "newEntity": false
+            },
+            {
+                "code": "add_tree_node",
+                "name": "新增树节点",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.viewTree.viewTreeList"
+    },
+    {
+        "code": "000100300001",
+        "displayIndex": 10000,
+        "iconClass": "",
+        "moduleType": "否",
+        "name": "单位管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "organization_display",
+                "name": "查看单位",
+                "newEntity": false
+            },
+            {
+                "code": "organization_edit",
+                "name": "编辑单位",
+                "newEntity": false
+            },
+            {
+                "code": "organization_delete",
+                "name": "删除单位",
+                "newEntity": false
+            },
+            {
+                "code": "organization_add",
+                "name": "新增单位",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.organization.organizationList"
+    },
+    {
+        "code": "000100300001",
+        "displayIndex": 2,
+        "iconClass": "",
+        "moduleType": "否",
+        "name": "部门管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "department_edit",
+                "name": "编辑部门",
+                "newEntity": false
+            },
+            {
+                "code": "department_display",
+                "name": "查看部门",
+                "newEntity": false
+            },
+            {
+                "code": "department_delete",
+                "name": "删除部门",
+                "newEntity": false
+            },
+            {
+                "code": "department_add",
+                "name": "新增部门",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.department.departmentList"
+    },
+    {
+        "code": "000100300001",
+        "displayIndex": 3,
+        "iconClass": "",
+        "moduleType": "否",
+        "name": "职员管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "employee_add",
+                "name": "新增人员",
+                "newEntity": false
+            },
+            {
+                "code": "employee_edit",
+                "name": "编辑人员",
+                "newEntity": false
+            },
+            {
+                "code": "employee_display",
+                "name": "查看人员",
+                "newEntity": false
+            },
+            {
+                "code": "employee_delete",
+                "name": "删除人员",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.employee.employeeList"
+    },
+    {
+        "code": "000100520001",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "码表管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "codeTable_add",
+                "name": "新增码表",
+                "newEntity": false
+            },
+            {
+                "code": "codeTable_delete",
+                "name": "删除码表",
+                "newEntity": false
+            },
+            {
+                "code": "codeTable_edit",
+                "name": "编辑码表",
+                "newEntity": false
+            },
+            {
+                "code": "codeTable_display",
+                "name": "查看码表",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.codeTable.codeTableList"
+    },
+    {
+        "code": "000100520002",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "码表类型管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "codeType_add",
+                "name": "新增码表类型",
+                "newEntity": false
+            },
+            {
+                "code": "codeType_delete",
+                "name": "删除码表类型",
+                "newEntity": false
+            },
+            {
+                "code": "codeType_edit",
+                "name": "编辑码表类型",
+                "newEntity": false
+            },
+            {
+                "code": "codeType_display",
+                "name": "查看码表类型",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.codeType.codeTypeList"
+    },
+    {
+        "code": "000100280003",
+        "moduleType": "否",
+        "name": "已完成任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": "main.list.workflow.completedTaskList"
+    },
+    {
+        "code": "000100280004",
+        "moduleType": "否",
+        "name": "已办任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": "main.list.workflow.operatedTaskList"
+    },
+    {
+        "code": "000100280001",
+        "moduleType": "否",
+        "name": "待办任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [],
+        "route": "main.list.workflow.nonHanderTaskList"
+    },
+    {
+        "code": "000100280005",
+        "moduleType": "否",
+        "name": "待办任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "nonHandleTask_add",
+                "name": "新增待办任务",
+                "newEntity": false
+            }
+        ],
+        "route": "",
+        "url": "/main/list/workflow/taskListRoute/待办任务"
+    },
+    {
+        "code": "000100280006",
+        "moduleType": "否",
+        "name": "已办任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "operatedTask_add",
+                "name": "新增已办任务",
+                "newEntity": false
+            }
+        ],
+        "route": "",
+        "url": "/main/list/workflow/taskListRoute/已办任务"
+    },
+    {
+        "code": "000100280007",
+        "moduleType": "否",
+        "name": "已完成任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "completedTask_add",
+                "name": "新增已完成任务",
+                "newEntity": false
+            }
+        ],
+        "route": "",
+        "url": "/main/list/workflow/taskListRoute/已完成任务"
+    },
+    {
+        "code": "000100380001",
+        "displayIndex": 3,
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "导入配置管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "importConfigs_add",
+                "name": "新增导入配置",
+                "newEntity": false
+            },
+            {
+                "code": "importConfigs_delete",
+                "name": "删除导入配置",
+                "newEntity": false
+            },
+            {
+                "code": "importConfigs_edit",
+                "name": "编辑导入配置",
+                "newEntity": false
+            },
+            {
+                "code": "importConfigs_display",
+                "name": "查看导入配置",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.importConfigs.importConfigsList"
+    },
+    {
+        "code": "000100420001",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "计划任务",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "scheduleTask_add",
+                "name": "新增计划任务",
+                "newEntity": false
+            },
+            {
+                "code": "scheduleTask_delete",
+                "name": "删除计划任务",
+                "newEntity": false
+            },
+            {
+                "code": "scheduleTask_edit",
+                "name": "编辑计划任务",
+                "newEntity": false
+            },
+            {
+                "code": "scheduleTask_display",
+                "name": "查看计划任务",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.scheduleTask.scheduleTaskList"
+    },
+    {
+        "code": "000100380005",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "模板文件管理",
+        "operateDate": "2016-12-13 22:31:42",
+        "permissions": [
+            {
+                "code": "modelFile_add",
+                "name": "新增模板文件",
+                "newEntity": false
+            },
+            {
+                "code": "modelFile_delete",
+                "name": "删除模板文件",
+                "newEntity": false
+            },
+            {
+                "code": "modelFile_edit",
+                "name": "编辑模板文件",
+                "newEntity": false
+            },
+            {
+                "code": "modelFile_display",
+                "name": "查看模板文件",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.modelFile.modelFileList"
+    },
+    {
+        "code": "000100380006",
+        "isInUse": "是",
+        "moduleType": "否",
+        "name": "日志管理",
+        "operateDate": "2015-11-08 09:49:23",
+        "operatorCode": "admin",
+        "permissions": [
+            {
+                "code": "log_add",
+                "name": "新增log",
+                "newEntity": false
+            },
+            {
+                "code": "log_delete",
+                "name": "删除log",
+                "newEntity": false
+            },
+            {
+                "code": "log_edit",
+                "name": "编辑log",
+                "newEntity": false
+            },
+            {
+                "code": "log_display",
+                "name": "查看log",
+                "newEntity": false
+            }
+        ],
+        "route": "main.list.log.logList"
+    },
+    {
+        "code": "000100290002",
+        "displayIndex": 999,
+        "moduleType": "否",
+        "name": "模型管理",
+        "operateDate": "2016-03-16 10:25:28",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": [
+            {
+                "code": "model_add",
+                "name": "新增模型",
+                "operateDate": "2016-03-16 20:29:53",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "model_edit",
+                "name": "编辑模型",
+                "operateDate": "2016-03-16 20:30:27",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "model_delete",
+                "name": "删除模型",
+                "operateDate": "2016-03-16 20:30:58",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "model_view",
+                "name": "查看模型",
+                "operateDate": "2016-03-16 21:06:05",
+                "operatorCode": "admin",
+                "orgId": 1
+            }
+        ],
+        "route": "main.list.model.modelList"
+    },
+    {
+        "code": "000100480001",
+        "displayIndex": 999,
+        "moduleType": "否",
+        "name": "统计报表",
+        "operateDate": "2016-03-28 12:00:59",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": [
+            {
+                "code": "report_view",
+                "name": "查看统计报表",
+                "operateDate": "2016-03-28 12:01:53",
+                "operatorCode": "admin",
+                "orgId": 1
+            }
+        ],
+        "route": "main.list.statsReport.statsReportView"
+    },
+    {
+        "code": "000100380007",
+        "displayIndex": 999,
+        "moduleType": "否",
+        "name": "编码管理",
+        "operateDate": "2016-03-28 12:53:09",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": [
+            {
+                "code": "billCode_edit",
+                "name": "编辑编码规则",
+                "operateDate": "2016-03-28 12:54:21",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "billCode_add",
+                "name": "新增编码规则",
+                "operateDate": "2016-03-28 12:55:11",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "billCode_display",
+                "name": "查看编码规则",
+                "operateDate": "2016-03-28 12:55:40",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "billCode_delete",
+                "name": "删除编码规则",
+                "operateDate": "2016-03-28 12:56:02",
+                "operatorCode": "admin",
+                "orgId": 1
+            }
+        ],
+        "route": "main.list.billCode.billCodeList"
+    },
+    {
+        "code": "000100290003",
+        "displayIndex": 999,
+        "moduleType": "否",
+        "name": "模型项数据类型管理",
+        "operateDate": "2016-03-17 19:48:29",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "permissions": [
+            {
+                "code": "modelDataType_add",
+                "name": "新增模型数据类型",
+                "operateDate": "2016-03-17 19:53:45",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "modelDataType_edit",
+                "name": "编辑模型数据类型",
+                "operateDate": "2016-03-17 19:55:17",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "modelDataType_check",
+                "name": "查看模型数据类型",
+                "operateDate": "2016-03-17 19:57:00",
+                "operatorCode": "admin",
+                "orgId": 1
+            },
+            {
+                "code": "modelDataType_delete",
+                "name": "删除模型数据类型",
+                "operateDate": "2016-03-17 19:57:48",
+                "operatorCode": "admin",
+                "orgId": 1
+            }
+        ],
+        "route": "main.list.modelDataType.modelDataTypeList"
+    }
+],
+	"dataSources":
+	[
+    {
+        "dataSourceCode": "dataSource",
+        "dataSourceDesc": "数据源基础数据源1",
+        "dataSourceName": "数据源基础数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select d.eid as EId , d.dataSourceName as dataSourceName,d.datasourcedesc as datasourcedesc,d.reportSql as reportSql from datasource d"
+    },
+      {
+        "dataSourceCode": "billCode",
+        "dataSourceDesc": "编码规则",
+        "dataSourceName": "编码规则",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from billCode"
+    },
+     {
+        "dataSourceCode": "modelDataType",
+        "dataSourceDesc": "模型数据类型数据源",
+        "dataSourceName": "模型数据类型数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from modeldatatype"
+    },
+       {
+        "dataSourceCode": "model",
+        "dataSourceDesc": "模型数据源",
+        "dataSourceName": "模型数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from model"
+    },
+      {
+        "dataSourceCode": "logDataSource",
+        "dataSourceDesc": "日志数据源",
+        "dataSourceName": "日志数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from log"
+    },
+    {
+        "dataSourceCode": "reportview",
+        "dataSourceDesc": "视图数据源",
+        "dataSourceName": "视图数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select r.eid as EId , d.dataSourceName as dataSourceName,r.reportViewName as reportViewName,r.finalSql as finalSql, r.reportViewKey as reportViewKey,r.reportViewDesc as reportViewDesc,r.autoFit as autoFit FROM reportview r,datasource d where r.dataSourceid = d.eid"
+    },
+    {
+        "dataSourceCode": "operator",
+        "dataSourceDesc": "操作员",
+        "dataSourceName": "操作员",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from operator"
+    },
+    {
+        "dataSourceCode": "role",
+        "dataSourceDesc": "角色",
+        "dataSourceName": "角色",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from role"
+    },
+    {
+        "dataSourceCode": "permission",
+        "dataSourceDesc": "权限点",
+        "dataSourceName": "权限点",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from permission where 1=1 #if($param.notEmpty(${EId})) and moduleId= ${EId} #end"
+    },
+    {
+        "dataSourceCode": "module",
+        "dataSourceDesc": "模块",
+        "dataSourceName": "模块",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from module where 1=1  #if($param.notEmpty(${EId})) and parentId = ${EId} #end"
+    },
+    {
+        "dataSourceCode": "reportform",
+        "dataSourceDesc": "报表模版",
+        "dataSourceName": "报表模版",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from reportform"
+    },
+    {
+        "dataSourceCode": "systemConfig",
+        "dataSourceDesc": "系统参数",
+        "dataSourceName": "系统参数",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select eid as EId,systemConfigKey as systemConfigKey,systemConfigValue as systemConfigValue,remark as remark from systemConfig"
+    },
+    {
+        "dataSourceCode": "codetable",
+        "dataSourceName": "码表管理",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select ct.*,cty.name as typeName from codetable ct\nleft join codeType cty on ct.codeTypeId = cty.eid\n where  1=1 #if($param.notEmpty(${EId})) and codeTypeId = ${EId} #end"
+    },
+    {
+        "dataSourceCode": "codeTableType",
+        "dataSourceName": "码表类型管理",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select EId as  EId ,name as name,code as code,codeTypeKey as codeTypeKey from codetype where 1=1 #if(${param.notEmpty(${name})}) and name = '${name}' #end"
+    },
+    {
+        "dataSourceCode": "dynamicForm",
+        "dataSourceName": "动态表单",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from dynamicForm"
+    },
+    {
+        "dataSourceCode": "viewTree",
+        "dataSourceName": "树形结构",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from viewTree"
+    },
+    {
+        "dataSourceCode": "viewTreeNode",
+        "dataSourceName": "树形结构项",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from viewTreeNode"
+    },
+    {
+        "dataSourceCode": "organization",
+        "dataSourceName": "单位数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "remark": "where 1=1 #DataFilter('org_name_name','*name = {name})",
+        "reportSql": "select o1.*,o2.name as parentName from organization o1\n left join organization o2 on o1.organizationParentId = o2.eid"
+    },
+    {
+        "dataSourceCode": "employee",
+        "dataSourceName": "人员数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select e.*,o.name as orgName,d.name as depName from employee e\nleft join organization o on o.eid = e.organizationid\nleft join department d on d.eid = e.departmentid\n where 1=1 #if(${param.notEmpty(${orgEId})}) and e.organizationid = ${orgEId} #end  #if(${param.notEmpty(${depEId})}) and e.departmentid = ${depEId} #end"
+    },
+    {
+        "dataSourceCode": "department",
+        "dataSourceName": "部门数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select d.* ,o.name as orgName from department d\nleft join organization o on d.organizationId = o.eid\n where 1 = 1 #if(${param.notEmpty(${orgEId})}) and d.organizationId = ${orgEId} #end"
+    },
+    {
+        "dataSourceCode": "entitypropertydefineDataSource",
+        "dataSourceName": "实体属性定义数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from entitypropertydefine"
+    },
+    {
+        "dataSourceCode": "importConfigs",
+        "dataSourceName": "导入配置数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from importConfigs"
+    },
+    {
+        "dataSourceCode": "taskManage",
+        "dataSourceName": "任务管理数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from taskManage where 1= 1  #if($param.notEmpty(${currentDay}))  and date like \"${currentDay} %\"#end"
+    },
+    {
+        "dataSourceCode": "undefinedCopy",
+        "dataSourceDesc": "数据源基础数据源1",
+        "dataSourceName": "数据源基础数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select d.eid as EId , d.dataSourceName as dataSourceName,d.datasourcedesc as datasourcedesc,d.reportSql as reportSql from datasource d"
+    },
+    {
+        "dataSourceCode": "scheduleTask",
+        "dataSourceName": "计划任务数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from scheduleTask"
+    },
+    {
+        "dataSourceCode": "modelFile",
+        "dataSourceName": "模板文件数据源",
+        "operateDate": "2016-12-13 19:56:14",
+        "reportSql": "select * from modelFile"
+    },
+    {
+        "dataSourceCode": "exporterConfig",
+        "dataSourceName": "数据导入导出配置数据源",
+        "operateDate": "2015-10-18 14:58:53",
+        "operatorCode": "admin",
+        "reportSql": "select * from exporterConfig"
+    }
+],
+	"reportViews":
+	[
+    {
+        "autoFit": "true",
+        "dataSourceCode": "dataSource",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:405,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceName",
+                "attributeValue": "数据源名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:405,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportSql",
+                "attributeValue": "数据源查询语句",
+                "columnIndex": 2,
+                "cssArrtribute": "width:405,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , dataSourceName dataSourceName , reportSql reportSql from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "paginationPageSize": 20,
+        "reportViewDesc": "数据源基础视图",
+        "reportViewKey": "datasource",
+        "reportViewName": "数据源基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "operator",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:302,align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:302,align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 3,
+                "cssArrtribute": "width:302,align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name  , code code from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "operator",
+        "reportViewKey": "operator",
+        "reportViewName": "操作员",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "role",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:297,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "角色名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:297,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "角色编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:297,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:297,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name , code code , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "role",
+        "reportViewKey": "role",
+        "reportViewName": "角色",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "module",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "moduleType",
+                "attributeValue": "是否为系统模块",
+                "columnIndex": 2,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "route",
+                "attributeValue": "路由",
+                "columnIndex": 3,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "url",
+                "attributeValue": "路径",
+                "columnIndex": 4,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name , moduleType moduleType , route route , url url , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "module",
+        "reportViewKey": "module",
+        "reportViewName": "模块",
+        "searchConditions": [],
+        "viewTreeConditions": [
+            {
+                "viewTreeKey": "moduleTree",
+                "viewTreeName": "模块树"
+            }
+        ]
+    },
+    {
+        "dataSourceCode": "reportform",
+        "displayAttributes": [
+            {
+                "attributeName": "reportFormName",
+                "attributeValue": "报表模版名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:150,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportFormType",
+                "attributeValue": "报表模版类型",
+                "columnIndex": 1,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportFormUrl",
+                "attributeValue": "报表模版路径",
+                "columnIndex": 2,
+                "cssArrtribute": "width:320,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select reportFormName reportFormName , reportFormType reportFormType , reportFormUrl reportFormUrl from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "报表模版",
+        "reportViewKey": "reportFormList",
+        "reportViewName": "报表模版",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "systemConfig",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:247,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "systemConfigKey",
+                "attributeValue": "键",
+                "columnIndex": 1,
+                "cssArrtribute": "width:247,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "systemConfigValue",
+                "attributeValue": "值",
+                "columnIndex": 2,
+                "cssArrtribute": "width:247,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "说明",
+                "columnIndex": 4,
+                "cssArrtribute": "width:247,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , systemConfigKey systemConfigKey , systemConfigValue systemConfigValue , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "系统参数",
+        "reportViewKey": "systemConfigList",
+        "reportViewName": "系统参数",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "codetable",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "value",
+                "attributeValue": "值",
+                "columnIndex": 2,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "typeName",
+                "attributeValue": "码表类型",
+                "columnIndex": 3,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name , value value , typeName typeName from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "codeTableList",
+        "reportViewName": "码表管理",
+        "searchConditions": [],
+        "viewTreeConditions": [
+            {
+                "viewTreeKey": "codeTypeTree",
+                "viewTreeName": "码表类型树"
+            }
+        ]
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "codeTableType",
+        "displayAttributes": [
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "codeTypeKey",
+                "attributeValue": "类型唯一编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 3,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select name name , code code , codeTypeKey codeTypeKey, EId EId from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "codeTypeList",
+        "reportViewName": "码表类型",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "dynamicForm",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:317,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "dynamicFormKey",
+                "attributeValue": "唯一标示",
+                "columnIndex": 1,
+                "cssArrtribute": "width:317,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormName",
+                "attributeValue": "名称",
+                "columnIndex": 2,
+                "cssArrtribute": "width:317,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:317,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , dynamicFormKey dynamicFormKey , dynamicFormName dynamicFormName , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "dynamicFormList",
+        "reportViewName": "动态表单列表",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "viewTree",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 0,
+                "cssArrtribute": "width:488,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "viewTreeKey",
+                "attributeValue": "唯一标示",
+                "columnIndex": 1,
+                "cssArrtribute": "width:488,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "viewTreeName",
+                "attributeValue": "名称",
+                "columnIndex": 2,
+                "cssArrtribute": "width:488,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , viewTreeKey viewTreeKey , viewTreeName viewTreeName from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "viewTreeList",
+        "reportViewName": "树形结构管理",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "viewTreeNode",
+        "displayAttributes": [
+            {
+                "attributeName": "idColumn",
+                "attributeValue": "Id字段",
+                "columnIndex": 0,
+                "cssArrtribute": "width:278,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "titleColumn",
+                "attributeValue": "显示字段",
+                "columnIndex": 1,
+                "cssArrtribute": "width:278,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "nodeIndex",
+                "attributeValue": "顺序",
+                "columnIndex": 2,
+                "cssArrtribute": "width:278,text-align:'left'",
+                "showType": "#,###"
+            }
+        ],
+        "finalSql": "select idColumn idColumn , titleColumn titleColumn from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "treeNodeChoose",
+        "reportViewName": "树形结构项管理",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "organization",
+        "displayAttributes": [
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 0,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "parentName",
+                "attributeValue": "上级单位",
+                "columnIndex": 2,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "address",
+                "attributeValue": "地址",
+                "columnIndex": 3,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "linkTel",
+                "attributeValue": "联系电话",
+                "columnIndex": 4,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "creatTime",
+                "attributeValue": "创建时间",
+                "columnIndex": 5,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 6,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select code code , name name , parentName parentName , address address , linkTel linkTel , creatTime creatTime, EId EId from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "organizationList",
+        "reportViewName": "单位视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "employee",
+        "displayAttributes": [
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "orgName",
+                "attributeValue": "所属单位",
+                "columnIndex": 1,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "depName",
+                "attributeValue": "所属部门",
+                "columnIndex": 2,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 3,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "linkTel",
+                "attributeValue": "联系电话",
+                "columnIndex": 4,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "sex",
+                "attributeValue": "性别",
+                "columnIndex": 5,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 6,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select name name , orgName orgName , depName depName , code code , linkTel linkTel , sex sex, EId EId from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "paginationPageSize": 20,
+        "reportViewKey": "employeeList",
+        "reportViewName": "人员视图",
+        "searchConditions": [],
+        "viewTreeConditions": [
+            {
+                "viewTreeKey": "departmentTree",
+                "viewTreeName": "部门"
+            },
+            {
+                "viewTreeKey": "organizationTree",
+                "viewTreeName": "单位"
+            }
+        ]
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "department",
+        "displayAttributes": [
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 0,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "orgName",
+                "attributeValue": "所属单位",
+                "columnIndex": 2,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "officePhoneNumber",
+                "attributeValue": "办公电话",
+                "columnIndex": 3,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "faxNumber",
+                "attributeValue": "传真",
+                "columnIndex": 4,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 5,
+                "cssArrtribute": "width:198,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select code code , name name , orgName orgName , officePhoneNumber officePhoneNumber , faxNumber faxNumber, EId EId from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "departmentList",
+        "reportViewName": "部门视图",
+        "searchConditions": [],
+        "viewTreeConditions": [
+            {
+                "viewTreeKey": "organizationTree",
+                "viewTreeName": "单位"
+            }
+        ]
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "importConfigs",
+        "displayAttributes": [
+            {
+                "attributeName": "importConfigKey",
+                "attributeValue": "唯一标识",
+                "columnIndex": 0,
+                "cssArrtribute": "width:488,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "configContext",
+                "attributeValue": "配置",
+                "columnIndex": 1,
+                "cssArrtribute": "width:488,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select importConfigKey importConfigKey , configContext configContext from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "importConfigsList",
+        "reportViewName": "导入配置基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "importConfigs",
+        "displayAttributes": [],
+        "finalSql": "CquqBaseSQL",
+        "orderConditions": [],
+        "reportViewKey": "importConfigsReference",
+        "reportViewName": "导入配置外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "taskManage",
+        "displayAttributes": [
+            {
+                "attributeName": "name",
+                "attributeValue": "任务名",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "startDate",
+                "attributeValue": "开始日期",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "endDate",
+                "attributeValue": "结束日期",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "taskDescribe",
+                "attributeValue": "描述",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "route",
+                "attributeValue": "路由",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "state",
+                "attributeValue": "状态",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "type",
+                "attributeValue": "类型",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select name name , startDate startDate , endDate endDate , taskDescribe taskDescribe , route route , state state , type type from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "taskManageList",
+        "reportViewName": "任务管理基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "taskManage",
+        "displayAttributes": [],
+        "finalSql": "CquqBaseSQL",
+        "orderConditions": [],
+        "reportViewKey": "taskManageReference",
+        "reportViewName": "任务管理外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "scheduleTask",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "scheduleTaskName",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "scheduleTaskPath",
+                "attributeValue": "文件路径",
+                "columnIndex": 2,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "fileType",
+                "attributeValue": "文件类型",
+                "columnIndex": 3,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "lastStartTime",
+                "attributeValue": "上次启动时间",
+                "columnIndex": 4,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "nextStartTime",
+                "attributeValue": "下次启动时间",
+                "columnIndex": 5,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "scheduledTaskType",
+                "attributeValue": "计划类型",
+                "columnIndex": 6,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "startTime",
+                "attributeValue": "启动时间",
+                "columnIndex": 7,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "dayOfMonth",
+                "attributeValue": "日期",
+                "columnIndex": 8,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dayOfWeek",
+                "attributeValue": "星期",
+                "columnIndex": 9,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "period",
+                "attributeValue": "间隔数值",
+                "columnIndex": 10,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "periodUnit",
+                "attributeValue": "间隔单位",
+                "columnIndex": 11,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "state",
+                "attributeValue": "状态",
+                "columnIndex": 12,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "executeResult",
+                "attributeValue": "执行结果",
+                "columnIndex": 13,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 14,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , scheduleTaskName scheduleTaskName , scheduleTaskPath scheduleTaskPath , fileType fileType , lastStartTime lastStartTime , nextStartTime nextStartTime , scheduledTaskType scheduledTaskType , startTime startTime , dayOfMonth dayOfMonth , dayOfWeek dayOfWeek , period period , periodUnit periodUnit , state state , executeResult executeResult , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "scheduleTaskList",
+        "reportViewName": "计划任务基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "scheduleTask",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "scheduleTaskName",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "scheduleTaskPath",
+                "attributeValue": "文件路径",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "fileType",
+                "attributeValue": "文件类型",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "lastStartTime",
+                "attributeValue": "上次启动时间",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "nextStartTime",
+                "attributeValue": "下次启动时间",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "scheduledTaskType",
+                "attributeValue": "计划类型",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "startTime",
+                "attributeValue": "启动时间",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "dayOfMonth",
+                "attributeValue": "日期",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dayOfWeek",
+                "attributeValue": "星期",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "period",
+                "attributeValue": "间隔数值",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "periodUnit",
+                "attributeValue": "间隔单位",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "state",
+                "attributeValue": "状态",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "executeResult",
+                "attributeValue": "执行结果",
+                "columnIndex": 13,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 14,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , scheduleTaskName scheduleTaskName , scheduleTaskPath scheduleTaskPath , fileType fileType , lastStartTime lastStartTime , nextStartTime nextStartTime , scheduledTaskType scheduledTaskType , startTime startTime , dayOfMonth dayOfMonth , dayOfWeek dayOfWeek , period period , periodUnit periodUnit , state state , executeResult executeResult , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "scheduleTaskReference",
+        "reportViewName": "计划任务外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "modelFile",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:228,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "type",
+                "attributeValue": "类型",
+                "columnIndex": 1,
+                "cssArrtribute": "width:228,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "modelKey",
+                "attributeValue": "唯一标识",
+                "columnIndex": 2,
+                "cssArrtribute": "width:228,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:228,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 4,
+                "cssArrtribute": "width:228,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , type type , modelKey modelKey , operateDate operateDate , remark remark from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "modelFileList",
+        "reportViewName": "模板文件基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "modelFile",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "modelKey",
+                "attributeValue": "唯一标识",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "type",
+                "attributeValue": "类型",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "category",
+                "attributeValue": "类别",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , modelKey modelKey , type type , category category from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewKey": "modelFileReference",
+        "reportViewName": "模板文件外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "exporterConfig",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:312,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "configName",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:312,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "config",
+                "attributeValue": "配置详细",
+                "columnIndex": 2,
+                "cssArrtribute": "width:312,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:312,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , configName configName , config config , remark remark from (CquqBaseSQL)dt0",
+        "operateDate": "2015-10-18 14:58:54",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "reportViewKey": "exporterConfigList",
+        "reportViewName": "数据导入导出配置基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "exporterConfig",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "configName",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "config",
+                "attributeValue": "配置详细",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , configName configName , config config , remark remark from (CquqBaseSQL)dt0",
+        "operateDate": "2015-10-18 14:58:54",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "reportViewKey": "exporterConfigReference",
+        "reportViewName": "数据导入导出配置外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "reportview",
+        "displayAttributes": [
+            {
+                "attributeName": "dataSourceName",
+                "attributeValue": "数据源名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:177,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewName",
+                "attributeValue": "视图名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:177,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "finalSql",
+                "attributeValue": "最终查询语句",
+                "columnIndex": 2,
+                "cssArrtribute": "width:177,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewKey",
+                "attributeValue": "视图唯一编码",
+                "columnIndex": 3,
+                "cssArrtribute": "width:177,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewDesc",
+                "attributeValue": "视图说明",
+                "columnIndex": 4,
+                "cssArrtribute": "width:177,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "EId",
+                "attributeValue": "EId",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select dataSourceName dataSourceName , reportViewName reportViewName , finalSql finalSql , reportViewKey reportViewKey , reportViewDesc reportViewDesc, EId EId from (CquqBaseSQL)dt0",
+        "orderConditions": [],
+        "reportViewDesc": "视图",
+        "reportViewKey": "reportview",
+        "reportViewName": "视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "logDataSource",
+        "displayAttributes": [
+            {
+                "attributeName": "operator",
+                "attributeValue": "操作人员姓名",
+                "columnIndex": 0,
+                "cssArrtribute": "width:216,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "logDate",
+                "attributeValue": "操作时间",
+                "columnIndex": 1,
+                "cssArrtribute": "width:216,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "ipAddress",
+                "attributeValue": "操作人员IP",
+                "columnIndex": 2,
+                "cssArrtribute": "width:216,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "logType",
+                "attributeValue": "操作日志类型",
+                "columnIndex": 3,
+                "cssArrtribute": "width:216,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operationName",
+                "attributeValue": "操作名称",
+                "columnIndex": 4,
+                "cssArrtribute": "width:216,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select operator operator , logDate logDate , ipAddress ipAddress , logType logType , operationName operationName from (CquqBaseSQL)dt0",
+        "operateDate": "2015-11-08 09:17:13",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "reportViewKey": "logList",
+        "reportViewName": "日志视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "employee",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "职员编码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "姓名",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , code code , name name from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-09 10:02:42",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "employeeReference",
+        "reportViewName": "职员外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "permission",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:327,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name , code code , remark remark from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-09 10:04:41",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "paginationPageSize": 10,
+        "reportViewKey": "permissionList",
+        "reportViewName": "权限基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": [
+            {
+                "viewTreeKey": "moduleTree",
+                "viewTreeName": "模块权限树"
+            }
+        ]
+    },
+    {
+        "dataSourceCode": "permission",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , name name , code code , remark remark from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-09 10:04:41",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "permissionReference",
+        "reportViewName": "权限外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "organization",
+        "displayAttributes": [
+            {
+                "attributeName": "name",
+                "attributeValue": "单位名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "manager",
+                "attributeValue": "单位负责人",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "linkMan",
+                "attributeValue": "联系人",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "linkTel",
+                "attributeValue": "联系电话",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "enable",
+                "attributeValue": "是否启用",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "address",
+                "attributeValue": "单位地址",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select name name , manager manager , linkMan linkMan , linkTel linkTel , enable enable , address address , remark remark from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-16 19:16:54",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "paginationPageSize": 10,
+        "reportViewKey": "organizationReference",
+        "reportViewName": "所属单位",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "model",
+        "displayAttributes": [
+            {
+                "attributeName": "modelName",
+                "attributeValue": "模型名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:220,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "modelEnglishName",
+                "attributeValue": "模型英文名称",
+                "columnIndex": 1,
+                "cssArrtribute": "width:220,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "modelForm",
+                "attributeValue": "模型编辑表单",
+                "columnIndex": 2,
+                "cssArrtribute": "width:220,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "processKey",
+                "attributeValue": "审批流程标识",
+                "columnIndex": 3,
+                "cssArrtribute": "width:220,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select modelName modelName , modelEnglishName modelEnglishName , modelForm modelForm , processKey processKey from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-16 20:49:30",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "modelList",
+        "reportViewName": "模型视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "modelType",
+        "displayAttributes": [
+            {
+                "attributeName": "typeName",
+                "attributeValue": "类型名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:424,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "typeCode",
+                "attributeValue": "类型编码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:424,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select typeName typeName , typeCode typeCode from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-16 21:01:18",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "modelTypeList",
+        "reportViewName": "模型类别视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "codetable",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "码表代码",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "码表名称",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "value",
+                "attributeValue": "值",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "subSystemID",
+                "attributeValue": "子系统标识",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "displayOrder",
+                "attributeValue": "显示顺序",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "level",
+                "attributeValue": "等级",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "modifyOrder",
+                "attributeValue": "修改序号",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "tier",
+                "attributeValue": "所处层次",
+                "columnIndex": 13,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "deliverIdentiter",
+                "attributeValue": "下发标识",
+                "columnIndex": 14,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , code code , name name , value value , subSystemID subSystemID , displayOrder displayOrder , level level , modifyOrder modifyOrder , tier tier , deliverIdentiter deliverIdentiter from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 11:51:59",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "codeTableReference",
+        "reportViewName": "码表外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "role",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "角色名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "角色编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , name name , code code from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:23:33",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "roleList",
+        "reportViewName": "角色基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "role",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "角色名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "角色编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , name name , code code from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:23:33",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "roleReference",
+        "reportViewName": "角色外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "operator",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "操作员名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "passWord",
+                "attributeValue": "密码",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , name name , code code , passWord passWord from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:25:08",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "operatorList",
+        "reportViewName": "操作员基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "operator",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "操作员名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "passWord",
+                "attributeValue": "密码",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , name name , code code , passWord passWord from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:25:08",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "operatorReference",
+        "reportViewName": "操作员外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "module",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "模块编码",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "模块名称",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "url",
+                "attributeValue": "路径",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "route",
+                "attributeValue": "路由",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "iconClass",
+                "attributeValue": "图标",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "displayIndex",
+                "attributeValue": "显示顺序",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "moduleType",
+                "attributeValue": "是否为系统模块",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "isInUse",
+                "attributeValue": "是否在用",
+                "columnIndex": 13,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , code code , name name , url url , route route , iconClass iconClass , moduleType moduleType , isInUse isInUse from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:25:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "moduleList",
+        "reportViewName": "模块基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "module",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "模块编码",
+                "columnIndex": 6,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "模块名称",
+                "columnIndex": 7,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "url",
+                "attributeValue": "路径",
+                "columnIndex": 8,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "route",
+                "attributeValue": "路由",
+                "columnIndex": 9,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "iconClass",
+                "attributeValue": "图标",
+                "columnIndex": 10,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "displayIndex",
+                "attributeValue": "显示顺序",
+                "columnIndex": 11,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "moduleType",
+                "attributeValue": "是否为系统模块",
+                "columnIndex": 12,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "isInUse",
+                "attributeValue": "是否在用",
+                "columnIndex": 13,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , code code , name name , url url , route route , iconClass iconClass , moduleType moduleType , isInUse isInUse from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:25:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "moduleReference",
+        "reportViewName": "模块外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "department",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "code",
+                "attributeValue": "部门编码",
+                "columnIndex": 6,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "部门名称",
+                "columnIndex": 7,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "officePhoneNumber",
+                "attributeValue": "办公电话",
+                "columnIndex": 8,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "faxNumber",
+                "attributeValue": "传真",
+                "columnIndex": 9,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "address",
+                "attributeValue": "地址",
+                "columnIndex": 10,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "enable",
+                "attributeValue": "是否启用",
+                "columnIndex": 11,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , code code , name name , officePhoneNumber officePhoneNumber , faxNumber faxNumber , address address , enable enable from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:31:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "departmentReference",
+        "reportViewName": "部门外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "reportview",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewName",
+                "attributeValue": "名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewKey",
+                "attributeValue": "唯一编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportSql",
+                "attributeValue": "初始sql",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "paginationPageSize",
+                "attributeValue": "初始页面页数显示",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "finalSql",
+                "attributeValue": "最终sql",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewDesc",
+                "attributeValue": "说明",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "categoryId",
+                "attributeValue": "categoryId",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , reportViewName reportViewName , reportViewKey reportViewKey , reportSql reportSql , paginationPageSize paginationPageSize , finalSql finalSql , reportViewDesc reportViewDesc from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:33:01",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "reportViewList",
+        "reportViewName": "视图基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "reportview",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewName",
+                "attributeValue": "名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewKey",
+                "attributeValue": "唯一编码",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportSql",
+                "attributeValue": "初始sql",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "paginationPageSize",
+                "attributeValue": "初始页面页数显示",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "finalSql",
+                "attributeValue": "最终sql",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportViewDesc",
+                "attributeValue": "说明",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "categoryId",
+                "attributeValue": "categoryId",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , reportViewName reportViewName , reportViewKey reportViewKey , reportSql reportSql , paginationPageSize paginationPageSize , finalSql finalSql , reportViewDesc reportViewDesc from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:33:01",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "reportViewReference",
+        "reportViewName": "视图外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dataSource",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceName",
+                "attributeValue": "dataSourceName",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceCode",
+                "attributeValue": "dataSourceCode",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportSql",
+                "attributeValue": "reportSql",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceDesc",
+                "attributeValue": "dataSourceDesc",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , dataSourceName dataSourceName , dataSourceCode dataSourceCode , reportSql reportSql , dataSourceDesc dataSourceDesc from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:33:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dataSourceList",
+        "reportViewName": "数据源基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dataSource",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceName",
+                "attributeValue": "dataSourceName",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceCode",
+                "attributeValue": "dataSourceCode",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportSql",
+                "attributeValue": "reportSql",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSourceDesc",
+                "attributeValue": "dataSourceDesc",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , dataSourceName dataSourceName , dataSourceCode dataSourceCode , reportSql reportSql , dataSourceDesc dataSourceDesc from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 12:33:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dataSourceReference",
+        "reportViewName": "数据源外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dynamicForm",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormKey",
+                "attributeValue": "唯一标示",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormName",
+                "attributeValue": "名称",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormData",
+                "attributeValue": "数据项",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormOldHtml",
+                "attributeValue": "设计原始模板",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormNewHtml",
+                "attributeValue": "模板html",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormType",
+                "attributeValue": "动态表单类型",
+                "columnIndex": 11,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormStatus",
+                "attributeValue": "动态表单状态",
+                "columnIndex": 12,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormCategory",
+                "attributeValue": "动态表单类别",
+                "columnIndex": 13,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "totalCount",
+                "attributeValue": "标签总数",
+                "columnIndex": 14,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "copyForm",
+                "attributeValue": "复制表单",
+                "columnIndex": 15,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , dynamicFormKey dynamicFormKey , dynamicFormName dynamicFormName , dynamicFormData dynamicFormData , dynamicFormOldHtml dynamicFormOldHtml , dynamicFormNewHtml dynamicFormNewHtml , dynamicFormType dynamicFormType , dynamicFormStatus dynamicFormStatus , dynamicFormCategory dynamicFormCategory , totalCount totalCount , copyForm copyForm from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 14:46:57",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dynamicFormReference",
+        "reportViewName": "动态表单外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "externalInterface",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "configJson",
+                "attributeValue": "配置",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "externalInterfaceKey",
+                "attributeValue": "唯一标识",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "executeClass",
+                "attributeValue": "执行类",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , configJson configJson , externalInterfaceKey externalInterfaceKey , executeClass executeClass from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 14:49:23",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "externalInterfaceList",
+        "reportViewName": "外部接口基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "externalInterface",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "configJson",
+                "attributeValue": "配置",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "externalInterfaceKey",
+                "attributeValue": "唯一标识",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "executeClass",
+                "attributeValue": "执行类",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , configJson configJson , externalInterfaceKey externalInterfaceKey , executeClass executeClass from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 14:49:23",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "externalInterfaceReference",
+        "reportViewName": "外部接口外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "systemConfig",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "systemConfigKey",
+                "attributeValue": "键",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "systemConfigValue",
+                "attributeValue": "值",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , systemConfigKey systemConfigKey , systemConfigValue systemConfigValue  from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 15:04:00",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "systemConfigReference",
+        "reportViewName": "系统参数外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "reportform",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportFormName",
+                "attributeValue": "报表模版名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportFormUrl",
+                "attributeValue": "报表模版路径",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "reportFormType",
+                "attributeValue": "报表模版类型",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , reportFormName reportFormName , reportFormUrl reportFormUrl , reportFormType reportFormType from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 15:51:33",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "reportFormReference",
+        "reportViewName": "报表模版外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "viewTree",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "viewTreeName",
+                "attributeValue": "名称",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "viewTreeKey",
+                "attributeValue": "唯一标示",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , viewTreeName viewTreeName , viewTreeKey viewTreeKey from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-27 15:52:48",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "viewTreeReference",
+        "reportViewName": "树外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "billCode",
+        "displayAttributes": [
+            {
+                "attributeName": "billCodeTypeName",
+                "attributeValue": "编码类型名称",
+                "columnIndex": 0,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "billCodeRule",
+                "attributeValue": "编码规则",
+                "columnIndex": 1,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "entityName",
+                "attributeValue": "实体名称",
+                "columnIndex": 2,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "fieldName",
+                "attributeValue": "属性名称",
+                "columnIndex": 3,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "tableName",
+                "attributeValue": "数据库表名",
+                "columnIndex": 4,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "variables",
+                "attributeValue": "变量",
+                "columnIndex": 5,
+                "cssArrtribute": "width:166,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select billCodeTypeName billCodeTypeName , billCodeRule billCodeRule , entityName entityName , fieldName fieldName , tableName tableName , variables variables from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-28 12:59:50",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "billCodeList",
+        "reportViewName": "编码规则",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dddTest1",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender",
+                "attributeValue": "性别",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "类型",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender1",
+                "attributeValue": "性别1",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "nation",
+                "attributeValue": "民族",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dateOfBirth",
+                "attributeValue": "出生日期",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , gender gender , name name , gender1 gender1 , nation nation , dateOfBirth dateOfBirth from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-28 13:44:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dddTest1List",
+        "reportViewName": "DDD测试2基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dddTest1",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender",
+                "attributeValue": "性别",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "类型",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender1",
+                "attributeValue": "性别1",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "nation",
+                "attributeValue": "民族",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dateOfBirth",
+                "attributeValue": "出生日期",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , gender gender , name name , gender1 gender1 , nation nation , dateOfBirth dateOfBirth from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-28 13:44:16",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dddTest1Reference",
+        "reportViewName": "DDD测试2外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dddTest3",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender",
+                "attributeValue": "性别",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "类型",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender1",
+                "attributeValue": "性别1",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "nation",
+                "attributeValue": "民族",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dateOfBirth",
+                "attributeValue": "出生日期",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , gender gender , name name , gender1 gender1 , nation nation , dateOfBirth dateOfBirth from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-28 15:45:31",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dddTest3List",
+        "reportViewName": "DDD测试3基础视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "dddTest3",
+        "displayAttributes": [
+            {
+                "attributeName": "EId",
+                "attributeValue": "主键",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "inputCode",
+                "attributeValue": "输入码",
+                "columnIndex": 1,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operatorCode",
+                "attributeValue": "操作人编码",
+                "columnIndex": 2,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "operateDate",
+                "attributeValue": "操作日期",
+                "columnIndex": 3,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            },
+            {
+                "attributeName": "orgId",
+                "attributeValue": "单位主键",
+                "columnIndex": 4,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "#,###"
+            },
+            {
+                "attributeName": "remark",
+                "attributeValue": "备注",
+                "columnIndex": 5,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender",
+                "attributeValue": "性别",
+                "columnIndex": 6,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "name",
+                "attributeValue": "类型",
+                "columnIndex": 7,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "gender1",
+                "attributeValue": "性别1",
+                "columnIndex": 8,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "nation",
+                "attributeValue": "民族",
+                "columnIndex": 9,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dateOfBirth",
+                "attributeValue": "出生日期",
+                "columnIndex": 10,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "%Y/%m/%d"
+            }
+        ],
+        "finalSql": "select EId EId , inputCode inputCode , operatorCode operatorCode , operateDate operateDate , remark remark , gender gender , name name , gender1 gender1 , nation nation , dateOfBirth dateOfBirth from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-28 15:45:31",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "dddTest3Reference",
+        "reportViewName": "DDD测试3外键视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "testAllControl",
+        "displayAttributes": [
+            {
+                "attributeName": "testInput",
+                "attributeValue": "单行文本",
+                "columnIndex": 0,
+                "cssArrtribute": "width:100,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select testInput testInput from (CquqBaseSQL)dt0",
+        "operateDate": "2016-06-06 15:14:33",
+        "orderConditions": [],
+        "reportViewKey": "testAllControlList",
+        "reportViewName": "测试所有控件视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "autoFit": "true",
+        "dataSourceCode": "modelDataType",
+        "displayAttributes": [
+            {
+                "attributeName": "dataType",
+                "attributeValue": "控件类型",
+                "columnIndex": 0,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "type",
+                "attributeValue": "vm文件名",
+                "columnIndex": 1,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "javaType",
+                "attributeValue": "Java类型",
+                "columnIndex": 2,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSize",
+                "attributeValue": "长度",
+                "columnIndex": 3,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "descName",
+                "attributeValue": "中文名称",
+                "columnIndex": 4,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormKey",
+                "attributeValue": "动态表单",
+                "columnIndex": 5,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "defaultValue",
+                "attributeValue": "默认值",
+                "columnIndex": 6,
+                "cssArrtribute": "width:143,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select dataType dataType , type type , javaType javaType , dataSize dataSize , descName descName , dynamicFormKey dynamicFormKey , defaultValue defaultValue from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-17 19:37:05",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "modelDataTypeList",
+        "reportViewName": "模型数据类型视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    },
+    {
+        "dataSourceCode": "modelDataType",
+        "displayAttributes": [
+            {
+                "attributeName": "dataType",
+                "attributeValue": "控件类型",
+                "columnIndex": 0,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "type",
+                "attributeValue": "vm文件名",
+                "columnIndex": 1,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "javaType",
+                "attributeValue": "Java类型",
+                "columnIndex": 2,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dataSize",
+                "attributeValue": "长度",
+                "columnIndex": 3,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "descName",
+                "attributeValue": "中文名称",
+                "columnIndex": 4,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "dynamicFormKey",
+                "attributeValue": "动态表单",
+                "columnIndex": 5,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            },
+            {
+                "attributeName": "defaultValue",
+                "attributeValue": "默认值",
+                "columnIndex": 6,
+                "cssArrtribute": "width:130,text-align:'left'",
+                "showType": "文本"
+            }
+        ],
+        "finalSql": "select dataType dataType , type type , javaType javaType , dataSize dataSize , descName descName , dynamicFormKey dynamicFormKey , defaultValue defaultValue from (CquqBaseSQL)dt0",
+        "operateDate": "2016-03-17 19:37:05",
+        "operatorCode": "admin",
+        "orderConditions": [],
+        "orgId": 1,
+        "reportViewKey": "modelDataTypeReference",
+        "reportViewName": "模型数据类型视图",
+        "searchConditions": [],
+        "viewTreeConditions": []
+    }
+],
+	"viewTrees":
+	[
+    {
+        "viewTreeKey": "moduleTree",
+        "viewTreeName": "模块树",
+        "viewTreeNodes": [
+            {
+                "idColumn": "EId",
+                "issHierachical": "false",
+                "nodeIndex": 1,
+                "nodeSql": "select EId EId , name name , moduleType moduleType , url url , route route from module where parentId is null",
+                "titleColumn": "name"
+            },
+            {
+                "idColumn": "EId",
+                "issHierachical": "true",
+                "nodeChildSql": "select EId EId , name name , moduleType moduleType , url url , route route  from module where parentId =${EId}",
+                "nodeIndex": 2,
+                "nodeSql": "select EId EId , name name , moduleType moduleType , url url , route route   from module where parentId =${EId}",
+                "titleColumn": "name"
+            }
+        ]
+    },
+    {
+        "viewTreeKey": "organizationDepartmentTree",
+        "viewTreeName": "单位部门树",
+        "viewTreeNodes": [
+            {
+                "idColumn": "organizationId",
+                "issHierachical": "false",
+                "nodeIndex": 1,
+                "nodeSql": "select eid as organizationId,name as organizationName from organization",
+                "titleColumn": "organizationName"
+            },
+            {
+                "idColumn": "departmentId",
+                "issHierachical": "false",
+                "nodeIndex": 2,
+                "nodeSql": "select eid as departmentId,name as departmentName from department\n$prepend where and\n\t$if  organizationId != \"\"\n\t\torganizationId='${organizationId}'",
+                "titleColumn": "departmentName"
+            }
+        ]
+    },
+    {
+        "operateDate": "2015-10-22 21:57:51",
+        "operatorCode": "admin",
+        "viewTreeKey": "organizationTree",
+        "viewTreeName": "单位",
+        "viewTreeNodes": [
+            {
+                "idColumn": "orgEId",
+                "issHierachical": "false",
+                "nodeIndex": 1,
+                "nodeSql": "select EId  orgEId ,name  name from organization",
+                "titleColumn": "name"
+            }
+        ]
+    },
+    {
+        "operateDate": "2016-03-26 19:49:41",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "viewTreeKey": "codeTypeTree",
+        "viewTreeName": "码表类型树",
+        "viewTreeNodes": [
+            {
+                "idColumn": "EId",
+                "nodeIndex": 1,
+                "nodeSql": "select EId  EId ,name  name from codeType",
+                "titleColumn": "name"
+            }
+        ]
+    },
+    {
+        "operateDate": "2016-12-08 10:52:09",
+        "operatorCode": "admin",
+        "orgId": 1,
+        "viewTreeKey": "departmentTree",
+        "viewTreeName": "部门树",
+        "viewTreeNodes": [
+            {
+                "idColumn": "depEId",
+                "issHierachical": "false",
+                "nodeIndex": 1,
+                "nodeSql": "select EId  depEId ,name  name from department",
+                "titleColumn": "name"
+            }
+        ]
+    }
+]
+}

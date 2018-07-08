@@ -1,0 +1,112 @@
+angular.module("roleModule",['viewTreeModule'])
+.controller("assignPermissionsController",['$scope','$stateParams','PermissionService','RoleService','ModuleService','$state','angularPermission',function($scope,$stateParams,PermissionService,RoleService,ModuleService,$state,angularPermission){
+	$scope.ModuleTree = [];
+	$scope.selectViewTreeKey = "moduleTree";
+	$scope.currentNode = {};
+	$scope.lastNode = {};
+	$scope.showPermissions = [];
+	$scope.roleId = $scope.$stateParams.id;
+	$scope.role = $scope.$stateParams.name;
+	$scope.$on("treeSelect",function(event,data){
+		$scope.showSelected(data);
+	});
+	
+	$scope.selectAll = function(){
+		var showPermissions = $scope.showPermissions;
+		for(var i = 0;i<showPermissions.length;i++){
+			showPermissions[i].isAssigned = true;
+		}
+	}
+	$scope.clearAll = function(){
+		var showPermissions = $scope.showPermissions;
+		for(var i = 0;i<showPermissions.length;i++){
+			showPermissions[i].isAssigned = false;
+		}
+	}
+	$scope.showSelected = function(node) {
+		var showPermissions=$scope.showPermissions;
+		var assignedPermissions = new Array();
+		if(showPermissions.length>0 && $scope.lastNode){
+			for(var i = 0; i < showPermissions.length; i++)
+			{
+				if(showPermissions[i].isAssigned == true)
+				{
+					assignedPermissions.push(showPermissions[i]);
+				}
+			}
+			PermissionService.savePermissionsByRole($scope.roleId,$scope.lastNode.EId,assignedPermissions,$scope.saveLastSuccessFn, $scope.saveErrorFn);
+		}
+		
+		$scope.currentNode = node;
+		$scope.showPermissions = [];
+		//不是根节点
+		if($scope.currentNode.nodeIndex > 0){
+			if($scope.$stateParams.id){
+				$scope.roleId = $scope.$stateParams.id
+			}
+			PermissionService.findShowPermissions($scope.roleId,$scope.currentNode.EId,$scope.findPermissionsResult, $scope.findPermissionsFault);
+		}
+		$scope.lastNode = node;
+	}
+	
+	$scope.saveLastSuccessFn = function(data)
+	{
+		if(data.code == sessionStorage.getItem("currentLoginUser").operatorAndRoles){
+			sessionStorage.removeItem("permissions");
+			sessionStorage.setItem("permissions",data.permissions);
+			console.log(sessionStorage.getItem("permissions"));
+		}
+	}
+	$scope.saveCurrentSuccessFn = function(data){
+		var roles = sessionStorage.getItem("roles");
+		for(var i =0;i< roles.length;i++){
+			if(data.code == roles[i].code){
+				var permissionsStr = [];
+				for(var j=0;j<data.permissions.length;j++){
+					permissionsStr.push(data.permissions[j].code);
+				}
+				sessionStorage.removeItem("permissions");
+				sessionStorage.setItem("permissions",permissionsStr);
+				break;
+			}
+		}
+		alert("分配权限点成功");
+	}
+	
+	$scope.saveErrorFn = function()
+	{
+		alert("分配权限点失败！");
+	}
+	
+	$scope.findPermissionsResult = function(data)
+	{
+		$scope.showPermissions = data;
+	}
+	
+	$scope.findPermissionsFault = function()
+	{
+		alert("加载模块权限点失败！");
+	}
+	
+	$scope.saveCurrentChange = function()
+	{
+		var assignedPermissions = new Array();
+		for(var i = 0; i < $scope.showPermissions.length; i++)
+		{
+			if($scope.showPermissions[i].isAssigned == true)
+			{
+				assignedPermissions.push($scope.showPermissions[i]);
+			}
+		}
+		PermissionService.savePermissionsByRole($scope.roleId,$scope.currentNode.EId,assignedPermissions,$scope.saveCurrentSuccessFn, $scope.saveErrorFn);
+	}
+		
+	$scope.cancelOperate = function() {
+		$scope.closeOperateTab();
+		$state.go('main/list/role/assignPermissions');
+	}
+	
+	$scope.toggleSelect = function(permission){
+		permission.isAssigned = !permission.isAssigned;
+	}
+}]);

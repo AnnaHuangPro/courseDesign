@@ -1,0 +1,60 @@
+<div ng-controller="employeeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="code">职员编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.code}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">姓名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="linkTel">联系电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.linkTel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="description">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.description}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="organization.name"> 所属单位</label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.organization.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="department.name"> 所属部门</label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.department.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="sex">性别 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.sex}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="birthDate">出生日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{employee.birthDate}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

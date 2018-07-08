@@ -1,0 +1,275 @@
+<style>
+.portal{
+	margin-top: 10px;
+	height:50%;
+	    padding: 0;
+}
+.portal_body{
+	padding: 0; 
+	border-radius: 0;
+}
+.portal_titile{
+	background-image: none !important;
+}
+.portal_body{
+	margin:0;
+	    height: 100%;
+}
+
+.portal_shortcut{
+	color: black; 
+	text-align: center;
+	padding-top: 0px;
+}
+.portal_shortcut_span{
+	 height: 15px; 
+	 margin-bottom: 8px;
+}
+.portal_theme{
+	font-weight: bold;
+}
+.more{
+	float:right;
+}
+.portal-body{
+	padding:0 15px;
+}
+</style>
+<div class="col-md-12"  style="height:{{dheight}}px;padding:0">
+		<div ng-controller="ddd3portletController" class="portal col-md-12 widget">
+			<div class="panel panel-default portal_body">
+				<div class="panel-heading portal_titile">
+					<span class="portal_theme">常用功能</span>
+				</div>
+				<div class="panel-body widget-content portal-body">
+					<div id="portlet" class="shortcuts" style="margin-top: 10px;">
+						<a href="javascript:void(0)" ng-repeat="button in buttons" style="display:inline-block;text-decoration: none;"
+							ng-click="go(button.state)"
+							class="shortcut portal_shortcut">
+						<span class="shortcut-label portal_shortcut_span {{button.icon}}"></span> 
+						<span class="shortcut-label">{{button.label}}</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		
+		<div ng-controller="ddd3portletController" class="portal col-md-6 widget" style="height:43%">
+			<div class="panel panel-default portal_body">
+				<div class="panel-heading portal_titile">
+					<span class="portal_theme">报表管理</span>
+				    <a href="javascript:void(0)" class="more" ng-click="more()">更多</a>
+				</div>
+				<div class="panel-body widget-content">
+					<div id="portlet" class="shortcuts">
+<!-- 							<ul style="padding-left: 0px;"> -->
+<!-- 								<li ng-repeat="report in reports" ng-class="{true:'has-bgColor',false:'has-no-bgColor'}[$index%2==0]"> -->
+<!-- 									<a href="javascript:void(0)" -->
+<!-- 									ng-click="go(report.modelKey,report.withChart,report.dynamicKey)"> <span>{{report.name}}</span> -->
+<!-- 								</a> -->
+<!-- 								</li> -->
+<!-- 							</ul> -->
+<!-- 							<div style="padding-top:8%;text-align:center;" ng-if="!hasStasReport"> -->
+<!-- 								<span class="has-nothing">暂无报表</span> -->
+<!-- 							</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div ng-controller="ddd3portletController" class="portal col-md-6 widget" style="height:43%">
+			<div class="panel panel-default portal_body">
+				<div class="panel-heading portal_titile">
+					<span class="portal_theme" >待办任务</span>
+					<a href="javascript:void(0)" class="more"  ng-click="more()">更多</a>
+				</div>
+				<div class="panel-body widget-content ">
+					<div id="portlet" class="shortcuts">
+<!-- 						<table class="table table-condensed " ng-class="{'taskList_welcome':hasTask}"> -->
+<!-- 							<tbody> -->
+<!-- 								<tr style="height: 49px;" ng-if="hasTask" ng-repeat="task in taskList" ng-class="{true:'tr_border_bottom_none',false:'tr_border_bottom'}[$index==4]"> -->
+<!-- 									<th class="task_head"> -->
+<!-- 										<div style="width:250px;" class="wel_task_head_div hiddenOut"> -->
+<!-- 											<a href="javascript:void(0)" ng-click='findTaskDetail(task)'>{{formatTitle(task.description)}}</a> -->
+<!-- 										</div> -->
+<!-- 									</th> -->
+<!-- 									<th class="th_time"> -->
+<!-- 										<div class="portal_time" align="right">{{formatCreateTime(task.createTime)}}</div> -->
+<!-- 									</th> -->
+<!-- 								</tr> -->
+<!-- 								<tr ng-if="!hasTask"> -->
+<!-- 									<td style="padding-top:30%;text-align:center;"> -->
+<!-- 										<span class="has-nothing">暂无待办任务</span> -->
+<!-- 									</td> -->
+<!-- 								</tr> -->
+<!-- 						</tbody> -->
+<!-- 					</table>  -->
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+
+.organization,.datasource,.reportview,.systemconfig,
+.codegenerate,._tree,.module,.employee,.report,.log,
+.codetable,.modelfile,.operator {
+  height: 70px;
+  display: block;
+  width: 70px;
+  margin: auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 8px 14px;
+}
+
+
+
+/* ----------------------- */
+.organization {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/organization.png');
+}
+
+.shortcuts .shortcut:hover>.organization {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/organization1.png');
+}
+.datasource {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/datasource.png');
+}
+
+.shortcuts .shortcut:hover>.datasource {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/datasource1.png');
+}
+.reportview {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/reportview.png');
+}
+
+.shortcuts .shortcut:hover>.reportview {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/reportview1.png');
+}
+.systemconfig {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/systemconfig.png');
+}
+
+.shortcuts .shortcut:hover>.systemconfig {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/systemconfig1.png');
+}
+.codegenerate {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/codegenerate.png');
+}
+
+.shortcuts .shortcut:hover>.codegenerate {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/codegenerate1.png');
+}
+._tree {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/tree.png');
+}
+
+.shortcuts .shortcut:hover>._tree {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/tree1.png');
+}
+.module {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/module.png');
+}
+
+.shortcuts .shortcut:hover>.module {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/module1.png');
+}
+.employee {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/employee.png');
+}
+
+.shortcuts .shortcut:hover>.employee {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/employee1.png');
+}
+.report {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/report.png');
+}
+
+.shortcuts .shortcut:hover>.report {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/report1.png');
+}
+.log {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/log.png');
+}
+
+.shortcuts .shortcut:hover>.log {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/log1.png');
+}
+.codetable {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/codetable.png');
+}
+
+.shortcuts .shortcut:hover>.codetable {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/codetable1.png');
+}
+.modelfile {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/modelfile.png');
+}
+
+.shortcuts .shortcut:hover>.modelfile {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/modelfile1.png');
+}
+
+.operator {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/operator.png');
+}
+
+.shortcuts .shortcut:hover>.operator {
+	background-image:
+		url('/DDD3/ddd/simple/view/main/asset/welcomeIcon/operator1.png');
+}
+
+
+</style>

@@ -1,0 +1,108 @@
+<style>
+.coursedisCol{
+	margin-top: 7px;
+}
+.chooseButton{
+	line-height: 25px;
+    display: inline-block;
+    width: 47px;
+    height: 25px;
+    text-align: center;
+    color: white;
+    background-color: #65c0df;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-top: 5px;
+    cursor:pointer;
+}
+.taskTitle{
+	margin-left: 30px !important;
+    margin-right: 45px !important;
+}
+.choosed{
+	background-color: green !important;
+}
+</style>
+
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight" ng-if="isTeacher">
+		<button class="btn" ng-click="addTask()">新增题目</button>
+		<button class="btn" ng-click="addProcess()">新增课程设计进度</button>
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+			 	<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">课程设计名称
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.name}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="startTime">课程设计开始时间
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.startTime|limitTo:10}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="endTime">课程设计结束时间
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.endTime|limitTo:10}}</span>
+				</div>
+			</div>
+			 <div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="teaName">负责老师
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.teaName}}</span>
+				</div>
+			</div>
+			 <div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">发布日期
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.operateDate|limitTo:10}}</span>
+				</div>
+			</div>
+			 <div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{courseDesign.remark}}</span>
+				</div>
+			</div>
+		</div>
+		<legend class="legend" data-toggle="collapse" href="#task">
+			<span class="legend-title">题目</span>
+		</legend>
+		<div id="task" class="row collapse in">
+			 <div class="form-group col-md-5 taskTitle" ng-repeat="taskItem in task track by $index" >
+				<label class="col-md-4 control-label" for="taskTitle">{{taskItem.taskTitle}}</label>
+				<div class="col-md-3 coursedisCol">
+					<span>已选{{taskItem.state}}个</span>
+				</div>
+				<div ng-if="isStudent" class="chooseButton" ng-click="seeTask(this)">查看</div>
+				<div ng-if="isStudent" class="chooseButton" ng-class="{true:'choosed',false:'noChoosed'}[taskItem.isChoose]" ng-click="chooseTask(this)">选择</div>
+			</div>
+		</div>
+		
+		<legend class="legend" data-toggle="collapse" href="#courseProgress">
+			<span class="legend-title">课程进度阶段</span>
+		</legend>
+		<div id="courseProgress" class="row collapse in">
+			 <div class="form-group col-md-6" ng-repeat="process in processes">
+				<label class="col-md-4 control-label" for="processTitle">{{process.progressStage}}</label>
+				<div class="col-md-8 coursedisCol">
+					<span>{{process.stageName}}</span>
+					<span style="margin-left: 16px;color: #40b2d8;cursor:pointer;" ng-click="editCourseDesign(process)" ng-if="isTeacher">编辑</span>
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</form>

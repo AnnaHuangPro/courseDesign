@@ -1,0 +1,9 @@
+<ul class="nav nav-list accordion-group" >
+	<li class="nav-header"><i class="icon-plus icon-white"></i>模型项</li>
+	<li style="display: none;" class="boxes mute">
+		<select class="box box-element" id=model onchange="getModelItems()" style="height:30px">
+		</select>
+		<div id="modelItems">
+		</div>
+	</li>
+</ul>

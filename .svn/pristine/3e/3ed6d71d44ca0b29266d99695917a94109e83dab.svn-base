@@ -1,0 +1,60 @@
+<div ng-controller="modelDataTypeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dataType">控件类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.dataType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="type">vm文件名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.type}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="javaType">Java类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.javaType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dataSize">长度 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.dataSize}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="descName">中文名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.descName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dynamicFormKey">动态表单 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.dynamicFormKey}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="defaultValue">默认值 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.defaultValue}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelDataType.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

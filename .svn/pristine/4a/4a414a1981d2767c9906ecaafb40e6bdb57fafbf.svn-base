@@ -1,0 +1,192 @@
+package ddd.simple.service.operatorCongfigModel.impl;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import net.sf.json.JSONObject; 
+
+import javax.annotation.Resource;
+
+
+
+
+
+import org.apache.commons.lang.StringUtils;
+import org.springframework.stereotype.Service;
+
+import ddd.base.exception.DDDException;
+import ddd.base.persistence.EntitySet;
+import ddd.simple.dao.listview.ReportViewDao;
+import ddd.simple.dao.operatorCongfigModel.OperatorCongfigDao;
+import ddd.simple.entity.listview.DisplayAttribute;
+import ddd.simple.entity.listview.ReportView;
+import ddd.simple.entity.operatorCongfigModel.OperatorCongfig;
+import ddd.simple.service.base.BaseService;
+import ddd.simple.service.operatorCongfigModel.OperatorCongfigService;
+
+@Service
+public class OperatorCongfigServiceBean extends BaseService implements OperatorCongfigService
+{
+
+	@Resource(name="operatorCongfigDaoBean")
+	private OperatorCongfigDao operatorCongfigDao;
+	
+	@Resource(name = "reportViewDaoBean")
+	private ReportViewDao reportViewDao;
+	
+	@Override
+	public OperatorCongfig saveOperatorCongfig(OperatorCongfig operatorCongfig) 
+	{
+		try {
+			if(this.getLoginUser() == null || this.getLoginUser().getOperatorType().equals("other") )
+			{
+				//如果没有登陆，则查不到个性化参数
+				return null;
+			}
+			
+			OperatorCongfig operatorCongfigExisting = findOneOperatorCongfig(operatorCongfig.getCCKey());
+			if(operatorCongfigExisting != null)
+			{
+				//修改
+				operatorCongfigExisting.setCharacterParams(operatorCongfig.getCharacterParams());
+				this.operatorCongfigDao.update(operatorCongfigExisting);
+				return operatorCongfigExisting;
+			}
+			else
+			{	
+				operatorCongfig.setOperatorType(this.getLoginUser().getOperatorType());
+				operatorCongfig.setOperatorId(this.getLoginUser().getEId());
+				this.operatorCongfigDao.save(operatorCongfig);
+				return operatorCongfig;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("saveOperatorCongfig", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public int deleteOperatorCongfig(Long operatorCongfigId) {
+		try {
+			return this.operatorCongfigDao.deleteOperatorCongfig(operatorCongfigId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("deleteOperatorCongfig", e.getMessage(), e);
+		}
+		
+	}
+
+	@Override
+	public OperatorCongfig updateOperatorCongfig(OperatorCongfig operatorCongfig) {
+		try {
+			return this.operatorCongfigDao.updateOperatorCongfig(operatorCongfig);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("updateOperatorCongfig", e.getMessage(), e);
+		}
+	}
+	public OperatorCongfig findOne(String where){
+		try {
+			return this.operatorCongfigDao.findOneByCondition(where);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findOperatorCongfigById", e.getMessage(), e);
+		}
+	}
+	@Override
+	public OperatorCongfig findOperatorCongfigById(Long operatorCongfigId) {
+		try {
+			return this.operatorCongfigDao.findOperatorCongfigById(operatorCongfigId);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findOperatorCongfigById", e.getMessage(), e);
+		}
+	}
+	
+	@Override
+	public EntitySet<OperatorCongfig> findAllOperatorCongfig() {
+		try{
+			return this.operatorCongfigDao.findAllOperatorCongfig();
+		}catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findAllOperatorCongfig", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public OperatorCongfig findOneOperatorCongfig(String key) {
+		if(this.getLoginUser() == null || this.getLoginUser().getOperatorType().equals("other") )
+		{
+			//如果没有登陆，则查不到个性化参数
+			return null;
+		}
+		String where = "operatorType = '"+ this.getLoginUser().getOperatorType() 
+				+"' and operatorId = "+ this.getLoginUser().getEId()+" and cCKey = '"+key+"'";
+		String elesWhere = "operatorType = 'operator' and (operatorId = '2' or operatorCode = 'admin') and cCKey = '"+key+"'";
+		
+		return this.findOne(where) != null ? this.findOne(where) : this.findOne(elesWhere);
+	}
+
+
+	public boolean uniformView(OperatorCongfig operatorCongfig){
+		
+		try {
+			/*String name = operatorCongfig.getCCKey();
+			operatorCongfigDao.deleteOperatorCongfigByKey(name);
+			String characterParams = operatorCongfig.getCharacterParams();
+			JSONObject jsonObject = JSONObject.fromObject(characterParams);   
+			  
+	        Map map = new HashMap();   
+	        for (Iterator iter = jsonObject.keys(); iter.hasNext();) {   
+	            String key = (String) iter.next();   
+	            map.put(key, jsonObject.get(key));   
+	        }   
+	        
+			boolean prefix = name.startsWith("ListView_");
+			if(prefix){
+				name = name.replace("ListView_", "");
+				operatorCongfigDao.deleteOperatorCongfigByKey(name);
+			}
+			ReportView reportView= this.reportViewDao.findReportViewByKey(name);
+			EntitySet<DisplayAttribute> oldDisplayAttributes = reportView.getDisplayAttributes();
+			EntitySet<DisplayAttribute> newDisplayAttributes = new EntitySet<DisplayAttribute>();
+			
+			Set<String> s=map.keySet();//通过keySet方法可获得所有key的集合，放在一个容器Set里面。
+			Iterator<String> it;//获得一个迭代器引用it，通过s.iterator方法好比使“指针”指向
+			                                                    //set里面的第一个元素的位置
+			for(DisplayAttribute displayAttribute:oldDisplayAttributes){
+				it=s.iterator();
+				while(it.hasNext())//set里面如果有下一个
+				  {
+				   String mapkey=it.next();//返回当前set中的这个元素（因为set中都是放的key，“指针”指向下一个
+				   if(mapkey.equals(displayAttribute.getAttributeName())){
+					   String cssArrtribute = displayAttribute.getCssArrtribute();
+					   
+					   String substr = StringUtils.substringBetween(map.get(mapkey).toString(), "\""+"width"+"\":", ",");
+					   String columnIndexString = StringUtils.substringBetween(map.get(mapkey).toString(),"\""+"columnIndex"+"\":", ",");
+					   
+					   cssArrtribute = cssArrtribute.replaceFirst("width:[0-9]*", "width:"+substr);
+					   
+					   displayAttribute.setCssArrtribute(cssArrtribute);
+					   displayAttribute.setColumnIndex(Integer.valueOf(columnIndexString));
+					   newDisplayAttributes.add(displayAttribute);
+				   }
+				  }
+			}
+			reportView.setDisplayAttributes(newDisplayAttributes);
+			this.reportViewDao.updateReportView(reportView);*/
+			/**
+			 * 之前的代码不必要的操作 注释了 lc
+			 */
+			return this.saveOperatorCongfig(operatorCongfig) == null ? false: true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	
+
+}

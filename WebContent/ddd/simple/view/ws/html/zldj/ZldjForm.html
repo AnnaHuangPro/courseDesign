@@ -1,0 +1,119 @@
+<form ng-init="init()" class="form-horizontal"
+	name="zldjForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="saveZldj(false)"
+			ng-disabled="zldjForm.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="saveZldj(true)"
+			ng-disabled="zldjForm.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						 			  						 						 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="remark">
+										备注:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="remark"
+						placeholder='' class="form-control"
+						ng-model="zldj.remark" name="remark"
+														maxlength="8000"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="attachmentCode">
+										附件编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="attachmentCode"
+						placeholder='' class="form-control"
+						ng-model="zldj.attachmentCode" name="attachmentCode"
+														maxlength="255"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_code">
+					   					招领登记编码:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="zldj_code"
+						placeholder='招领登记编码' class="form-control"
+						ng-model="zldj.zldj_code" name="zldj_code"
+														maxlength="250"
+																					required
+							 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_owner">
+										拾主姓名:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="zldj_owner"
+						placeholder='拾主姓名' class="form-control"
+						ng-model="zldj.zldj_owner" name="zldj_owner"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_time">
+										登记时间:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="zldj_time"
+						ng-model="zldj.zldj_time" name="zldj_time"
+						></input>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_detime">
+										拾到物品时间:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="zldj_detime"
+						ng-model="zldj.zldj_detime" name="zldj_detime"
+						></input>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_where">
+										拾物地点:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="zldj_where"
+						placeholder='拾物地点' class="form-control"
+						ng-model="zldj.zldj_where" name="zldj_where"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="zldj_detail">
+										物品摘要:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="zldj_detail"
+						placeholder='物品摘要' class="form-control"
+						ng-model="zldj.zldj_detail" name="zldj_detail"
+														maxlength="250"
+													 />
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

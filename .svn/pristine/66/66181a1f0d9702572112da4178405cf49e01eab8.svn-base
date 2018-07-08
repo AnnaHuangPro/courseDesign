@@ -1,0 +1,144 @@
+
+angular.module('reportFormModel', []).controller(
+		'reportFormModelController',
+		[
+				'ReportFormService',
+				'ReportService',
+				'$rootScope',
+				'$scope',
+				'$state',
+				'$stateParams','angularPermission','$timeout',
+				function(ReportFormService,ReportService, $rootScope, $scope,
+						$state, $stateParams,angularPermission,$timeout) {
+					$scope.withChart = $stateParams.withChart=="true"?true:false;
+					$scope.dynamicForm = $stateParams.dynamicForm;
+					$scope.modelFileKey = $stateParams.modelFileKey;
+					$scope.isPagenation =  $stateParams.isPagenation;
+					
+					var dynamicKey = $stateParams.dynamicKey;
+					
+					$scope.currentPage = 1;
+					$scope.pageSize = 10;
+					$scope.pageSizeStr = "10";
+					
+					$scope.updateTotalPage = function(){
+						ReportFormService.getReportFormDataCount($scope.modelFileKey,function(data){
+							$scope.totalPage = $scope.pageSize < 0 ? 1 : Math.round((data / $scope.pageSize) + 1);
+							$scope.totalCount = data;
+						},function(error){
+							alert("查询key为"+$socpe.modelFileKey+"的报表的数据总数错误");
+						})
+					}
+				
+					
+					$scope.$watch("pageSizeStr",function(newVal,oldVal){
+						if(newVal != oldVal && newVal != null){
+							$scope.currentPage = 1;
+							$scope.pageSize = parseInt($scope.pageSizeStr);
+							$scope.search();
+							$scope.opeCheck();
+						}
+					});
+					
+					$scope.change = function(ope){
+						if(ope == 'P'){//上一页
+							if($scope.currentPage == 1){
+								return;
+							}else{
+								$scope.currentPage -= 1;
+							}
+						}else{//下一页
+							if($scope.currentPage == $scope.totalPage){
+								return;
+							}else{
+								$scope.currentPage += 1;
+							}
+						}
+						$scope.opeCheck();
+						$scope.search();
+					}
+					
+					$scope.html = "";
+					$scope.params = {};
+					$scope.exportExcel = function(isCurrent){
+						$scope.paramsAdd({});
+						if(isCurrent == 'false'){
+							$scope.params["_pageSize"] = null;
+							$scope.params["_pageStart"] = null;
+						}
+						ReportService.generateExcel($scope.params,$scope.modelFileKey);
+					}
+					
+					$scope.show = function(){
+						return sessionStorage.getItem("operatorCode") =="admin";
+					}
+					
+					$scope.excel2HtmlWithChart = function(){
+						$scope.paramsAdd({});
+						ReportService.excel2HtmlWithChart($scope.params,$scope.modelFileKey).promise().then(function(data){
+							$scope.res = data;
+							$scope.$apply(function(){
+								 
+							});
+						});
+					}
+					
+					$scope.search = function(){
+						$scope.paramsAdd({});
+						$scope.updateTotalPage();
+						ReportService.generateHtml($scope.params,$scope.modelFileKey).promise().then(function(data){
+							$scope.res = data;
+							$scope.$apply(function(){
+								 
+							});
+						});
+					}
+					
+					$scope.paramsAdd = function(params)
+					{
+						$scope.params["_pageSize"] = null;
+						$scope.params["_pageStart"] = null;
+						for(var param in params){
+							$scope.params[param]=params[param];
+						}
+						if($scope.pageSize > 0 && '是' == $scope.isPagenation){
+							$scope.params["_pageSize"] = $scope.pageSize;
+							$scope.params["_pageStart"] = ($scope.currentPage-1) * $scope.pageSize + 1;
+						}
+					}
+					
+					
+					$scope.opeCheck = function(){
+						$scope.preV = true;
+						$scope.nexV = true;
+						if($scope.currentPage == 1){
+							$scope.preV = false;
+						}else{
+							$scope.preV = true;
+						}
+						if($scope.currentPage == $scope.totalPage){
+							$scope.nexV = false;
+						}else{
+							$scope.nexV = true;
+						}
+					}
+					
+					$scope.opeCheck();
+					
+					$timeout(function(){ 
+						if($scope.modelFileKey){
+							if($scope.withChart == true)
+							{
+								$scope.excel2HtmlWithChart();
+							}
+							else
+							{
+								$scope.search();
+							}
+						}
+					},100);
+					$scope.priviewInit = function()
+					{
+					}
+					
+				} ]);

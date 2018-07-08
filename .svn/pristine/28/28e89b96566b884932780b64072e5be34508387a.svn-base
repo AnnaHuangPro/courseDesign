@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="" />
+    <title>会员中心</title>
+    
+    <link rel="icon" href="../brain.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../brain.ico" type="image/x-icon" />
+  
+  	<link rel="stylesheet" href="js/fullcalendar/fullcalendar.min.css">
+    <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="js/bootstrap/3.3.5/css/bootstrap.css">
+    <link rel="stylesheet" href="js/bootstrap-datetimepicker/2012/css/bootstrap-datetimepicker.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-default.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog-theme-plain.min.css">
+   	<link rel="stylesheet" href="js/ngDialog/css/ngDialog.min.css">
+    
+   	<link rel="stylesheet" href="simple/css/app.css">
+   	<link rel="stylesheet" href="simple/css/common.css">
+<!--    	<link rel="stylesheet" href="simple/view/login/asset/login.css"> -->
+   	<link rel="stylesheet" href="simple/view/workflow/asset/workflow.css">
+   	<link rel="stylesheet" type="text/css" href="js/angular-tree/css/tree-control.css">
+	<link rel="stylesheet" type="text/css" href="js/angular-tree/css/tree-control-attribute.css">
+	<link rel="stylesheet" type="text/css" href="simple/view/main/js/menu-tree/css/menu-control-attribute.css">
+	<link rel="stylesheet" type="text/css" href="simple/view/main/js/menu-tree/css/menu-control.css">
+    <link rel="stylesheet" type="text/css" href="js/uigrid/3.0.7/ui-grid.min.css">
+    <link rel="stylesheet" href="js/ueditor/themes/default/css/ueditor.min.css" type="text/css">
+    <link rel="stylesheet" href="compents/dddselect/asset/chosen.css" type="text/css">
+    <link rel="stylesheet" href="compents/dddselect/asset/chosen-spinner.css" type="text/css">
+	<link rel="stylesheet" href="js/materialDatePicker/mbdatepicker.css"/>
+	<link rel="stylesheet" href="js/dialog-service/5.2.9/dialogs.min.css"/>
+	<link rel="stylesheet" href="js/codemirror/lib/codemirror.css"/>
+	<link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2.css" type="text/css">
+   	<link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select.css" type="text/css">
+    <link rel="stylesheet" href="compents/dddselect/asset/ui-select/css/select2-bootstrap.css" type="text/css">
+	
+	
+    <script data-main="vip/js/base/vipMain.js" src="js/requirejs/2.1.20/require.js"></script>
+    <style>
+            body, input, button, textarea, select {
+			    font: 12px/1.5 Tahoma,Helvetica,Arial;
+			    color: #333;
+			}
+			.fixbg{
+	            background: rgb(246,248,249);
+	            background-attachment: fixed;
+	            background-image:url("view/login/img/login1.png");
+	            background-size: cover;
+	            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='view/login/css/login.jpg',sizingMethod='scale');
+	            background-repeat: no-repeat;
+	            background-positon: 100%, 100%;
+	            font: normal 12px tahoma, arial, verdana, sans-serif;
+	            margin: 0;
+	            padding: 0;
+	            border: 0 none;
+	            overflow: hidden;
+	            height: 100%;
+			}
+			.register{
+				background: #f3f0eb;
+				color: #333;
+				font-size: 13px;
+				font-family: "\5FAE\8F6F\96C5\9ED1", "\5B8B\4F53";
+			}
+			::-webkit-scrollbar { 
+			 	width: 9px; 
+			}
+			::-webkit-scrollbar-track { 
+				background-color:#DAD2D2;
+				-webkit-border-radius: 2em; 
+				-moz-border-radius: 2em; 
+				border-radius:2em;
+			}
+			::-webkit-scrollbar-thumb { 
+				background-color:rgb(156, 151, 151);
+				-webkit-border-radius: 2em; 
+				-moz-border-radius: 2em; 
+				border-radius:2em;
+			}
+    </style>
+</head>
+<body style="padding-top:35px" ng-class="{true:'fixbg',false:{true:'register'}[$state.current.name == 'register']}[$state.current.name == 'login']">
+	<div ui-view style="margin-top: 4px;"></div>
+</body>
+</html>

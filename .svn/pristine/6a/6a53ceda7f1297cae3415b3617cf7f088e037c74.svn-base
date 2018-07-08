@@ -1,0 +1,130 @@
+.fb-component {
+	/*padding: 3px; */
+	cursor: move;
+	padding: 15px 3px 3px 15px;
+}
+
+.fb-component input {
+	cursor: move
+}
+.fb-component label {
+	cursor: move
+}
+
+.fb-component select {
+	cursor: move
+}
+
+.fb-component textarea {
+	cursor: move
+}
+
+.fb-form-object-editable {
+	padding: 10px
+}
+
+.fb-form-object-editable.fb-draggable {
+	cursor: move;
+	border: 1px solid white;
+	margin: 5px 0 0 0;
+}
+
+#formContainer img.img{
+	margin: 30px 0 0 0;
+	padding: 0 0 0 50px;
+}
+
+.fb-form-object-editable.fb-draggable:hover {
+	border: 1px solid #ffe2b5;
+	-webkit-transition:1s ease;
+	-moz-transition:1s ease;
+	-o-transition:1s ease;
+	-ms-transition:1s ease;
+	transition:1s ease;
+	background: #fffbef;
+}
+
+.fb-form-object-editable.fb-draggable .component-operator{
+	visibility: hidden;
+}
+
+.fb-form-object-editable.fb-draggable:hover .component-operator{
+	visibility: visible;
+}
+
+span.operator-signal{
+    border-radius: 10px;
+    color: #fff;
+    padding: 3px;
+    cursor: pointer;
+}
+
+span.operator-signal.minus{
+	background: #fd4d4d;
+}
+span.operator-signal.plus{
+	background: #3dbf4c;
+}
+
+.fb-form-object-editable.fb-draggable input {
+	cursor: move
+}
+
+.fb-form-object-editable.fb-draggable label {
+	cursor: pointer
+}
+
+.fb-form-object-editable.fb-draggable select {
+	cursor: move
+}
+
+.fb-form-object-editable.fb-draggable textarea {
+	cursor: move
+}
+
+.fb-form-object-editable.empty {
+	cursor: default;
+	margin: 6px;
+	height: 80px;
+	border: dashed 1px #aaa;
+	background-color: #eee
+}
+
+.fb-draggable.dragging {
+	background-color: #ffffff;
+	position: absolute;
+	z-index: 800;
+	-webkit-box-shadow: #666 0 0 20px;
+	-moz-box-shadow: #666 0 0 20px;
+	box-shadow: #666 0 0 20px
+}
+
+.fb-required:after {
+	color: #b94a48;
+	content: ' *'
+}
+
+.fb-builder {
+	min-height: 350px;
+}
+
+/* .popover {
+	top: 20px !important;	
+} */
+
+.popover .control-label {
+	text-align: left
+}
+
+.popover form {
+	width: 240px
+}
+
+.btn-group > .btn, .btn-group-vertical > .btn {
+    position: relative;
+    float:none;
+}
+
+.btn-group .btn + .btn, .btn-group .btn + .btn-group, .btn-group .btn-group + .btn, .btn-group .btn-group + .btn-group {
+    margin-left: -2px;
+}

@@ -1,0 +1,102 @@
+<div ng-controller="employeeFormController">
+	<div class="row" ng-init="getInitEmployeeData()">
+		<form class="form-horizontal" name="employeeForm"
+			ddd-Form-Validate novalidate>
+			<div class="row rowddd"></div>
+			<fieldset class="col-md-12 head3">
+				<legend class="legend" data-toggle="collapse" href=""
+					style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+				<div id="baseInfo" class="row collapse in">
+
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label required" for="code"> 职员编码</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" ng-click="genCode()"
+								required ng-model="employee.code" placeholder='职员编号'>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label required" for="name"> 姓名</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" ng-model="employee.name"
+								required ng-maxlength="20" ng-minlength="2" placeholder='姓名'>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" for="linkTel"> 联系电话
+						</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control"
+								ng-model="employee.linkTel" placeholder='联系电话'>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" for="organization">
+							所属单位</label>
+						<div class="col-md-8">
+							<dreference class="form-control"
+								reference-id="employeeFormorganization"
+								list-view-key='organizationList'
+								ng-model='employee.organization' show-model-filed='name'
+								name="organization" placeholder='所属单位'> </dreference>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" for="department">
+							所属部门</label>
+						<div class="col-md-8">
+							<dreference class="form-control"
+								reference-id="employeeFormdepartment"
+								list-view-key='departmentList' ng-model='employee.department'
+								show-model-filed='name' name="department" placeholder='所属部门'> </dreference>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" for="sex"> 性别</label>
+						<div class="col-md-8">
+							<input type="text" class="form-control" ng-model="employee.sex" placeholder='性别'>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" for="birthDate">
+							出生日期</label>
+						<div class="col-md-8">
+							<input ddatepicker="{format:'yyyy年mm月dd日'}" class="form-control"
+								ng-model="employee.birthDate" placeholder='出生日期'>
+						</div>
+					</div>
+					
+
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" for="description">
+							备注</label>
+						<div class="col-md-10">
+							<textarea rows="8" class="form-control defined-textarea"
+								ng-model="employee.description" placeholder='补充'>
+							</textarea>
+						</div>
+					</div>
+				</div>
+				
+			</fieldset>
+			<div class="form-group">
+				<div class="form-group">
+					<div class="col-md-12">
+						<div class="btn-group formBtnGroup topRight col-md-offset-2">
+							<button class="btn btn-sm" ng-click="saveEmployee(employee)"
+								ng-disabled="employeeForm.$invalid">保存</button>
+							<button class="btn btn-sm" ng-click="saveEmployee(employee)"
+								ng-disabled="employeeForm.$invalid">保存并新增</button>
+							<button class="btn btn-sm" ng-click="back()">返回</button>
+					  	</div>
+				  	</div>
+			  	</div>
+			</div>
+		</form>
+	</div>
+</div>

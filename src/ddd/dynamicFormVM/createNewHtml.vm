@@ -1,0 +1,47 @@
+#foreach($config in ${configs})
+	#if($config.get('bindVal')=="不可绑值"&&$config.get('authority')&&$config.get('authority')!="")
+	<div ng-class="$!{config.get('bundle')}Style" class="form-content #if($config.get('layoutStyle')&&$config.get('layoutStyle')!='') col-md-${config.get('layoutStyle')} #else col-md-12 #end"
+		#if($!{config.get('isHide')} == '是') ng-show="false" #end
+		#if($config.get('authority')&&$config.get('authority')!="")
+			ng-init="hasAuthority('$!config.get('bundle')','$!config.get('authority')')" 
+			#if($config.get('bindVal')=="可绑值")
+				ng-show="$!{config.get('bundle')}.show==true"
+			#end
+		#end
+		#if($config.get('defaultValue')&&$config.get('defaultValue')!="")
+			ng-init="showExpression('$!config.get('bundle')','$!config.get('defaultValue')')"
+		#end>
+		#if($config.get('bindVal')=="不可绑值")
+		<div ng-if="$!{config.get('bundle')}.show==true">
+		#end
+		<label class="#if($config.get('col1')) col-md-${config.get('col1')} #else col-md-2 #end control-label #if($!{config.get('nullable')}=="是") required #end">$!{config.get('label')}</label>
+		<div class="#if($config.get('col2')) col-md-${config.get('col2')} #else col-md-10 #end">
+			$!{config.get('itemHtml')}
+			<p class="help-block">$!{config.get('description')}</p>
+		</div>
+		#if($config.get('bindVal')=="不可绑值")
+			</div>
+		#end
+	</div>
+	#else
+	<div class="form-group form-content #if($config.get('layoutStyle')&&$config.get('layoutStyle')!='') col-md-${config.get('layoutStyle')} #else col-md-12 #end"
+		#if($!{config.get('isHide')} == '是') ng-show="false" #end
+		#if($config.get('authority')&&$config.get('authority')!="")
+			ng-init="hasAuthority('$!config.get('bundle')','$!config.get('authority')')" 
+			#if($config.get('bindVal')=="可绑值")
+				ng-show="$!{config.get('bundle')}.show==true"
+			#else
+				ng-if="$!{config.get('bundle')}.show==true"
+			#end
+		#end
+		#if($config.get('defaultValue')&&$config.get('defaultValue')!="")
+			ng-init="showExpression('$!config.get('bundle')','$!config.get('defaultValue')')"
+		#end>
+		<label class="#if($config.get('col1')) col-md-${config.get('col1')} #else col-md-2 #end control-label #if($!{config.get('nullable')}=="是") required #end">$!{config.get('label')}</label>
+		<div class="#if($config.get('col2')) col-md-${config.get('col2')} #else col-md-10 #end">
+			$!{config.get('itemHtml')}
+			<p class="help-block">$!{config.get('description')}</p>
+		</div>
+	</div>
+	#end
+#end

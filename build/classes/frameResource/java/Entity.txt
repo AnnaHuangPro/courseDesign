@@ -1,0 +1,14 @@
+package {packageName};
+
+import ddd.base.annotation.Column;
+import ddd.base.persistence.baseEntity.Entity;
+{importArea}
+
+@ddd.base.annotation.Entity({EntityAnnotation})
+public class {className} extends Entity {
+	private static final long serialVersionUID = 1L;
+	
+{fieldArea}
+{funcArea}
+	
+}

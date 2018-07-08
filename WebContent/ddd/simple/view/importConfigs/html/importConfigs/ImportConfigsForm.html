@@ -1,0 +1,142 @@
+<style>
+	.border-line{
+		border:solid rgb(221,221,221) 4px;
+	}
+</style>
+<div class="row" ng-controller="importConfigsFormController">
+	<form class="col-md-12 form-horizontal" name="importConfigsForm"
+		ng-init="getInitImportConfigsData()" ddd-Form-Validate novalidate>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label required" for="importConfigKey"> 唯一标识</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="importConfigs.importConfigKey" name="importConfigKey"
+					required />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label required" for="importConfigKey"> 名称</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="importConfigs.importConfigName" name="importConfigName"
+					required />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="importConfigKey"> 外部接口</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control"
+					ng-model="outInterface" name="outInterface" />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" for="importConfigKey"> 是否自动编码: </label>
+			<div class="col-md-8">
+				<dselect class="form-control" code-type-key='boolean' ng-model="automaticEncoding" ></dselect>
+			</div>
+		</div>
+			<div class="col-md-6 form-group">
+				<label class="col-md-4 control-label" for="importConfigKey"> 编码字段 </label>
+				<div class="col-md-8">
+					<dselect class="form-control" show-name="columnTitle" selected-field="fieldName" ng-model="encodingFieldName" options="configItems"></dselect>
+				</div>
+			</div>
+		
+			<div class="col-md-6 form-group">
+				<label class="col-md-4 control-label" for="importConfigKey"> 编码规则: </label>
+				<div class="col-md-8">
+					<dselect class="form-control" show-name="billCodeTypeName" selected-field="billCodeTypeName" ng-model="encodingKey" options="encodingRules"></dselect>
+				</div>
+			</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for="importConfigKey"> 导入实体</label>
+			<div class="col-md-8">
+				<input type="text" class="form-control" ng-model="entityName"
+					name="importConfigKey" /><p></p>
+			</div>
+			<div class="col-md-2">
+				<button type="button" class="btn btn-sm"
+					ng-click="getAllField()">获取实体所有字段</button>
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for="moduleFile"> 模板文件</label>
+			<div class="col-md-10">
+				<dfileupload associate-form-id="modelFile.eId"
+						form-validate="imodelFileForm.$invalid"
+						associate-form-name="modelFileKey"></dfileupload>
+			</div>
+		</div>
+		
+		<div class="form-group">
+			<div class="btn-group  topRight col-md-offset-2">
+				<input class="btn btn-sm" type="button" value="保存"  type="submit" ng-click="saveImportConfigs(importConfigs)"> 
+				<input class="btn btn-sm" type="button" value="保存并生成导入模板"  ng-click="createImportExcel(importConfigs)"> 
+				<input class="btn btn-sm" type="button" value="返回" ng-click="closeOperateTab()" />
+			</div>
+		</div>
+		
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">字段配置</span>
+		</legend>
+		<div class="col-md-10 col-md-offset-1 border-line">
+			<table class="table table-condensed">
+			<thead class="row">
+				<th class="col-md-2 text-center">中文名称</th>
+				<th class="col-md-2 text-center">字段名</th>
+				<th class="col-md-1 text-center">唯一</th>
+				<th class="col-md-1 text-center">非空</th>
+				<th class="col-md-1 text-center">验证</th>
+				<th class="col-md-1 text-center">外键</th>
+				<th class="col-md-1 text-center">外键表</th>
+				<th class="col-md-1 text-center">外键栏位</th>
+				<th class="col-md-1 text-center">排序</th>
+				<th class="col-md-1">删除</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="configItem in configItems">
+					<th class="text-center">
+							<input type="text" class="form-control" ng-blur="nameChange(configItem.columnTitle)" ng-model="configItem.columnTitle">
+					</th>
+					<th class="text-center">
+							<input type="text" class="form-control" ng-model="configItem.fieldName" >
+					</th>
+					<th class="text-center">
+							<input type="checkbox" class="text-center" ng-model="configItem.isUnique">
+					</th>
+					<th class="text-center">
+							<input type="checkbox" class="text-center" ng-model="configItem.isNotNull">
+					</th>
+					<th class="text-center">
+							<input type="text"  ng-model="configItem.validate">
+					</th>
+					<th class="text-center">
+							<input type="checkbox" class="text-center" ng-model="configItem.isEntity">
+					</th>
+					<th class="text-center">
+							<input type="text" class="form-control" ng-model="configItem.relationEntityName">
+					</th>
+					<th class="text-center">
+							<input type="text" class="form-control" ng-model="configItem.relationEntityKey">
+					</th>
+					<th class="text-center">
+						<div class="text-center">
+							<i class='glyphicon glyphicon-chevron-up' ng-click="raiseIndex(configItem)"></i>
+							<i class='glyphicon glyphicon-chevron-down' ng-click="subtractIndex(configItem)"></i>
+							<!-- <input type="text" style="width:30%" ng-model="configItem.displayIndex" ng-mouseup="changeIndex(configItem)"> -->
+						</div>
+					</th>
+					<th class="span1">
+						<i class='glyphicon glyphicon-remove' ng-click="deleteconfigItem(configItem)"></i>
+					</th>
+				</tr>
+			</tbody>
+		</table>
+		<button type="button" class="btn btn-sm" ng-click="addConfigItem()">新增一个导入字段</button>
+		<p></p>	
+	</div>
+	</form>
+</div>

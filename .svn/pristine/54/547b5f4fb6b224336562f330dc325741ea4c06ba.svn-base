@@ -1,0 +1,385 @@
+package ddd.simple.action.reportForm;
+
+import java.io.File;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.stereotype.Controller;
+
+import com.alibaba.fastjson.JSONObject;
+
+import ddd.base.Config;
+import ddd.base.annotation.Action;
+import ddd.base.annotation.RequestMapping;
+import ddd.base.docx4j.Docx4jGenerator;
+import ddd.base.exception.DDDException;
+import ddd.base.jxls.JxlsGenerator;
+import ddd.base.jxls.TemplateGenerator;
+import ddd.base.persistence.EntitySet;
+import ddd.base.util.SpringContextUtil;
+import ddd.simple.entity.attachment.Attachment;
+import ddd.simple.entity.modelFile.ModelFile;
+import ddd.simple.entity.modelFile.Report;
+import ddd.simple.entity.reportForm.ReportForm;
+import ddd.simple.service.attachment.AttachmentService;
+import ddd.simple.service.modelFile.ModelFileService;
+import ddd.simple.service.reportForm.ReportFormOutInterFace;
+import ddd.simple.service.reportForm.ReportFormService;
+
+@Action
+@RequestMapping("/ReportForm")
+@Controller
+public class ReportFormAction {
+	@Resource(name = "reportFormServiceBean")
+	private ReportFormService reportFormService;
+
+	@Resource(name = "attachmentServiceBean")
+	private AttachmentService attachmentService;
+
+	@Resource(name = "modelFileServiceBean")
+	private ModelFileService modelFileService;
+
+	public ReportForm saveReportForm(ReportForm reportForm) {
+		try {
+			ReportForm saveReportForm = this.reportFormService.saveReportForm(reportForm);
+			return saveReportForm;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public int deleteReportForm(Long reportFormId) {
+
+		try {
+			return this.reportFormService.deleteReportForm(reportFormId);
+		} catch (DDDException e) {
+			throw e;
+		}
+
+	}
+
+	public ReportForm updateReportForm(ReportForm reportForm) {
+		try {
+			ReportForm updateReportForm = this.reportFormService.updateReportForm(reportForm);
+			return updateReportForm;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public ReportForm findReportFormById(Long reportFormId) {
+		try {
+			ReportForm findReportForm = this.reportFormService.findReportFormById(reportFormId);
+			return findReportForm;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public EntitySet<ReportForm> findAllReportForm() {
+		try {
+			EntitySet<ReportForm> allReportForm = this.reportFormService.findAllReportForm();
+			return allReportForm;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	/**
+	 * 
+	 * @Title: generateExcel
+	 * @Description: 统计报表导出
+	 * @param params
+	 * @param modelFileKey
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 * @return Report
+	 */
+	public Report generateExcel(Map<String, Object> params, String modelFileKey, HttpServletResponse response)
+			throws Exception {
+		try {
+			// 调用接口
+			ReportFormOutInterFace expInterFace = null;
+			try {
+				expInterFace = (ReportFormOutInterFace) SpringContextUtil.getBean("incuExpImplement");
+				if (expInterFace != null) {
+					expInterFace.beforeExport(params, modelFileKey);
+				}
+			} catch (Exception e) {
+				//
+			}
+
+			String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("xls", "xlsx"));
+			this.dealReportInitParam(modelFileKey, params);
+			if (templateFileName != null) {
+				ModelFile modelFile = this.modelFileService.findModelFileByKey(modelFileKey);
+
+				String _expName = null;
+				if ("false".equals(modelFile.getIsDefaultExpName())) {
+					String temp = (String) params.get("expName_");
+					if (temp == null || "".equals(temp)) {
+						throw new DDDException(modelFile.getName() + "在导出时没有传递名为expName_的导出文件名！");
+					}
+					_expName = temp;
+				} else {
+					_expName = modelFile.getName();
+				}
+
+				if (_expName == null || "".equals(_expName)) {
+					_expName = "exportReport";
+				}
+				if (params == null) {
+					params = new HashMap<String, Object>();
+				}
+				params.put("_expName", _expName);
+
+				TemplateGenerator generator = new JxlsGenerator();
+				generator.generate(templateFileName, params, response);
+			}
+			if (expInterFace != null) {
+				expInterFace.afterExport(params, modelFileKey);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return new Report();
+	}
+
+	/**
+	 * 
+	 * @Title: reportFormPreview
+	 * @Description:统计报表预览
+	 * @param params
+	 * @param modelFileKey
+	 * @param response
+	 * @return
+	 * @throws Exception
+	 * @return Report
+	 */
+	public Report reportFormPreview(Map<String, Object> params, String modelFileKey, HttpServletResponse response)
+			throws Exception {
+		try {
+			String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("xls", "xlsx"));
+			this.dealReportInitParam(modelFileKey, params);
+			if (templateFileName != null) {
+				TemplateGenerator generator = new JxlsGenerator();
+				generator.generateHtml(templateFileName, params, response);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return new Report();
+	}
+
+	public int getReportFormDataCount(String modelFileKey) {
+		Map<String, Object> result = this.getReportFormQueryData(modelFileKey, null);
+		LinkedHashSet<Object> datas = (LinkedHashSet<Object>) result.get("repDatas");
+		if (datas == null) {
+			return 0;
+		} else {
+			return datas.size();
+		}
+	}
+
+	public String reportFormPreviewWithChart(Map<String, Object> params, String modelFileKey,
+			HttpServletResponse response) throws Exception {
+		try {
+			String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("xls", "xlsx"));
+			if (templateFileName != null) {
+				return this.reportFormService.excel2Html(templateFileName, params);
+			} else {
+				return "";
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	public Map<String, String> reportFormsPreviewWithChart(Map<String, Object> params,
+			Map<String, String> modelFileKeys, HttpServletResponse response) throws Exception {
+		try {
+			Map<String, String> modelFileKeyAndTemplatePath = new HashMap<String, String>();
+			Set<String> set = modelFileKeys.keySet();
+			Iterator<String> ite = set.iterator();
+			while (ite.hasNext()) {
+				String modelFileKey = ite.next();
+				String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("xls", "xlsx"));
+				if (templateFileName != null) {
+					modelFileKeyAndTemplatePath.put(modelFileKey, templateFileName);
+				} else {
+					throw new DDDException("模板文件key " + modelFileKey + "没有找到对应的xls 或 xlsx文件，请上传改模板文件的附件");
+				}
+			}
+			return this.reportFormService.excel2Html(modelFileKeyAndTemplatePath, params);
+			// this.reportFormService.excel2Html(templateFileNames,params);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	public void generateExcelReportForm(Map<String, Object> params, String modelFileKey, HttpServletResponse response)
+			throws Exception {
+		try {
+			String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("docx"));
+			if (templateFileName != null) {
+				TemplateGenerator generator = new Docx4jGenerator();
+				generator.generatePdf(templateFileName, params, response);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+
+	}
+
+	public Report generateDocxReportForm(Map<String, Object> params, String modelFileKey, HttpServletResponse response)
+			throws Exception {
+		try {
+
+			// 调用接口
+			ReportFormOutInterFace expInterFace = (ReportFormOutInterFace) SpringContextUtil
+					.getBean("incuExpImplement");
+			if (expInterFace != null) {
+				expInterFace.beforeExport(params, modelFileKey);
+			}
+
+			String templateFileName = this.findAttachmentFilePath(modelFileKey, Arrays.asList("docx"));
+			if (templateFileName != null) {
+				ModelFile modelFile = this.modelFileService.findModelFileByKey(modelFileKey);
+
+				this.dealReportInitParam(modelFileKey, params);
+
+				String _expName = null;
+				if ("false".equals(modelFile.getIsDefaultExpName())) {
+					String temp = (String) params.get("expName_");
+					if (temp == null || "".equals(temp)) {
+						throw new DDDException(modelFile.getName() + "在导出时没有传递名为expName_的导出文件名！");
+					}
+					_expName = temp;
+				} else {
+					_expName = modelFile.getName();
+				}
+				if (_expName == null || "".equals(_expName)) {
+					_expName = "exportReport";
+				}
+				if (params == null) {
+					params = new HashMap<String, Object>();
+				}
+				params.put("_expName", _expName);
+
+				TemplateGenerator generator = new Docx4jGenerator();
+				generator.generate(templateFileName, params, response);
+			}
+			if (expInterFace != null) {
+				expInterFace.afterExport(params, modelFileKey);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return new Report();
+	}
+
+	public Map<String, Object> getReportFormQueryData(String modelFileKey, Map<String, Object> params) {
+		if (params == null) {
+			params = new HashMap<String, Object>();
+		}
+		try {
+			this.dealReportInitParam(modelFileKey, params);
+			String templatePath = this.findAttachmentFilePath(modelFileKey, Arrays.asList("docx", "xls", "xlsx"));
+			return this.reportFormService.getReportFormQueryData(templatePath, params);
+		} catch (Exception e) {
+			throw new DDDException("查找" + modelFileKey + "的附件出错");
+		}
+
+	}
+
+	private void dealReportInitParam(String modeFileKey, Map<String, Object> param) {
+		try {
+			ModelFile modelFile = this.modelFileService.findModelFileByKey(modeFileKey);
+			String initParam = modelFile.getInitParam();
+			if (param == null) {
+				param = new HashMap<String, Object>();
+			}
+			if (initParam != null && !"".equals(initParam)) {
+				JSONObject obj = JSONObject.parseObject(initParam);
+				Set<String> keys = obj.keySet();
+				Iterator<String> ite = keys.iterator();
+				while (ite.hasNext()) {
+					String key = ite.next();
+					param.put(key, obj.get(key));
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("初始化报表参数出错");
+		}
+
+	}
+
+	public String findAttachmentFilePath(String modelFileKey, List<String> Types) {
+
+		String templateFileName = "";
+
+		ModelFile modelFile = this.modelFileService.findModelFileByKey(modelFileKey);
+		EntitySet<Attachment> attachments = this.attachmentService.findAttachmentByForm(modelFile.getAttachmentCode(),
+				"modelFileKey");
+
+		String serverAddr = this.attachmentService.getFilePathFormSystemConfig();
+
+		templateFileName += serverAddr;
+
+		Iterator<Attachment> ite = attachments.iterator();
+		while (ite.hasNext()) {
+			Attachment attachment = ite.next();
+			String fileType = FilenameUtils.getExtension(attachment.getAttachmentAddr()).toLowerCase();
+			if (Types.contains(fileType)) {
+				templateFileName += attachment.getAttachmentAddr();
+			}
+		}
+		if (!templateFileName.equals(serverAddr)) {
+			return templateFileName.replaceAll("/", "\\\\");
+		}
+		return null;
+	}
+
+	/**
+	 * @Description 用于获取报表所对应的高级检索的模板文件
+	 * @author 成大大
+	 * @param modelFileKey
+	 * @return Map<Stirng, String>
+	 */
+	public Map<String, String> getFilterTemplate(String modelFileKey) {
+		if (modelFileKey == null) {
+			return null;
+		}
+
+		Map<String, String> templateMap = new HashMap<String, String>();
+		String modelFileFilterTpl = Config.get("modelFileFilterTpl");
+		String modelFileFilterTplPath = modelFileFilterTpl + modelFileKey;
+
+		try {
+			File htmlFile = new File(modelFileFilterTplPath + "/html.html");
+			File jsFile = new File(modelFileFilterTplPath + "/js.js");
+			File cssFile = new File(modelFileFilterTplPath + "/css.css");
+
+			templateMap.put("html", FileUtils.readFileToString(htmlFile, "utf-8"));
+			templateMap.put("css", FileUtils.readFileToString(cssFile, "utf-8"));
+			templateMap.put("js", FileUtils.readFileToString(jsFile, "utf-8"));
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return templateMap;
+	}
+
+}

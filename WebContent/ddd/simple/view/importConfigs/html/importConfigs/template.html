@@ -1,0 +1,15 @@
+<div class="modal-content" ng-transclude="">
+	<div class="modal-header ng-scope">
+		<h4 class="modal-title">
+			<span class="glyphicon glyphicon-star"></span> 导入
+		</h4>
+	</div>
+	<div class="modal-body ng-scope">
+		<dfileupload associate-form-id="importConfig.eId" num-limit="importConfig.limit" prompt="请上传需导入的文件" 
+		associate-form-name="导入excel" automatic-code=true></dfileupload>
+	</div>
+	<div class="modal-footer ng-scope">
+		<button type="button" class="btn btn-default" ng-click="sure()">确定</button>
+		<button type="button" class="btn btn-default" ng-click="cancel()">取消</button>
+	</div>
+</div>

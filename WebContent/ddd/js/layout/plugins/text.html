@@ -1,0 +1,200 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>文本框</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="generator" content="www.leipi.org" />
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../css/magicsuggest-min.css">
+<script type="text/javascript" src="../js/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../js/magicsuggest-min.js"></script>
+</head>
+<body>
+	<div class="content">
+		<table class="table table-bordered table-striped table-hover">
+			<tr>
+				<th width="50%"><span>名称</span><span class="label label-important">*</span></th>
+				<th width="50%"><span>默认值</span></th>
+			</tr>
+			<tr>
+				<td><input type="text" id="title" placeholder="请输入名称"></td>
+				<td><input type="text" id="defaultValue" placeholder="输入默认值"></td>
+			</tr>
+			<tr>
+				<th><span>绑定值</span><span class="label label-important">*</span></th>
+				<th><span>验证规则</span></th>
+			</tr>
+			<tr>
+				<td><input id="bundle" type="text" placeholder="请输入绑定值"></td>
+				<td>
+					<select id="validationName" style="width:100px">
+						<option value="" selected="selected">自定义</option>
+						<option value="^[A-Za-z]+$">纯字母</option>
+						<option value="^[A-Za-z0-9]+$">字母+数字</option>
+						<option value="^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\.\\w+([-.]\\w+)*$">邮箱地址</option>
+						<option value="^[0-9]*$">整数</option>
+						<option value="^[1-9]d*.d*|0.d*[1-9]d*$">小数</option>
+						<option value="\\d{14}[[0-9],0-9xX]">身份证号码</option>
+						<option value="[1-9][0-9]\{4,\}">QQ</option>
+						<option value="^1[3|4|5|7|8][0-9]\\d{8}$">手机</option>
+						<option value="^http://([\\w-]+\.)+[\\w-]+(/[\\w-./?%&=]*)?$">超链接</option>
+					</select>
+					<input type="text" id="validation" style="width:132px">
+				</td>
+			</tr>
+			<tr>
+				<th><span>是否必填</span></th>
+				<th><span> 显示表达式</span></th>
+			</tr>
+			<tr>
+				<td><input type="radio" name="isnull" id="nullable0"><label for="nullable0" style="display:inline;">是</label>
+				&nbsp;&nbsp;<input type="radio" name="isnull" id="nullable1"><label for="nullable1" style="display:inline;">否</label></td>
+				<td>
+					<select id="bindVal" style="width:100px">
+						<option value="不可绑值" selected="selected">不可绑值</option>
+						<option value="可绑值">可绑值</option>
+					</select>
+					<input type="text" id="authority" placeholder=" 请输入权限表达式" style="width:132px">
+				</td>
+			</tr>
+			<tr>
+				<th><span>列宽系数</span></th>
+				<th><span>是否可编辑</span></th>
+			</tr>
+			<tr>
+				<td>
+					<input type="number" name="col1" id="col1" title="两个数之和等于12" style="width: 30%;">
+					&nbsp;:&nbsp;<input type="number" name="col2" id="col2" title="两个数之和等于12" style="width: 30%;">
+				</td>
+				<td>
+					<input type="radio" name="isEdit" id="isEdit0"><label for="isEdit0" style="display:inline;">是</label>
+				&nbsp;&nbsp;<input type="radio" name="isEdit" id="isEdit1"><label for="isEdit1" style="display:inline;">否</label>
+				</td>
+			</tr>
+			<tr>
+				<th><span>提示信息</span></th>
+				<th> <span>是否隐藏</span></th>
+			</tr>
+			<tr>
+				<td><input id="placeholder" type="text"/></td>
+				<td>
+					<input type="radio" name="isHide" id="isHide0"><label for="isHide0" style="display:inline;">是</label>
+				&nbsp;&nbsp;<input type="radio" name="isHide" id="isHide1"><label for="isHide1" style="display:inline;">否</label>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<script type="text/javascript">
+var oNode = null,thePlugins = 'text';
+var config = '';
+window.onload = function() {
+     if( parent.DE.plugins[thePlugins].editdom ){
+         oNode =parent.DE.plugins[thePlugins].editdom;
+ 		
+ 		if(oNode.getAttribute('config'))
+ 		{
+ 			config = oNode.getAttribute('config').replace(/&quot;/g,"\"");
+ 		}
+ 		
+ 		config = eval('(' + config + ')');
+ 		$G('defaultValue').value = config.defaultValue|| "";
+        $G('title').value = config.title;
+        $G('validation').value = config.validation||"";
+        $G('bundle').value = config.bundle|| "";
+		$G('authority').value = config.authority || "";
+		$G('col1').value = config.col1 || 2;
+		$G('col2').value = config.col2 || 10;
+		$G('placeholder').value = config.placeholder|| "";
+		$G('bindVal').value = config.bindVal|| "不可绑值";
+
+		var isEdit = config.isEdit;
+        isEdit=='否' ? $G('isEdit1').checked = true : $G('isEdit0').checked = true;
+
+        var isHide = config.isHide;
+        isHide=='否' ? $G('isHide1').checked = true : $G('isHide0').checked = true;
+
+        var checked = config.nullable;
+        checked=='是' ? $G('nullable0').checked = true : $G('nullable1').checked = true;
+     }
+ }
+function $G( id ) {
+    return document.getElementById(id);
+};
+function save(){
+    if($G('title').value=='')
+    {
+        alert('请输入控件名称');
+        return false;
+    }
+    var gDefaultValue = $G('defaultValue').value.replace(/\"/g,"&quot;");
+    var gTitle = $G('title').value.replace(/\"/g,"&quot;");
+    var gValidation = $G('validation').value;
+    var gBundle = $G('bundle').value;
+    var gNullable = "是";
+    var gAuthority = $G('authority').value;
+    var gCol1 = parseInt($G('col1').value,10)?parseInt($G('col1').value,10):2;
+    var gCol2 = parseInt($G('col2').value,10)?parseInt($G('col2').value,10):10; 
+    var gPlaceholder = $G('placeholder').value;
+    var gBindVal = $G('bindVal').value;
+    
+    var gIsEdit = "是";
+	if($G('isEdit1').checked) gIsEdit = "否";
+
+	var gisHide = "是";
+	if($G('isHide1').checked) gisHide = "否";
+
+    if($G('nullable1').checked) gNullable = "否";
+    if(oNode) 
+    {
+        config.title = gTitle;
+        
+        if(gBundle==""){
+        	alert('请指定绑定属性');
+            return false;
+        }
+       
+        config.bundle = gBundle;
+        config.defaultValue = gDefaultValue;
+        config.validation = gValidation;
+        config.bindVal = gBindVal;
+      
+        if( gNullable != '' ) {
+            config.nullable = gNullable;
+        }else{
+            config.nullable = '否';
+        }
+        
+        config.authority = gAuthority;
+ 
+        config.col1 = gCol1;
+        config.col2 = gCol2;
+        config.placeholder = gPlaceholder;
+
+        if( gIsEdit != '' ) {
+    		config.isEdit = gIsEdit;
+        }else{
+            config.isEdit = '否';
+        }
+
+        if( gisHide != '' ) {
+    		config.isHide = gisHide;
+        }else{
+            config.isHide = '否';
+        }
+
+        
+        delete parent.DE.plugins[thePlugins].editdom;
+        oNode.setAttribute('config', JSON.stringify(config));
+        return config;
+    }
+};
+$(document).ready(function(){
+	$('#validationName').change(function(){
+		$('#validation').val($(this).val());
+	});
+});
+</script>
+</body>
+</html>

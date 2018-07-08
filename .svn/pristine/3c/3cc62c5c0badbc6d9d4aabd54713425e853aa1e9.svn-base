@@ -1,0 +1,64 @@
+<div ng-controller="operatorFormController">
+	<div class="row" ng-init="initOperatorData()">
+		<form class="col-md-12 form-horizontal" name="operatorForm" role="form" ddd-form-validate novalidate>
+			
+		
+			<fieldset>
+				<legend class="legend" data-toggle="collapse" href="#baseInfo"
+					style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="employee">关联职员</label>
+						<div class="col-md-10">
+							<dreference class="form-control" list-view-key=employeeList
+								ng-model='operator.employee' show-model-filed='name'>
+							</dreference>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="name">操作员名称 </label>
+						<div class="col-md-10">
+							<input type="text" class="form-control" ng-model="operator.name"
+								required>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-2 control-label" for="code">操作员编码 </label>
+						<div class="col-md-10">
+							<input type="text" ui-validate-async="{unique : 'doesNotExist($modelValue)'}" class="form-control" ng-model="operator.code"
+								required>
+						</div>
+					</div>
+					<div class="form-group" ng-show="operate == 'add'">
+						<label class="col-md-2 control-label" for="passWord">密码 </label>
+						<div class="col-md-10">
+							<input type="password" class="form-control"
+								ng-model="operator.passWord" required>
+						</div>
+					</div>
+
+					<div class="form-group" ng-show="showcp">
+						<label class="col-md-2 control-label" for="newPassWord">新密码
+						</label>
+						<div class="col-md-10">
+							<input type="password" class="form-control"
+								ng-model="newPassWord">
+						</div>
+					</div>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2" >
+					<input class="btn btn-primary btn-first" type="button"
+						ng-click="saveOperatorOperate(operator)"
+						ng-disabled="operatorForm.$invalid" value="保存"> <input
+						class="btn btn-primary btn-mid" type="button"
+						ng-show="operate != 'add'" ng-click="showChangePassWord()"
+						value="重置密码"> <input class="btn btn-primary btn-last"
+						type="button" ng-click="cancelOperate()" value="返回">
+	
+				</div>
+			</div>
+		</form>
+
+	</div>
+</div>

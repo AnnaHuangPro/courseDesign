@@ -1,0 +1,61 @@
+<style>
+	#changePaswForm .formGroup_height{
+	    height: 50px;
+    	line-height: 30px;
+	}
+</style>
+<div class=" data-bg" ng-init="init()">
+	<legend class="legend" data-toggle="collapse" style="cursor: pointer">
+		<span class="legend-title">修改密码</span>
+	</legend>
+	<div class="form-group  col-md-12">
+		<form class="form-horizontal" ddd-form-validate name="changePaswForm" role="form" id="changePaswForm">
+			<div>
+				<div class="form-group col-md-12 formGroup_height" style="margin-top: 30px;">
+					<label class="col-md-4 data-form-edit required" for="inputCode"> 原始密码
+					</label>
+					<div class="col-md-4">
+						<input onpaste="return false" id="inputCode" type="password" class="form-control" ng-model="oldPawd" name="inputCode" ng-focus="clearValidInfo()" required />
+					</div>
+					<div class='col-md-4 data-remind'>
+						<span class="data-password-hint text-left" ng-bind="oldPawdHint"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-12 formGroup_height">
+					<label class="col-md-4 data-form-edit required" for="2"> 新&nbsp 密&nbsp码
+					</label>
+					<div class="col-md-4">
+						<input onpaste="return false" id="2" type="password" class="form-control" ng-model="newPawd" name="inputCode" required />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-4 data-form-edit" for="2"> 安&nbsp 全&nbsp度 </label>
+					<div class="col-md-4">
+						<span ng-class="{'data-safety col-md-4':'true','data-safety-lower':lower} "></span>
+						<span ng-class="{'data-safety col-md-4':'true','data-safety-medium':medium} "></span>
+						<span ng-class="{'data-safety col-md-4':'true','data-safety-high':high} "></span>
+					</div>
+					<div class='col-md-4 data-remind'>
+						<span class="data-password-hint text-left" ng-bind="securitylevel"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-12 formGroup_height">
+					<label class="col-md-4 data-form-edit required" for="3"> 确认密码
+					</label>
+					<div class="col-md-4">
+						<input id="3" onpaste="return false" type="password" class="form-control" ng-model="newPawdConfirm" name="inputCode" ng-blur="valideNewPwdInfo()" ng-focus="clearValidInfo()" required />
+					</div>
+					<div class='col-md-4 data-remind'>
+						<span ng-class="{'data-password-hint text-left':'true','data-password-pass':correct}" ng-bind="newPawdHint"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-8 col-md-offset-4">
+					<input ng-disabled="changePaswForm.$invalid" ng-click="change()" class="btn data-btn-save" type="button" value="确认" style="margin-left: -5px;"/>
+					<input class="btn  data-btn-edit data-btn" type="button" ng-click="closeOperateTab()" value="取消" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

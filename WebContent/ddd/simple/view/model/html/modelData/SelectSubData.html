@@ -1,0 +1,14 @@
+ <div ng-controller="subTableController">
+	<div class="row" >
+		<form class="form-horizontal" name="modelDataForm" ddd-form-validate="{ blurTrig: true}" novalidate >
+ 			<div class="form-group form-content">
+				<dreference class="col-md-10 col-md-offset-1" reference-id="{{tableName}}" list-view-key='{{tableName}}' ng-model='selectData' show-model-filed='name' name="{{tableName}}" multi-select="true"></dreference>
+			</div>
+ 			<div class="form-group formBtnGroup">
+				<div class="col-md-10 col-md-offset-1 btn-group">
+					<input class="btn btn-primary btn-sm" type="button" ng-click="cancelClick()" value="确定">
+				</div>
+			</div>
+ 		</form>
+ 	</div>
+</div>

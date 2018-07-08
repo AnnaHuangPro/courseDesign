@@ -1,0 +1,17 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="viewTreeListGrid"></dpagination>
+					<a class="btn " ng-click="addViewTree()"
+					ng-if="hasPermission('viewTree_add')">
+					<i class='glyphicon glyphicon-plus-sign'></i>新增</a> 
+					<a class="btn"ng-click="refreshGrid()">
+					<i class='glyphicon glyphicon-refresh'></i>刷新</a>
+			</div>
+			<dcolumnfilter class="pull-right" grid-name="viewTreeListGrid" />
+	</div>
+	<ddatagrid class="col-md-12" isoperation-column=true
+		name="viewTreeListGrid" operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="viewTreeList" id="viewTreeListGrid"></ddatagrid>
+</div>

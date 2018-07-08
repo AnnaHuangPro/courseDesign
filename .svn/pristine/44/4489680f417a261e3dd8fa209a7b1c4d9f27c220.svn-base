@@ -1,0 +1,15 @@
+<div class="form-group">
+   <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+    <div class="col-md-{{col2}}">
+        <select class="form-control" validator-required="{{required}}" validator-group="{{formName}}" class="form-control">
+			<option value="" >{{placeholder}}</option>
+			<option ng-repeat="obj in dataSource" ng-selected="obj.isDefaultValue">{{obj.name}}</option>
+		</select>
+        <p class='help-block'>{{description}}</p>
+        </div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>
+		

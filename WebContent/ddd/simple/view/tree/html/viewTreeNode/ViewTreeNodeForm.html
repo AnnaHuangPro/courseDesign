@@ -1,0 +1,86 @@
+<div class="panel " style="margin:0;margin-right:8px">
+	<form class="form-horizontal" name="form">
+		<br>
+		<div class="form-group  ">
+			<label class="col-md-2 control-label">节点层次</label>
+			<div class="col-md-10">
+				<input type="number" class="form-control" placeholder=""
+					ng-model="viewTreeNode.nodeIndex">
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">ID字段</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTreeNode.idColumn">
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">显示字段</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTreeNode.titleColumn">
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">节点sql语句</label>
+			<div class="col-md-10">
+				<ui-codemirror   
+				
+				ui-codemirror-opts="editorOpt"
+					ng-model="viewTreeNode.nodeSql"></ui-codemirror>
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">是否级联</label>
+			<div class="col-md-10">
+				<select ng-model='viewTreeNode.issHierachical'>
+					<option value="true">是</option>
+					<option value="false">否</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">级联字段名</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTreeNode.hierachicalColumn">
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">级联sql</label>
+			<div class="col-md-10" >
+				<ui-codemirror   
+					ui-codemirror-opts="editorOpt"
+					ng-model="viewTreeNode.nodeChildSql"></ui-codemirror>
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">图标</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTreeNode.icon">
+			</div>
+		</div>
+		<div class="form-group ">
+			<label class="col-md-2 control-label">模板</label>
+			<div class="col-md-10">
+				<input type="text" class="form-control" placeholder=""
+					ng-model="viewTreeNode.template">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-offset-4 col-md-10">
+				<!-- <input class="btn btn-success" type="submit"
+					ng-click="ensureClick(viewTreeNode)" value="确定">
+				<input class="btn btn-success" type="submit" ng-click="cancelClick()"
+					value="返回"> -->
+					
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button ng-disabled="form.$invalid" class="btn btn-sm" ng-click="save()">确定</button>
+					<button class="btn btn-sm" ng-click="cancel()">返回</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

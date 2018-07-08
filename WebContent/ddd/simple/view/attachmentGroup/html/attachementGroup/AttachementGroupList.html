@@ -1,0 +1,21 @@
+	<div class="row">
+			<div class="col-md-12">
+				<div class="btn-group formBtnGroup">
+					<dpagination class="pull-left" grid-name="atttachementGroupListGrid"></dpagination>
+					<a class="btn " ng-click="addAtttachementGroup()"
+						ng-if="hasPermission('atttachementGroup_add')"><i
+						class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+						class="btn" ng-click="refreshGrid()"><i
+						class='glyphicon glyphicon-refresh'></i>刷新</a>
+				</div>
+				<dcolumnfilter class="pull-right" grid-name="atttachementGroupListGrid"/>
+			</div>
+				<ddatagrid
+					name="atttachementGroupListGrid"
+					id="attachementGroupListGrid"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="attachementGroupList">
+				</ddatagrid>
+	</div>
+

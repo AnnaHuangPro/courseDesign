@@ -1,0 +1,119 @@
+<form name="textareaForm" class="form-horizontal clearFix"  ng-controller="checkboxController">
+	<div class="centerContent">
+	      <fieldset>
+            <legend class="fb-required">必填项</legend>
+			<div class="form-group form-content">
+				<label class=" col-md-2  control-label">控件名称</label>
+				<div class=" col-md-4">
+					<input type="text" class="form-control" ng-model="$parent.label" placeholder="必填项" required/>
+				</div>
+				<label class=" col-md-2  control-label">绑定值</label>
+				<div class=" col-md-4">
+					<input type="text" class="form-control" ng-model="$parent.bundle" placeholder="必填项" required>
+				</div>
+		   </div>
+		   <div class="form-group form-content">
+				<label class=" col-md-2  control-label">选项操作</label>
+				<div class=" col-md-10">
+					<span class="pull-right" >
+						<a style="color: green;cursor: pointer;" ng-click="$parent.dataSource.push({name:'',value:'',isDefaultValue:false})">
+							<i class="glyphicon glyphicon-plus"></i>
+						</a>
+					</span>
+					<table class="table table-bordered table-striped select-table">
+						<thead>
+							<tr>
+								<th style="width:14%">序号</th>
+								<th style="width:29%">选项名</th>
+								<th style="width:29%">选项值</th>
+								<th style="width:14%">默认值</th>
+								<th style="width:14%">操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="obj in dataSource">
+								<td>{{$index}}</td>
+								<td><input class="form-control" type="text" ng-model="obj.name" /></td>
+								<td><input class="form-control" type="text" ng-model="obj.value" /></td>
+								<td><input type="checkbox" value="true" ng-model="obj.isDefaultValue"/></td>
+								<td>
+									<a style="cursor:pointer" ng-click="removeOption($index)">
+										<i class="glyphicon glyphicon-trash"></i>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+		   </div>
+		</fieldset>
+      <fieldset>
+        <legend>非必填项</legend>
+		<div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">布局样式</label>
+			<div class=" col-md-4">
+				<select ng-model="$parent.layoutStyle" class="form-control">
+					<option value="12" ng-selected="true">一栏布局</option>
+					<option value="6">二栏布局</option>
+					<option value="4">三栏布局</option>
+					<option value="3">四栏布局</option>
+				</select>
+			</div>
+			<label class=" col-md-2  control-label">提示信息</label>
+			<div class=" col-md-4">
+				<input type="text" class="form-control" ng-model="$parent.placeholder"/>
+			</div>
+		</div>
+		<div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">描述</label>
+			<div class=" col-md-4">
+				<input type="text" class="form-control" ng-model="$parent.description">
+			</div>
+			<label class=" col-md-2  control-label">列宽系数</label>
+			<div class=" col-md-2" style="padding-right:2.5px">
+         		<input class="form-control displayInline" type="number" name="col1" min='0' max='12' ng-model="$parent.col1" title="两个数之和等于12">
+			</div>
+			<div class=" col-md-2" style="padding-left:2.5px">
+				<input class="form-control displayInline" type="number" name="col2" min='0' max='12' ng-model="$parent.col2" title="两个数之和等于12" >
+			</div>
+		</div>	
+	    <div class="form-group form-content  ">
+			<label class=" col-md-2  control-label">默认值</label>
+			<div class=" col-md-4">
+				<input type="text" class="form-control" ng-model="$parent.defaultValue" placeholder="输入默认值">
+			</div>
+			<label class=" col-md-2  control-label">显示表达式</label>
+			<div class="col-md-2" style="padding-right:2.5px">
+				<select ng-model="$parent.bindVal" class="form-control">
+					<option value="不可绑值" ng-selected="true">不可绑值</option>
+					<option value="可绑值">可绑值</option>
+				</select>
+			</div>
+			<div class=" col-md-2" style="padding-left:2.5px">
+				<input type="text" class="form-control" ng-model="$parent.authority" >
+			</div>
+		</div>
+		<div class="form-group form-content">
+	       <label class=" col-md-2  control-label"></label>
+	       <div class="col-md-10">
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="$parent.nullable" ng-true-value="'是'" />必选项
+			   </label>
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="$parent.isHide" ng-true-value="'是'" />隐藏项
+			   </label>
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="$parent.isEdit" ng-true-value="'否'" />不可编辑
+			   </label>
+			   <label class="checkbox-inline">
+			   		<input type="checkbox" ng-model="$parent.orientation" ng-true-value="'竖排'" />竖排
+			   </label>
+			</div>
+		</div>	
+		</fieldset>		
+		<div class='btn-group btn-group-md'>
+			<button type="button" class="btn btn-primary" ng-click="popover.save($event)" ng-disabled="textareaForm.$invalid">保存</button>
+			<button type="button" class="btn btn-default" ng-click="popover.cancel($event)">取消</button>
+		</div>
+    </div>
+</form>

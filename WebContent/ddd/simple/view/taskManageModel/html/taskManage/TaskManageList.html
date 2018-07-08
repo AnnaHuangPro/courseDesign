@@ -1,0 +1,19 @@
+<div  class="row" ng-controller="taskManageListController">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="taskManageListGrid"/>
+			<div class="pull-right btn-group formBtnGroup">
+				<a class="btn " ng-click="addTaskManage()"
+					ng-if="hasPermission('taskManage_add')"><i
+					class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+					class="btn" ng-click="refreshGrid()"><i
+					class='glyphicon glyphicon-refresh'></i>刷新</a>
+		</div>
+	</div>
+				<ddatagrid 
+					name="taskManageListGrid"
+					id="taskManageListGrid"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="taskManageList">
+				</ddatagrid>
+</div>

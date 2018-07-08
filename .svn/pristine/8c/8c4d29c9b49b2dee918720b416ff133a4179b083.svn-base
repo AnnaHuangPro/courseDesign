@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="entityPropertyDefineListGrid"/>
+			<div class="pull-right btn-group formBtnGroup">
+						<a class="btn btn-sm" ng-click="addEntityPropertyDefine()"
+							ng-if="hasPermission('entityPropertyDefine_add')"><i
+							class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+							class="btn btn-sm" ng-click="refreshGrid()"><i
+							class='glyphicon glyphicon-refresh'></i>刷新</a>
+			</div>
+	</div>
+				<ddatagrid 
+					name="entityPropertyDefineListGrid"
+					class="col-md-12"
+					id="entityPropertyDefineListGrid"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="entityPropertyDefineList">
+				</ddatagrid>
+	</div>

@@ -1,0 +1,181 @@
+package ddd.simple.action.modelFile;
+
+import java.util.Iterator;
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Controller;
+
+import ddd.base.annotation.Action;
+import ddd.base.annotation.RequestMapping;
+import ddd.base.exception.DDDException;
+import ddd.base.persistence.EntitySet;
+import ddd.simple.dao.permission.ModuleDao;
+import ddd.simple.dao.permission.PermissionDao;
+import ddd.simple.entity.attachment.Attachment;
+import ddd.simple.entity.modelFile.ModelFile;
+import ddd.simple.entity.modelFile.StatsReport;
+import ddd.simple.entity.permission.Module;
+import ddd.simple.entity.permission.Permission;
+import ddd.simple.service.attachment.AttachmentService;
+import ddd.simple.service.modelFile.ModelFileService;
+import ddd.simple.service.permission.ModuleService;
+import ddd.simple.service.permission.PermissionService;
+import ddd.simple.service.systemConfig.SystemConfigService;
+
+@Action
+@RequestMapping("/ModelFile")
+@Controller
+public class ModelFileAction
+{
+	@Resource(name="modelFileServiceBean")
+	private ModelFileService modelFileService;
+	
+	
+	@Resource(name = "attachmentServiceBean")
+	private AttachmentService	attachmentService;
+	
+	@Resource(name="moduleServiceBean")
+	private ModuleService moduleService;
+	
+	@Resource(name="moduleDaoBean")
+	private ModuleDao moduleDao ;
+	
+	@Resource(name = "systemConfigServiceBean")
+	private SystemConfigService	systemConfigService;
+
+	@Resource(name="permissionServiceBean")
+	private PermissionService permissionService;
+	
+	@Resource(name="permissionDaoBean")
+	private PermissionDao permissionDao;
+	
+	public ModelFile saveModelFile(ModelFile modelFile)
+	{
+		try {
+			this.genePermissionForModelFile(modelFile);
+			ModelFile saveModelFile = this.modelFileService.saveModelFile(modelFile);
+			return saveModelFile;
+		} catch (Exception e) {
+			throw new DDDException(e.getMessage());
+		}
+	}
+	
+	
+
+	public int deleteModelFile(Long modelFileId){
+		
+		try {
+			return this.modelFileService.deleteModelFile(modelFileId);
+		} catch (DDDException e) {
+			throw e;
+		}
+		
+	}
+
+	public ModelFile updateModelFile(ModelFile modelFile) {
+		try {
+			if(modelFile.getPermission() == null || "".equals(modelFile.getPermission())){
+				this.genePermissionForModelFile(modelFile);
+			}
+			ModelFile updateModelFile = this.modelFileService.updateModelFile(modelFile);
+			return updateModelFile;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public ModelFile findModelFileById(Long modelFileId){
+		try {
+			ModelFile findModelFile = this.modelFileService.findModelFileById(modelFileId);
+			return  findModelFile;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+	
+	public EntitySet<ModelFile> findAllModelFile(){
+		try{
+			EntitySet<ModelFile> allModelFile = this.modelFileService.findAllModelFile();
+			return allModelFile;
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+	
+	public String findModelFileAttachmentsId(String key){
+		ModelFile  modelFile = this.modelFileService.findModelFileByKey(key);
+		if(modelFile != null){
+			EntitySet<Attachment> attachments = this.attachmentService.findAttachmentByForm(modelFile.getAttachmentCode(), "modelFileForm");
+			Iterator<Attachment> ite = attachments.iterator();
+			while(ite.hasNext()){
+				Attachment temp = ite.next();
+				if(temp != null){
+					return String.valueOf(temp.getEId());
+				}
+			}
+		}
+		return null;
+	}
+	
+	public EntitySet<ModelFile> findAllReportForm(Integer count){
+		try{
+			return this.modelFileService.findAllReportForm(count);
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+	
+	public List<StatsReport> getAllReportFormGroupByType(){
+		try{
+			return this.modelFileService.getAllReportFormGroupByType();
+		} catch (DDDException e) {
+			throw e;
+		}
+		
+	}
+	
+	private boolean genePermissionForModelFile(ModelFile modelFile){
+		try{
+			if("报表".equals(modelFile.getType())){
+				Permission permission = new Permission();
+				String code = modelFile.getModelKey()+"_display";
+				
+				Permission checkUnique = this.permissionDao.findPermissionByCode(code);
+				if(checkUnique != null){
+					modelFile.setPermission(checkUnique.getCode());
+					return false;
+				}
+				
+				permission.setCode(code);
+				permission.setName("查看"+modelFile.getName());
+				
+				String moduleCode = this.systemConfigService.findSystemConfigValueBykey("reportPermissionModule");
+				if (moduleCode == null || moduleCode.equals(""))
+				{
+					moduleCode = "000200010001";
+				}
+				
+				Module module = moduleDao.findModulesByCode(moduleCode);
+				if(module == null){
+					throw new DDDException("在查找报表时出错，没有找到级次编码为"+moduleCode+"的模块，请重新配置reportPermissionModule系统参数，或添加模块");
+				} 
+				permission.setModule(module);
+				
+				Permission result = permissionService.savePermission(permission);
+				modelFile.setPermission(permission.getCode());
+				if(result != null){
+					return true;
+				}else{
+					return false;
+				}
+			}else{
+				throw new DDDException("在为报表添加模板文件时出错， "+modelFile.getName() +"不是报表");
+			}
+		}catch(Exception e){
+			return false;
+		}
+
+	}
+}

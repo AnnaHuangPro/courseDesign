@@ -1,0 +1,44 @@
+<div ng-controller="modelTypeFormController">
+	<div ng-init="getInitModelTypeData()">
+		<form class="form-horizontal" name="modelTypeForm" novalidate>
+			<fieldset>
+				<legend class="legend">
+					<i class="glyphicon glyphicon-info-sign"></i>&nbsp;模型类型配置
+				</legend>
+				<div class="form-group form-content">
+					<label class="col-md-2 control-label" for="typeName"> 类型名称</label>
+					<div class=" col-md-4">
+						<input type="text" class="form-control" ng-model="modelType.typeName">
+					</div>
+					<label class="col-md-2 control-label" for="parent"> 父级模型类型</label>
+					<div class=" col-md-4">
+						<dreference reference-id="modelTypeFormmodelType"
+							list-view-key='modelTypeList' ng-model='modelType.parent'
+							show-model-filed='typeName'> </dreference>
+					</div>
+				</div>
+				<div class="form-group form-content">
+					<label class="col-md-2 control-label" for="remark"> 备注</label>
+					<div class=" col-md-10">
+						<textarea class="form-control" ng-model="modelType.remark"></textarea>
+					</div>
+				</div>
+				<div class="form-group form-content">
+					<label class="col-md-2 control-label"></label>
+					<div class=" col-md-10">
+						<diV class="btn-group">
+							<button class="btn btn-success btn-md" type="button"
+								ng-disabled="modelTypeForm.$invalid"
+								ng-click="saveModelType(modelType)">保存</button>
+							<button class="btn btn-primary btn-md" type="button"
+								ng-show="operate == 'add'" ng-disabled="modelTypeForm.$invalid"
+								ng-click="saveAndAddModelType(modelType)">保存并新增</button>
+							<button class="btn btn-danger btn-md" type="button"
+								ng-click="closeOperateTab()">取消</button>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</div>

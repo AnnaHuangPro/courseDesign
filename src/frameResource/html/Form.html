@@ -1,0 +1,124 @@
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($EntityNameAllLow="${entityClass.className.toLowerCase()}")
+#set($extension=".html") #set($fileName="${EntityNameUp}Form")
+#set($index = ${entityClass.packageName.lastIndexOf(".")} + 1)
+#set($simplePackage=${entityClass.packageName.substring($index)})
+#set($outputFile="${htmlAndjsCodeGenPath}${simplePackage}/html/${EntityNameLow}/${fileName}${extension}")
+#set($Integer = 0)
+<form ng-init="init()" class="form-horizontal"
+	name="${EntityNameLow}Form" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn btn-sm" ng-click="save${EntityNameUp}(false)"
+			ng-disabled="${EntityNameLow}Form.$invalid">保存</button>
+		<button class="btn btn-sm" ng-click="save${EntityNameUp}(true)"
+			ng-disabled="${EntityNameLow}Form.$invalid">保存并新增</button>
+		<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+			#foreach($fieldName in $entityClass.classColumnInfos.keySet())
+			#set($columnInfo=${entityClass.classColumnInfos.get($fieldName)})
+			#if(${columnInfo.id}) #elseif(${columnInfo.getName()} ==
+			'operatorCode') #elseif(${columnInfo.getName()} == 'inputCode')
+			#elseif(${columnInfo.getName()} == 'operateDate')
+			#elseif(${columnInfo.getName()} == 'orgId')
+			#elseif(${columnInfo.getType()} ==
+			${columnInfo.getColumnTypeOne2one()})
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="${fieldName}">
+					#if(!${columnInfo.nullable})   #end
+					${columnInfo.label}:
+				</label>
+				<div class="col-md-8">
+					<dreference list-view-key='${fieldName}Reference'
+						ng-model='${EntityNameLow}.${fieldName}' show-model-filed='name'
+						name="${fieldName}"
+						#if(!${columnInfo.nullable})
+								required="required" #end
+						class="form-control"></dreference>
+				</div>
+			</div>
+			#elseif(${columnInfo.getCodeTable()} != "")
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="${fieldName}">
+					#if(!${columnInfo.nullable})   #end
+					${columnInfo.label}:
+				</label>
+				<div class="col-md-8">
+					<dselect code-type-key="${columnInfo.getCodeTable()}"
+						class="form-control" id="${fieldName}"
+						ng-model="${EntityNameLow}.${fieldName}" selectname="${fieldName}"
+						#if(!${columnInfo.nullable})
+								required="required" #end
+						class="form-control"></dselect>
+				</div>
+			</div>
+			#elseif(${columnInfo.getClazz().toString()} == ${date.toString()})
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="${fieldName}">
+					#if(!${columnInfo.nullable})   #end
+					${columnInfo.label}:
+				</label>
+				<div class="col-md-8">
+					<input ddatepicker class="form-control" id="${fieldName}"
+						ng-model="${EntityNameLow}.${fieldName}" name="${fieldName}"
+						#if(!${columnInfo.nullable})
+								required
+							#end></input>
+				</div>
+			</div>
+			#elseif(${columnInfo.getClazz().toString()} ==
+			$Integer.class.toString())
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="${fieldName}">
+					#if(!${columnInfo.nullable})   #end
+					${columnInfo.label}:
+				</label>
+				<div class="col-md-8">
+					<input type="number" id="${fieldName}"
+						placeholder='${columnInfo.getComment()}' class="form-control"
+						ng-model="${EntityNameLow}.${fieldName}" name="${fieldName}"
+						max="65535"
+						#if(${columnInfo.length})
+								maxlength="${columnInfo.length}"
+						#end
+							#if(!${columnInfo.nullable})
+								required
+							#end />
+				</div>
+			</div>
+			#else
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label form-margin" for="${fieldName}">
+					#if(!${columnInfo.nullable})   #end
+					${columnInfo.label}:
+				</label>
+				<div class="col-md-8">
+					<input type="text" id="${fieldName}"
+						placeholder='${columnInfo.getComment()}' class="form-control"
+						ng-model="${EntityNameLow}.${fieldName}" name="${fieldName}"
+						#if(${columnInfo.length})
+								maxlength="${columnInfo.length}"
+						#end
+							#if(!${columnInfo.nullable})
+								required
+							#end />
+				</div>
+			</div>
+			#end #end
+		</div>
+	</fieldset>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#introduce">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+		</legend>
+		<div id="introduce" class="row collapse in">
+			<dddintroduce name="name"></dddintroduce>
+		</div>
+	</fieldset>
+</form>

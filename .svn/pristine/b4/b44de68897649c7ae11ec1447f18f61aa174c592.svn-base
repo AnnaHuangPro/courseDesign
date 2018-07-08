@@ -1,0 +1,66 @@
+<div class="col-md-12 col-xs-12 col-md-12"
+	ng-controller="taskFormController" ng-init="initTaskInfo()">
+	<div class="panel panel-default" style="margin-top: 5px;">
+		<div class="panel-heading">
+			<img src="simple/view/workflow/asset/task-50.png"
+				style="position: absolute; left: 30px; top: 21px;">
+			<h4 style="text-align: center">{{taskDetailInfo.name}}[{{taskDetailInfo.processName}}]</h4>
+			<h5 style="text-align: center; font-weight: bold">创建时间:{{taskDetailInfo.createTime==null?'未创建时间':taskDetailInfo.createTime
+				| date:'yyyy-MM-dd hh:mm:ss'}}</h5>
+		</div>
+		<div class="panel-body">
+			<div ng-if="taskType != 'nonHandleTask'">
+				<div class="col-md-12" id="workFlowFormId" ui-view="treeWorkFlow"></div>
+				<div class="col-md-12">
+					<form-priview model-data="taskDetailInfo.formKeyData"
+						dynamic-form-key="taskDetailInfo.formKey"
+			            dynamic-form-type="display"> 
+			        </form-priview>
+				</div>
+			</div>
+			<div ng-show="taskType == 'nonHandleTask'">
+				<div class="row">
+					<div class="col-md-12" id="workFlowFormId" ui-view="treeWorkFlow"></div>
+					<div class="col-md-12">
+						<form-priview model-data="taskDetailInfo.formKeyData"
+							dynamic-form-key="taskDetailInfo.formKey"> 
+				        </form-priview>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<div class="col-md-12">
+						<dynamicForm datasources="taskDetailInfo.dddDynamicFormObjects"></dynamicForm>
+					</div>
+					<div class="col-md-12">
+						<a ng-click="submitTask()" class=" btn btn-primary pull-right"
+							style="margin-top: 25px">提交</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<legend class="legend" data-toggle="collapse" href="#checkHistory"
+						style="cursor: pointer">
+						<i class="glyphicon glyphicon-edit"></i>&nbsp;审批历史
+					</legend>
+					<check-option id="checkHistory" form-id="taskDetailInfo.formId"
+						form-Type="{{taskDetailInfo.formType}}"></check-option>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12" fieldset>
+					<legend class="legend" data-toggle="collapse" href="#processImg"
+						style="cursor: pointer">
+						<i class="glyphicon glyphicon-edit"></i>&nbsp;流程图
+					</legend>
+					<div id="processImg" class="collapse">
+						<img ng-src="../Workflow/getProcessImage?processInstanceId={{taskDetailInfo.processInstanceId}}&newDate={{taskDetailInfo.newDate}}" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

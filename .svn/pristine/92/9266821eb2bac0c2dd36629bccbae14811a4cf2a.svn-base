@@ -1,0 +1,53 @@
+<div ng-controller="modelTypeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<!-- <div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.operateDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.orgId}}</span>
+				</div>
+			</div> -->
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeCode">类型编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.typeCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="typeName">类型名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{modelType.typeName}}</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回" ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

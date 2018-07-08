@@ -1,0 +1,13 @@
+        function updateView(firstTime) {
+          var newScope,
+              name            = getUiViewName(scope, attrs, $element, $interpolate),
+              previousLocals  = name && $state.$current && $state.$current.locals[name];
+
+          if (!firstTime && previousLocals === latestLocals) return; // nothing to do
+          newScope = scope.$new();
+          latestLocals = $state.$current.locals[name];
+
+          //此行代码的修改是为了不修改上次的路由
+ 	     if(name){
+ 	    	 if(!latestLocals) return;
+	     }

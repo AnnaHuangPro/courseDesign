@@ -1,0 +1,1 @@
+{"route":"main.list.role.roleListRoute","name":"角色管理","permissionMap":[{"role_display":{"actionPaths":["../Role/findRoleById","../Role/findAllRole"],"permissionCode":"","permissionName":"查看角色"}}]}

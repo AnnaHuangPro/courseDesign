@@ -1,0 +1,36 @@
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<img alt="Brand" src="/CMS/ddd/vip/img/brand.png"><strong>会员中心</strong>
+		</div>
+		<ul class="nav navbar-nav navbar-right iconOperateUl">
+			<li class="navbar-text divided">|</li>
+			<li class="navbar-text"><a data-toggle="dropdown"
+				class="navbar-link"> <!-- 换单位 --> <i
+					class="glyphicon glyphicon-cog"></i></a>
+				<ul class="dropdown-menu" role="menu" style="padding-left: 20px;">
+					<li>点击切换单位</li>
+					<li class="divider"></li>
+					<li ng-repeat="group in loginUser.groups"
+						ng-show="loginUser.currentGroup.name != group.name"><a
+						ng-click="changeGroup(group)"
+						style="cursor: pointer; display: block; padding-left: 10px; border-radius: 5px;"
+						title="点击选择分组">{{group.name}}</a></li>
+				</ul></li>
+			<li class="navbar-text" ng-click="vipLoginOut()"><a  class="navbar-link"><i
+					class="glyphicon glyphicon-log-out"></i></a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">
+			<li class="navbar-text">
+				<a class="navbar-link">
+				<i class="glyphicon glyphicon-home"></i>首页</a>
+			</li>
+			<li ng-if="ifDisplayAdminloginButton" class="navbar-text">
+				<a href="index.html" class="navbar-link" target="_blank">后台登录</a>
+			</li>
+			<li class="navbar-text"><a  class="navbar-link">
+				<i class="glyphicon glyphicon-user"></i>{{member.nickname}}</a>
+			</li>
+		</ul>
+	</div>
+</nav>

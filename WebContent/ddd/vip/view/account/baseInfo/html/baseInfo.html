@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="vip/view/account/css/content.css" />
+
+<div ng-init="initMemberData()">
+	<form class="form-horizontal" role="form" id="baseInfo_form"
+		name="baseInfo_form">
+		<div class="row rowddd"></div>
+		<div class="col-md-12 profile">
+			<div class="title">基本资料</div>
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="sex"> 性别</label>
+				<div class="col-md-3 sex">
+					<label class="sex_radio"><input type="radio" name="sex" value="男 " ng-model="member.sex">男</label>
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<label class="sex_radio"><input type="radio" name="sex" value="女" ng-model="member.sex">女</label>	
+				</div>
+			</div>	
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="birthday"> 生日</label>
+				<div class="col-md-6">
+					<ddatepicker class="form-control" ng-model="member.birthday"
+						name="birthday"></ddatepicker>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="currentCareer">
+					当前职业</label>
+				<div class="col-md-3">
+					<select ng-model="member.currentCareer" class="form-control"
+						ng-options="career for career in allCareer">
+						<option value="0">--请选择--</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="email">电子邮件</label>
+				<div class="col-md-6">
+					<input type="email" class="form-control" name="email" id="email"
+						ng-model="member.email" required>
+				</div>
+				<span ng-messages="baseInfo_form.email.$error" ng-messages-multiple
+					ng-messages-include="vip/view/account/html/error.html" ng-show="baseInfo_form.email.$dirty"></span>
+			</div>
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" for="introduce"> 个人简介:
+				</label>
+				<div class="col-md-9">
+					<textarea type="text" class="form-control"
+						ng-model="member.introduce" name="introduce" ng-maxlength="200"
+						id="introduce" style="height: 160px; resize: none;"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-11">
+					<div class="col-md-12">
+						<input class="btn btn-info col-md-offset-10" type="submit"
+							value="保存" ng-disabled="baseInfo_form.$invalid"
+							ng-click="updateMember(member)">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+

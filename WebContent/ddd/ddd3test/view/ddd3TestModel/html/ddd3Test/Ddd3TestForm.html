@@ -1,0 +1,129 @@
+<div class="row" ng-init="init()">
+	<form class="form-horizontal" ddd-form-validate
+		name="ddd3TestForm" role="form">
+		<div class="btn-group form-buttongroup" style="padding-top: 15px;">
+			<input ng-disabled="ddd3TestForm.$invalid" ng-click="saveDdd3Test()"
+				ng-disable="ddd3TestForm.$isvaild"
+				class="btn btn-primary form-buttongroup-margin" ng-model="d"
+				type="button" value="保存" type="button"> <input
+				ng-disabled="ddd3TestForm.$invalid"
+				ng-click="saveAndAddDdd3Test(ddd3Test)"
+				class="btn btn-primary form-buttongroup-margin" ng-model="d"
+				type="button" value="保存并新增" type="submit">
+			<!--         		<input  class="btn btn-primary form-buttongroup-margin"  export-btn configkey="视图导出配置"  type="button" value="导出（JSON）"  > -->
+			<a export-btn configkey="视图导出配置" ng-model="dddtest">导出（JSON）</a> <input
+				ng-click="a()" class="btn btn-primary" ng-model="d"
+				type="button" value="取消">
+		</div>
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#baseInfo"
+				style="cursor: pointer">
+				<span class="legend-title">基础信息</span>
+			</legend>
+			<div id="baseInfo" class="row collapse in">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin" for="inputCode">
+						姓名拼音</label>
+					<div class="col-md-8">
+						<input id="inputCode"
+							ui-validate-async="{unique : 'doesNotExist($modelValue)'}"
+							type="text" placeholder='唯一' tooltip='' class="form-control"
+							ng-model="ddd3Test.nameSpelling" name="inputCode" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin"
+						for="operatorCode"> 曾用名</label>
+					<div class="col-md-8">
+						<input type="text" placeholder='' required class="form-control"
+							ng-model="ddd3Test.usedName" name="operatorCode" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin" for="operateDate">
+						操作日期</label>
+					<div class="col-md-8">
+<!-- 						<ddatepicker format="yyyy年mm月dd日  HH时ii分ss秒    " required -->
+<!-- 							class="form-control" ng-model="ddd3Test.operateDate" -->
+<!-- 							name="operateDate"></ddatepicker> -->
+							<input ddatepicker class="form-control" no-enable="DDD" format="yyyy年mm月dd日" ng-model="ddd3Test.operateDate"/>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin" for="supervision">
+						监理职级</label>
+					<div class="col-md-8">
+						<dselect class="form-control" code-type-key='dddtestKey'  default-value="汉族1"
+							ng-model='ddd3Test.supervision' ></dselect>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin"
+						for="organization"> 所属单位(单选绑定实体)</label>
+					<div class="col-md-8">
+						<dreference list-view-key='organiz1ationList' 
+							ng-model='ddd3Test.organization' show-model-filed='name' multi-select="false"
+							name="organization" placeholder="" class="form-control"></dreference>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin"
+						for="organization"> 健康(单选绑定字符串)</label>
+					<div class="col-md-8">
+						<dreference list-view-key='organizationList' multi-select="false"
+							ng-model='ddd3Test.health' use-show-filed="true"
+							multi-select=false show-model-filed='name' name="organization"
+							placeholder="" class="form-control"></dreference>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" for="codeType"> 码表类型(多选绑定实体)</label>
+					<div class="col-md-8">
+						<dreference class="form-control"
+							reference-id="codeTableFormcodeType" list-view-key='codeTypeList' multi-select="true"
+							ng-model='ddd3Test.codeTypes' show-model-filed='name'>
+						</dreference>
+					</div>
+				</div>
+					<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" for="codeType"> 学历(多选绑定字符串)</label>
+					<div class="col-md-8">
+						<dreference class="form-control"
+							reference-id="codeTableFormcodeType" list-view-key='codeTypeList'  multi-select="true"
+							use-show-filed="true"
+							ng-model='ddd3Test.degree' show-model-filed='name'>
+						</dreference>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label form-margin"
+						for="departmentUnits"> 工作单位</label>
+					<div class="col-md-8">
+						<input type="text" placeholder='' class="form-control"
+							ng-model="ddd3Test.departmentUnits" name="departmentUnits"
+							ui-validate="{'啦啦啦德玛西亚' : 'notExist($value)'}" />
+					</div>
+				</div>
+
+				<div class="form-group col-md-12">
+					<label class="col-md-12" for="moduleFile"> 模板文件</label>
+					<div class="col-md-12">
+						<dfileupload associate-form-id="ddd3Test.eId" 
+						no-entity="true" save-fn="addDdd3Test(ddd3Test)" model="ddd3Test"
+							associate-form-name="ddd"></dfileupload>
+					</div>
+				</div>
+
+			</div>
+		</fieldset>
+		<fieldset class="col-md-12 head3">
+			<legend class="legend" data-toggle="collapse" href="#introduce"
+				style="cursor: pointer">
+				<i class="glyphicon glyphicon-info-sign"></i>&nbsp;说明
+			</legend>
+			<div id="introduce" class="row collapse in">
+				<dddintroduce id="introduceId" type="type"></dddintroduce>
+			</div>
+		</fieldset>
+	</form>
+</div>

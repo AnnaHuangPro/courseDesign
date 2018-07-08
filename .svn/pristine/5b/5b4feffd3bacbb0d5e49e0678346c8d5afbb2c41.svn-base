@@ -1,0 +1,36 @@
+<div ng-controller="entityTipsFormController">
+	<div class="row" ng-init="getInitEntityTipsData()">
+		<form class="form-horizontal" name="entityTipsForm"
+			ddd-form-validate="{ blurValidate: true}" novalidate>
+			<div class="row rowddd"></div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input class="btn sm col-md-offset-2" type="button"value="保存" ng-click="saveEntityTips(entityTips)">
+					<input class="btn btn-sm" type="button" value="保存并新增" ng-show="showSaveAndAddButton" ng-click="saveAndAddEntityTips(entityTips)"> 
+					<input class="btn btn-sm" type="button" value="返回" ng-click="back()" />
+				</div>
+			</div>
+			
+			<div class="form-group col-md-11">
+				<label class="col-md-2 control-label" for="EntityName"> <span
+					style="color: red">*</span> 实体名:
+				</label>
+				<div class="col-md-10">
+					<input type="text" class="form-control"
+						ng-model="entityTips.EntityName" name="EntityName" required />
+				</div>
+			</div>
+			<div class="form-group col-md-11">
+				<label class="col-md-2 control-label" for="EntityAttr"> <span
+					style="color: red">*</span> 实体说明:
+				</label>
+				<div class="col-md-10">
+					<textarea rows="10" class="form-control"
+						ng-model="entityTips.introduce" name="EntityAttr" required placeholder="请输入说明语句">
+					</textarea>
+				</div>
+				
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,5 @@
+/*这是报表高级检索对应的样式文件*/
+.my-test{
+	color: red;
+	cursor: pointer;
+}

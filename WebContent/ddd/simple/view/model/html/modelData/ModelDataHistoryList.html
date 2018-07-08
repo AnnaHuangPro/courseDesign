@@ -1,0 +1,20 @@
+<div class="row" ng-controller="modelDataHistoryListController">
+	<div class="col-md-12">
+		<dcolumnfilter class="pull-right" grid-name="modelDataHistoryListGrid"/>
+		<div class=" btn-group formBtnGroup">
+			<dpagination class="pull-left" grid-name="modelDataHistoryListGrid"></dpagination>
+			 <button class="btn" ng-click="refreshGrid()">
+			 	<i class='glyphicon glyphicon-refresh'></i>刷新
+			 </button>
+		</div>
+	</div>		
+	<ddatagrid class="col-md-12" name="modelDataHistoryListGrid"
+		id="modelDataHistoryListGrid" 
+		isoperation-column=true
+		show-operater-icon=true 
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons' 
+		init-filter='params'
+		list-view-key="historyList"> 
+	</ddatagrid>
+</div>

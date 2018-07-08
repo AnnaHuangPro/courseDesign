@@ -1,0 +1,8 @@
+#http请求放行（未登录时），键值对
+adminLogin=/Login
+vipLogin=/VipLogin/vipLogin
+saveMember=/Member/saveMember
+validateCode=/Member/validateCode
+returnCode=/Member/returnValidate
+loginOut=/VipLogin/vipLoginOut
+index=/Index/index

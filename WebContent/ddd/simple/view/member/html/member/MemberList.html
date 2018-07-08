@@ -1,0 +1,20 @@
+<div ng-controller="memberListController">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="memberListGrid" />
+			<div class="pull-right btn-group formBtnGroup">
+				<a class="btn " ng-click="addMember()"
+				ng-if="hasPermission('member_add')"><i
+				class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+				class="btn" ng-click="refreshGrid()"><i
+				class='glyphicon glyphicon-refresh'></i>刷新</a>
+			</div>
+	</div>
+				<ddatagrid 
+					name="memberListGrid"
+					class="col-md-12"
+					id="memberListGrid"
+					operation-columns='operationColumns'
+					operation-bar-buttons='operationBarButtons' 
+					list-view-key="memberList">
+				</ddatagrid>
+</div>

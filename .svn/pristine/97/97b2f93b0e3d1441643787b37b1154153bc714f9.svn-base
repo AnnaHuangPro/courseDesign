@@ -1,0 +1,40 @@
+angular.module('personalDataDisplayModule', [])
+.controller('personalDataDisplayController',['$rootScope','$scope','$state','angularPermission','$stateParams','EmployeeService','dialogs','HeadPortraitService',
+function($rootScope,$scope,$state,angularPermission,$stateParams,EmployeeService,dialogs,HeadPortraitService) {
+	var   employee = angularPermission.getLoginUser().employee;
+    $scope.logo = "simple/view/personalCenter/html/personalData/test.png";
+	$scope.modifyPassword = function() {
+		$state.go('main.list.personalData.modifyPasswordForm',{operate:'edit'});
+	}
+	$scope.modifyData = function() {
+		$state.go('main.list.personalData.personalDataForm',{operate:'edit'});
+	}
+	$scope.findEmployee = function() {
+		EmployeeService.findEmployeeById(employee.eId,sucessCB,errorCB);
+
+		function sucessCB(data)	{
+			$scope.employee = data;
+		};
+
+		function errorCB(error)	{
+			$rootScope.openErrorDialog(error);
+		}
+	}
+	$scope.init= function(){
+		$scope.findEmployee();
+		$scope.findHeadPortraitUrl();
+	}
+	$scope.findHeadPortraitUrl = function() {
+
+	HeadPortraitService.findLogoUrl(employee.eId,sucesscb,errorcb);
+
+	function sucesscb(data)	{
+	    $scope.logoUrl = data;
+	};
+
+	function errorcb(error)	{
+		console.log("获取头像失败！");
+	}
+	}
+	
+}]);

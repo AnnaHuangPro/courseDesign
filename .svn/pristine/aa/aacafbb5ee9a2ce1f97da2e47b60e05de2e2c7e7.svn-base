@@ -1,0 +1,18 @@
+#if($!{dataResource.get('isEdit')}=='是')
+#foreach($option in $dataResource.get('dataSource'))
+	<div #if($!dataResource.get('orientation') == '横排')
+			class="radio-inline ng-scope"
+		#else
+			class="radio ng-scope"
+		#end
+	>	
+		<label class="ng-binding">
+			<input type="radio" ng-model="modelData.$!{dataResource.get('bundle')}" value="$option.get('value')"
+			#if($option.get('isDefaultValue')=='true') ng-checked="true" #end />$option.get('name')
+		</label>
+	</div>
+#end　
+#else
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>
+#end
+

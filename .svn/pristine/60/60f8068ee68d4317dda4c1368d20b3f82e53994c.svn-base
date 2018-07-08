@@ -1,0 +1,22 @@
+<div class="row">
+	<div class="col-md-12">
+		<div class="btn-group formBtnGroup">
+		<dpagination class="pull-left" grid-name="departmentListGrid" ></dpagination>
+			<button class="btn " ng-click="addDepartment()"
+				ng-if="hasPermission('department_add')">
+				<i class='glyphicon glyphicon-plus-sign'></i>新增
+			</button>
+		</div>
+		<dcolumnfilter class="pull-right" grid-name="departmentListGrid" />
+	</div>
+	<ddatagrid
+		class="col-md-12"
+		id="departmentListGrid"
+		name="departmentListGrid"
+		inner-tree="false"
+		code-name="departmentId"
+		withheader-select="true"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="departmentList"> </ddatagrid>
+</div>

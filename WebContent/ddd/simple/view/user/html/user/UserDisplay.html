@@ -1,0 +1,103 @@
+<form ng-init="init()" class="form-horizontal">
+	<div class="btn-group formBtnGroup topRight">
+		<button class="btn" ng-click="closeOperateTab()">取消</button>
+	</div>
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div id="baseInfo" class="row collapse in">
+						  						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码
+				</label>
+				<div class="col-md-8">
+					<span>{{user.inputCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码
+				</label>
+				<div class="col-md-8">
+					<span>{{user.operatorCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期
+				</label>
+				<div class="col-md-8">
+					<span>{{user.operateDate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键
+				</label>
+				<div class="col-md-8">
+					<span>{{user.orgId}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注
+				</label>
+				<div class="col-md-8">
+					<span>{{user.remark}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="attachmentCode">附件编码
+				</label>
+				<div class="col-md-8">
+					<span>{{user.attachmentCode}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="userName">用户名
+				</label>
+				<div class="col-md-8">
+					<span>{{user.userName}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="passWord">密码
+				</label>
+				<div class="col-md-8">
+					<span>{{user.passWord}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="phone">联系方式
+				</label>
+				<div class="col-md-8">
+					<span>{{user.phone}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="email">邮箱
+				</label>
+				<div class="col-md-8">
+					<span>{{user.email}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="gender">性别
+				</label>
+				<div class="col-md-8">
+					<span>{{user.gender}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="birthdate">出生日期
+				</label>
+				<div class="col-md-8">
+					<span>{{user.birthdate}}</span>
+				</div>
+			</div>
+			 						<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="address">地址
+				</label>
+				<div class="col-md-8">
+					<span>{{user.address}}</span>
+				</div>
+			</div>
+			 		</div>
+	</fieldset>
+</form>

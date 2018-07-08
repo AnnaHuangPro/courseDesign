@@ -1,0 +1,15 @@
+ <div>
+ 	<div style=" margin-top: 15px; border-bottom: 1px solid #eee;">
+  		<h2>角色复制 </h2>
+	</div> 
+	<div>
+	<div  style="padding:20px;">
+		<h4>请选择复制源</h4>
+		<dreference list-view-key="operator" ng-model="sourceOperator" multi-select="true" show-model-filed="name" class="form-control"></dreference>  
+		<div style="padding-left:79%;padding-top:21px">
+		<input type="button" value="确认" class="btn btn-primary" ng-click="done()"/>
+		<input type="button" value="返回" class="btn btn-primary" ng-click="cancel()"/>  
+		</div> 
+	</div>
+	</div>
+</div> 

@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-12">
+		<dcolumnfilter grid-name="externalInterfaceListGrid"/>
+		<div class="pull-right btn-group formBtnGroup">
+			<a class="btn " ng-click="addExternalInterface()"
+				ng-if="hasPermission('externalInterface_add')"><i
+				class='glyphicon glyphicon-plus-sign'></i>新增</a> <a
+				class="btn" ng-click="refreshGrid()"><i
+				class='glyphicon glyphicon-refresh'></i>刷新</a>
+		</div>
+	</div>
+			<ddatagrid id="externalInterfaceListGrid" 
+				name="externalInterfaceListGrid"
+				operation-columns='operationColumns'
+				operation-bar-buttons='operationBarButtons'
+				list-view-key="externalInterfaceList"> </ddatagrid>
+</div>
+

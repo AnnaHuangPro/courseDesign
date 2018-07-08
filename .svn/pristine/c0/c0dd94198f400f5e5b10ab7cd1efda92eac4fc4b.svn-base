@@ -1,0 +1,558 @@
+<div>
+	<div class="row" ng-init="init()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			<div class="form-group col-md-6">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" value="取消" type="button" ng-click="cancelOperate()" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="inputCode">输入码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.inputCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operatorCode">操作人编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.operatorCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="operateDate">操作日期 </label>
+				<div class="col-md-8 value-display">
+					<ddatepicker   display-only=true format="yyyy年mm月dd日" ng-model="ddd3Test.operateDate"></ddatepicker>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="orgId">单位主键 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.orgId}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.remark}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="nameSpelling">姓名拼音 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.nameSpelling}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="usedName">曾用名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.usedName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="health">健康状况 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.health}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="degree">文化程度(学历) </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.degree}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="workTime">参加工作时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.workTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="administrativelevel">行政级别 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.administrativelevel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="externalType">外聘类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.externalType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="mobilePhone">移动电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.mobilePhone}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="officePhone">办公电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.officePhone}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="bureauUnits">工作单位（局级） </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.bureauUnits}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="levelUnits">工作单位（处级） </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.levelUnits}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervision">监理职级 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervision}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="departmentUnits">工作单位（科级） </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.departmentUnits}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisionUnit">工作单位(监督部) </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisionUnit}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="professionalLevel">专业级别 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.professionalLevel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="assessmentResults">考核结果 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.assessmentResults}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employedOilField">受聘油田 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.employedOilField}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="contractFirms">所属承包劳务公司 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.contractFirms}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="technicalLevel">技术级别（职称） </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.technicalLevel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="titleTime">职称时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.titleTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="fieldWorkingExperience">现场工作年限 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.fieldWorkingExperience}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisoryWorkingYears">监督工作年限 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisoryWorkingYears}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="petroChinaMailbox">中石油邮箱 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.petroChinaMailbox}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="socialMailbox">社会邮箱 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.socialMailbox}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="postDynamics">岗位动态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.postDynamics}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="onlineUserName">网上用户名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.onlineUserName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="technicalExpertise">技术特长 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.technicalExpertise}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisionName">监督名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisionName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="SupervisionLevel">监督级别 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.SupervisionLevel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisionCertCod">监督证书编号 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisionCertCod}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisionCertCodDate">监督证书取证日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisionCertCodDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="supervisionIA">监督证书发证机关 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.supervisionIA}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="welControlCertCode">井控证书编号 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.welControlCertCode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="welControlCertCodeDate">井控证书取证日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.welControlCertCodeDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="wellControlCertIA">井控证书发证机关 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.wellControlCertIA}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="HSECode">HSE证书编号 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.HSECode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="HSECodeDate">HSE证书取证日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.HSECodeDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="HSEIA">HSE证书发证机关 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.HSEIA}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="mailingAddress">通信地址 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.mailingAddress}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="postcode">邮政编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.postcode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="code">职员编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.code}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">姓名 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="property">属性 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.property}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="jobName">职称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.jobName}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="workDayTemplate">考勤方案 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.workDayTemplate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="graduateSchool">毕业学校 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.graduateSchool}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="major">专业 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.major}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="linkTel">联系电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.linkTel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="faxNumber">传真 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.faxNumber}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="email">电子邮件 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.email}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="specialAbility">特长 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.specialAbility}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="enable">是否启用 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.enable}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="description">备注 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.description}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="workPosition">岗位 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.workPosition}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="workMode">工种 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.workMode}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employeePosition">职位 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.employeePosition}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="organization.name"> 所属单位</label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.organization.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="department.name"> 所属部门</label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.department.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="employeeType">职员类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.employeeType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dimissionReason">离职原因 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.dimissionReason}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="sex">性别 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.sex}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="emergencyTel">紧急联系电话 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.emergencyTel}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="maritalStatus">婚姻状况 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.maritalStatus}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="bankCardNo">银行号码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.bankCardNo}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dimissionTime">离职时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.dimissionTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="graduateTime">毕业时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.graduateTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="emergencyAddress">紧急联系人地址 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.emergencyAddress}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="bankAddr">开户行地址 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.bankAddr}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="contractBeginTime">合同开始时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.contractBeginTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="birthDate">出生日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.birthDate}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="joinCompanyType">入司方式 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.joinCompanyType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="cardOfBank">银行卡开户行 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.cardOfBank}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="regularizationTime">转正时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.regularizationTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="nativePlace">籍贯 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.nativePlace}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="marriedTime">结婚时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.marriedTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="onJobState">在职状态 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.onJobState}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="identityCardNo">身份证号码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.identityCardNo}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="joinCompanyTime">入司时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.joinCompanyTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="nation">民族 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.nation}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="contractSignTime">合同签订日期 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.contractSignTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="address">住址 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.address}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="contractEndTime">合同结束时间 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.contractEndTime}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="politicStatus">政治面貌 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.politicStatus}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="dimissionType">离职类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.dimissionType}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="lastedEducationBackground">最高学历 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.lastedEducationBackground}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="drivingLicense">驾照类型 </label>
+				<div class="col-md-8 value-display">
+					<span>{{ddd3Test.drivingLicense}}</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

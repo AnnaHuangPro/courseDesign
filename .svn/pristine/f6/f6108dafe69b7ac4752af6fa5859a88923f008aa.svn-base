@@ -1,0 +1,26 @@
+ <div class="ng-scope">
+	<div style="color: rgb(51, 51, 51) !important; border: 1px solid rgb(221, 221, 221);">
+		<div>
+			<span class="btn btn-success" ng-click="closeThisDialog()">关闭</span>
+		</div>
+		<div class="row bg-danger">
+		  <div class="span4">{{clientError.id}}</div>
+		  <div class="span8">{{clientError.message}}</div>
+		</div>
+		<div class="row">
+		</div>
+		<legend style="" ng-click = "showDebug = !showDebug">
+			<i class="glyphicon glyphicon-info-sign"></i>&nbsp;调试信息
+		</legend>
+		<fieldset ng-show="showDebug">
+			<div ng-repeat="rootMessage1 in clientError.rootMessages track by $index" class="row bg-danger" >
+			  <div class="span12">{{rootMessage1}}</div>
+			</div>
+			<div ng-repeat="(key, value) in clientError.extendedData" class="row bg-danger" >
+			  <div class="span12">{{key}}:{{value}}</div>
+			</div>				
+		</fieldset>	
+	</div>
+</div>
+ 
+ 

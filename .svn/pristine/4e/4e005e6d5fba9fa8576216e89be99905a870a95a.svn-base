@@ -1,0 +1,13 @@
+<td class="text-right " >{{timePickerLabel}}: </td>
+<td><div class="form-group form-table">
+	<timepicker ng-model="tempmodel"
+		template-url="compents/timepicker/timepicker.html" hour-step="1"
+		minute-step="1" show-meridian="true"></timepicker>
+</div>
+<td class="text-right " >{{datePickerLabel}}: </label>
+<td><div class="form-group form-table">
+		<input type="date" class="form-control" datepicker-popup 
+			ng-model="tempmodel" is-open="ture" ng-required="true"
+			close-text="Close" />
+	</div>
+</div>

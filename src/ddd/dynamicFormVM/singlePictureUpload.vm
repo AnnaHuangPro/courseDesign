@@ -1,0 +1,47 @@
+#if($!{dataResource.get('isEdit')}=='是')
+		<dimgupload 
+			#if($!dataResource.get('imgWidth')&&$!dataResource.get('imgWidth')!="")
+				img-width='$!dataResource.get('imgWidth')'
+			#else
+			 	img-width='100'
+			#end
+			#if($!dataResource.get('imgHeight')&&$!dataResource.get('imgHeight')!="")
+				img-height='$!dataResource.get('imgHeight')' 
+			#else
+				img-height='100'
+			#end
+			limit-width='$!dataResource.get('limitWidth')'
+			limit-height='$!dataResource.get('limitHeight')'
+			limit-type='$!dataResource.get('limitType')'
+			limit-sizeM='$!dataResource.get('limitSizeM')'
+			limit-sizeK='$!dataResource.get('limitSizeK')'
+			limit-sizeB='$!dataResource.get('limitSizeB')'
+			is-fill-url='true'
+			ng-model='modelData.$!dataResource.get('bundle')'>
+		</dimgupload>
+#else
+		<div style="#if($!dataResource.get('imgWidth'))
+				width:$!dataResource.get('imgWidth')px;
+			#else
+			 	width:100px;
+			#end
+			#if($!dataResource.get('imgHeight'))
+				height:$!dataResource.get('imgHeight')px; 
+			#else
+				height:100px;
+			#end ">
+		<img
+			#if($!dataResource.get('imgWidth'))
+				width='$!dataResource.get('imgWidth')px'
+			#else
+			 	width='100px'
+			#end
+			#if($!dataResource.get('imgHeight'))
+				height='$!dataResource.get('imgHeight')px' 
+			#else
+				height='100px'
+			#end 
+			ng-src="{{modelData.$!dataResource.get('bundle')}}" 
+			alt="图片失效"
+		></div>
+#end

@@ -1,0 +1,2 @@
+'StorageUtil':['angular'],
+'ueditorAll':['ueditorConf'],

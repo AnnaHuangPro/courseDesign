@@ -1,0 +1,53 @@
+
+define(["app"], function (app) 
+{
+	app.factory("ModelFileService", function($resource) 
+	{
+		var modelFileService = $resource("../ModelFile/:action", {});
+		modelFileService.saveModelFile=function(modelFile,sucesscb,errorcb)
+		{
+			modelFileService.save({action:"saveModelFile"},modelFile,sucesscb,errorcb);
+		};
+		
+		modelFileService.deleteModelFile=function(modelFileId,sucesscb,errorcb)
+		{
+			modelFileService.save({action:"deleteModelFile"},modelFileId,sucesscb,errorcb);
+		};
+		
+		modelFileService.updateModelFile=function(modelFile,sucesscb,errorcb)
+		{
+			modelFileService.save({action:"updateModelFile"},modelFile,sucesscb,errorcb);
+		};
+		 
+		modelFileService.findModelFileById=function(modelFileId,sucesscb,errorcb)
+		{
+			modelFileService.get({action:"findModelFileById",modelFileId:modelFileId},sucesscb,errorcb);
+		};
+		
+		modelFileService.findAllModelFile=function(sucesscb,errorcb)
+		{
+			modelFileService.query({action:"findAllModelFile"},sucesscb,errorcb);
+		}
+		
+		modelFileService.findModelFileAttachmentsId=function(key,sucesscb,errorcb)
+		{
+			modelFileService.get({action:"findModelFileAttachmentsId",key:key},sucesscb,errorcb);
+		}
+		
+		modelFileService.getAllReportFormGroupByType=function(sucesscb,errorcb)
+		{
+			modelFileService.query({action:"getAllReportFormGroupByType"},sucesscb,errorcb);
+		}
+		
+		modelFileService.getAllReportFormGroupByType2=function(sucesscb,errorcb)
+		{
+			modelFileService.query({action:"getAllReportFormGroupByType2"},sucesscb,errorcb);
+		}
+		
+		modelFileService.findAllReportForm=function(count,sucesscb,errorcb)
+		{
+			modelFileService.get({action:"findAllReportForm",count:count},sucesscb,errorcb);
+		}
+		
+		return modelFileService;
+})});

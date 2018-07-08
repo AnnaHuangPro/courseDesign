@@ -1,0 +1,43 @@
+<table class="table table-bordered dchannel-table">
+	<tbody>
+		<tr class="item-default">
+			<td class="col-md-12" >
+				<div class="btn-group" ng-repeat="operationBarButton in operationBarButtons">
+					<a class="btn btn-primary {{operationBarButton.buttonClass}}" ng-click="operationBarButtonClick(operationBarButton)" ><i
+				class='{{operationBarButton.icon}}'></i>{{operationBarButton.label}}</a>&nbsp;					
+				</div>
+				 <div ng-controller="selectController" ng-if="reference">
+					<dreference class="col-md-5 pull-right" reference-id="{{reference.listViewKey}}" list-view-key='{{reference.listViewKey}}' ng-model='selectData' show-model-filed='{{reference.showFiled}}' name="{{reference.listViewKey}}" multi-select="{{reference.multiSelect}}"></dreference>
+				</div>
+			</td>
+		</tr>
+		<tr class="item-default">
+			<td class="col-md-12 " >
+				<table class="table table-condensed" style="hieght:500px;width:100%">
+					<thead>
+						<tr>
+							<th ng-repeat="displayColumn in displayColumns">{{displayColumn.label}}</th>
+							<th ng-if="operationColumns.length>0">操作</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="showData in showDatas">
+							
+	            			<th ng-repeat="displayColumn in displayColumns">
+	            				<input type='text' ng-model="showData[displayColumn.filed]" ng-if="displayColumn.type=='input'" style="width: 150px; height: 27px;">
+	            				<input type='number' ng-model="showData[displayColumn.filed]" ng-if="displayColumn.type=='number'" style="width: 150px; height: 27px;">
+	            				<label ng-if="displayColumn.type=='label'" style="height: 27px;">{{showData[displayColumn.filed]}}</label>
+			                </th>
+			                <th>
+								<div style="width: 80px; height: 27px;" >
+									<span ng-repeat="operationColumn in operationColumns"><a ng-click="operationColumnClick(showData,$index)">{{operationColumn.label}}</a>&nbsp;&nbsp;</span>
+								</div>
+	            			</th>
+						</tr>
+					</tbody>
+				</table>
+                <ul  style="display:inline" uib-pagination total-items="totalRecords" ng-model="currentPage" ng-change="pageChanged(currentPage)" max-size="pageSize" items-per-page="pageSize" class="pagination-sm" boundary-links="true" num-pages="numPages"></ul>
+			</td>
+		</tr>
+	</tbody>
+</table>

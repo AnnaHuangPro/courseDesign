@@ -1,0 +1,239 @@
+@import "../../../../../html/less/base/z";
+@import "../../../../../html/less/base/css3";
+
+.clearfix{
+	.clearfix();
+}
+
+.vip_top{
+	font: 12px/1.5 Tahoma,Helvetica,Arial;
+	@height:35px;
+	
+	a:hover{
+		color:red;
+	}
+	.top-menu{
+		margin-right:75px;
+	}
+	
+	.navbar-brand {
+		height:@height;
+		padding-top: 10px;
+	}
+	.navbar {
+		min-height: @height;
+		height:@height;
+	}
+	
+	.navbar-toggle {
+		margin-top: 4px;
+		margin-bottom: 4px;
+	}
+	.navbar-nav{
+		min-height:@height;
+		height:@height;
+		li{
+			a{
+				padding:0;
+				line-height:@height;
+			}
+			margin-right:25px;
+		}
+		.vipUserName:hover{
+			cursor:text;
+		}
+		.vipTopCss:hover{
+			cursor:pointer;
+			color:red;
+		}
+	}
+	.nav, .pagination, .carousel, .panel-title a{
+		cursor:default;
+	}
+}
+
+.vip_left{
+	background:#f4f4f4;
+	
+	.vip_user_info{
+		.vip_mod_user_avatar:hover .account-avatar-edit {
+		  height:17px;
+		}
+		.account-avatar-edit{
+			background: rgba(64, 64, 64, 0.5) none repeat scroll 0 0;
+			bottom: 0px;
+			color: #ccc;
+			display: block;
+			height: 0;
+			left: 0;
+			overflow: hidden;
+			position: absolute;
+			text-align: center;
+			transition: all 0.3s ease 0s;
+			width: 100%;
+		}
+		.account-avatar-edit:hover{
+			cursor:pointer;
+		}
+		.vip_avatar{
+			display: block;
+		    position: relative;
+		    width: 120px;
+		    height: 120px;
+		}
+		padding-top:15px;
+		.vip_info_list{
+			margin:10px 0;
+			ul{
+				padding:0;
+				li{
+					list-style:none;
+				}
+			}
+		}
+			
+		.vip_mod_user_avatar{	
+		    background-color: #f4f1f1;
+		    overflow: hidden;
+		}
+		.show_userInfo{
+			margin: 51px 0px 0px 0px;
+			text-align: center;
+		}
+		
+		.nick_name{
+			font-size: 15px;
+		    color: #333;
+		    font-family: tahoma,"microsoft yahei";
+		}
+	    .account_quit{
+	    	padding: 0;
+			text-align: right;
+			a{
+				color: #d30000;
+    			text-decoration: none;
+    			&:hover{
+    				cursor:pointer;
+    				text-decoration: underline;
+    			}
+			}
+	    }
+	}
+	.side_box_a{
+		margin:35px 0;
+		
+		.vip_upgrade_btn{
+			width:100%;
+			background-color: rgb(201,26,0);
+			height:55px;
+			text-align: center;
+		    font-size: 20px;
+		    font-weight: bold;
+		    font-family: "microsoft yahei";
+		    .box-shadow(5px 5px 5px rgba(174, 164, 164, 0.99));
+		}
+		.vip_upgrade_btn:hover{
+			opacity: 0.8;
+			font-size: 21px;
+		}
+	}
+	
+	.vip_function_menu{
+		@heading_h:70px;
+		@deep_red:#d30000;
+		padding-right:0;
+		padding-bottom:40px;
+		font-family: "microsoft yahei";
+		a:hover{
+			text-decoration:none;
+		}
+		.panel{
+			border:0;
+			background:transparent;
+			.box-shadow(none);
+			&.in{
+				.menu_icon{
+					color:@deep_red;
+				}
+				background:white;
+			}
+			.collapsing{
+				background:white;
+			}
+		}
+		
+		.open{
+			background:white;
+		}
+		.panel-heading{
+			height:@heading_h;
+			font-family: "microsoft yahei";
+			background:transparent;
+			.panel-title{
+				height:100%;
+				line-height:@heading_h;
+			}
+			.menu_tit{
+				top: -6px;
+			    position: relative;
+			    margin-left: 10px;
+			    font-family: "microsoft yahei";
+			    font-size: 18px;
+			}
+			.menu_icon{
+				font-size:30px;
+				color:rgb(209,209,209);
+			}
+			&:hover{
+				cursor:pointer;
+				background:white;
+				.menu_icon{
+					color:@deep_red;
+				}
+			}
+		}
+		.list-group{
+			.box-shadow(none);
+			li{
+				padding-left:60px;
+				font-size: 14px;
+			    display: block;
+			    height: 35px;
+			    line-height: 35px;
+			    padding-left: 55px;
+			    &:hover{
+			    	cursor:pointer;
+			    	a{
+			    		color:@deep_red;
+			    	}
+			    }
+				a{
+				    color: #595959;
+				}
+				.in{
+					color:@deep_red;
+				}
+			}
+		}
+		
+	}
+}
+.vip_welcome{
+	.item{
+		img{
+			width:800px;
+			height:450px;
+		}
+	}
+	h3{
+		a{  
+			text-decoration: none;
+		   	box-shadow: -10px 0 10px #FAFAFA, 10px 0 10px #FCFCFC, 0 -10px 10px #FDFDFD, 0 10px 10px #FCFCFC; 
+		}
+	}
+}
+.logo_up{
+		.ngdialog-close{
+			position: relative !important;
+		}
+	}

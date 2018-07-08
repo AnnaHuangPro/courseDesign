@@ -1,0 +1,55 @@
+angular.module('personalDataFormModule', [])
+.controller('personalDataFormController',['$rootScope','$scope','$state','angularPermission','$stateParams','dialogs','EmployeeService',
+function($rootScope,$scope,$state,angularPermission,$stateParams,dialogs,EmployeeService) {
+	var  eId= angularPermission.getLoginUser().employee.eId;
+		$scope.init = function() {
+			//$scope.employee = angularPermission.getLoginUser().employee;
+			$scope.findEmployee();
+		}
+		$scope.findEmployee = function() {
+			EmployeeService.findEmployeeById(eId,sucessCB,errorCB);
+
+			function sucessCB(data)	{
+				$scope.employee = data;
+			};
+
+			function errorCB(error)	{
+				$rootScope.openErrorDialog(error);
+			}
+		}
+
+		$scope.saveEmployee = function(isNeedNew) {
+				$scope.updateEmployee($scope.employee,isNeedNew);
+		}
+		
+		$scope.updateEmployee = function(employee,isNeedNew) {
+			
+			if(angularPermission.hasPermission('personalData_edit')) {
+				EmployeeService.updateEmployee(employee,sucessCB,errorCB);
+			}
+			else {
+				dialogs.error("错误","操作: 编辑  未被授权，请联系管理人员");
+			}
+			function sucessCB()	{
+					$rootScope.closeOperateTab();
+					$state.go('main.list.personalData.personalDataDisplay');
+			}
+			function errorCB(error)	{
+				$rootScope.openErrorDialog(error);
+			}
+		};
+		
+//		$scope.cancel = function() {
+//			$rootScope.closeOperateTab();
+//			$state.go('main.list.personalData.personalDataDisplay');
+//		}
+		function refreshGrid(){
+			$scope.refreshGrid("codeTableListGrid");
+		}
+		$scope.back = function() {
+			$rootScope.closeOperateTab();
+			$state.go('main.list.personalData.personalDataDisplay');
+		}
+	}]);
+	
+	

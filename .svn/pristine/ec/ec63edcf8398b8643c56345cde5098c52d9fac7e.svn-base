@@ -1,0 +1,19 @@
+#if($!{dataResource.get('isEdit')}=='是')
+	#if($dataResource.get('format'))
+		<input ddatepicker="{format:'$!dataResource.get('format')'}" ng-model="modelData.$!{dataResource.get('bundle')}"
+			#if($!{dataResource.get('nullable')}=="是")
+				required="required"
+			#end
+			placeholder="$!{dataResource.get('placeholder')}"
+		/>
+	#else
+		<input ddatepicker="{format:'yyyy-mm-dd'}" ng-model="modelData.$!{dataResource.get('bundle')}"
+			#if($!{dataResource.get('nullable')}=="是")
+				required="required"
+			#end
+			placeholder="$!{dataResource.get('placeholder')}"
+		/>
+	#end
+#else
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>
+#end

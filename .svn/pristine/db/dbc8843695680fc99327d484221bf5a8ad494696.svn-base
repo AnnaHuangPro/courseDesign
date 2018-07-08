@@ -1,0 +1,58 @@
+.profile {
+	padding: 18px 20px;
+}
+
+.profile select:hover {
+	cursor: pointer;
+}
+
+.title {
+	font-family: "microsoft yahei";
+	font-size: 20px;
+	color: #999;
+	line-height: 1;
+	padding-bottom: 11px;
+	border-bottom: solid 2px #f2f2f2;
+}
+
+.control-label {
+	font-size: 14px;
+	font-weight: normal;
+}
+.sex{
+	margin: 6px 0 0;
+}
+.sex_radio {
+	cursor: pointer;
+}
+.Tip {
+	float: left;
+    margin-top: 1px;
+    line-height: 20px;
+    border-radius: 0px;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+    -o-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.75);
+}
+
+.progress {
+	margin: 6px 0 6px 0;
+}
+
+.havePass {
+	color: green;
+	margin-top: 6px;
+}
+
+input.ng-valid {
+	color: green;
+}
+
+input.ng-invalid {
+	color: #CA913C;;
+}
+
+.progress-bar-info {
+	color: red;
+}

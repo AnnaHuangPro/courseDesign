@@ -1,0 +1,106 @@
+<div class="row loginContainer">
+	<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-lg-3 col-md-offset-7 loginForm loginForm">
+		<div class="row loginHeader">
+			<div class="col-md-12 ">
+				<h3 >框架系统登录</h3>
+			</div>
+		</div>
+		<form class="form-horizontal loginBody col-md-offset-1">
+			<div ng-show="showLoginForm">
+				<div class="loginInputGroup"> 
+					<div class=" input-group">
+						<span class="iconSelf user"></span> 
+						<input type="text" class="form-control" placeholder="用户名" autofocus
+							ng-model="operatorCode" required />
+					</div>
+					<div class=" input-group">
+						<span class="iconSelf pw"></span> 
+						<input type="password" class="form-control" placeholder="密码" 
+							ng-model="operatorPassword" required />
+					</div>
+				<!-- 	<div class="input-group">
+						<span class="iconSelf org"></span> 
+						<select class="form-control"
+							ng-model="selectedOrg" ng-options="org as org.name for org in authorizedOrg"></select>
+					</div> -->
+				</div>
+				
+				<div class="checkbox">
+					<label> <input type="checkbox" ng-model="check"> 记住密码
+					</label> <a class="pull-right">忘记密码</a>
+				</div>
+				<button class="btn btn-lg btn-block loginBtn" ng-keyup="loginConvenient($event)" ng-click="loginCheck()">登录</button>
+			</div>
+			<div class="input-group" style="" ng-show="!showLoginForm">
+				<div>
+					<span class="panel_titile">请选择需要登录的单位:</span>
+				</div>
+				<div>
+					<ul  class="all-organization">
+						<span class="loginOrganizatin_ordinary" ng-class="{true:'loginOrganizatin_checked',false:'loginOrganizatin_ordinary',undefined:'loginOrganizatin_ordinary',null:'loginOrganizatin_ordinary'}[selectOrcCheck[org.name]]" id={{$index}} ng-repeat="org in authorizedOrg" ng-click="selectOrg(org,authorizedOrg)">{{org.name}}</span>
+					</ul>
+				</div>
+			<div class="col-md-offset-4">
+				<button class="btn btn-loginin org-back" type="button" role="button"
+				ng-click="comeBack()">返回</button>
+				<button class="btn btn-loginin org-enter" type="button" role="button"
+				ng-click="loginIn()">进入</button>
+			</div>
+		</div>
+		</form>
+	</div>
+</div>
+<!-- <div class="main">
+	<img ng-src="extends\asset\login\loginbackground.png" class="img">
+</div>
+<div class="row">
+<div class="headLogo">
+	<img ng-src="extends/asset/login/loginHead.png" height="150"
+		width="1350">
+</div>
+</div>
+<div class="content">
+<div class="loginRight">
+	<form class="form-horizontal" role="form" name="form">
+		<fieldset style="margin-top: -35px;">
+			<div
+				style="width: 10px; margin-left: -51px; margin-top: -16px; height: 63px; background-color: #0589CB; float: left;"></div>
+			<span
+				style="font-size: 30px; font-family: Dotum; font-weight: 900; color: #0096C8;">DDD登录</span>
+			<div class="input-group">
+				<span class="input-group-addon" style="background: #4FAFE2"><i
+					class="glyphicon glyphicon-user" style="color: white" title="用户名"></i>
+				</span> <input ng-blur="searchOrganization()" type="text"
+					class="form-control" required placeholder="请输入用户名"
+					ng-model="operatorCode">
+			</div>
+			<div class="input-group">
+				<span class="input-group-addon" style="background: #4FAFE2"><i
+					class="glyphicon glyphicon-lock" style="color: white" title="单位"></i></span>
+				<input ng-keyup="loginConvenient($event)" type="password"
+					class="form-control" required placeholder="请输入密码"
+					ng-model="operatorPassword">
+			</div>
+			<br>
+			<div class="input-group">
+				<span class="input-group-addon" style="background: #4FAFE2"><i
+					class="glyphicon glyphicon-briefcase" style="color: white"
+					title="单位"></i></span> <select ng-model="selectedOrg" class="form-control"
+					ng-options="org as org.name for org in authorizedOrg"></select>
+			</div>
+			<div class="input-group"
+				style="margin-top: 10px; margin-left: 180px;">
+				<label> <input type="checkbox" ng-model="check" />记住密码
+				</label>
+			</div>
+			<br>
+		</fieldset>
+		<div style="margin-top: 15px; margin-bottom: 100px;">
+			<button style="width: 176px; height: 37px;" type="button"
+				role="button" class="btn btn-primary" ng-click="loginCheck()">登录</button>
+			<a style="margin-top: 5px; float: right;">忘记密码?</a>
+		</div>
+	</form>
+</div>
+</div>
+ -->

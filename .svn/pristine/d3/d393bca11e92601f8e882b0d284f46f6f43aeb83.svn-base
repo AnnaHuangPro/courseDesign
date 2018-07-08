@@ -1,0 +1,18 @@
+#if($!{dataResource.get('isEdit')}=='是')
+<input 
+	type="text"
+	class="form-control" 
+	ng-model="modelData.$!{dataResource.get('bundle')}" 
+	name="$!dataResource.get('bundle')" 
+	#if($!{dataResource.get('nullable')}=="是")
+		required="required"
+	#end
+	#if($dataResource.get('validation')!="")
+	pattern="$!dataResource.get('validation')"
+	#end
+	placeholder="$!{dataResource.get('placeholder')}"
+/>
+#else
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>
+#end
+

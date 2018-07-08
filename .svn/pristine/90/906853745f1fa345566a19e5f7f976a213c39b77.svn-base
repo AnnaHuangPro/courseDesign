@@ -1,0 +1,146 @@
+require.config({
+    baseUrl: ".",
+   
+    // alias libraries paths.  Must set 'angular'
+    paths: {
+    	'angular': 'js/angular/1.4.4/angular',
+    	'angularAnimate': 'js/angular/1.4.4/angular-animate.min',
+    	'angularResource': 'compents/resource/angular-resource-xcy',
+    	'angularUIBootstrap': 'js/ui-bootstrap/0.14.3/ui-bootstrap-tpls-0.14.3.min',
+    	'angularUIrouter': 'js/ui-router/0.2.13/angular-ui-router-xcy.min',
+        'angularFileUpload':'js/angular-file-upload/2.2.0/angular-file-upload.min',
+        'angularAMD': 'js/angularAMD/angularAMD',
+        'bootstrap': 'js/bootstrap/3.3.5/js/bootstrap.min',
+        'bootstrapDatetimepicker':'js/bootstrap-datetimepicker/2012/js/bootstrap-datetimepicker.min',
+        'bootstrapDatetimepickerCn':'js/bootstrap-datetimepicker/2012/js/locales/bootstrap-datetimepicker.zh-CN',
+        'ddatepicker':'compents/ddatepicker/DDatePicker',
+        'uiMask':'js/ui-mask/1.6.1/mask.min',
+        'uiValidate':' js/ui-validate/1.2.1/validate.min',
+		'jquery':'js/jquery/2.1.4/jquery-2.1.4.min',
+		'uigrid':'js/uigrid/3.0.7/ui-grid-xcy.min',
+		'ueditor':'js/angular-ueditor/angular-ueditor.min',
+		'md5':'js/md5/2.1/md5',
+		'stickUp':'js/stickUp/stickUp',
+		'MDPicker': 'js/materialDatePicker/mbdatepicker',
+		'moment':'js/moment/2.10.6/moment.min',
+		'fullcalendar':'js/fullcalendar/fullcalendar.min',
+		'chosenJquery':'compents/dddselect/asset/chosen.jquery',
+		'angularTree':'js/angular-tree/angular-tree-control',
+		'appPermission':'js/base/angular.permission',
+		'DDataGrid':'compents/ddatagrid/DDataGrid',
+		'DReference':'compents/dddreference/DddReference',
+		'DReferenceDisplay':'compents/dddreference/DddReferenceDisplay',
+		'DSelect':'compents/dddselect/DddSelect',
+		'DConfirm':'compents/dconfirm/DConfirm',
+		'Draggable':'compents/draggable/DddDraggable',
+		'DfileUpload':'compents/dddfileupload/DddFileUpload',
+		'DimgUpload':'compents/dddimgupload/DddImgUpload',
+//		'app':'js/base/app',
+		'formValidate':'compents/formValidate/formValidate',
+		'onToManyGrid':'compents/onToManyGrid/OnToManyGrid',
+		'utilDerective':'compents/utils/util',
+		'viewTree':'compents/viewTree/ViewTree',
+		'selectChosen':'compents/dddselect/asset/ChosenDirective/chosen',
+		'DdataLoad':'compents/ddataload/DdataLoad',
+		'DddUnique':'compents/dddunique/DddUnique',
+		'MenuCtrl':'simple/view/main/js/menu-tree/menu-control',
+		'DentityProperties':'compents/dentityproperties/DentityProperties',
+		'ExportAndImport':'compents/exportAndImport/ExportAndImport',
+		'uicalendar':'js/ui-calendar/calendar',
+		'ngDialog':'js/ngDialog/js/ngDialog.min',
+		'dialogService':'js/dialog-service/5.2.9/dialogs.min',
+        'FileTemplateUpload':'compents/fileTemplateUpload/FileTemplateUpload',
+        'sanitize':'js/angular/1.4.4/angular-sanitize',
+        'ui.select':'js/ui-select/0.13.2/select.min',
+        'dddCompile':'compents/complie/dddComplie',
+        'DddIntroduce':'compents/dddintroduce/DddIntroduce',
+        /* dddinclude start WebContent\ddd\extends\vip\js\main_sub1.js */
+'StorageUtil':'vip/compents/storageUtil/StorageUtil',
+'app':'vip/js/base/vipApp',
+
+/*ueditor*/
+'ueditorAll':'js/ueditor/ueditor.all.min',
+'ueditorConf':'js/ueditor/ueditor.config',
+
+
+/*ngImgCrop*/
+'ngImgCrop':'cms/compents/ngImgCrop/ng-img-crop',
+'dddImgCrop':'cms/compents/dddImgCrop/dddImgCrop',
+
+/*dddLogoUpload*/
+'cropbox':'compents/dddlogoupload/cropbox',
+'Dlogoupload':'compents/dddlogoupload/DddLogoUpload',
+ /* dddinclude end WebContent\ddd\extends\vip\js\main_sub1.js */  
+    },
+    
+    // Add angular modules that does not support AMD out of the box, put it in a shim
+    shim: {
+    	'angularAnimate': ['angular'],
+    	'angularResource': ['angular'],
+    	'angularUIBootstrap': ['angular'],
+    	'angularUIrouter': ['angular'],
+        'angularAMD': ['angular'],
+        'appPermission': ['angular'],
+        'bootstrap':['jquery'],
+        'bootstrapDatetimepicker':['bootstrap'],
+        'bootstrapDatetimepickerCn':['bootstrapDatetimepicker'],
+        'DDataGrid': ['angular'],
+        'uiMask': ['angular'],
+        'stickUp':['jquery'],
+        'uiValidate': ['angular'],
+        'DReference': ['angular'],
+        'DReferenceDisplay': ['angular'],
+        'angularTree':['angular'],
+        'Draggable':['angular'],
+		'angularFileUpload':['angular'],
+		'DfileUpload':['angular'],
+		'DimgUpload':['angular'],
+        'onToManyGrid':['angular'],
+        'utilDerective':['angular'],
+        'onToManyGrid':['angular'],
+        'viewTree':['angular'],
+        'uigrid':['angular'],
+        'formModule':['angular'],
+        'selectChosen':['chosenJquery'],
+    	'chosenJquery':['angular'],
+    	'DSelect':['angular'],
+    	'DConfirm':['angular'],
+    	'ueditor':['angular'],
+        'ddatepicker':['angular'],
+		'formValidate':['angular'],
+    	'DdataLoad':['angular'],
+		'MenuCtrl':['angular'],
+		'DentityProperties':['angular'],
+		'DddUnique':['angular'],
+		'ExportAndImport':['angular'],
+		'MDPicker':['angular','moment'],
+		'uicalendar':['angular','moment'],
+		'fullcalendar':['angular'],
+		'ngDialog':['angular'],
+		'dialogService':['angular'],
+		'FileTemplateUpload':['angular'],
+		'sanitize':['angular'],
+		'ui.select':['angular'],
+		'DddIntroduce':['angular'],
+		'dddCompile':['angular'],
+		'DddIntroduce':['angular'],
+		   /* dddinclude start WebContent\ddd\extends\vip\js\main_sub2.js */
+'StorageUtil':['angular'],
+'ueditorAll':['ueditorConf'],
+
+
+/*ngimgCrop*/
+'ngImgCrop':['angular'],
+'dddImgCrop':['ngImgCrop','angular'],
+
+/*dddLogoUpload*/
+'cropbox':['angular'],
+'Dlogoupload':['cropbox','angular'],
+	/* dddinclude end WebContent\ddd\extends\vip\js\main_sub2.js */ 
+    },
+    
+    // kick start application
+    deps: ['app']
+});
+
+require( ['md5','jquery','stickUp']);

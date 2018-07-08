@@ -1,0 +1,13 @@
+<div class="">
+	<div ng-show="{{showTimePicker}}"
+		class="form-group col-md-12 no-right-left-padding">
+		<timepicker ng-model="tempmodel"
+			template-url="compents/timepicker/timepicker.html" hour-step="1"
+			minute-step="1" show-meridian="true"></timepicker>
+	</div>
+
+	<div class="col-md-12  no-right-left-padding">
+		<input type="date" class="form-control" datepicker-popup
+			ng-model="tempmodel" is-open="ture" close-text="Close" />
+	</div>
+</div>

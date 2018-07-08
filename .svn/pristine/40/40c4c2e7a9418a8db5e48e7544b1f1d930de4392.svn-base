@@ -1,0 +1,85 @@
+<div ng-controller="dataSourceFormController">
+	<div class="row" ng-init="getInitDataSourceData()">
+		<form class="col-md-12 form-horizontal" name="dataSourceForm"
+			role="form" ddd-form-validate novalidate>
+			<fieldset>
+				<legend class="legend" data-toggle="collapse" href="#baseInfo"
+					style="cursor: pointer">
+					<span class="legend-title">基础信息</span>
+				</legend>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="dataSourceName">
+						数据源名称 </label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="dataSourceName"
+							name="dataSourceName" ng-model='dataSource.dataSourceName'
+							required placeholder="请输入数据源名称：实体中文名+数据源，例：视图数据源">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="dataSourceCode">
+						数据源唯一编码 </label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="dataSourceCode"
+							name="dataSourceCode" ng-model='dataSource.dataSourceCode'
+							required placeholder="请输入数据源唯一编码：实体名，例：reportView">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label"> SQL语句填写规则 </label>
+					<div class="col-sm-10">
+						<div>
+							<span>1、单表查询可以用*，例如：select * from xxx where .....</span>
+						</div>
+						<div>
+							<span>2、多表查询必须标明查询字段且不能用''，例如：select a.aa as aaa,b.bb as
+								bbb from a,b where.....</span>
+						</div>
+						<div>
+							<span>3、可用函数：1)、条件:#if(...) ... #end
+								2)、空值判断（不为null同时不为''）：${param.notEmpty(${....})}
+								3)、#if(${param.notEmpty(${ })}) #end</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="reportSql"> <span
+						style="color: red">*</span> SQL语句
+					</label>
+					<div class="col-sm-10">
+						<ui-codemirror ui-codemirror-opts="codemirrorOpt"
+							ng-model='dataSource.reportSql' required> </ui-codemirror>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2 control-label" for="codeType"> 数据源类型</label>
+					<div class="col-md-10">
+						<dreference class="form-control" reference-id="dataSourceType"
+							list-view-key='dataSourceTypeList'
+							ng-model='dataSource.dataSourceType'
+							show-model-filed='dataSourceTypeName'></dreference>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label" for="dataSourceDesc">说明</label>
+					<div class="col-sm-10">
+						<textarea type="text" row="3" class="form-control"
+							id="dataSourceDesc" ng-model='dataSource.dataSourceDesc'
+							placeholder="说明"></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button class="btn btn-sm"
+						ng-click="saveDataSourceEdit(dataSource)"
+						ng-disabled="dataSourceForm.$invalid">保存</button>
+					<button class="btn btn-sm"
+						ng-click="saveAndAddDataSourceEdit(dataSource)"
+						ng-disabled="dataSourceForm.$invalid">保存并新增</button>
+					<button class="btn btn-sm" ng-click="back()">返回</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

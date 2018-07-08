@@ -1,0 +1,1135 @@
+angular.module("dDataGridApp",['viewTreeModule','ui.grid', 'ui.grid.grouping','ui.grid.autoResize','ui.grid.moveColumns','ui.grid.pinning','dialogs.main'])
+.directive("ddatagrid",['asynchroMarkService','ListViewService',"angularPermission",'i18nService','OperatorCongfigService','ReportviewService','uiGridConstants','$rootScope','$timeout','$filter','dialogs',
+function(asynchroMarkService,ListViewService,angularPermission,i18nService,OperatorCongfigService,ReportviewService,uiGridConstants,$rootScope,$timeout,$filter,dialogs)
+{
+	return{
+		restrict:'E',
+		scope:{
+			operationColumnWidth:'=',
+			operationColumns:'=',
+			extendsColOperate:'=',
+			listViewKey:'@',
+			addStyle:'@',
+			multiSelect:'@',
+			noLoadDataByServer:'@',
+			defaultDatas:'=',
+			operationColumnTemplate:'=',
+			cellTemplate:'=',
+			rowTemplate:'=',
+			headerRowTemplate:'=',
+			pagerTemplate:'=',
+			initFilter:'@',
+			initTreeFilter:'@',
+			showType:'@',
+			showModelFiled:'@',
+			fitWindow:'@',
+			name:'@',
+			serverSort:'@',
+			listExportFilter:'='
+		},
+		controller:function($scope,$transclude,$state,$element,$parse)
+		{
+			var allColumnSizeChange="";
+			var self = this;
+			i18nService.setCurrentLang('zh-cn');
+			
+			if(angular.isUndefined($scope.name))
+			{
+				$scope.name="dDataGrid";
+			}
+			$scope.$parent[$scope.name] = this;
+			$scope.currentTreeNode={};// 保存树节点信息
+			$scope.searchConditionParams = {};// 保存高级检索条件
+			$scope.showOperaterIcon = false;
+			$scope.currentUserId = 1;
+
+			$element.on('$destroy',function()
+			{
+				$scope.gatherGridConfig(false);
+			});
+			
+			$scope.gatherGridConfig =function(flag)
+			{
+				try{
+					var gridConfig = {columns:{}};
+					gridConfig.showIcon = $scope.showOperaterIcon;
+					gridConfig.paginationPageSize = $scope.gridOptionsComplex.paginationPageSize;
+					//前面两列分别是显示选择的列和显示树的列，不保存
+					for(var i=2; i < $scope.gridApi.grid.columns.length;i++)
+					{
+						var column = $scope.gridApi.grid.columns[i];
+						var columnConfig = {
+							columnIndex:i-2,
+							field:column.field,
+							width:column.width,
+							visible:column.visible
+						}
+						gridConfig.columns[columnConfig.field] = columnConfig;
+					}
+				 
+					var operatorCongfig = {};
+					operatorCongfig.characterParams = angular.toJson(gridConfig);
+					operatorCongfig.cCKey = "ListView_"+$scope.listViewKey;
+					
+					if(flag){
+						operatorCongfig.characterParams = angular.toJson(gridConfig.columns);
+						return operatorCongfig;
+					}else{
+						angularPermission.putCache("operatorCongfig",operatorCongfig.cCKey,operatorCongfig,true);
+					}
+				}catch(e){
+					console.log("收集个性化参数出错");
+				}
+			}
+			
+			$scope.uniform = function(){
+				var operatorCongfig = $scope.gatherGridConfig(true);
+				function sucesscb(data) {
+					alert("同步成功");
+				}
+				function errorcb(error) {
+					alert("同步失败");
+				}
+				OperatorCongfigService.uniformView(operatorCongfig,sucesscb,errorcb);
+			}
+			
+			//系统管理员同步视图设置
+			$scope.check=function(){
+				return sessionStorage.getItem("operatorCode")=="admin";
+			}
+			
+			function initListView()
+			{ 
+				//查询个性化参数
+				$scope.loadOperatorCongfig = function()
+				{
+					var uniqueInfo = "ListView_"+$scope.listViewKey;
+					OperatorCongfigService.findOneOperatorCongfig(uniqueInfo,successcb,faultcb);
+					function successcb(data){
+						if(data!=null){
+							var characterParaments = data.characterParams;
+							if(characterParaments!=null){
+								$scope.paramentsJson = angular.fromJson(characterParaments);
+								if($scope.paramentsJson.showIcon!=null){
+									$scope.showOperaterIcon = $scope.paramentsJson.showIcon;
+									$scope.paginationPageSize =  $scope.paramentsJson.paginationPageSize;
+								}
+							}
+						}else{
+							$scope.paramentsJson = null;
+						}
+						$scope.loadListViewByKey();
+		    		};
+		    		function faultcb(error){
+		    			$scope.paramentsJson = null;
+		    			$rootScope.openErrorDialog(error);
+		    		};
+				}
+				
+				//查询视图信息
+				$scope.loadListViewByKey = function()
+				{
+					var reportView = angularPermission.getCache("reportView",$scope.listViewKey);
+					if(false){
+						findListViewResult(reportView);
+					}else{
+						ListViewService.findListViewByKey($scope.listViewKey,findListViewResult,findListViewFault);
+					}
+					
+				}
+				
+				if($scope.listViewKey == null || $scope.listViewKey == '')
+				{
+					 $scope.$watch('listViewKey', function(newVal, oldVal) {
+				        if (newVal !== oldVal) {
+				        	$scope.loadOperatorCongfig();
+				        }
+					 }, true);
+				}else{
+					$scope.loadOperatorCongfig();
+				}
+			}
+			
+			function findListViewResult(reportView)
+			{
+				if(reportView==null){
+					alert("未查询到key为"+$scope.listViewKey+"的视图，请先配置视图！");
+					return;
+				}
+				if($scope.paginationPageSize==null){
+					if(reportView.paginationPageSize!=null){
+						$scope.paginationPageSize = reportView.paginationPageSize;
+					}else{
+						$scope.paginationPageSize = 20;
+					}
+				}
+				
+				//初始化表格
+				initGrid();
+
+				var attributes = reportView.displayAttributes;
+				self.attributes = attributes ;
+				self.paginationPageSize=$scope.paginationPageSize;
+				var queryConditions = reportView.queryConditions;
+				
+				$scope.attributes = self.attributes;
+				for(var i = 0;i<reportView.searchConditions.length;i++){
+					if(angular.isDefined(reportView.searchConditions[i].paramsJson)){
+						reportView.searchConditions[i].params = angular.fromJson(reportView.searchConditions[i].paramsJson);
+					}
+					if(reportView.searchConditions[i].displayType=="SELECT"){
+						var temp = reportView.searchConditions[i].params.options;
+						var options_temp = temp.split("\u000A");
+						reportView.searchConditions[i].params.options = options_temp;
+					}
+				}
+				
+				$scope.searchConditions = reportView.searchConditions;
+				self.searchConditions =  reportView.searchConditions ;
+				$scope.viewTreeConditions = reportView.viewTreeConditions;
+				
+				if($scope.viewTreeConditions != null && $scope.viewTreeConditions.length >0)
+				{
+					$scope.selectViewTree = $scope.viewTreeConditions[0];
+					$scope.selectViewTreeKey = $scope.selectViewTree.viewTreeKey;
+				}
+				
+				$scope.getPermission=function(permission)
+				{
+				 	if(angular.isUndefined(permission)) return true;
+					
+					return angularPermission.hasPermission(permission);
+				}
+				
+				$scope.cellVisiable=function(operationColumn)
+				{
+					if(angularPermission.hasPermission(operationColumn.permission))
+					{
+						if(operationColumn.visiableFunction)
+						{
+							return operationColumn.visiableFunction();
+						}
+						return true;
+					}
+					return false;
+				}
+				
+				for(var i=0; i < attributes.length;i++)
+				{
+					var attribute = attributes[i];
+					attribute.visible = true;	
+				 
+				}
+				
+				//应用个性参数
+				var indexAttribute = null;
+				
+				//设置除操作列所有列宽
+				//1.个性化参数是否存在 2.判断视图设置中是否所有列为0 3.自适应并同步到视图设置
+				if( $scope.paramentsJson != null)
+				{
+					for(var i=0; i < attributes.length;i++)
+					{
+						var attribute = attributes[i];
+						var columnConfig = $scope.paramentsJson.columns[attribute.attributeName];
+						if(angular.isDefined(columnConfig))
+						{
+							 attribute.columnIndex = columnConfig.columnIndex;
+							 attribute.width = columnConfig.width;
+							 attribute.visible = columnConfig.visible;
+						}
+						else
+						{
+							 attribute.width = 100;
+							 attribute.visible = true;							
+						}	
+					}
+					if(angular.isDefined($scope.paramentsJson.columns["indexColumn"]))
+					{ 
+						indexAttribute = {};
+						indexAttribute.width = $scope.paramentsJson.columns["indexColumn"].width;
+					}
+				}else{
+					if(!reportView.autoFit || reportView.autoFit == "false"){
+						
+					}else{
+						for(var i =0;i<reportView.displayAttributes.length;i++){
+							var cssArrtribute = reportView.displayAttributes[i].cssArrtribute.split(",");
+							attributes[i].width =cssArrtribute[0].replace(/width:/g,"");	
+						}
+					}
+				}
+				
+				
+				attributes = $filter('orderBy')(attributes,"columnIndex");
+				
+			
+				var columns = new Array();
+				var gridWidth = angular.element($element)[0].children[0].clientWidth
+				
+				if($scope.operationColumns&& $scope.operationColumns.length > 0)
+				{
+					var operationTemplate = '<div  title=\"TOOLTIP\" style="text-align: center;padding-top: 7px;"'
+						+" >"
+						+'<a ng-repeat="operationColumn in grid.appScope.operationColumns" style="cursor:pointer"'
+						
+						+'ng-show="grid.appScope.getPermission(operationColumn.permission)&&(operationColumn.visiableFunction?operationColumn.visiableFunction(row):true)&&!grid.appScope.showOperaterIcon"'
+						+'ng-click="grid.appScope.operationColumnClick(row,$index)">{{operationColumn.label}}<label ng-hide="$last">&nbsp;&nbsp;</label></a>'
+						
+						+'<a ng-repeat="operationColumn in grid.appScope.operationColumns" style="cursor:pointer"'
+						+'ng-show="grid.appScope.getPermission(operationColumn.permission)&&(operationColumn.visiableFunction?operationColumn.visiableFunction(row):true)&&grid.appScope.showOperaterIcon"'
+						+'ng-click="grid.appScope.operationColumnClick(row,$index)" title=\'{{operationColumn.label}}\'><i class=\'{{operationColumn.icon}}\'></i><label ng-hide="$last">&nbsp;&nbsp;</label></a>'
+						
+						+'</div>';
+					var canSeeOperateBtnNumber = 0; // 可见操作列数
+					var allOperatorWidth= 0;
+					angular.forEach($scope.operationColumns,function(operationColumn,index,operationColumns){
+						allOperatorWidth += operationColumn.label.length+1;
+					})
+					allOperatorWidth = allOperatorWidth*15;
+					
+					var indexColumn = {
+						name: 'indexColumn',
+						displayName: '操作',
+						enableCellEdit: false,
+						sortable: false,
+						enablePinning:true,
+						enableFiltering: false,
+						cellTooltip: function( row, col ) {
+							var tip = "";
+							for(i=0;i<columns.length;i++)
+							{
+								var column = columns[i];
+								if(column.displayName == '操作') continue;
+								var value =row.entity[column.field];
+								if(angular.isUndefined(value) || value === '' || value === null) continue;
+								tip+=column.displayName+":"+row.entity[column.field]+"\n";
+							}
+							return tip;
+				        },
+						//操作列的列宽
+						//width: indexAttribute ==null?allOperatorWidth + "%":indexAttribute.width,
+				        width: indexAttribute ==null?(allOperatorWidth+10):indexAttribute.width,
+						pinnedRight:true,
+					    enableHiding: false,
+						cellTemplate: operationTemplate
+					};
+					columns.push(indexColumn);
+				}
+				
+				var canSeeColumnNumber = 0; // 可见的列数
+				for(var i=0;i<attributes.length;i++)
+				{
+					var attribute = attributes[i];
+					var column = {};
+					column.field = attribute.attributeName;
+					column.displayName = attribute.attributeValue;
+					var cssArrtribute = attribute.cssArrtribute.split(",");
+					if(!$scope.noEditColumn){
+						column.enableCellEdit  = false;
+					}else if($scope.noEditColumn&&$scope.noEditColumn.indexOf(column.field)!= -1){
+						column.enableCellEdit  = false;
+					}
+					//每一列的列宽
+					column.width=attribute.width;
+					
+					column.minWidth=50;
+					column.maxWidth=500;
+					//加载每一列的可见性 
+					column.visible = attribute.visible;
+					var colOperate;
+					if($scope.extendsColOperate){
+						colOperate = $scope.extendsColOperate[column.field];
+					}
+					if(colOperate){
+						var myCellTemplate =$scope.cellTemplate==null?"<div  class=\"ui-grid-cell-contents\" title=\"TOOLTIP\" style="+cssArrtribute[1].replace(/'/g,"")+"><a href=\"javascript:void(0)\" ng-click=\"grid.appScope.columnClick(row,$index,'"+colOperate.colName+"')\">{{COL_FIELD}}</a></div>":$scope.cellTemplate;
+					}else{
+						var myCellTemplate = $scope.cellTemplate==null?"<div class=\"ui-grid-cell-contents\" title=\"TOOLTIP\" style="
+												+cssArrtribute[1].replace(/'/g,"")
+												+" >{{COL_FIELD}}</div>":$scope.cellTemplate;
+					}
+					
+					
+					
+					column.groupable = true;
+					column.aggregationType= uiGridConstants.aggregationTypes.count;
+					column.enableFiltering = true;
+					
+					column.headerCellClass= $scope.highlightFilteredHeader;
+					column.filter = {condition: uiGridConstants.filter.CONTAINS};
+					column.cellTooltip = true;
+					column.headerTooltip = true;
+					column.enablePinning = true;
+					
+					if($scope.serverSort){
+						column.menuItems =
+							[
+					            {
+					              title: '升序(后端)',
+					              icon: 'ui-grid-icon-sort-alt-up',
+					              action: function($event) {
+					            	$scope.gridApi.remoteSortingConfig[this.context.col.field] = "ASC";
+					                
+					              }, 
+					              context: $scope
+					            },
+					            {
+					              title: '降序(后端)',
+					               icon: 'ui-grid-icon-sort-alt-down',
+					              action: function() {
+					            	  $scope.gridApi.remoteSortingConfig[this.context.col.field] = "DESC";
+					              }
+					            },
+					            {
+					              title: '移出排序(后端)',
+					              icon: 'ui-grid-icon-cancel',
+					              shown: function () {
+					                return true;
+					              },
+					              action: function() {
+					            	  delete $scope.gridApi.remoteSortingConfig[this.context.col.field] ;
+					              }
+					            }
+					         ];
+					}
+					
+			/*		var defaultCellTemplate = "<div class=\"ui-grid-cell-contents\" "
+												+"	title=\"TOOLTIP\" style='"+cssArrtribute[1].replace(/'/g,"")+";cursor:pointer'"
+												+" ng-class='{hoverRowSelf: grid.appScope.isSelectCurrentRow(row),hoverColSelfCell:grid.appScope.isSelectCurrentCol($index)}'"
+												+" ng-mouseenter='grid.appScope.changeHoverCurrentRow(row)'"
+												+" ng-mouseleave='grid.appScope.resetHoverCurrentRow()'>"
+												+"{{COL_FIELD}} </div>"
+					var myCellTemplate = $scope.cellTemplate || defaultCellTemplate;*/
+					
+					column.cellTemplate= myCellTemplate;
+					//在datagrid里强制隐藏某一列，等待个性化参数设置完成后处理，临时解决办法 ——周雪 2016年1月14日
+					if(attribute.attributeName.toLocaleLowerCase()=="eid" || attribute.attributeName=="propertyCode" || attribute.attributeName =="processInstanceId"){
+						column.visible= false;
+					}
+					if(column.visible){
+						canSeeColumnNumber++;
+					}
+					columns.push(column);
+					
+				}
+			
+				$scope.gridOptionsComplex.columnDefs=columns;
+				$scope.gridOptionsComplex.enableRowSelection = false;//设置表格字段部分可复制（qxt）
+				$scope.gridOptionsComplex.enableFullRowSelection  = true;
+				
+				
+				if(reportView.autoFit==undefined||reportView.autoFit == "false"||reportView.autoFit==""){
+					
+					
+					/* 设置列宽，争取填充满表格 q*/
+					if(!allOperatorWidth){
+						allOperatorWidth = 0;
+					}
+					var perColumnWidth = ((gridWidth- allOperatorWidth)-30)/canSeeColumnNumber + 5;
+					if(perColumnWidth < 130){
+						perColumnWidth =130;
+					}
+					for(var i =0;i<columns.length;i++){
+						if(columns[i].displayName == "操作"){
+							continue;
+						}
+						else{
+							columns[i].width = Math.ceil(perColumnWidth);
+						}
+						
+					}
+					for(var i = 0;i<reportView.displayAttributes.length;i++){
+						var cssAttributes = reportView.displayAttributes[i].cssArrtribute.split(",");
+							cssAttributes[0] = "width:"+  Math.ceil(perColumnWidth);
+							reportView.displayAttributes[i].cssArrtribute = cssAttributes.join(",");
+					}
+					//同步到视图设置
+					function successCB(data){
+						
+					}
+					function errorCB(error)
+					{
+						console.log("同步列的自适应宽度到视图设置失败");
+					}
+					//消除一对多中多端对一端的引用
+					for(var i = 0;i<reportView.displayAttributes.length;i++){
+						delete reportView.displayAttributes[i].reportView;
+					}
+					for(var i = 0;i<reportView.viewTreeConditions.length;i++){
+						delete reportView.viewTreeConditions[i].reportView;
+					}
+					
+					reportView.autoFit = "true";
+					ReportviewService.updateReportView(reportView,successCB,errorCB);
+				}
+				
+				if(attributes.length>0){
+					$scope.columns = columns;
+				}else{
+					$scope.columns = {};
+				}
+				$scope.getPagedDataAsync($scope.gridOptionsComplex.paginationPageSize, 1,$scope.getFilterCondition(),{},{});
+			}
+			function findListViewFault(error)
+			{
+				$rootScope.openErrorDialog(error);
+			}
+			$scope.highlightFilteredHeader = function( row, rowRenderIndex, col, colRenderIndex ) {
+				if( col.filters[0].term ){
+					return 'header-filtered';
+				} else {
+					return '';
+				}
+			};			
+			
+			//数据列点击事件
+			$scope.columnClick = function(row,index,colName){
+				var columnOperate  = $scope.extendsColOperate[colName];
+				if(columnOperate){
+					columnOperate.click(row.entity);
+				}
+			}
+			
+			//操作列事件处理
+			$scope.operationColumnClick = function(row,index)
+			{
+				var operationColumn = $scope.operationColumns[index];
+				row.entity.operationColumn = operationColumn;
+				operationColumn.click(row.entity);
+			};
+			
+			$scope.gridHeight = 0;
+			$scope.getResultResult = function(data)
+			{
+				asynchroMarkService.unmask();
+				if(data[0]){
+					$scope.gridOptionsComplex.totalItems = data[0].totalCount;
+					$scope.datas = data[0].result;
+				}
+				$timeout(function(){
+					
+					var treeDom = $element.find(".tree");
+					if(treeDom){
+						treeDom.height($element.find(".gridWrap").height());
+					}
+					
+				},0)
+			}
+			$scope.getResultFault = function(error)
+			{
+				asynchroMarkService.unmask();
+				$rootScope.openErrorDialog(error);
+			}
+			
+			$scope.filterOptions = 
+		    {
+			        filterText: "",
+			        useExternalFilter: true
+			};
+		    $scope.pagingOptions = 
+		    {
+		        sort: null,
+		        autoLoad:false
+		    };
+		    function initGrid()
+		    {
+		    	$scope.DefultPageTmplate='<div class="grid-footer"><div class="gridPagerCount"><span ng-show=\"grid.options.totalItems > 0\">共 {{grid.options.totalItems}} 条数据</span></div>'+
+		    							'<div class="btn-group gridPagination" ui-grid-pager role="group">'+
+								    	    '<button type="button" ng-click="paginationApi.seek(1)" ng-disabled="cantPageBackward()" class="btn btn-default">首页</button>'+
+								    	    '<button type="button" ng-click="paginationApi.previousPage()" ng-disabled="cantPageBackward()" class="btn btn-default">上一页</button>'+
+								    	    '<button type="button" class="btn btn-default">第{{grid.options.paginationCurrentPage}}/{{paginationApi.getTotalPages()}}页</button>'+
+								    	    '<button type="button" ng-click="paginationApi.nextPage()" ng-disabled="cantPageForward()" class="btn btn-default">下一页</button>'+
+								    	    '<button type="button" ng-click="paginationApi.seek(paginationApi.getTotalPages())" ng-disabled="cantPageToLast()" class="btn btn-default">尾页</button>'+
+								    	'</div></div>';
+			    	
+			    var rowTemplateDDD = '<div style="height: 100%" ng-dblclick="dbClickRow()"><div ng-style="{ \'cursor\': row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell ">' +
+				        '<div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }"> </div>' +
+				        '<div ng-cell></div>' +
+				        '</div></div>';
+				 /* 设置行样式 hover */
+			    $scope.currentHoverRow = -1;
+			    $scope.changeHoverCurrentRow = function(row){
+					$scope.currentHoverRow = judgeRow(row);
+				}
+				$scope.isSelectCurrentRow = function(row){
+					return $scope.currentHoverRow == judgeRow(row);
+				}
+				$scope.resetHoverCurrentRow = function(){
+					$scope.currentHoverRow = -1;
+				}
+				
+				function judgeRow(row){
+					var currentIndex;
+					angular.forEach(row.grid.rows,function(item,index,items){
+						if(row == item)
+							currentIndex = index;
+					})
+					return currentIndex;
+				}
+				$scope.gridOptionsComplex={
+					data: 'datas',
+					showGroupPanel: true,
+			        jqueryUIDraggable: true,
+			        showGridFooter: false,
+			        showColumnFooter: false,
+			        enableFiltering:false,
+			        enablePinning:true,
+			        treeRowHeaderAlwaysVisible: false,
+			        enableVerticalScrollbar: 0,
+				    enableGridMenu: true,
+				    enableRowSelection: true,
+				    enableSelectAll: true,
+				    multiSelect:$scope.multiSelect=="false"?false:true,
+				  
+					exporterCsvFilename: "export_"+$scope.listViewKey+'.csv',
+					exporterOlderExcelCompatibility:true,
+					exporterCsvLinkElement: angular.element(document.querySelectorAll(".custom-csv-link-location")),
+					
+					exporterMenuPdf:false,
+					enableRowSelection:true,
+				    rowTemplate: $scope.rowTemplate ||
+				    '<div class="GridRow">' +
+	                 '  <div ng-if="row.entity.merge">{{row.entity.title}}</div>' +
+	                 '  <div ng-if="!row.entity.merge" ng-repeat="(colRenderIndex, col) in colContainer.renderedColumns track by col.colDef.name" class="ui-grid-cell" ng-class="{ \'ui-grid-row-header-cell\': col.isRowHeader }"  ui-grid-cell></div>' +
+	                 '</div>',
+				   
+				    paginationTemplate:$scope.pagerTemplate==null?$scope.DefultPageTmplate:$scope.pagerTemplate,
+				    filterOptions: $scope.filterOptions,
+				    useExternalPagination:true,
+				    paginationPageSizes: [10, 20, 50,100,500],
+				    paginationPageSize: $scope.paginationPageSize,
+				    rowHeight:29.5,
+				    excessColumns:8,
+				    excessRows:8,
+				    showColumnMenu: true,
+				    flatEntityAccess: true,
+				    
+				    onRegisterApi: function(gridApi) {
+				        $scope.gridApi = gridApi;
+				        $scope.gridApi.remoteSortingConfig = {};
+				        gridApi.pagination.on.paginationChanged($scope, function (currentPage, pageSize) {
+				            $scope.getPagedDataAsync(pageSize, currentPage,$scope.getFilterCondition(),
+				            		$scope.getSearchConditionParams(),$scope.gridApi.remoteSortingConfig);
+                        });
+				        //单元格编辑
+				        gridApi.edit.on.afterCellEdit($scope,function(editRow,editColu,newValue,oldValue){
+				        	var editInfo = new Object();
+				        	editInfo.EId = editRow.EId;
+				        	editInfo[editColu.name] = editRow[editColu.name];
+				        	$scope.$emit("dddedit",editRow);
+				        })
+				        //列的可见性的监听器
+				        gridApi.core.on.columnVisibilityChanged( $scope, function( changedColumn ){
+				        	var ope = new Object();
+				    		ope.operatore = {eId:$scope.currentUserId};
+				    		ope.cCKey = $scope.listViewKey;
+				    		ope.characterParams = "\""+changedColumn.colDef.name+"Show\":\""+changedColumn.colDef.visible+"\"";
+				    		OperatorCongfigService.saveOperatorCongfig(ope,successcb,faultcb);
+				    		function successcb(){
+				    			//alert("记录成功");
+				    		};
+				    		function faultcb(){
+				    			//alert("记录失败");
+				    		};
+				          });
+				        
+				        //列宽改变的监听器
+				        gridApi.colResizable.on.columnSizeChanged($scope,function(colDef, deltaChange){
+				        	//列的宽度改变的响应事件监听器
+				        	var columnSizeChangeEvent = new Object();
+				        	columnSizeChangeEvent.operatore = {eId:$scope.currentUserId};
+				        	columnSizeChangeEvent.cCKey = $scope.listViewKey;
+				    		var newWidth =parseInt(colDef.width)+parseInt(deltaChange);
+				    		
+				    		if(newWidth>0){
+				    			columnSizeChangeEvent.characterParams = "\""+colDef.name+"Width"+"\":\""+newWidth+"\"";
+					    		OperatorCongfigService.saveOperatorCongfig(columnSizeChangeEvent,successcb,faultcb);
+				    		}
+				    		function successcb(){
+				    			//记录成功;
+				    		};
+				    		function faultcb(){
+				    			//记录失败;
+				    		};
+				        	
+				        });
+				    },
+				    gridMenuCustomItems: [{
+				    	title: '切换操作方式',
+				    	action: function ($event) {
+				    		$scope.showOperaterIcon = !$scope.showOperaterIcon;
+				    		var ope = new Object();
+				    		ope.operatore = {eId:$scope.currentUserId};
+				    		ope.cCKey = $scope.listViewKey;
+				    		ope.characterParams = "\"showIcon\":\""+$scope.showOperaterIcon+"\"";
+				    		OperatorCongfigService.saveOperatorCongfig(ope,successcb,faultcb);
+				    		function successcb(){
+				    			//alert("记录成功");
+				    		};
+				    		function faultcb(){
+				    			//alert("记录失败");
+				    		};
+				    	},
+				    	order: 210
+				    },
+				    {
+				    	title: '过滤',
+				    	action: function ($event) {
+				    	    $scope.gridOptionsComplex.enableFiltering = !$scope.gridOptionsComplex.enableFiltering;
+				    	    $scope.gridApi.core.notifyDataChange( uiGridConstants.dataChange.COLUMN );					    		
+				    	},
+				    	order: 220
+				    },
+				    {
+				    	title: '同步',
+				    	action: function ($event) {
+				    	    $scope.uniform();				    		
+				    	},
+				    	order: 230,
+				    	shown: function () {
+				    		return $scope.check();
+				        }
+				    },
+				    {
+				    	title: '导出所有数据(后端excel)',
+				    	action: function ($event) {
+							var params =  $scope.getExport2ExcelParams($scope.getFilterCondition(),$scope.getSearchConditionParams(),$scope.gridApi.remoteSortingConfig);
+				    		window.location="../ListView/export2Excel?"+params;				    		
+				    	},
+				    	order: 220
+				    }]
+				};
+				
+				if(angular.isUndefined($scope.fitWindow) ||$scope.fitWindow == true )
+				{ 
+			        //设置表格的最小高度，让网格的下边框离浏览器的下边框为15px
+					var gridTop = angular.element($element).offset().top;
+					var divs = angular.element($element).find("div");
+					for(var i= divs.length;i >= 0; i--)
+					{
+						if( angular.element(divs[i]).attr('gridToolBar'))
+						{
+							gridTop = angular.element(divs[i]).offset().top+ angular.element(divs[i]).height();
+						}
+					}
+					var minHeight = angular.element(window).height() - gridTop-15;
+					$scope.gridOptionsComplex.minHeight = minHeight;
+				}
+				$scope.gridOptionsComplex.totalItems = 0;
+		    };
+			
+			this.getSelectRow = function()
+			{
+				return $scope.gridApi.selection.getSelectedRows();
+			}
+			this.setSelectRow = function(index)
+			{
+				return $scope.gridApi.selection.selectRowByVisibleIndex(index, null);
+			}
+			$scope.batchDeleteRows = function()
+			{
+				$scope.batchDeleteFun($scope.gridApi.selection.getSelectedRows());
+			}
+			
+		
+			//外部设置数据集
+			this.setDataGridProviders = function(values)
+			{
+				$scope.datas = values;
+				if(!$scope.gridOptionsComplex){
+					initGrid();
+				}
+				$scope.gridOptionsComplex.totalItems = $scope.datas.length;
+				$timeout(function(){
+					var treeDom = $element.find(".tree");
+					if(treeDom){
+						treeDom.height($element.find(".gridWrap").height());
+					}
+				},0)
+			};
+			
+		    $scope.setPagingData = function(data, page, pageSize)
+		    {
+		        $scope.datas = data;
+		        $scope.gridOptionsComplex.totalItems = $scope.datas.length;
+		        if (!$scope.$$phase) 
+		        {
+		            $scope.$apply();
+		        }
+			};
+			
+			$scope.getResultParam={};
+			
+			//刷新所有数据
+			function refresh()
+			{
+				$scope.refresh();
+			}; 
+			$scope.refresh = function()
+			{
+				$scope.gridApi.grid.options.paginationCurrentPage =1;
+				$scope.getPagedDataAsync($scope.gridApi.grid.options.paginationPageSize, 1,$scope.getFilterCondition(),
+						$scope.getSearchConditionParams(),$scope.gridApi.remoteSortingConfig);
+			}; 
+			
+			//刷新当前页数据
+			$scope.refreshCurrentPage = function()
+			{
+				$scope.getPagedDataAsync($scope.gridApi.grid.options.paginationPageSize, $scope.gridApi.grid.options.paginationCurrentPage,$scope.getFilterCondition(),$scope.getSearchConditionParams(),$scope.gridApi.remoteSortingConfig);
+			};
+			$scope.changePageSize = function(pageSize)
+			{
+				$scope.gridApi.grid.options.paginationPageSize=pageSize;
+				$scope.refreshCurrentPage();
+			};
+			this.refreshAll = $scope.refresh;
+			this.refreshCurrent = $scope.refreshCurrentPage;
+			this.changePageSize=$scope.changePageSize;
+			
+			//查询数据
+			 $scope.getPagedDataAsync = function(pageSize,page,filterCondition,params,sorting) 
+			 {
+				 //不去后台服务器上加载数据，直接通过数据绑定显示数据
+				 if($scope.noLoadDataByServer != 'true')
+				 {
+					 asynchroMarkService.mask("加载中。。。。。");
+					 if($scope.showType!=null&&$scope.showType.length>0){
+						 ListViewService.getAllResult($scope.listViewKey,filterCondition,params,$scope.getResultResult,$scope.getResultFault);
+					 }
+					 else{
+						 $scope.pagingOptions.autoLoad = false;
+						 ListViewService.getResult(page,pageSize,$scope.listViewKey,filterCondition,params,$scope.$parent.$eval($scope.initFilter),sorting,$scope.getResultResult,$scope.getResultFault);
+					 }
+				 }
+		    };
+			//查询数据
+			 $scope.getExport2ExcelParams = function(filterCondition,params,sorting) 
+			 {
+				 if($scope.listExportFilter){
+					 angular.copy($scope.listExportFilter,params);
+				 }
+				 if($scope.initFilter){
+					 angular.copy($scope.$parent.$eval($scope.initFilter),params)
+				 }
+				 var params = "listViewKey="+$scope.listViewKey+"&filterCondition="+angular.toJson(filterCondition)+"&params="+angular.toJson(params)+"&sorting="+angular.toJson(sorting);
+				 return params;
+			 };			    
+			 $scope.$watch('filterOptions', function(newVal, oldVal) {
+			        if (newVal !== oldVal) {
+			            $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage,$scope.getFilterCondition(),$scope.getSearchConditionParams(),$scope.gridApi.remoteSortingConfig);
+			        }
+			 }, true);
+			    
+			 $scope.searchDataByConditions = function()
+			 {				 
+			 	 $scope.refresh();
+			 }
+			    
+			 $scope.cleanSearchConditions = function()
+			 {
+			    var conditions = $scope.searchConditions;
+			    for(var i=0;i<conditions.length;i++)
+			    {
+			    	var condition = conditions[i];
+			    	condition.columnValue="";
+			    }
+			    
+			    $scope.searchConditionParams ={};
+			    
+			    $scope.selected=null;
+			    $scope.fileterText='';
+			 }
+		    
+		    $scope.selected = '';
+		    $scope.fileterText='';
+			 //键盘按起事件
+			 $scope.keyup = function(event)
+			 {
+				 if(event.keyCode == 13 && $scope.selected)
+				 {
+					 $scope.refresh();
+				 }
+			 }
+			 $scope.getAdvancedByConditions = function()
+			 {
+			 	//DColumnFilterController 是过滤条件指令的控制器，由过滤条件指令设置到本控制器，如果没有过滤条件指令，则为 undefined
+				 if(angular.isUndefined(self.DColumnFilterController)) 
+				 {
+					 var conditions = $scope.searchConditions;
+					 var params = new Object();
+					 for(var i=0;i<conditions.length;i++)
+					 {
+						 var tempValue = conditions[i].columnValue;
+						 params[conditions[i].paramName] = tempValue==""?null:tempValue;
+					 }
+					 $scope.searchConditionParams = params;
+				 }
+		    	 else
+		    	 {
+				 	 $scope.searchConditionParams = self.DColumnFilterController.getAdvancedByConditions();
+		    	 }
+			 }			 
+			 $scope.getSearchConditionParams = function()
+			 {
+			 	$scope.getAdvancedByConditions();
+
+				var params  = {};
+				var condition = $scope.searchConditionParams;
+				var treeNode = $scope.currentTreeNode;
+				for(var obj in condition)
+				{
+					params[obj] = condition[obj];
+				}
+				for(var node in treeNode)
+				{
+					params[node] = treeNode[node];
+				}
+				return params;
+			 }
+			 
+			 $scope.getFilterCondition = function()
+			 {
+				 //DColumnFilterController 是过滤条件指令的控制器，由过滤条件指令设置到本控制器，如果没有过滤条件指令，则为 undefined
+				 if(angular.isUndefined(self.DColumnFilterController)) 
+				 {
+					 if($scope.selected == "" ||$scope.selected == null) return {};	
+					 var condition={};
+					 condition.attributeName =$scope.selected.attributeName;
+					 condition.fileterText = $scope.fileterText;
+					 return condition;
+				 }
+		    	 else
+		    	 {
+		    		 if(!angular.isUndefined(self.DColumnFilterController.getFilterCondition())){
+		    			 return self.DColumnFilterController.getFilterCondition();
+		    		 }
+		    	 }
+			 }
+			 
+			 //树形节点选择事件
+			 $scope.$on("treeSelect",function(e,node){
+				if(node!=$scope.currentTreeNode)
+				{
+					$scope.currentTreeNode = node;
+					$scope.refresh();
+				}
+			 });
+			 
+			 //多颗树形结构中做选择
+			 $scope.selectViewTreeSelect=function(viewTreeCondition)
+			 {
+				 $scope.selectViewTreeKey = $scope.selectViewTree.viewTreeKey;
+			 }
+			 
+			 
+			 $scope.chooseChange=function(selectData){
+				 $scope.$emit("selectChange",selectData);
+			 }
+			 
+			 $scope.getLabel=function(data){
+				 var strArray = $scope.showModelFiled.split(",");
+				 var showLabel = "";
+				 if(strArray.length==1){
+					 showLabel = data[strArray[0]];
+				 }else{
+					 for(var i=0;i<=strArray.length-1;i++){
+						 if(showLabel.length<1){
+							 showLabel += data[strArray[i]];
+						 }
+						 showLabel +=" "+data[strArray[i+1]];
+					 }	 
+				 }
+				 return showLabel;
+			 }
+			initListView();
+		},
+		templateUrl:'compents/ddatagrid/asset/GridTemplate.html'
+	}
+}])
+.directive("dcolumnfilter",['$rootScope','$timeout',
+                        function($rootScope,$timeout)
+{
+	return{
+		restrict:'E',
+		scope:{
+			gridName:'@',
+			showFilter:'@',
+			defaultSearch:'@'
+		},
+		controller:function($scope,$element)
+		{ 
+			$scope.customFilter = {};
+			$scope.filterSelects={};
+			
+			
+			this.getColumnFilterHeight = function(){
+				var divs = angular.element($element).find("div");
+				return angular.element(divs[0]).offset().top+angular.element(divs[0]).height();
+			}
+			
+			this.getFilterCondition = function ()
+			{
+				if($scope.selected == "" ||　$scope.selected == null) return {};	
+				var condition={};
+				condition.attributeName =$scope.selected.attributeName;
+				condition.fileterText = $scope.fileterText;
+				return condition;
+			}	
+			this.setCustomerFilter = function(customFilter){
+				$scope.customFilter = customFilter;
+			}
+			this.getAdvancedByConditions = function()
+			{
+				var conditions = $scope.searchConditions;
+				var params = new Object();
+				for(var i=0;i<conditions.length;i++)
+				{
+					var tempValue = conditions[i].columnValue;
+					params[conditions[i].paramName] = tempValue==""?null:tempValue;
+				}
+				
+				for(var filterSelect in $scope.filterSelects)
+				{
+					params[filterSelect] = $scope.filterSelects[filterSelect];
+				}
+				
+				angular.forEach($scope.customFilter,function(value,key){
+					params[key] = value;
+				})
+				
+				return params;
+			}
+			self = null;
+			self = this;
+			if(angular.isUndefined($scope.gridName))
+			{
+				$scope.gridName="dDataGrid";
+			}
+ 
+			var gridController ;
+			$scope.$watch('$parent["'+$scope.gridName+'"]', function(newValue, oldValue) {  
+		 
+				self.gridController = newValue;
+				$scope.gridController = self.gridController;
+				if(angular.isUndefined(self.gridController))
+				{
+					return 
+				}
+				self.gridController.DColumnFilterController = self;
+
+				$scope.$watch('gridController.attributes', function(newValue, oldValue) {
+					$scope.attributes =[];
+					if(newValue != undefined){
+						var firstIn=true;
+						angular.forEach(newValue, function(data,index,array){
+							if(data.attributeName != "EId"){
+								$scope.attributes.push(data);
+								if(firstIn){
+									$scope.selected=data;
+									firstIn=false;
+								}
+							}
+						});
+					}
+				});
+				$scope.$watch('gridController.searchConditions', function(newValue, oldValue) {  
+					$scope.searchConditions  = newValue;
+				});		
+				$scope.$watch('gridController.filterParm', function(newValue, oldValue) {  
+					$scope.res=newValue;
+				});
+			}); 
+			
+			
+		    $scope.fileterText='';
+			  $scope.refreshGrid = function(){
+				 $scope.gridController.refreshAll();
+			 }
+			 
+			  $scope.search=function(){
+				 $scope.gridController.refreshAll();
+			  }
+			  
+			 //键盘按起事件
+			 $scope.keyup = function(event)
+			 {
+				 if(angular.isUndefined($scope.gridController)) return;
+				 
+				 if(event.keyCode == 13)
+				 {
+					 $scope.gridController.refreshAll();
+				 }
+			 }
+			 $scope.clean = function()
+			 {
+			    var conditions = $scope.searchConditions;
+			    for(var i=0;i<conditions.length;i++)
+			    {
+			    	var condition = conditions[i];
+			    	condition.columnValue="";
+			    }
+			    
+			  $scope.selected=null;
+			    $scope.fileterText='';
+			    $scope.gridController.clearnInitFilter();
+			    $scope.gridController.refreshAll();
+			 }
+			 
+			 //过滤点击事件
+			 $scope.filterClick = function(columnName,columnValue)
+			 {
+				 $scope.filterSelects[columnName] = columnValue;
+				 $scope.gridController.refreshAll();
+			 }
+		},
+		templateUrl:'compents/ddatagrid/asset/ColumnFilterTemplate.html'
+	}
+}])
+.directive("dpagination",['$rootScope', function($rootScope)
+{
+	return{
+		restrict:'E',
+		scope:{
+			gridName:'@'
+		},
+		controller:function($scope,$element)
+		{ 
+			$scope.paginationPageSizes=[10, 20, 50,100,500];
+
+			var self = null;
+			self = this;
+			if(angular.isUndefined($scope.gridName))
+			{
+				$scope.gridName="dDataGrid";
+			}
+ 
+			var gridController ;
+			$scope.$watch('$parent["'+$scope.gridName+'"]', function(newValue, oldValue) {  
+				self.gridController = newValue;
+				$scope.gridController = self.gridController;
+				if(angular.isUndefined(self.gridController))
+				{
+					return 
+				}
+				self.gridController.paginationController = self;
+				
+				
+				$scope.$watch('gridController.paginationPageSize', function(newValue, oldValue) {  
+					$scope.paginationPageSize  = newValue;
+				});
+			}); 
+			
+			 $scope.$watch('paginationPageSize', function(newValue, oldValue) {
+				 if(newValue != undefined && self.gridController != undefined){
+					 self.gridController.changePageSize($scope.paginationPageSize);
+				 }
+			});
+		},
+		templateUrl:'compents/ddatagrid/asset/pagination.html'
+	}
+}]);
+
+
+//newGridHeight = gridUtil.elementHeight($elm.find("div.ui-grid-canvas")[1])
+//+gridUtil.elementHeight($elm.find("div.ui-grid-header")[0]);
+//+gridUtil.elementHeight($elm.find("div.ui-grid-pager-container")[0]);

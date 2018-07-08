@@ -1,0 +1,32 @@
+<div ng-controller="codeTypeDisplayController">
+	<div class="row" ng-init="getDisplayInitData()">
+		<form class="form-horizontal">
+			<div class="row rowddd"></div>
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name">名称 </label>
+				<div class="col-md-8 value-display">
+					<span>{{codeType.name}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="code">类型编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{codeType.code}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="codeTypeKey">类型唯一编码 </label>
+				<div class="col-md-8 value-display">
+					<span>{{codeType.codeTypeKey}}</span>
+				</div>
+			</div>
+			<div class="form-group col-md-12">
+				<div class="col-md-offset-2 col-md-10">
+					<input class="btn btn-primary col-md-1" type="button" value="返回"
+						ng-click="cancelOperate()" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

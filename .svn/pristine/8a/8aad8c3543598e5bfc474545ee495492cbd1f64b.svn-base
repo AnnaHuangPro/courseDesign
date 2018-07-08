@@ -1,0 +1,20 @@
+<uib-tabset tabPlacement="bottom" id="content">
+			<uib-tab   ng-right-click="{eId:tab.eId}" ng-repeat="tab in tabs" data-target="menu-{{index}}" active="tab.active"> 
+				<uib-tab-content>
+					<div ui-view="{{tab.code}}"></div>
+				</uib-tab-content> 
+				<uib-tab-heading uib-dropdown is-open="tabMenuController[tab.eId]" > 
+					{{tab.name}}
+					<a class="removeBtn" ng-if="tab.eId != 'mainTable'" ng-click="closeTabByEIdWithState(tab.eId)">
+						<i class='glyphicon glyphicon-remove'></i>
+					</a>
+					<ul class="uib-dropdown-menu" role="menu" aria-labelledby="btn-groupmm">
+						<li role="menuitem"><a href="javascript:void(0)" ng-click="closeRightTab(tab);">关闭右侧标签</a></li>
+						<li role="menuitem"><a href="javascript:void(0)" ng-click="closeLeftTab(tab);">关闭左侧标签</a></li>
+						<li role="menuitem"><a href="javascript:void(0)" ng-click="closeUnoperateTab(tab);">关闭其他标签</a></li>
+						<li role="menuitem"><a href="javascript:void(0)" ng-click="closeAllTab();">关闭全部标签</a></li>
+					</ul>
+				</uib-tab-heading> 
+			</uib-tab> 
+		</uib-tabset>
+<div ui-view  ></div>

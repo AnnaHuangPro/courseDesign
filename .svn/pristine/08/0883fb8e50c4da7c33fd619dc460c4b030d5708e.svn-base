@@ -1,0 +1,4 @@
+<span>
+	<input disabled="true" style="display:none"/>
+	<span ng-model="show">{{show}}</span>
+</span>

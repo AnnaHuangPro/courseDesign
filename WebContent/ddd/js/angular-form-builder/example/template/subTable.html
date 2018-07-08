@@ -1,0 +1,14 @@
+<div class="form-group">
+    <label class="col-md-{{col1}} control-label" for="{{formName+index}}">{{label}}</label>
+    <div class="col-md-{{col2}}">
+        <table class="table table-bordered table-hover">
+			<tr><th>列名1</th><th>列名2</th></tr>
+			<tr><td>数据1</td><td>数据2</td></tr>
+		</table>
+        <p class='help-block'>{{description}}</p>
+        </div>
+</div>
+<div class="pull-right component-operator">
+	<span class='glyphicon glyphicon-plus operator-signal plus'></span>&nbsp;&nbsp;&nbsp;&nbsp;
+	<span class='glyphicon glyphicon-minus operator-signal minus' ng-click="popover.remove($event)"></span>
+</div>

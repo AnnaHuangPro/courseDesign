@@ -1,0 +1,56 @@
+<div ng-controller="memberGroupFormController">
+	<div class="row" ng-init="getInitMemberGroupData()">
+		<form class="col-md-12 form-horizontal" name="memberGroupForm"
+			novalidate>
+			<div class="row rowddd"></div>
+			
+			<!-- <div class="form-group">
+				<div class="col-md-10">
+					<input class="btn btn-success col-md-offset-2" type="button"
+						value="保存" type="submit" ng-click="saveMemberGroup(memberGroup)">
+					<input class="btn btn-success" type="button" value="保存并新增"
+						type="submit" ng-show="showSaveAndAddButton"
+						ng-click="saveAndAddMemberGroup(memberGroup)"> <input
+						class="btn btn-primary" type="button" value="返回"
+						ng-click="closeOperateTab()" />
+				</div>
+			</div> -->
+			
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="name"> 名称</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="memberGroup.name"
+						name="name"/>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="organization">
+					所属单位</label>
+				<div class="col-md-8">
+					<dreference class="form-control" reference-id="memberGroupFormorganization"
+						list-view-key='organizationList'
+						ng-model='memberGroup.organization' multl-select="true"
+						show-model-filed='name' name="organization"></dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="remark"> 备注</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control" ng-model="memberGroup.remark" name="remark" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button ng-disabled="menberGroupForm.$invalid" class="btn btn-sm "
+						ng-click="saveMenberGroup(menberGroup)">保存</button>
+					<button ng-disabled="menberGroupForm.$invalid" class="btn btn-sm  "
+						ng-show="showSaveAndAddButton"
+						ng-click="saveAndAddMenberGroup(menberGroup)">保存并新增</button>
+					<button class="btn btn-sm" ng-click="back()">返回</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>

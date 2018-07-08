@@ -1,0 +1,1 @@
+#Student:EId,inputCode,operatorCode,operateDate,orgId,remark,attachmentCode,stuId,stuName,stuPwd,thrRealName,stuGender,stuAge,stuPhone,stuEmail,stuMajor,creatTime,updateTime,state,

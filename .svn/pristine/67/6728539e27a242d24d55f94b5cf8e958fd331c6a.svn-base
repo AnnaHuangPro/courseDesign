@@ -1,0 +1,1 @@
+{"route":"main.list.module.moduleListRoute","name":"模块管理","permissionMap":[{"module_display":{"actionPaths":["../Module/findModuleById","../Module/findAllModule"],"permissionCode":"","permissionName":"查看模块"}}]}

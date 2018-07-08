@@ -1,0 +1,9 @@
+encoding.default=UTF-8
+input.encoding=UTF-8
+output.encoding=UTF-8
+#指定加载字符串
+resource.loader=string
+#字符串模板加载器
+string.resource.loader.class=ddd.base.util.StringResourceLoader
+#使用自定义指令,用逗号隔开 
+userdirective=ddd.base.dynamicSql.directive.ToDate,ddd.base.dynamicSql.directive.Limit,ddd.base.helper.velocityDirective.Invoke,ddd.base.docx4j.Image

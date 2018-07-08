@@ -1,0 +1,73 @@
+#set($packageName=${entityClass.packageName.replace(".entity.", ".action.")})
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($className="${entityClass.className}Action")
+#set($src="src/")
+#set($extension=".java")
+#set($path=${entityClass.getClazz().getPackage().getName().replace(".entity.", ".action.").replace(".", "/")})
+#set($outputFile="${src}${path}/${className}${extension}")
+package ${packageName};
+
+import javax.annotation.Resource;
+import ddd.base.annotation.Action;
+import ddd.base.annotation.RequestMapping;
+import org.springframework.stereotype.Controller;
+import ddd.base.exception.DDDException;
+import ddd.base.persistence.EntitySet;
+import ${entityClass.getClazz().getName()};
+import ${entityClass.packageName.replace(".entity.", ".service.")}.${EntityNameUp}Service;
+
+@Action
+@RequestMapping("/${shortCode}/${EntityNameUp}")
+@Controller
+public class ${className} {
+	@Resource(name="${EntityNameLow}ServiceBean")
+	private ${EntityNameUp}Service ${EntityNameLow}Service;
+	
+	public ${EntityNameUp} save${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) {
+		try {
+			${EntityNameUp} save${EntityNameUp} = this.${EntityNameLow}Service.save${EntityNameUp}(${EntityNameLow});
+			return save${EntityNameUp};
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public int delete${EntityNameUp}(Long ${EntityNameLow}Id) {
+		
+		try {
+			return this.${EntityNameLow}Service.delete${EntityNameUp}(${EntityNameLow}Id);
+		} catch (DDDException e) {
+			throw e;
+		}
+		
+	}
+
+	public ${EntityNameUp} update${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) {
+		try {
+			${EntityNameUp} update${EntityNameUp} = this.${EntityNameLow}Service.update${EntityNameUp}(${EntityNameLow});
+			return update${EntityNameUp};
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+	public ${EntityNameUp} find${EntityNameUp}ById(Long ${EntityNameLow}Id) {
+		try {
+			${EntityNameUp} find${EntityNameUp} = this.${EntityNameLow}Service.find${EntityNameUp}ById(${EntityNameLow}Id);
+			return  find${EntityNameUp};
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+	
+	public EntitySet<${EntityNameUp} > findAll${EntityNameUp}() {
+		try {
+			EntitySet<${EntityNameUp} > all${EntityNameUp} = this.${EntityNameLow}Service.findAll${EntityNameUp}();
+			return all${EntityNameUp};
+		} catch (DDDException e) {
+			throw e;
+		}
+	}
+
+}

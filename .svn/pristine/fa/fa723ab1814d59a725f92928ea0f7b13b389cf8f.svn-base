@@ -1,0 +1,329 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>选择框</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<meta name="generator" content="www.leipi.org" />
+<link rel="stylesheet" href="../css/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="leipi.style.css">
+<script type="text/javascript">
+	//checkboxs
+	function isIE() {
+		if (window.attachEvent) {
+			return true;
+		}
+		return false;
+	}
+	//moveRow在IE支持而在火狐里不支持！以下是扩展火狐下的moveRow
+	if (!isIE()) {
+		function getTRNode(nowTR, sibling) {
+			while (nowTR = nowTR[sibling])
+				if (nowTR.tagName == 'TR')
+					break;
+			return nowTR;
+		}
+		if (typeof Element != 'undefined') {
+			Element.prototype.moveRow = function(sourceRowIndex, targetRowIndex) //执行扩展操作
+			{
+				if (!/^(table|tbody|tfoot|thead)$/i.test(this.tagName)
+						|| sourceRowIndex === targetRowIndex)
+					return false;
+				var pNode = this;
+				if (this.tagName == 'TABLE')
+					pNode = this.getElementsByTagName('tbody')[0]; //firefox会自动加上tbody标签，所以需要取tbody，直接table.insertBefore会error
+				var sourceRow = pNode.rows[sourceRowIndex], targetRow = pNode.rows[targetRowIndex];
+				if (sourceRow == null || targetRow == null)
+					return false;
+				var targetRowNextRow = sourceRowIndex > targetRowIndex ? false
+						: getTRNode(targetRow, 'nextSibling');
+				if (targetRowNextRow === false)
+					pNode.insertBefore(sourceRow, targetRow); //后面行移动到前面，直接insertBefore即可
+				else { //移动到当前行的后面位置，则需要判断要移动到的行的后面是否还有行，有则insertBefore，否则appendChild
+					if (targetRowNextRow == null)
+						pNode.appendChild(sourceRow);
+					else
+						pNode.insertBefore(sourceRow, targetRowNextRow);
+				}
+			}
+		}
+	}
+
+	/*删除tr*/
+	function fnDeleteRow(obj) {
+		var oTable = document.getElementById("options_table");
+		while (obj.tagName != 'TR') {
+			obj = obj.parentNode;
+		}
+		oTable.deleteRow(obj.rowIndex);
+	}
+	/*上移*/
+	function fnMoveUp(obj) {
+		var oTable = document.getElementById("options_table");
+		while (obj.tagName != 'TR') {
+			obj = obj.parentNode;
+		}
+		var minRowIndex = 1;
+		var curRowIndex = obj.rowIndex;
+		if (curRowIndex - 1 >= minRowIndex) {
+			oTable.moveRow(curRowIndex, curRowIndex - 1);
+		}
+
+	}
+	/*下移*/
+	function fnMoveDown(obj) {
+		var oTable = document.getElementById("options_table");
+		while (obj.tagName != 'TR') {
+			obj = obj.parentNode;
+		}
+		var maxRowIndex = oTable.rows.length;
+		var curRowIndex = obj.rowIndex;
+		if (curRowIndex + 1 < maxRowIndex) {
+			oTable.moveRow(curRowIndex, curRowIndex + 1);
+		}
+	}
+
+	/*生成tr*/
+	function fnAddComboTr(obj) {
+		var oTable = document.getElementById('options_table');
+		var new_tr_node = oTable.insertRow(oTable.rows.length);
+		var new_td_node0 = new_tr_node.insertCell(0), new_td_node1 = new_tr_node
+				.insertCell(1);
+
+		if (!obj.name)
+			obj.name = '';
+		if (!obj.value)
+			obj.value = '';
+		new_td_node0.innerHTML = '<td><input type="text" value="'+obj.value+'" name="'+obj.name+'" placeholder="选项值"></td>';
+		new_td_node1.innerHTML = '<td><div class="btn-group"><a title="上移" class="btn btn-small btn-info" href="javascript:void(0);" onclick="fnMoveUp(this)"><i class="icon-white icon-arrow-up"></i></a><a title="下移" class="btn btn-small btn-info" href="javascript:void(0);" onclick="fnMoveDown(this)"><i class="icon-white icon-arrow-down"></i></a><a title="删除" class="btn btn-small btn-default" href="javascript:void(0);" onclick="fnDeleteRow(this)"><i class="icon-ban-circle"></i></a></div></td>';
+		return true;
+	}
+
+	function fnAdd() {
+		fnAddComboTr({
+			"name" : 'option',
+			"value" : ''
+		});
+	}
+
+	var options = new Array();
+	/*组合checkbox*/
+	function fnParseOptions(gOrientation, gType) {
+		var oTable = document.getElementById('options_table');
+		var nTr = oTable.getElementsByTagName('tr'), trLength = nTr.length, html = "";
+		for (var i = 0; i < trLength; i++) {
+			var inputs = nTr[i].getElementsByTagName('input');
+			if (inputs.length > 0) {
+				if (!inputs[0].value)
+					continue;
+
+				html += '<label ';
+				if (gOrientation == '横排')
+				{
+					html += 'style="display:inline;"';
+				} else {
+					html += 'style="display:block;"';
+				}
+
+				html += '><input name="'+inputs[0].name+'" value="'+inputs[0].value+'" type="'+gType+'"/>'
+						+ inputs[0].value + '&nbsp;</label>';
+				// if(gOrientation=='vertical')//竖排
+				//    html+='<br/>';
+				options.push(inputs[0].value);
+			}
+		}
+
+		//alert(html);
+		return html;
+
+	}
+
+	function getOptions() {
+		return options;
+	}
+</script>
+</head>
+<body>
+	<div class="content">
+		<table class="table table-bordered table-striped table-hover">
+			<tr>
+				<th width="50%"><span>控件名称</span><span
+					class="label label-important">*</span></th>
+				<th width="50%"><span>排列方向</span></th>
+			</tr>
+			<tr>
+				<td><input type="text" id="title" placeholder="必填项"></td>
+				<td><label title="选项一 选项二"
+					style="display: inline; padding-left: 0;"><input
+						id="horizontal" checked="checked" name="orientation" type="radio">横排</label>
+					&nbsp;&nbsp; <label title="选项一&#10;选项二"
+					style="display: inline; padding-left: 0;"><input
+						id="vertical" name="orientation" type="radio">竖排 </label></td>
+			</tr>
+			<tr>
+				<th><span>绑定属性</span><span class="label label-important">*</span></th>
+				<th><span>选择框类型</span></th>
+			</tr>
+			<tr>
+				<td><input type="text" id="bundle" placeholder="必填项"></td>
+				<td><label style="display: inline; padding-left: 0;"><input
+						type="radio" id="radio" name="choosetype" checked="checked">单选</label>
+					&nbsp;&nbsp; <label style="display: inline; padding-left: 0;"><input
+						type="radio" id="checkbox" name="choosetype">复选</label></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<table class="table table-hover table-condensed" id="options_table">
+						<tr>
+							<th>选项值</th>
+							<th>操作</th>
+						</tr>
+					</table> <a title="添加选项" class="btn btn-primary" onclick="fnAdd();">添加选项</a>
+				</td>
+			</tr>
+			<tr>
+				<th><span>列宽系数</span></th>
+				<th><span> 显示表达式</span></th>
+			</tr>
+			<tr>
+				<td><input type="number" name="col1" id="col1" title="两个数之和等于12" style="width: 30%;">
+				&nbsp;:&nbsp;<input type="number" name="col2" id="col2" title="两个数之和等于12" style="width: 30%;"></td>
+				<td>
+					<select id="bindVal" style="width:100px">
+						<option value="不可绑值" selected="selected">不可绑值</option>
+						<option value="可绑值">可绑值</option>
+					</select>
+					<input type="text" id="authority" placeholder="请输入用户,以逗号隔开" style="width:132px">
+				</td>
+			</tr>
+			<tr>
+				<th><span>是否可编辑</span></th>
+				<th><span>是否隐藏</span></th>
+			</tr>
+			<tr>
+				<td>
+					<input type="radio" name="isEdit" id="isEdit0"><label for="isEdit0" style="display:inline;">是</label>
+				&nbsp;&nbsp;<input type="radio" name="isEdit" id="isEdit1"><label for="isEdit1" style="display:inline;">否</label>
+				</td>
+				<td>
+					<input type="radio" name="isHide" id="isHide0"><label for="isHide0" style="display:inline;">是</label>
+				&nbsp;&nbsp;<input type="radio" name="isHide" id="isHide1"><label for="isHide1" style="display:inline;">否</label>
+				</td>
+				
+			</tr>
+			
+		</table>
+	</div>
+	<script type="text/javascript">
+		var oNode = null, thePlugins = 'choose';
+		var config = '';
+		window.onload = function() {
+			if (parent.DE.plugins[thePlugins].editdom) {
+				oNode = parent.DE.plugins[thePlugins].editdom;
+				if (oNode.getAttribute('config')) {
+					config = oNode.getAttribute('config').replace(/&quot;/g,
+							"\"");
+				}
+
+				config = eval('(' + config + ')');
+				$G('title').value = config.title;
+				$G('bundle').value = config.bundle;
+				$G('authority').value = config.authority || "";
+				$G('col1').value = config.col1 || 2;
+				$G('col2').value = config.col2 || 10;
+				$G('bindVal').value = config.bindVal|| "不可绑值";
+				var isEdit = config.isEdit;
+        		isEdit=='否' ? $G('isEdit1').checked = true : $G('isEdit0').checked = true;
+
+        		var isHide = config.isHide;
+        		isHide=='否' ? $G('isHide1').checked = true : $G('isHide0').checked = true;
+				
+				var checked = config.type;
+				checked == 'radio' ? $G('radio').checked = true
+						: $G('checkbox').checked = true;
+
+				checked = config.orientation;
+				checked == '横排' ? $G('horizontal').checked = true
+						: $G('vertical').checked = true;
+				
+				var inputTags = oNode.getElementsByTagName('input');
+				var length = inputTags.length;
+				var aInputs = [];
+				for (var i = 0; i < length; i++) {
+					fnAddComboTr(inputTags[i]);
+				}
+			}
+		}
+		function $G(id) {
+			return document.getElementById(id);
+		};
+		function save() {
+			if ($G('title').value == '') {
+				alert('请输入控件名称');
+				return false;
+			}
+
+			var gTitle = $G('title').value.replace(/\"/g, "&quot;");
+			var gBundle = $G('bundle').value.replace(/\"/g, "&quot;");
+			var gOrientation = '横排';
+			var gAuthority = $G('authority').value;
+			var gCol1 = parseInt($G('col1').value,10)?parseInt($G('col1').value,10):2;
+			var gCol2 = parseInt($G('col2').value,10)?parseInt($G('col2').value,10):10; 
+			var gBindVal = $G('bindVal').value;
+			var gIsEdit = "是";
+			if($G('isEdit1').checked) gIsEdit = "否";
+
+			var gisHide = "是";
+			if($G('isHide1').checked) gisHide = "否";
+			
+			if ($G('vertical').checked)
+				gOrientation = '竖排';
+			var gType = 'radio';
+			if ($G('checkbox').checked)
+				gType = 'checkbox';
+
+			if (oNode) {
+				config.title = gTitle;
+
+				if (gBundle == "") {
+					alert('请指定绑定属性');
+					return false;
+				}
+				config.bundle = gBundle;
+				config.fieldName = gBundle
+						.substring(gBundle.lastIndexOf(".") + 1);
+				config.type = gType;
+				config.orientation = gOrientation;
+				var gTimestamp = new Date().getTime();//相同的gTimestamp为同一组checkbox
+				var optionHtml = fnParseOptions(gOrientation, gType);
+				if (optionHtml.length == 0) {
+					alert('请添加选项');
+					return false;
+				}
+				
+				config.dataSource = getOptions();
+				config.authority = gAuthority;
+				config.col1 = gCol1;
+		        config.col2 = gCol2;
+		        config.bindVal = gBindVal;
+		       	if( gIsEdit != '' ) {
+            		config.isEdit = gIsEdit;
+		        }else{
+		            config.isEdit = '否';
+		        }
+
+		        if( gisHide != '' ) {
+            		config.isHide = gisHide;
+		        }else{
+		            config.isHide = '否';
+		        }
+		        
+				oNode.innerHTML = optionHtml;
+				delete parent.DE.plugins[thePlugins].editdom;
+				oNode.setAttribute('config', JSON.stringify(config));
+				return config;
+			}
+		};
+	</script>
+</body>
+</html>

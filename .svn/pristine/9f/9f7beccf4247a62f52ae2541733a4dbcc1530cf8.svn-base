@@ -1,0 +1,573 @@
+/*
+    * Busy 收集 整理
+ */
+/*雅虎（YUI 3）reset*/
+/*Normalize.css*/
+/* 会员回到顶端的按钮样式  */
+/*覆盖基础框架表格的样式*/
+.DDataGridClass .ui-grid-viewport::-webkit-scrollbar-thumb {
+  background-color: #ff8e79 !important;
+}
+.DDataGridClass .tree::-webkit-scrollbar-thumb {
+  background-color: #ff8e79 !important;
+}
+.formBtnGroup.Right {
+  position: absolute !important;
+  right: 15px !important;
+}
+.required:after {
+  content: "*";
+  color: red;
+  position: absolute;
+  top: 8px;
+  right: 4px;
+}
+.reference {
+  background-image: url('/DDD3/ddd/ddd/extends/asset/login/icon_re.png');
+}
+div[uiView$="List"] .formBtnGroup {
+  margin-right: 16px;
+}
+.navbar {
+  min-height: 0;
+}
+.CodeMirror {
+  border: 1px solid #bbbbbb;
+}
+#mySidebar div {
+  overflow-x: hidden;
+}
+#mySidebar div div {
+  overflow-x: hidden;
+}
+#mySidebar div div div {
+  overflow-y: hidden;
+}
+::-webkit-scrollbar {
+  width: 9px;
+  height: 0px;
+}
+::-webkit-scrollbar-button {
+  border-radius: 0px 0px -5px -5px;
+  background-color: #d8d8d8;
+  width: 5px;
+  height: 5px;
+  inside: 5px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px #d8d8d8;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+  border: 1px solid #d8d8d8;
+}
+::-webkit-scrollbar-corner {
+  background-color: #d8d8d8;
+  width: 9px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #ff8e79;
+  border-radius: 5px;
+}
+::-webkit-resizer {
+  width: 9px;
+}
+body,
+html {
+  height: 100%;
+  font: 14px/1.5 "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+}
+.container,
+.container-fluid {
+  height: 100%;
+}
+.iconSelf {
+  background-image: url('/DDD3/ddd/extends/asset/login/icon.png');
+  width: 36px;
+  height: 36px;
+}
+.iconSelf.user {
+  background-position: -5px -10px;
+}
+.iconSelf.pw {
+  background-position: -5px -55px;
+}
+.iconSelf.org {
+  background-image: url('/DDD3/ddd/extends/asset/login/icon_login_org.png');
+  background-position: -5px -15px;
+}
+.loginContainer {
+  padding-top: 192px;
+  background: url('/DDD3/ddd/extends/asset/login/loginbackground.png') no-repeat;
+  color: #40b2d8;
+  background-size: 100%;
+}
+.loginContainer:before {
+  background: url('/DDD3/ddd/extends/asset/login/loginHead.png') no-repeat;
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  margin-top: -192px;
+}
+.loginContainer .loginForm {
+  background-color: #ffffff;
+}
+.loginContainer .loginForm form > * {
+  margin: 15px 0;
+}
+.loginContainer .loginForm form .checkbox a {
+  /*color: #aaa;*/
+  cursor: pointer;
+  text-decoration: none;
+}
+.loginContainer .loginForm .loginHeader {
+  background-color: #40b2d8;
+  color: white;
+  text-align: center;
+}
+.loginContainer .loginForm .loginBtn {
+  background-color: #40b2d8;
+  color: #ffffff;
+}
+.loginContainer .loginInputGroup {
+/*   box-shadow: 1px 3px 30px 0 #151515 inset, -1px -3px 30px 0 #202020 inset; */
+  border-radius: 5px;
+  background-color: #eeeeee;
+}
+.loginContainer .loginInputGroup .input-group {
+  width: 100%;
+  padding-bottom: 5px;
+  background-color: white;
+}
+.loginContainer .loginInputGroup .input-group .iconSelf {
+  position: absolute;
+  z-index: 2;
+}
+.loginContainer .loginInputGroup .input-group select,
+.loginContainer .loginInputGroup .input-group input {
+  padding-left: 36px;
+  color: #ffffff;
+   border-radius: 5px;
+/*   border: none; */
+}
+.loginOrganizatin_ordinary {
+  cursor: pointer;
+  border: 1px solid #D8D8D8;
+  display: block;
+  border-radius: 24px;
+  width: 147px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-top: 6px;
+  padding-right: 6px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+   color: #D8D8D8;
+}
+.loginOrganizatin_checked {
+  cursor: pointer;
+  border: 1px solid #40b2d8;
+  display: block;
+  border-radius: 24px;
+  width: 147px;
+  padding-bottom: 6px;
+  padding-left: 12px;
+  padding-top: 6px;
+  padding-right: 6px;
+  margin-top: 3px;
+  margin-bottom: 8px;
+  color: #40b2d8;
+}
+.panel_titile {
+  color: #777777;
+  font-size: 15px;
+}
+.org-enter {
+      background-color: #40b2d8;
+    color: #ffffff;
+}
+.org-enter:hover {
+/*   background-color: rgba(113, 20, 3, 0.45); */
+}
+.org-back {
+  color: #40b2d8;
+}
+.org-back:hover {
+  background-color: rgba(255, 255, 255, 0.79);
+  color: #711403;
+}
+#navTop {
+  height: 45px;
+  background-color: #f9fafc;
+}
+#navTop a {
+  cursor: pointer;
+  padding-bottom: 10px;
+}
+#navTop .navbar-header {
+  width: 200px;
+}
+#navTop .navbar-header .navBrand {
+  background: url("/DDD3/ddd/extends/asset/main/systemLogo.png") no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  border-right: 2px solid #d9dadc;
+  margin-left: 0;
+  height: 45px;
+}
+#navTop .navSystem {
+  padding: 10px 0 0 0;
+}
+#navTop .navSystem li.active {
+  background-color: #ffffff;
+  border-radius: 3px 3px 0 0;
+}
+#navTop .navSystem li.active a:hover {
+  background-color: #ffffff;
+}
+#navTop .navSystem li a {
+  padding: 10px 15px;
+  color: black;
+}
+#navTop .navOutBtn {
+  padding: 0;
+  width: 79px;
+  border-radius: 0;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  background-color: #ff8e79;
+  border-color: #46b8da;
+  text-align: center;
+  cursor: pointer;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
+#navTop .navOutBtn:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+#navTop .navbar-right {
+  margin-right: 0;
+}
+#navTop .dropdown-toggle {
+  color: grey;
+  padding-right: 0;
+}
+#navTop .dropdown-toggle .glyphicon {
+  margin-right: 5px;
+}
+#navTop .dropdown-toggle .glyphicon.glyphicon-menu-down {
+  font-size: 10px;
+}
+.content {
+  padding-top: 45px;
+}
+.content .menu {
+  z-index: 2;
+  overflow: auto;
+  min-width: 200px;
+  top: 0px;
+  bottom: 0px;
+  position: fixed;
+}
+.content #leftMenu .menu {
+  background-color: #343434 !important;
+  top: 45px !important;
+  width: 200px !important;
+}
+.content #leftMenu .menu .w2ui-node-image > span {
+  color: #ffffff !important;
+}
+.content #leftMenu .menu .w2ui-node-caption {
+  color: #ffffff !important;
+  font: 9.33333333px "Microsoft Yahei", "Hiragino Sans GB", Helvetica, "Helvetica Neue", "微软雅黑", Tahoma, Arial, sans-serif;
+}
+.content #leftMenu .menu .w2ui-expand {
+  color: #ffffff !important;
+}
+.content #leftMenu .menu .w2ui-selected {
+  background: #ffffff !important;
+  border-left: 8px solid #9d1800 !important;
+}
+.content #leftMenu .menu .w2ui-selected table {
+  padding-left: 10px px !important;
+}
+.content #leftMenu .menu .w2ui-selected .w2ui-node-image > span {
+  color: #000000 !important;
+}
+.content #leftMenu .menu .w2ui-selected .w2ui-node-caption {
+  color: #000000 !important;
+}
+.content #leftMenu .menu .w2ui-selected .w2ui-expand {
+  color: #000000 !important;
+}
+.content .mainContent {
+  margin-left: 200px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.content .mainContent #content a,
+.content .mainContent #content input,
+.content .mainContent #content select {
+  cursor: pointer;
+  -webkit-box-shadow: none ;
+  box-shadow: none ;
+  outline: none ;
+}
+.content .mainContent #content a:focus,
+.content .mainContent #content input:focus,
+.content .mainContent #content select:focus {
+  -webkit-box-shadow: none ;
+  box-shadow: none ;
+  outline: none ;
+}
+.content .mainContent #content > .tab-content {
+  background-color: #ffffff;
+  *zoom: 1;
+}
+.content .mainContent #content > .tab-content:before,
+.content .mainContent #content > .tab-content:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.content .mainContent #content > .tab-content:after {
+  clear: both;
+}
+.content .mainContent #content > ul.nav-tabs {
+  border-bottom: 2px solid #ff8e79;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 10px;
+  margin-left: 0px;
+}
+.content .mainContent #content > ul.nav-tabs > li.active {
+  border-bottom: 5px solid #ff8e79;
+}
+.content .mainContent #content > ul.nav-tabs > li a {
+  border: none;
+  padding-bottom: 5px;
+  color: #000000;
+}
+.content .mainContent #content > ul.nav-tabs > li a:hover {
+  background-color: white;
+}
+.content .mainContent #content > ul.nav-tabs > li:hover .removeBtn {
+  display: inline;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  /* Firefox 4 */
+  -webkit-transition: all 1s;
+  /* Safari 和 Chrome */
+  -o-transition: all 1s;
+}
+.content .mainContent #content > ul.nav-tabs > li:hover .removeBtn:hover {
+  color: #C31504;
+  transform: rotate(360deg);
+  transition: all 1s;
+  -moz-transition: all 1s;
+  /* Firefox 4 */
+  -webkit-transition: all 1s;
+  /* Safari 和 Chrome */
+  -o-transition: all 1s;
+}
+.content .mainContent #content > ul.nav-tabs > li .removeBtn {
+  display: none;
+  position: absolute;
+  top: -10px;
+  right: -15px;
+  font-size: 10px;
+  transition: all 1s;
+  -moz-transition: all 1s;
+  /* Firefox 4 */
+  -webkit-transition: all 1s;
+  /* Safari 和 Chrome */
+  -o-transition: all 1s;
+}
+.content .mainContent .btn {
+  color: #ffffff;
+  background-color: #ff8e79;
+  border-color: #ff8e79;
+}
+.content .mainContent .btn > .glyphicon {
+  color: #ffffff;
+}
+.content .mainContent .glyphicon {
+  color: #ff8e79;
+}
+.content .mainContent .input-group-btn .btn {
+  background-color: white;
+  color: #ff8e79;
+}
+.content .mainContent .input-group-btn .btn .glyphicon {
+  color: #ff8e79 !important;
+}
+.content .mainContent .legend {
+  font-size: 18px !important;
+  line-height: 35px;
+}
+.content .mainContent .legend[data-toggle="collapse"] {
+  cursor: pointer;
+}
+.content .mainContent .legend .legend-title {
+  padding-left: 15px;
+}
+.content .mainContent .value-display {
+  padding-top: 7px;
+}
+.mainContent .formBtnGroup .btn {
+  margin: 0 1px;
+  background-color: #ff8e79;
+  color: #ffffff;
+}
+.mainContent .formBtnGroup .btn > .glyphicon {
+  color: #ffffff;
+}
+.mainContent .formBtnGroup .btn[disabled=disabled] {
+  background-color: #999999;
+  border: 1px solid #808080;
+}
+.mainContent .formBtnGroup .btn .glyphicon {
+  margin-right: 4px;
+  font-size: 16px;
+  vertical-align: text-bottom;
+}
+.mainContent .formBtnGroup.topRight {
+  padding-left: 14px;
+}
+form {
+  /*start-根据CISDI提供的示例页面修改为最新样式*/
+  /*textarea{
+		resize: none;
+	}*/
+  /* input非必填项距右边内边距使之对齐 */
+  /* textarea非必填项距右边内边距使之对齐 */
+  /* textarea必填项距右边内边距使之对齐 */
+  /* 查询页面展示textarea时label样式使之对齐 */
+  /* 查询页面展示textarea时label样式使之对齐 */
+  /*end-根据CISDI提供的示例页面修改为最新样式*/
+}
+form .text-danger,
+form .text-danger:hover,
+form a.text-danger,
+form a.text-danger:focus,
+form a.text-danger:hover {
+  /* 	color: #e74c3c; */
+  color: #ff0000;
+}
+form .form-control,
+form .navbar-default .navbar-nav > li > a,
+form body {
+  color: #394263 !important;
+  border-color: #dbe1e8;
+}
+form input:not([type=button]),
+form select,
+form textarea {
+  color: #959596 !important;
+  border-color: #dbe1e8 ;
+}
+form input:not([type=button]):disabled,
+form select:disabled,
+form textarea:disabled,
+form input:not([type=button])[readonly],
+form select[readonly],
+form textarea[readonly] {
+  color: #777 !important;
+}
+form .input-non-mandatory-padding {
+  padding-right: 25px;
+}
+form .textarea-non-mandatory-padding {
+  padding-right: 30px;
+}
+form .textarea-mandatory-padding,
+form .textarea-label-show-padding {
+  padding-right: 20px;
+}
+form .textarea-show-padding {
+  margin-left: -5px;
+}
+form .defined-textarea {
+  margin-left: -6px;
+  width: 97%;
+}
+form .required:after {
+  content: "*";
+  color: red;
+}
+.clearFix {
+  *zoom: 1;
+}
+.clearFix:before,
+.clearFix:after {
+  display: table;
+  content: "";
+  line-height: 0;
+}
+.clearFix:after {
+  clear: both;
+}
+/* 回到顶部全文通用样式表  */
+#scrollUp {
+  bottom: 20px;
+  right: 2%;
+  background: #47a6d9;
+  color: #ffffff;
+  font-size: 12px;
+  font-family: sans-serif;
+  text-decoration: none;
+  opacity: 0.6;
+  padding: 10px 20px;
+  border-radius: 16px;
+  -webkit-border-radius: 16px;
+  -moz-border-radius: 16px;
+  -webkit-transition: background 200ms linear;
+  transition: background 200ms linear;
+  -moz-transition: background 200ms linear;
+}
+#scrollUp:hover {
+  background: #000;
+}
+a.ng-invalid,
+input.ng-invalid,
+select.ng-invalid,
+textarea.ng-invalid {
+  border-color: rgba(77, 78, 76, 0.23) !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+a.ng-invalid:focus,
+input.ng-invalid:focus,
+select.ng-invalid:focus,
+textarea.ng-invalid:focus {
+  border-color: rgba(251, 10, 6, 0.25) !important;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483;
+}
+.data-safety {
+  height: 20px;
+  border-radius: 5px;
+  border: solid #e0e0e0 1px;
+}
+.data-safety-lower {
+  background: #ffd600;
+  -moz-transition: all 0.7s ease-in;
+  -webkit-transition: all 0.7s ease-in;
+  -o-transition: all 0.7s ease-in;
+  transition: all 0.7s ease-in;
+}
+.data-safety-medium {
+  background: #ff8f00;
+  -moz-transition: all 0.7s ease-in;
+  -webkit-transition: all 0.7s ease-in;
+  -o-transition: all 0.7s ease-in;
+  transition: all 0.7s ease-in;
+}
+.data-safety-high {
+  background: #ff0000;
+  -moz-transition: all 0.7s ease-in;
+  -webkit-transition: all 0.7s ease-in;
+  -o-transition: all 0.7s ease-in;
+  transition: all 0.7s ease-in;
+}

@@ -1,0 +1,4 @@
+<div ng-message="required" class="label label-warning Tip glyphicon glyphicon-exclamation-sign">&nbsp;必填项</div>
+<div ng-message="email"  class="label label-warning Tip glyphicon glyphicon-exclamation-sign">&nbsp;请输入正确的邮箱</div>
+<div ng-message="minlength"  class="label label-warning Tip glyphicon glyphicon-exclamation-sign">&nbsp;字符长度不能小于6</div>
+<div ng-message="maxlength"  class="label label-warning Tip glyphicon glyphicon-exclamation-sign">&nbsp;字符长度不能大于200</div>

@@ -1,0 +1,19 @@
+	<div class="col-md-6">
+		<div ng-controller="ddd3portletController" class="widget" style="margin-bottom: 0;">
+			<div class="panel panel-default "
+				style="padding: 0; border-radius: 0">
+				<div class="panel-heading">
+					<span class="glyphicon glyphicon-bookmark"></span>常用功能
+				</div>
+				<div class="panel-body widget-content" style="height: 190px">
+					<div id="portlet" class="shortcuts">
+						<a ng-repeat="button in buttons" ng-click="go(button.state)"
+							class="shortcut" style="color: black"> <i
+							class="{{button.icon}} shortcut-icon"></i> <span
+							class="shortcut-label">{{button.label}}</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

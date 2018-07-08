@@ -1,0 +1,76 @@
+#set($packageName=${entityClass.packageName.replace(".entity.", ".service.")})
+#set($EntityNameUp="${entityClass.className}")
+#set($EntityNameLow="${entityClass.className.substring(0,1).toLowerCase()}${entityClass.className.substring(1)}")
+#set($className="${entityClass.className}ServiceBean")
+#set($src="src/")
+#set($extension=".java")
+#set($path=${entityClass.getClazz().getPackage().getName().replace(".entity.", ".service.").replace(".", "/")})
+#set($outputFile="${src}${path}/impl/${className}${extension}")
+package ${packageName}.impl;
+
+import javax.annotation.Resource;
+import org.springframework.stereotype.Service;
+import ddd.base.exception.DDDException;
+import ddd.base.persistence.EntitySet;
+import ddd.simple.service.base.BaseService;
+import ${entityClass.getClazz().getName()};
+import ${entityClass.packageName.replace(".entity.", ".dao.")}.${EntityNameUp}Dao;
+import ${entityClass.packageName.replace(".entity.", ".service.")}.${EntityNameUp}Service;
+
+@Service
+public class ${className} extends BaseService implements ${EntityNameUp}Service {
+	@Resource(name="${EntityNameLow}DaoBean")
+	private ${EntityNameUp}Dao ${EntityNameLow}Dao;
+	
+	@Override
+	public ${EntityNameUp} save${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) {
+		try {
+			return this.${EntityNameLow}Dao.save${EntityNameUp}(${EntityNameLow});
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("save${EntityNameUp}", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public int delete${EntityNameUp}(Long ${EntityNameLow}Id) {
+		try {
+			return this.${EntityNameLow}Dao.delete${EntityNameUp}(${EntityNameLow}Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("delete${EntityNameUp}", e.getMessage(), e);
+		}
+		
+	}
+
+	@Override
+	public ${EntityNameUp} update${EntityNameUp}(${EntityNameUp} ${EntityNameLow}) {
+		try {
+			return this.${EntityNameLow}Dao.update${EntityNameUp}(${EntityNameLow});
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("update${EntityNameUp}", e.getMessage(), e);
+		}
+	}
+
+	@Override
+	public ${EntityNameUp} find${EntityNameUp}ById(Long ${EntityNameLow}Id) {
+		try {
+			return this.${EntityNameLow}Dao.find${EntityNameUp}ById(${EntityNameLow}Id);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("find${EntityNameUp}ById", e.getMessage(), e);
+		}
+	}
+	
+	@Override
+	public EntitySet<${EntityNameUp}> findAll${EntityNameUp}() {
+		try {
+			return this.${EntityNameLow}Dao.findAll${EntityNameUp}();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new DDDException("findAll${EntityNameUp}", e.getMessage(), e);
+		}
+	}
+
+}

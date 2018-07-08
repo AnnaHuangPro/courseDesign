@@ -1,0 +1,414 @@
+
+var permissionApp = angular.module('angular.permission',[])
+
+  /**
+	 * if route change then check if user has permission
+	 */
+permissionApp.run(function($rootScope, $state,$location,angularPermission) {
+	$rootScope.toLogin = function(){
+		$state.go("login");
+		$rootScope.tabs = [];
+	}	
+	});
+
+  /**
+	 * factory service provide permission data set and check
+	 */
+permissionApp.provider('angularPermission', function () {
+    var _userPermissionArray;
+    var cachedObjects; 
+    var cachedChangedObjects; 
+    var persistentFuncs={};
+   
+    
+    this.fastjson = {
+		isArray: function(a) {
+			return typeof(a) == "object" && Object.prototype.toString.call(a).toLowerCase() == "[object array]"
+		},
+		isObject: function(a) {
+			return typeof(a) == "object" && Object.prototype.toString.call(a).toLowerCase() == "[object object]"
+		},
+		format: function(v) {
+			if (v == null) {
+				return null
+			}
+			if ((typeof v) == "string") {
+				v = eval("(" + v + ")")
+			}
+			return this._format(v, v, null, null, null)
+		},
+		_randomId: function() {
+			return "randomId_" + parseInt(Math.random() * 1000000000)
+		},
+		_getJsonValue: function(a, b) {
+			var f = this._randomId();
+			var d = "";
+			d += "function " + f + "($){";
+			d += "return " + b + ";";
+			d += "}";
+			d += "";
+			var e = document.createElement("script");
+			e.id = f;
+			e.text = d;
+			document.body.appendChild(e);
+			var c = window[f](a);
+			e.parentNode.removeChild(e);
+			return c
+		},
+		_format: function(g, i, b, j, a, e) {
+			if (!b) {
+				b = ""
+			}
+			if (this.isObject(i)) {
+				if (i["$ref"]) {
+					var c = i["$ref"];
+					if (c.indexOf("$") == 0) {
+						j[a] = this._getJsonValue(g, c)
+					} else {
+						if (c.indexOf("@") == 0) {
+							j[a] = j
+						} else {
+							if (c.indexOf("..") == 0) {
+								j[a] = e
+							}
+						}
+					}
+					return
+				}
+				for (var h in i) {
+					var f = b;
+					if (f != "") {
+						f = f + "."
+					}
+					var c = i[h];
+					f = f + h;
+					this._format(g, c, f, i, h, j)
+				}
+			} else {
+				if (this.isArray(i)) {
+					for (var h in i) {
+						var f = b;
+						var c = i[h];
+						f = f + "[" + h + "]";
+						this._format(g, c, f, i, h, j)
+					}
+				} else {}
+			}
+			return g
+		}
+	};    
+    this.initCache = function(cachedObjects1)
+    {
+   	 	cachedObjects = cachedObjects1;
+    }   
+   this.registerPersistentChache = function(type,getFunc,saveFunc)
+     {
+     	persistentFuncs[type] = {type:type,getFunc:getFunc,saveFunc:saveFunc};
+     }
+
+   
+		
+     this.removeCache = function(type,key)
+     {
+     	 if(angular.isUndefined(cachedObjects))
+ 		 {
+     		 return;
+ 		 }
+     	 if(angular.isDefined(cachedObjects[key]))
+     	 {
+     		 delete cachedObjects[key];
+     	 }	 
+     }      
+
+     this.removeCacheByType = function(type){
+    		if(angular.isUndefined(cachedObjects))
+ 		 {
+     		 return;
+ 		 }
+     	 if(angular.isDefined(cachedObjects[type]))
+     	 {
+     		 delete cachedObjects[type];
+     	 }	 
+    }
+    this.$get = function($rootScope,$q){
+     var self = this;
+     var _per = {};
+
+     
+     self.getCache = function(type,key)
+     {
+     	 if(angular.isUndefined(cachedObjects))
+ 		 {
+     		 cachedObjects={};
+ 		 }
+     	 if(angular.isUndefined(cachedObjects[type]))
+     	 {
+     		cachedObjects[type] = {};
+     	 }	 
+     	 if( angular.isDefined(cachedObjects[type][key]))
+     	 {
+     		 return cachedObjects[type][key];
+     	 }
+     	 else
+     	 {
+     		if(angular.isDefined(persistentFuncs[type]))
+         	{
+     			var deferred = $q.defer();
+     		 
+         		var getFunc = persistentFuncs[type].getFunc;
+         		getFunc(key,function(data){
+         			cachedObjects[type][key] = data;
+         			deferred.resolve(data);
+         		},function(error){
+         			deferred.reject(error);
+         			//alert("加载缓存数据出错，原因是："+error);
+         			$rootScope.openErrorDialog(error);
+         		});
+         		return deferred.promise;
+         	}	
+     	 }	 
+     } 
+     self.putCache = function(type,key,object,needPersistented)
+     {
+     	 if(angular.isUndefined(cachedObjects))
+ 		 {
+     		 cachedObjects={};
+ 		 }
+     	 if(angular.isUndefined(cachedObjects[type]))
+ 		 {
+     		cachedObjects[type]={};
+ 		 }
+     	 cachedObjects[type][key] = object;
+     	 
+     	 if(angular.isDefined(needPersistented) && needPersistented == true)
+     	 {
+         	 if(angular.isUndefined(cachedChangedObjects))
+     		 {
+         		cachedChangedObjects={};
+     		 }
+         	 if(angular.isUndefined(cachedChangedObjects[type]))
+     		 {
+         		cachedChangedObjects[type]={};
+     		 }
+         	cachedChangedObjects[type][key] = object;  
+         	if(angular.isDefined(persistentFuncs[type]))
+         	{
+         		var saveFunc = persistentFuncs[type].saveFunc;
+         		saveFunc(object,function(data){},function(error){$rootScope.openErrorDialog(error);});
+         	}	
+     	 }	 
+     }     
+	/* var service =   {
+	      setPermissions: function(permissions) {
+	    	  _userPermissionArray = permissions;
+	    	  sessionStorage.setItem("permissions",permissions);
+	          $rootScope.$broadcast('permissionsChanged');
+	      },
+	      clearPermission:function(){
+	    	  _per= {};
+	      },
+	      hasPermission: function (permission) {
+	    	  if(!permission){
+	     		 return false;
+	     	 }
+	    	 
+	    	 if(_userPermissionArray==undefined)
+	    	 {
+	    		 _userPermissionArray = sessionStorage.getItem("permissions");
+	    		 if(_userPermissionArray)
+	    		 {
+	    			 _userPermissionArray = _userPermissionArray.split(",");
+	    		 }
+	    	 }
+	    	 
+	    	 if(JSON.stringify(_per) == "{}"){
+		    		 for(var i = 0; i < _userPermissionArray.length;i++){
+				          	_per[_userPermissionArray[i]] = "true";
+				      }
+		     }
+	    	 
+	    	 if(_per[permission] == "true")
+	    	 {
+	    		 return true;
+	         }
+	    	 else
+	    	 {
+	    		 return false;
+	         }
+	      },
+	      getLoginUser : function(){
+	    	 return JSON.parse(sessionStorage.getItem("currentLoginUser"));
+	      },
+	      setLoginUser : function(loginUser){
+	    	  if(typeof loginUser == "object"){
+	    		  sessionStorage.setItem("currentLoginUser",JSON.stringify(loginUser));
+	    	  }
+	    	  else{
+	    		  sessionStorage.setItem("currentLoginUser",loginUser);
+	    	  }
+	      },
+	      fastjson:self.fastjson,
+	      putCache:self.putCache,
+	      getCache:self.getCache,
+	      removeCache:self.removeCache,
+	      removeCacheByType:self.removeCacheByType,
+	      registerPersistentChache:self.registerPersistentChache
+	   };*/
+	 
+	 var localStorageService = {
+			 /**
+			  * 2017-2-27 ope:linyuan
+			  * 所有的东西存在localStorage里面
+			  */
+	      setPermissions: function(permissions) {
+	    	  _userPermissionArray = permissions;
+	    	  localStorage.setItem("permissions",permissions);
+	          $rootScope.$broadcast('permissionsChanged');
+	      },
+	      getPermissions : function(){
+	    	  return JSON.parse(localStorage.getItem("permissions"));
+		  },
+		  removePermissions : function(){
+		      localStorage.removeItem("permissions");
+		  },
+	      clearPermission:function(){
+	    	  _per= {};
+	      },
+	      hasPermission: function (permission) {
+	    	  if(!permission){
+	     		 return false;
+	     	 }
+	    	 
+	    	 if(_userPermissionArray==undefined)
+	    	 {
+	    		 _userPermissionArray = localStorage.getItem("permissions");
+	    		 if(_userPermissionArray)
+	    		 {
+	    			 _userPermissionArray = _userPermissionArray.split(",");
+	    		 }
+	    	 }
+	    	 
+	    	 if(JSON.stringify(_per) == "{}"){
+		    		 for(var i = 0; i < _userPermissionArray.length;i++){
+				          	_per[_userPermissionArray[i]] = "true";
+				      }
+		     }
+	    	 
+	    	 if(_per[permission] == "true")
+	    	 {
+	    		 return true;
+	         }
+	    	 else
+	    	 {
+	    		 return false;
+	         }
+	      },
+	      getLoginUser : function(){
+	    	 return JSON.parse(localStorage.getItem("currentLoginUser"));
+	      },
+	      setLoginUser : function(loginUser){
+	    	  if(typeof loginUser == "object"){
+	    		  localStorage.setItem("currentLoginUser",JSON.stringify(loginUser));
+	    	  }
+	    	  else{
+	    		  localStorage.setItem("currentLoginUser",loginUser);
+	    	  }
+	      },
+	      setOperatorCode : function(operatorCode){
+	    	  if(typeof loginUser == "object"){
+	    		  localStorage.setItem("operatorCode",JSON.stringify(operatorCode));
+	    	  }
+	    	  else{
+	    		  localStorage.setItem("operatorCode",operatorCode);
+	    	  }
+	      },
+	      getOperatorCode : function(){
+	    	  return JSON.parse(localStorage.getItem("operatorCode"));
+	      },
+	      setRoles : function(roles){
+	    	  if(typeof loginUser == "object"){
+	    		  localStorage.setItem("roles",JSON.stringify(roles));
+	    	  }
+	    	  else{
+	    		  localStorage.setItem("roles",roles);
+	    	  }
+	      },
+	      getRoles : function(){
+	    	  return JSON.parse(localStorage.getItem("roles"));
+	      },
+	      setSelectedOrg : function(selectedOrg){
+	    	  if(typeof loginUser == "object"){
+	    		  localStorage.setItem("selectedOrg",JSON.stringify(selectedOrg));
+	    	  }
+	    	  else{
+	    		  localStorage.setItem("selectedOrg",selectedOrg);
+	    	  }
+	      },
+	      getSelectedOrg : function(){
+	    	  return JSON.parse(localStorage.getItem("selectedOrg"));
+	      },
+	      setVipLogin : function(vipLogin){
+	    	  if(typeof loginUser == "object"){
+	    		  localStorage.setItem("vipLogin",JSON.stringify(vipLogin));
+	    	  }
+	    	  else{
+	    		  localStorage.setItem("vipLogin",vipLogin);
+	    	  }
+	      },
+	      getVipLogin : function(){
+	    	  return JSON.parse(localStorage.getItem("vipLogin"));
+	      },
+	      removeVipLogin : function(){
+	    	  localStorage.removeItem("vipLogin");
+	      },
+	      clearExpctAccount : function(){
+	    	  localStorage.removeItem("vipLogin");
+	    	  localStorage.removeItem("selectedOrg");
+	    	  localStorage.removeItem("roles");
+	    	  localStorage.removeItem("operatorCode");
+	    	  localStorage.removeItem("currentLoginUser");
+	    	  localStorage.removeItem("permissions");
+	      },
+	      fastjson:self.fastjson,
+	      putCache:self.putCache,
+	      getCache:self.getCache,
+	      removeCache:self.removeCache,
+	      removeCacheByType:self.removeCacheByType,
+	      registerPersistentChache:self.registerPersistentChache
+	 }
+	 return localStorageService;
+    }
+  });
+
+  /**
+	 * directive to show or hide UI by permission
+	 */
+  permissionApp.directive('hasPermission',function(angularPermission) 
+   {
+	  return{
+		  link:function(scope,element,attrs)
+		  {
+			  var value = attrs.hasPermission.trim();      
+			  var notPermissionFlag = value[0] === '!';     
+			  if(notPermissionFlag)
+			  {        
+				  value = value.slice(1).trim(); 
+			  }        
+			  function toggleVisibilityBasedOnPermission() 
+			  {        
+				  var hasPermission = angularPermission.hasPermission(value);         
+				  if(hasPermission && !notPermissionFlag || !hasPermission && notPermissionFlag)
+				  {
+					  element.show();        
+				  }
+				  else
+				  {
+					  element.hide();
+				  }
+			  }      
+			  toggleVisibilityBasedOnPermission();      
+			  scope.$on('permissionsChanged', toggleVisibilityBasedOnPermission);    
+			 }  
+	  };
+});
+ 

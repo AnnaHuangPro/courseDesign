@@ -1,0 +1,50 @@
+
+<style>
+.imgComponent {
+	position: relative;
+	border: 1px transparent solid;
+}
+
+.imgComponent:hover {
+	border-color: blue;
+}
+
+.toolFix {
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	right: -20px;
+	top: 0;
+	list-style: none;
+}
+
+.toolFix .toolBtn {
+	width: 20px;
+	height: 20px;
+	line-height: 20px;
+	padding: 0;
+}
+
+.toolFix .toolBtn .glyphicon {
+	font-size: 5px;
+}
+</style>
+<div ng-style="{'width':imgWidth+'px','height':imgHeight+'px'}"
+	style="position: relative; display: inline-block;">
+	<div class="imgComponent"
+		ng-style="{'width':imgWidth+2+'px','height':imgHeight+2+'px'}">
+		<input title="点击上传照片"
+			ng-style="{'width':imgWidth+'px','height':imgHeight+'px'}"
+			ng-mouseenter="mouseEnter()" ng-mouseleave="mouseLeave()"
+			style="opacity: 0; filter: alpha(opacity = 0); cursor: pointer; position: absolute; z-index: 9;"
+			type="file"> <img ng-src={{showUrl}}
+			ng-class="{dddimgmouseenter:isMouseEnter}"
+			ng-style="{'width':imgWidth+'px','height':imgHeight+'px'}" />
+	</div>
+	<ul class="toolFix">
+		<li><a class="toolBtn" ng-click="deleteImg()">
+				<i class="glyphicon glyphicon-trash"></i>
+		</a></li>
+	</ul>
+</div>
+

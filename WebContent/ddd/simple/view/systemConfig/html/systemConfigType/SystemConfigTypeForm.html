@@ -1,0 +1,45 @@
+<form ng-init="init()" class="form-horizontal"
+	name="systemConfigTypeForm" ddd-form-validate="{ blurValidate: true}"
+	novalidate role="form">
+	<fieldset>
+		<legend class="legend" data-toggle="collapse" href="#baseInfo">
+			<span class="legend-title">基础信息</span>
+		</legend>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label form-margin required"
+				for="systemConfigTypeName"> 参数类型名</label>
+			<div class="col-md-10">
+				<input type="text" id="systemConfigTypeName" placeholder='参数类型名'
+					class="form-control"
+					ng-model="systemConfigType.systemConfigTypeName"
+					name="systemConfigTypeName" maxlength="20" required />
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label form-margin required"
+				for="systemConfigTypeCode"> 参数类型编码 </label>
+			<div class="col-md-10">
+				<input type="text" id="systemConfigTypeCode" placeholder='参数类型编码'
+					class="form-control"
+					ng-model="systemConfigType.systemConfigTypeCode"
+					name="systemConfigTypeCode" maxlength="18" required />
+			</div>
+		</div>
+		<div class="form-group col-md-12">
+			<label class="col-md-2 control-label" for="remark"> 说明</label>
+			<div class="col-md-10">
+				<textarea rows="3" class="form-control" name="remark" id="remark"
+					ng-model="systemConfigType.remark"></textarea>
+			</div>
+		</div>
+	</fieldset>
+	<div class="form-group col-md-12">
+		<div class="btn-group formBtnGroup topRight col-md-offset-2">
+			<button class="btn btn-sm" ng-click="saveSystemConfigType(false)"
+				ng-disabled="systemConfigTypeForm.$invalid">保存</button>
+			<button class="btn btn-sm" ng-click="saveSystemConfigType(true)"
+				ng-disabled="systemConfigTypeForm.$invalid">保存并新增</button>
+			<button class="btn btn-sm" ng-click="closeOperateTab()">返回</button>
+		</div>
+	</div>
+</form>

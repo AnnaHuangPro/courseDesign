@@ -1,0 +1,56 @@
+<div ng-controller="dynamicFormFormController">
+	<div class="row" ng-init="getInitDynamicFormData()">
+		<form class="form-horizontal" name="dynamicFormForm" ddd-Form-Validate
+			novalidate>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label required" for="dynamicFormKey">
+					唯一标示</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="dynamicForm.dynamicFormKey" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label required" for="dynamicFormName">
+					名称</label>
+				<div class="col-md-8">
+					<input type="text" class="form-control"
+						ng-model="dynamicForm.dynamicFormName" required />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="copyForm">复制表单</label>
+				<div class="col-md-8">
+					<dreference reference-id="dynamicFormRefrence"
+						list-view-key='dynamicFormList' ng-model='dynamicForm.copyForm'
+						show-model-filed='dynamicFormName' multi-select=false
+						placeholder="非必填项"> </dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" for="model">所属模型</label>
+				<div class="col-md-8">
+					<dreference reference-id="modelRefrence" list-view-key='modelList'
+						ng-model='dynamicForm.model' show-model-filed='modelName'
+						multi-select=false bind-field="EId" placeholder="非必填项">
+					</dreference>
+				</div>
+			</div>
+			<div class="form-group col-md-12 lable-tip">
+				<label class="col-md-2 control-label" for="remark">备注</label>
+				<div class="col-md-10 ">
+					<textarea rows="8" class="form-control defined-textarea"
+						ng-model="dynamicForm.remark"></textarea>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="btn-group formBtnGroup topRight col-md-offset-2">
+					<button class="btn btn-sm" type="button" type="submit"
+						ng-disabled="dynamicFormForm.$invalid"
+						ng-click="saveDynamicForm(dynamicForm)">保存</button>
+					<button class="btn btn-sm" type="button" ng-click="back()">返回</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>外键</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" >
+    <meta name="generator" content="www.leipi.org" />
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap-ie6.css">
+    <![endif]-->
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/ie.css">
+    <![endif]-->
+    <link rel="stylesheet" href="leipi.style.css">
+    <script type="text/javascript" src="../dialogs/internal.js"></script>
+    <script type="text/javascript">
+function createElement(type, name)
+{     
+    var element = null;     
+    try {        
+        element = document.createElement('<'+type+' name="'+name+'">');     
+    } catch (e) {}   
+    if(element==null) {     
+        element = document.createElement(type);     
+        element.name = name;     
+    } 
+    return element;     
+}
+    </script>
+</head>
+<body>
+<div class="content">
+    <table class="table table-bordered table-striped table-hover">
+     <tr>
+        <th><span>当前类类名</span><span class="label label-important">*</span></th>
+        <th><span>关联类类名</span><span class="label label-important">*</span></th>
+    </tr>
+    <tr>
+        <td>
+            <input id="orgcurrentclass" placeholder="必填项" type="text" />
+        </td>
+        <td>
+        	<input id="orgforeignclass" placeholder="必填项" type="text" />
+        </td>
+    </tr>
+     <tr>
+        <th><span>控件名称</span><span class="label label-important">*</span></th>
+        <th><span>外键关联显示属性</span><span class="label label-important">*</span></th>
+    </tr>
+    <tr>
+        <td>
+            <input id="orgname" placeholder="必填项" type="text" />
+        </td>
+        <td>
+        	<input id="orgdisplayattribute" placeholder="必填项" type="text" />
+        </td>
+    </tr>
+    <tr>
+        <th><span>设计样式</span> </th>
+        <td>
+            宽 <input id="orgwidth" type="text" value="160" class="input-small span1" placeholder="auto"/> px
+            &nbsp;&nbsp;
+            高 <input id="orgheight" type="text" value="30" class="input-small span1" placeholder="auto"/> px
+        </td>
+       
+    </tr>
+    </table>
+</div>
+<script type="text/javascript">
+var oNode = null,thePlugins = 'foreignkey';
+ window.onload = function() {
+    if( UE.plugins[thePlugins].editdom ){
+        oNode = UE.plugins[thePlugins].editdom;
+        var gTitle=oNode.getAttribute('title').replace(/&quot;/g,"\""),
+        gdisplayattribute=oNode.getAttribute('orgdisplayattribute').replace(/&quot;/g,"\""),
+        gcurrentclass=oNode.getAttribute('orgcurrentclass').replace(/&quot;/g,"\""),
+        gforeignclass=oNode.getAttribute('orgforeignclass').replace(/&quot;/g,"\""),
+        gWidth=oNode.getAttribute('orgwidth'),
+        gHeight=oNode.getAttribute('orgheight');
+        $G('orgname').value = gTitle;
+        $G('orgwidth').value = gWidth;
+        $G('orgheight').value = gHeight;
+        $G('orgdisplayattribute').value = gdisplayattribute;
+        $G('orgcurrentclass').value = gcurrentclass;
+        $G('orgforeignclass').value = gforeignclass;
+    }
+}
+dialog.oncancel = function () {
+    if( UE.plugins[thePlugins].editdom ) {
+        delete UE.plugins[thePlugins].editdom;
+    }
+};
+dialog.onok = function (){
+    if( $G('orgname').value == '') {
+        alert('控件名称不能为空');
+        return false;
+    }
+    var gTitle=$G('orgname').value.replace(/\"/g,"&quot;"),
+    gdisplayattribute=$G('orgdisplayattribute').value.replace(/\"/g,"&quot;") ,
+    gcurrentclass=$G('orgcurrentclass').value.replace(/\"/g,"&quot;"),
+    gforeignclass=$G('orgforeignclass').value.replace(/\"/g,"&quot;"),
+    gFontSize,
+    gWidth=$G('orgwidth').value,
+    gHeight=$G('orgheight').value;
+    
+    if( !oNode ) {
+        try {
+            oNode = createElement('img','leipiNewField');
+            oNode.setAttribute('title',gTitle);
+            oNode.setAttribute('name','leipiNewField');
+            oNode.setAttribute('orgcurrentclass',gcurrentclass);
+            oNode.setAttribute('orgforeignclass',gforeignclass);
+            oNode.setAttribute('orgdisplayattribute',gdisplayattribute); 
+            oNode.setAttribute('leipiPlugins',thePlugins);
+            oNode.setAttribute('src',editor.options.UEDITOR_HOME_URL + UE.leipiFormDesignUrl + '/images/foreignkey.png');
+            if( gWidth != '' ) {
+                oNode.style.width = gWidth + 'px';
+            }
+            oNode.setAttribute('orgwidth',gWidth );
+            if( gHeight != '' ) {
+                oNode.style.height = gHeight + 'px';
+            }
+            oNode.setAttribute('orgheight',gHeight );
+            editor.execCommand('insertHtml',oNode.outerHTML);
+            return true ;
+        } catch ( e ) {
+            try {
+                editor.execCommand('error');
+            } catch ( e ) {
+                alert('控件异常，请到 [雷劈网] 反馈或寻求帮助！');
+            }
+            return false;
+        }
+    } else {
+        oNode.setAttribute('title',gTitle);
+        oNode.setAttribute('orgtype',gType);
+        //oNode.innerHTML = $G('orgvalue').value;
+        if( gWidth != '' ) {
+            oNode.style.width = gWidth + 'px';
+        }else
+        {
+            oNode.style.width = '';
+        }
+        oNode.setAttribute('orgwidth',gWidth );
+        if( gHeight != '' ) {
+            oNode.style.height = gHeight + 'px';
+        }else
+        {
+            oNode.style.height = '';
+        }
+        oNode.setAttribute('orgheight',gHeight );
+
+        delete UE.plugins[thePlugins].editdom;
+        return true;
+    }
+};
+</script>
+</body>
+</html>

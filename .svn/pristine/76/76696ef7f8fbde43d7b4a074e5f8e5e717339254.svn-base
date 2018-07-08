@@ -1,0 +1,6 @@
+<div ui-view="header"></div>
+<div class="row content">
+	<!-- 为复写w2ui的树样式 加上id选择器以加重权重 -->
+	<div id="leftMenu" ng-show="showLeftContent" class="leftMenu" ui-view="menu"></div>
+	<div ui-view="mainContent" class="mainContent"></div>
+</div>

@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-6 pull-left">
+		<button class="btn " ng-click="addZldj()"
+			ng-if="hasPermission('zldj_add')">
+			<i class='glyphicon glyphicon-plus-sign'></i>新增
+		</button>
+		<button class="btn " ng-click="refreshGrid()">
+			<i class='glyphicon glyphicon-refresh'></i>刷新
+		</button>
+	</div>
+	<dcolumnfilter class="col-md-6 pull-left"
+		grid-name="zldjListGrid" />
+	<ddatagrid class="col-md-12" id="zldjListGrid"
+		name="zldjListGrid" show-grid-only="true"
+		operation-columns='operationColumns'
+		operation-bar-buttons='operationBarButtons'
+		list-view-key="zldjList"> </ddatagrid>
+</div>

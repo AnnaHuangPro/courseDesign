@@ -1,0 +1,18 @@
+#if($!{dataResource.get('isEdit')}=='是')
+	<select class="form-control" ng-model="modelData.$!{dataResource.get('bundle')}"
+	#if($!{dataResource.get('nullable')}=="是")
+		required="required"
+	#end
+	#if($!{dataResource.get('dataSource').size()}==1)
+		ng-options="option.optionKey as option.optionValue for option in options" 	
+	#end>
+		<option value="" style="color:#999">$!{dataResource.get('placeholder')}</option>
+		#if($dataResource.get('dataSource'))
+			#foreach($option in $dataResource.get('dataSource'))
+				<option value="$option.get('value')" #if($option.get('isDefaultValue')=='true') ng-selected="true" #end>$option.get('name')</option>
+			#end
+		#end		
+	</select>
+#else
+<p class="form-control-static">{{modelData.$!dataResource.get('bundle')}}</p>
+#end

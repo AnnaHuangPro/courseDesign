@@ -1,0 +1,113 @@
+define(['app'], function (app) 
+{	
+	app.controller('HeadController',['$rootScope','$scope','ModuleService','$http','LoginService','angularPermission','dialogs','asynchroMarkService','ngDialog','HeadPortraitService',
+	function($rootScope,$scope,ModuleService,$http,LoginService,angularPermission,dialogs,asynchroMarkService,ngDialog,HeadPortraitService){
+		$scope.loginUser = angularPermission.getLoginUser();
+		if($scope.loginUser == null){
+			$scope.loginUser = {};
+		}
+		var employee= angularPermission.getLoginUser().employee;
+		$scope.userName = angularPermission.getLoginUser().name;
+		
+		var operatorId = angularPermission.getLoginUser().eId;
+	/*	ModuleService.findSystemModulesByOperator(operatorId,findModulesResult,findModulesFault);
+		function findModulesResult(data)
+		{
+			$scope.systemModules = data;
+			$scope.isSelected = 0;
+			$scope.loadSystem(data[0].eId,0);
+		}
+		function findModulesFault()
+		{
+			alert("加载失败！");
+		}*/
+		
+		$scope.personDataDispaly = function(){
+			$rootScope.$state.go("main.list.personalData.personalDataDisplay");
+		}
+		
+		$scope.changePasw = function(){
+			var loginUser = angularPermission.getLoginUser();
+			var dlg = dialogs.create('simple/view/main/html/main/PersonInfo.html','headerContoller',{},{size:'md',keyboard: true,backdrop: false,windowClass: 'my-class'});
+			dlg.result.then(function(){
+				$rootScope.app.notify("修改成功");
+			},function(){
+				//取消
+			});
+		}
+		
+		$scope.init= function(){
+			$scope.findHeadPortraitUrl();
+			if(document.getElementById("loginUserInfo")){
+				document.getElementById("loginUserInfo").title=$scope.userName;
+			}
+		}
+		
+		$scope.findHeadPortraitUrl = function() {
+
+			HeadPortraitService.findLogoUrl(employee.eId,sucesscb,errorcb);
+	
+			function sucesscb(data)	{
+				 $scope.showUrl  = "../ShowImgServlet?imgUrl="+data;
+			};
+	
+			function errorcb(error)	{
+				console.log("获取头像失败！");
+			}
+		}
+		
+		$scope.turnToManual = function()
+		{
+			$rootScope.$state.go("main.list.mainTable");
+		}
+		
+		$scope.loginOut = function()
+		{
+			$rootScope.$state.go("login");
+			$rootScope.tabs = [];
+			LoginService.loginOut(sucesscb,errorcb);
+			angularPermission.clearExpctAccount();
+		}
+		
+		function sucesscb(){}
+		
+		function errorcb(error){}
+		
+		$scope.loadSystem = function(systemModuleId,index)
+		{
+			$scope.isSelected = index;
+		}
+		$rootScope.app={};
+		$rootScope.app.asynchroMask = asynchroMarkService;	
+		$rootScope.app.treeId = 1;
+		$rootScope.app.notify = function(str){
+			//提示
+			dialogs.notify("提示", str, {size:'sm',animation:false,backdrop:false})
+		}
+		$rootScope.app.error = function(str){
+			//错误
+			dialogs.error("错误", str, {size:'sm',animation:false})
+		}
+		
+		$rootScope.openErrorDialog = function(clientError){
+            var dialogId = ngDialog.open({
+                template: 'js/base/asset/clientErrorDialog.html',
+                showClose:true,
+                controller: ['$scope', function ($scope, $timeout) {
+                	if(clientError.data)
+                	{	
+                		$scope.clientError = clientError.data;
+                	}
+                	else
+            		{
+                		$scope.clientError={};
+                		$scope.clientError.message=angular.toJson(clientError);
+            		}
+                	$scope.showDebug = false;
+                		
+                }],
+                className: 'ngdialog-theme-default'
+            });
+		}	
+	}]);
+});
